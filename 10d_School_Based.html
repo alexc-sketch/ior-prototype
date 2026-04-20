@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>School-Based & Trainees · IOR Careers · IOR Energy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ior-global.css">
+  <style>
+    
+    .school-hero { background: var(--ior-navy); color: var(--ior-white); padding: 100px 0 80px; }
+    .info-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+    .info-card { background: var(--ior-white); border-radius: var(--radius-md); padding: 32px; border: 1px solid var(--ior-border); }
+    .info-card__icon { font-size: 2rem; margin-bottom: 16px; }
+    .info-card__title { font-size: 1.1rem; font-weight: 700; color: var(--ior-navy); margin-bottom: 10px; }
+    .info-card__copy { font-size: 0.9rem; color: var(--ior-text-muted); line-height: 1.6; }
+    .faq-section { padding: 80px 0; background: var(--ior-off-white); }
+    .faq-item { border-bottom: 1px solid var(--ior-border); }
+    .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 20px 0; font-size: 1rem; font-weight: 600; color: var(--ior-navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-question::after { content: "+"; font-size: 1.4rem; color: var(--ior-blue); transition: transform 0.2s; }
+    .faq-question.open::after { transform: rotate(45deg); }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+    .faq-answer p { padding: 0 0 20px; font-size: 0.95rem; color: var(--ior-text-muted); line-height: 1.7; }
+    @media (max-width: 768px) { .info-cards { grid-template-columns: 1fr; } }
+    
+  </style>
+</head>
+<body>
+<div class="wf-nav">
+  <span class="wf-nav__module">MODULE 10 · School-Based · 10d_School_Based.html</span>
+  <span class="wf-nav__links">
+    <a href="00_Master_Index.html">Index</a> |
+    <a href="IOR_Design_System.html">Design System</a> |
+    <a href="10_Careers_v2.html">Careers Hub</a> | <a href="10a_Entry_Pathways.html">Entry Pathways</a> | <a href="10b_Apprentices.html">Apprentices</a> | <a href="10c_Graduates.html">Graduates</a> | <a href="10d_School_Based.html">School-Based</a> | <a href="10e_Working_Regionally.html">Working Regionally</a>
+  </span>
+  <span class="wf-nav__annotations">ANNOTATIONS: <span class="ann-std">■ Standard</span> <span class="ann-dq">■ Design Q</span></span>
+</div>
+<div class="utility-bar">
+  <div class="utility-bar__inner container">
+    <div class="utility-bar__left">
+      <span>📞 1800 467 669</span>
+      <span>📍 Find a Location</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="#">News &amp; Updates</a>
+      <a href="#">Careers</a>
+      <a href="#">Investor Relations</a>
+    </div>
+  </div>
+</div>
+<nav class="primary-nav" role="navigation" aria-label="Primary navigation">
+  <div class="primary-nav__inner container">
+    <a href="01_Homepage_and_Global.html" class="primary-nav__logo" aria-label="IOR Home">
+      <div class="logo-box">[IOR LOGO]</div>
+    </a>
+    <ul class="primary-nav__menu" role="menubar">
+      <li role="none"><a href="02_Fuel_Solutions_Hub_v2.html" role="menuitem">Fuel Solutions <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="07_Digital_Platforms_v2.html" role="menuitem">Digital Platforms <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08_Industries_v2.html" role="menuitem">Industries We Serve <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="09_About_IOR_v2.html" role="menuitem">About IOR <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08a_Contact_Us_v2.html" role="menuitem">Support &amp; Contact <span class="nav-arrow">▼</span></a></li>
+    </ul>
+    <div class="primary-nav__ctas">
+      <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+    </div>
+    <button class="primary-nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<nav class="drawer" id="drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer__header">
+    <div class="logo-box">[IOR LOGO]</div>
+    <button class="drawer__close" aria-label="Close menu">✕</button>
+  </div>
+  <ul class="drawer__menu">
+    <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a></li>
+    <li><a href="07_Digital_Platforms_v2.html">Digital Platforms</a></li>
+    <li><a href="08_Industries_v2.html">Industries We Serve</a></li>
+    <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+    <li><a href="08a_Contact_Us_v2.html">Support &amp; Contact</a></li>
+  </ul>
+  <div class="drawer__ctas">
+    <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</nav>
+
+<section class="school-hero" data-animate="fade-in">
+  <div class="container">
+    <p style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ior-sky);margin-bottom:16px;">SCHOOL-BASED &amp; TRAINEES</p>
+    <h1 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;margin-bottom:24px;">Get a head start.<br>Start your career at school.</h1>
+    <p style="font-size:1.1rem;color:rgba(255,255,255,0.8);max-width:560px;margin-bottom:32px;">IOR's school-based programs give young Australians real industry experience, paid work, and a clear pathway to full-time employment — all while still at school.</p>
+    <a href="mailto:careers@ior.com.au" class="btn btn--primary">Express Interest →</a>
+  </div>
+</section>
+
+<nav class="quick-links-bar" aria-label="Careers navigation">
+  <div class="container quick-links-bar__inner">
+    <a href="10_Careers_v2.html" class="quick-link">Why IOR?</a>
+    <a href="10a_Entry_Pathways.html" class="quick-link">Entry Pathways</a>
+    <a href="10b_Apprentices.html" class="quick-link">Apprentices</a>
+    <a href="10c_Graduates.html" class="quick-link">Graduates</a>
+    <a href="10d_School_Based.html" class="quick-link">School-Based</a>
+    <a href="10e_Working_Regionally.html" class="quick-link">Working Regionally</a>
+    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="quick-link quick-link--cta" target="_blank">View Open Roles →</a>
+  </div>
+</nav>
+
+<!-- Program Benefits -->
+<section class="section-pad">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">WHY START EARLY</p>
+    <h2 class="section-h2" data-animate="fade-up">What you get from an IOR school program</h2>
+    <div class="info-cards">
+      <div class="info-card" data-animate="fade-up">
+        <div class="info-card__icon">💰</div>
+        <h3 class="info-card__title">Earn While You Learn</h3>
+        <p class="info-card__copy">Get paid for your time on site. IOR's school-based programs are paid work experience — not unpaid internships. You'll earn real money while building real skills.</p>
+      </div>
+      <div class="info-card" data-animate="fade-up">
+        <div class="info-card__icon">📜</div>
+        <h3 class="info-card__title">Nationally Recognised Training</h3>
+        <p class="info-card__copy">Complete units from nationally recognised qualifications as part of your program. These count towards your future apprenticeship or certificate — giving you a head start before you even finish school.</p>
+      </div>
+      <div class="info-card" data-animate="fade-up">
+        <div class="info-card__icon">🚀</div>
+        <h3 class="info-card__title">Pathway to Full-Time Employment</h3>
+        <p class="info-card__copy">Many of our school-based trainees go on to apprenticeships or full-time roles at IOR. We invest in young people who show initiative — and we promote from within.</p>
+      </div>
+      <div class="info-card" data-animate="fade-up">
+        <div class="info-card__icon">📍</div>
+        <h3 class="info-card__title">Regional &amp; Metro Locations</h3>
+        <p class="info-card__copy">Programs available across Queensland, New South Wales, Victoria, South Australia, Western Australia, and the Northern Territory — in both regional and metro locations.</p>
+      </div>
+      <div class="info-card" data-animate="fade-up">
+        <div class="info-card__icon">🤝</div>
+        <h3 class="info-card__title">Mentoring from Day One</h3>
+        <p class="info-card__copy">You'll be paired with an experienced IOR team member who'll guide you through your program, answer your questions, and help you get the most out of every day on site.</p>
+      </div>
+      <div class="info-card" data-animate="fade-up">
+        <div class="info-card__icon">🏆</div>
+        <h3 class="info-card__title">Real Industry Experience</h3>
+        <p class="info-card__copy">IOR is one of Australia's largest independent fuel companies. Working with us gives you experience that stands out on any resume — and skills that transfer across the energy, transport, and infrastructure sectors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">COMMON QUESTIONS</p>
+    <h2 class="section-h2" data-animate="fade-up">Frequently asked questions</h2>
+    <div style="max-width:800px;margin-top:48px;">
+      <div class="faq-item" data-animate="fade-up">
+        <button class="faq-question">Who is eligible for IOR's school-based programs?</button>
+        <div class="faq-answer"><p>Students in Years 10, 11, or 12 who are enrolled in a Queensland, NSW, Victoria, SA, WA, or NT school. You'll need parental consent and a commitment to attend your scheduled work days. No prior experience is required — just enthusiasm and a willingness to learn.</p></div>
+      </div>
+      <div class="faq-item" data-animate="fade-up">
+        <button class="faq-question">How many days per week will I work?</button>
+        <div class="faq-answer"><p>Typically one day per week during school terms, with additional hours available during school holidays. Your school and IOR will work together to arrange a schedule that fits your timetable.</p></div>
+      </div>
+      <div class="faq-item" data-animate="fade-up">
+        <button class="faq-question">Will I get a qualification from the program?</button>
+        <div class="faq-answer"><p>Yes. You'll complete units from a nationally recognised qualification (Certificate II or III depending on your stream). These units count towards your final qualification and give you a significant head start if you continue into an apprenticeship.</p></div>
+      </div>
+      <div class="faq-item" data-animate="fade-up">
+        <button class="faq-question">What happens after I finish school?</button>
+        <div class="faq-answer"><p>Many of our school-based trainees are offered apprenticeships or full-time roles at IOR upon completing school. There's no guarantee, but if you perform well and show initiative, we'll do everything we can to keep you in the IOR family.</p></div>
+      </div>
+      <div class="faq-item" data-animate="fade-up">
+        <button class="faq-question">How do I apply?</button>
+        <div class="faq-answer"><p>Email careers@ior.com.au with your name, school, year level, and the location nearest to you. Our Talent Team will be in touch within 5 business days to discuss availability and next steps.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="security-banner">
+  <div class="container security-banner__inner">
+    <div class="security-banner__text">
+      <p class="security-banner__eyebrow">SOVEREIGN SUPPLY CHAIN</p>
+      <h2>We own our infrastructure.<br>We won't run out.</h2>
+      <p>Lytton Terminal · Port Bonython Terminal · Eromanga Refinery · Stonepeak-backed. When global supply chains tighten, IOR customers don't feel it.</p>
+    </div>
+    <div class="security-banner__cta">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--white">Our Supply Chain →</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-grid container">
+    <div class="footer-col">
+      <div class="footer-logo">[IOR LOGO]</div>
+      <p class="footer-tagline">Australia's independent fuel company. Sovereign supply. National reach.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Fuel Solutions</h4>
+      <ul>
+        <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+        <li><a href="04_Aviation_v2.html">Aviation</a></li>
+        <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+        <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+        <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+        <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+        <li><a href="08f_Commercial_Aviation.html">Commercial &amp; General Aviation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+        <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+        <li><a href="10_Careers_v2.html">Careers</a></li>
+        <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2025 IOR Energy. All rights reserved. ABN 12 345 678 901</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Modern Slavery Statement</a>
+    </div>
+  </div>
+</footer>
+<script src="ior-motion.js"></script>
+<script>
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const answer = q.nextElementSibling;
+      const isOpen = q.classList.contains('open');
+      document.querySelectorAll('.faq-question').forEach(oq => {
+        oq.classList.remove('open');
+        oq.nextElementSibling.style.maxHeight = null;
+      });
+      if (!isOpen) {
+        q.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+</body>
+</html>

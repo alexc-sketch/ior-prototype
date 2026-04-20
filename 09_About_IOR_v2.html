@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About IOR — Australia's Sovereign Fuel Infrastructure Company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ior-global.css">
+<style>
+.about-hero { background: var(--ior-deep); min-height: 480px; }
+.about-hero__left { padding: 80px 60px 80px 0; }
+.about-hero__right { background: #0d1f33; }
+.directory-section { background: var(--ior-white); padding: var(--section-pad) 0; }
+.directory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+.dir-card {
+  background: var(--ior-white);
+  border: 1px solid var(--border-light);
+  border-top: 4px solid var(--ior-blue);
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
+  text-decoration: none;
+}
+.dir-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(3,85,163,0.14); }
+.dir-card__icon { font-size: 36px; }
+.dir-card__title { font-size: 18px; font-weight: 800; color: var(--ior-charcoal); }
+.dir-card__body { font-size: 14px; color: var(--mid-grey); line-height: 1.7; flex: 1; }
+.dir-card__cta { font-size: 13px; font-weight: 700; color: var(--ior-blue); align-self: flex-start; }
+.values-section { background: var(--off-white); padding: var(--section-pad) 0; }
+.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+.value-card { background: var(--ior-white); border-radius: var(--radius-md); padding: 32px 28px; border: 1px solid var(--border-light); }
+.value-card__icon { font-size: 32px; margin-bottom: 16px; }
+.value-card__title { font-size: 16px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 8px; }
+.value-card__body { font-size: 14px; color: var(--mid-grey); line-height: 1.7; }
+.milestones-section { background: var(--ior-white); padding: var(--section-pad) 0; }
+.timeline { display: flex; flex-direction: column; gap: 0; margin-top: 40px; position: relative; }
+.timeline::before { content: ''; position: absolute; left: 120px; top: 0; bottom: 0; width: 2px; background: var(--border-light); }
+.tl-item { display: grid; grid-template-columns: 120px 1fr; gap: 40px; padding: 24px 0; position: relative; }
+.tl-item::before { content: ''; position: absolute; left: 113px; top: 32px; width: 16px; height: 16px; border-radius: 50%; background: var(--ior-blue); border: 3px solid var(--ior-white); box-shadow: 0 0 0 2px var(--ior-blue); }
+.tl-year { font-size: 20px; font-weight: 900; color: var(--ior-blue); text-align: right; padding-top: 4px; }
+.tl-content__title { font-size: 15px; font-weight: 700; color: var(--ior-charcoal); margin-bottom: 4px; }
+.tl-content__body { font-size: 13px; color: var(--mid-grey); line-height: 1.6; }
+@media (max-width: 1024px) { .directory-grid { grid-template-columns: repeat(2, 1fr); } .values-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .directory-grid, .values-grid { grid-template-columns: 1fr; } .timeline::before { left: 60px; } .tl-item { grid-template-columns: 60px 1fr; gap: 20px; } .tl-item::before { left: 53px; } .tl-year { font-size: 14px; } }
+</style>
+</head>
+<body>
+<!-- WIREFRAME NAV -->
+<nav class="wf-nav">
+  <strong>IOR WIREFRAMES</strong>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="IOR_Design_System.html">Design System</a>
+  <a href="09_About_IOR_v2.html">09 About IOR</a>
+  <a href="09a_Our_Leadership.html">09a Leadership</a>
+  <a href="09b_Community.html">09b Community</a>
+  <a href="09c_Sustainability.html">09c Sustainability</a>
+  <a href="09d_Case_Studies.html">09d Case Studies</a>
+  <a href="10_Careers_v2.html">10 Careers</a>
+  <span class="wf-nav__module">MODULE 09 · About IOR Hub · V1</span>
+</nav>
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__announce">📢 New: HyDip™ FMS now integrates with major fleet management platforms</div>
+    <div class="utility-links">
+      <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
+      <a href="08d_Make_a_Payment_v2.html">💳 Make a Payment</a>
+      <a href="#">📞 1300 467 823</a>
+    </div>
+  </div>
+</div>
+<!-- PRIMARY NAV -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links">
+      <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions ▾</a></li>
+      <li><a href="07_Digital_Platforms_v2.html">Digital Platforms ▾</a></li>
+      <li><a href="08_Industries_v2.html">Industries We Serve ▾</a></li>
+      <li><a href="09_About_IOR_v2.html" class="active">About IOR ▾</a></li>
+      <li><a href="08_Support_Hub_v2.html">Support &amp; Contact ▾</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary btn--sm">Apply for an Account</a>
+    </div>
+  </div>
+</nav>
+<!-- QUICK-LINKS BAR -->
+<div class="quick-links-bar">
+  <div class="container">
+    <a href="09_About_IOR_v2.html" class="ql-item">🏢 About IOR</a>
+    <a href="09a_Our_Leadership.html" class="ql-item">👥 Our Leadership</a>
+    <a href="09b_Community.html" class="ql-item">🤝 Community</a>
+    <a href="09c_Sustainability.html" class="ql-item">🌱 Sustainability &amp; HSE</a>
+    <a href="09d_Case_Studies.html" class="ql-item">📄 Case Studies</a>
+    <a href="10_Careers_v2.html" class="ql-item">💼 Careers</a>
+  </div>
+</div>
+
+<!-- ANNOTATION -->
+<div class="ann ann--info">
+  <strong>Module 09 · About IOR Hub · V1</strong>
+  Directory routing users to Leadership, Community, Sustainability, Case Studies, and Careers. Layout: Directory Card Grid with hover-lift. Values section. Timeline milestones. No blog section on this page.
+</div>
+
+<!-- HERO -->
+<section class="hero-split about-hero">
+  <div class="hero-split__left about-hero__left">
+    <div class="eyebrow">About IOR</div>
+    <h1 data-animate="fade-up">Built on <span class="accent">Australian soil.</span><br>Fuelling Australian industry.</h1>
+    <p class="hero-sub" data-animate="fade-up" data-delay="100">For over 40 years, IOR has been the fuel infrastructure company that Australia's most demanding industries rely on. 100% Australian owned. Sovereign supply. No middlemen.</p>
+    <div class="hero-ctas" data-animate="fade-up" data-delay="200">
+      <a href="09a_Our_Leadership.html" class="btn btn--primary">Meet Our Leadership →</a>
+      <a href="10_Careers_v2.html" class="btn btn--ghost">Join the Team</a>
+    </div>
+  </div>
+  <div class="hero-split__right about-hero__right">
+    <div class="img-placeholder">
+      <strong>About IOR Hero</strong>
+      <span>IMAGE PLACEHOLDER</span>
+      <em>Aerial view of Lytton Terminal, Brisbane River, IOR infrastructure</em>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-item" data-animate="fade-up" data-delay="0">
+      <span class="trust-item__icon">🇦🇺</span>
+      <div class="trust-item__text"><strong>100% Australian Owned</strong><span>No foreign shareholders</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="80">
+      <span class="trust-item__icon">🏭</span>
+      <div class="trust-item__text"><strong>We Own the Refinery</strong><span>Eromanga — Australia's only inland refinery</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="160">
+      <span class="trust-item__icon">👥</span>
+      <div class="trust-item__text"><strong>500+ Team Members</strong><span>Across Australia</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="240">
+      <span class="trust-item__icon">📅</span>
+      <div class="trust-item__text"><strong>40+ Years</strong><span>In the Australian fuel industry</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="container">
+    <div class="stat-item" data-animate="fade-up" data-delay="0">
+      <div class="stat-item__number" data-count>115+</div>
+      <div class="stat-item__label">Network Sites Nationally</div>
+    </div>
+    <div class="stat-item" data-animate="fade-up" data-delay="80">
+      <div class="stat-item__number" data-count>190M+</div>
+      <div class="stat-item__label">Litres Storage Capacity</div>
+    </div>
+    <div class="stat-item" data-animate="fade-up" data-delay="160">
+      <div class="stat-item__number" data-count>500+</div>
+      <div class="stat-item__label">Team Members</div>
+    </div>
+    <div class="stat-item" data-animate="fade-up" data-delay="240">
+      <div class="stat-item__number" data-count>3</div>
+      <div class="stat-item__label">Owned Terminals &amp; Refinery</div>
+    </div>
+  </div>
+</div>
+
+<!-- DIRECTORY SECTION -->
+<section class="directory-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">About IOR</div>
+      <h2 class="section-title" data-animate="fade-up">The people, values, and purpose<br>behind Australia's fuel infrastructure.</h2>
+    </div>
+    <div class="directory-grid" data-stagger>
+      <a href="09a_Our_Leadership.html" class="dir-card">
+        <div class="dir-card__icon">👥</div>
+        <div class="dir-card__title">Our Leadership</div>
+        <div class="dir-card__body">Meet the executive team driving IOR's growth — from CEO Drew Morland to the GMs running Ground Fuels, Aviation, Supply &amp; Trading, and Technology.</div>
+        <span class="dir-card__cta">Meet the Team →</span>
+      </a>
+      <a href="09b_Community.html" class="dir-card">
+        <div class="dir-card__icon">🤝</div>
+        <div class="dir-card__title">Community &amp; Giving Back</div>
+        <div class="dir-card__body">From the Red Dust Role Models program to regional sponsorships, IOR invests in the communities that fuel Australia's backbone industries.</div>
+        <span class="dir-card__cta">Our Community Impact →</span>
+      </a>
+      <a href="09c_Sustainability.html" class="dir-card">
+        <div class="dir-card__icon">🌱</div>
+        <div class="dir-card__title">Sustainability, HSE &amp; ESG</div>
+        <div class="dir-card__body">ISO-aligned operations, full audit trails, and a genuine commitment to safety, environmental responsibility, and governance across every site.</div>
+        <span class="dir-card__cta">Our HSE Commitment →</span>
+      </a>
+      <a href="09d_Case_Studies.html" class="dir-card">
+        <div class="dir-card__icon">📄</div>
+        <div class="dir-card__title">Case Studies</div>
+        <div class="dir-card__body">Real proof from real customers. From the Qantas pilot training academy at Toowoomba to MPC Kinetic's Tanami pipeline — see IOR in action.</div>
+        <span class="dir-card__cta">View Case Studies →</span>
+      </a>
+      <a href="10_Careers_v2.html" class="dir-card">
+        <div class="dir-card__icon">💼</div>
+        <div class="dir-card__title">Careers at IOR</div>
+        <div class="dir-card__body">Go far with IOR. We're a 500-strong team growing fast — with roles in logistics, aviation, technology, and more. Mates looking after mates.</div>
+        <span class="dir-card__cta">Explore Careers →</span>
+      </a>
+      <a href="06_Supply_Trading_v2.html" class="dir-card">
+        <div class="dir-card__icon">🏭</div>
+        <div class="dir-card__title">Our Infrastructure</div>
+        <div class="dir-card__body">Lytton Terminal, Port Bonython Terminal, and the Eromanga Refinery — the physical assets that make sovereign Australian fuel supply possible.</div>
+        <span class="dir-card__cta">Our Supply Chain →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES SECTION -->
+<section class="values-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Our Values</div>
+      <h2 class="section-title" data-animate="fade-up">Three values. Every decision.</h2>
+      <p class="section-body">At IOR, our values aren't words on a wall. They are the principles that guide our actions, decisions, and relationships every day.</p>
+    </div>
+    <div class="values-grid" data-stagger>
+      <div class="value-card">
+        <div class="value-card__icon">💡</div>
+        <div class="value-card__title">Innovation: Finding Solutions</div>
+        <div class="value-card__body">We work hard to understand our customers and our team. We challenge ourselves to improve every time. We experiment and find creative solutions.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-card__icon">🤝</div>
+        <div class="value-card__title">Our Communities: Serving People</div>
+        <div class="value-card__body">We make sure our team is respected, safe, and engaged. We grow together with customers and suppliers. We take responsibility for our communities' success.</div>
+      </div>
+      <div class="value-card">
+        <div class="value-card__icon">✅</div>
+        <div class="value-card__title">Reliability: Getting Results</div>
+        <div class="value-card__body">We communicate early, clearly, and directly. We do what we say. We always find a way.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MILESTONES TIMELINE -->
+<section class="milestones-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Our History</div>
+      <h2 class="section-title" data-animate="fade-up">40 years of building<br>Australia's fuel backbone.</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item" data-animate="fade-up">
+        <div class="tl-year">1983</div>
+        <div class="tl-content">
+          <div class="tl-content__title">IOR founded in Queensland</div>
+          <div class="tl-content__body">Established as an independent fuel distributor serving Queensland's transport and agricultural sectors.</div>
+        </div>
+      </div>
+      <div class="tl-item" data-animate="fade-up">
+        <div class="tl-year">1990s</div>
+        <div class="tl-content">
+          <div class="tl-content__title">Expansion into aviation fuels</div>
+          <div class="tl-content__body">IOR enters the aviation fuel market, establishing relationships with regional airports and agricultural aviation operators across Queensland.</div>
+        </div>
+      </div>
+      <div class="tl-item" data-animate="fade-up">
+        <div class="tl-year">2005</div>
+        <div class="tl-content">
+          <div class="tl-content__title">Lytton Terminal acquisition</div>
+          <div class="tl-content__body">IOR acquires the Lytton Terminal in Brisbane, securing direct import capability and removing reliance on third-party supply chains.</div>
+        </div>
+      </div>
+      <div class="tl-item" data-animate="fade-up">
+        <div class="tl-year">2012</div>
+        <div class="tl-content">
+          <div class="tl-content__title">HyDip™ technology launched</div>
+          <div class="tl-content__body">IOR develops and launches HyDip™ — Australia's first integrated fuel management, dispensing, and payment platform built for commercial operators.</div>
+        </div>
+      </div>
+      <div class="tl-item" data-animate="fade-up">
+        <div class="tl-year">2018</div>
+        <div class="tl-content">
+          <div class="tl-content__title">Eromanga Refinery acquired</div>
+          <div class="tl-content__body">IOR acquires the Eromanga Refinery in outback Queensland — Australia's only inland crude oil refinery — cementing sovereign supply capability.</div>
+        </div>
+      </div>
+      <div class="tl-item" data-animate="fade-up">
+        <div class="tl-year">2021</div>
+        <div class="tl-content">
+          <div class="tl-content__title">Port Bonython Terminal</div>
+          <div class="tl-content__body">IOR expands its terminal infrastructure with the Port Bonython Terminal in South Australia, strengthening national supply chain resilience.</div>
+        </div>
+      </div>
+      <div class="tl-item" data-animate="fade-up">
+        <div class="tl-year">2024</div>
+        <div class="tl-content">
+          <div class="tl-content__title">Stonepeak partnership</div>
+          <div class="tl-content__body">Strategic infrastructure capital partnership with Stonepeak, backing IOR's national expansion and next-generation digital platform development.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY OF SUPPLY BANNER -->
+<section class="security-banner">
+  <div class="container">
+    <div class="security-banner__text" data-animate="fade-right">
+      <h3>We own the infrastructure.<br>We won't run out.</h3>
+      <p>IOR is not a reseller. We own Lytton Terminal, Port Bonython Terminal, and the Eromanga Refinery — Australia's only inland crude oil refinery. When global supply chains tighten, our customers don't feel it. That's what sovereign supply actually means.</p>
+    </div>
+    <div class="security-banner__links" data-animate="fade-left">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--sky">Our Supply Chain →</a>
+      <a href="06b_Eromanga_Refinery.html" class="security-banner__link">Eromanga Refinery</a>
+      <a href="06a_Terminals.html" class="security-banner__link">Lytton &amp; Port Bonython</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>About IOR</h4>
+        <ul>
+          <li><a href="09a_Our_Leadership.html">Our Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability &amp; HSE</a></li>
+          <li><a href="09d_Case_Studies.html">Case Studies</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture</a></li>
+          <li><a href="08g_Construction_Civil.html">Construction</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08b_Regional_Contacts_v2.html">Regional Contacts</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 IOR Petroleum Pty Ltd. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">HSE Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay"></div>
+<div class="drawer">
+  <div class="drawer__header">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <button class="drawer__close">✕</button>
+  </div>
+  <div class="drawer__nav">
+    <div class="drawer__section">
+      <div class="drawer__section-label">Fuel Solutions</div>
+      <a href="03_Ground_Fuels_v2.html" class="drawer__link">Ground Fuels <span>›</span></a>
+      <a href="04_Aviation_v2.html" class="drawer__link">Aviation <span>›</span></a>
+      <a href="05_Equipment_Infrastructure_v2.html" class="drawer__link">Equipment &amp; Infrastructure <span>›</span></a>
+      <a href="06_Supply_Trading_v2.html" class="drawer__link">Supply &amp; Trading <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">About IOR</div>
+      <a href="09a_Our_Leadership.html" class="drawer__link">Our Leadership <span>›</span></a>
+      <a href="09b_Community.html" class="drawer__link">Community &amp; Giving Back <span>›</span></a>
+      <a href="09c_Sustainability.html" class="drawer__link">Sustainability &amp; HSE <span>›</span></a>
+      <a href="10_Careers_v2.html" class="drawer__link">Careers <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">Industries</div>
+      <a href="08_Industries_v2.html" class="drawer__link">All Industries <span>›</span></a>
+    </div>
+  </div>
+  <div class="drawer__footer">
+    <a href="https://customer.ior.com.au" class="btn btn--outline">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</div>
+<script src="ior-motion.js"></script>
+</body>
+</html>

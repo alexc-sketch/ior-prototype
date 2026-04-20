@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Leadership — IOR Executive Team</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ior-global.css">
+<style>
+.leadership-hero { background: var(--ior-deep); min-height: 400px; }
+.team-section { background: var(--ior-white); padding: var(--section-pad) 0; }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.profile-card {
+  background: var(--ior-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
+  cursor: pointer;
+}
+.profile-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(3,85,163,0.14); }
+.profile-card__photo {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.profile-card__photo-placeholder {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--ior-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.5);
+  font-size: 13px;
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+.profile-card__photo-placeholder span { font-size: 40px; }
+.profile-card__body { padding: 20px; }
+.profile-card__name { font-size: 16px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 4px; }
+.profile-card__title { font-size: 12px; font-weight: 600; color: var(--ior-blue); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
+.profile-card__excerpt { font-size: 13px; color: var(--mid-grey); line-height: 1.6; }
+.profile-card__expand { font-size: 12px; font-weight: 700; color: var(--ior-blue); margin-top: 12px; display: inline-block; cursor: pointer; border: none; background: none; padding: 0; }
+.profile-card__bio {
+  display: none;
+  font-size: 13px;
+  color: var(--mid-grey);
+  line-height: 1.7;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-light);
+}
+.profile-card__bio.open { display: block; }
+.profile-card.ea-card { border-top: 3px solid var(--av-gold); }
+.profile-card.c-suite { border-top: 4px solid var(--ior-blue); }
+.profile-card.gm-card { border-top: 3px solid var(--ior-sky); }
+@media (max-width: 1200px) { .team-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .team-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<!-- WIREFRAME NAV -->
+<nav class="wf-nav">
+  <strong>IOR WIREFRAMES</strong>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="IOR_Design_System.html">Design System</a>
+  <a href="09_About_IOR_v2.html">09 About IOR</a>
+  <a href="09a_Our_Leadership.html">09a Leadership</a>
+  <a href="09b_Community.html">09b Community</a>
+  <a href="09c_Sustainability.html">09c Sustainability</a>
+  <a href="09d_Case_Studies.html">09d Case Studies</a>
+  <a href="10_Careers_v2.html">10 Careers</a>
+  <span class="wf-nav__module">MODULE 09a · Our Leadership · V1</span>
+</nav>
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__announce">📢 New: HyDip™ FMS now integrates with major fleet management platforms</div>
+    <div class="utility-links">
+      <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
+      <a href="08d_Make_a_Payment_v2.html">💳 Make a Payment</a>
+      <a href="#">📞 1300 467 823</a>
+    </div>
+  </div>
+</div>
+<!-- PRIMARY NAV -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links">
+      <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions ▾</a></li>
+      <li><a href="07_Digital_Platforms_v2.html">Digital Platforms ▾</a></li>
+      <li><a href="08_Industries_v2.html">Industries We Serve ▾</a></li>
+      <li><a href="09_About_IOR_v2.html" class="active">About IOR ▾</a></li>
+      <li><a href="08_Support_Hub_v2.html">Support &amp; Contact ▾</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary btn--sm">Apply for an Account</a>
+    </div>
+  </div>
+</nav>
+<!-- QUICK-LINKS BAR -->
+<div class="quick-links-bar">
+  <div class="container">
+    <a href="09_About_IOR_v2.html" class="ql-item">🏢 About IOR</a>
+    <a href="09a_Our_Leadership.html" class="ql-item">👥 Our Leadership</a>
+    <a href="09b_Community.html" class="ql-item">🤝 Community</a>
+    <a href="09c_Sustainability.html" class="ql-item">🌱 Sustainability &amp; HSE</a>
+    <a href="09d_Case_Studies.html" class="ql-item">📄 Case Studies</a>
+    <a href="10_Careers_v2.html" class="ql-item">💼 Careers</a>
+  </div>
+</div>
+
+<!-- ANNOTATION -->
+<div class="ann ann--info">
+  <strong>Module 09a · Our Leadership · V1</strong>
+  Grid of profile cards with expand/collapse bio. Ordered: CEO → EA → COO → CFO → CSO → GMs alphabetically. Headshots use actual provided images where available. Click card to expand full bio.
+</div>
+
+<!-- HERO -->
+<section class="hero-split leadership-hero">
+  <div class="hero-split__left">
+    <div class="eyebrow">About IOR · Our Leadership</div>
+    <h1 data-animate="fade-up">The team that keeps<br><span class="accent">Australia fuelled.</span></h1>
+    <p class="hero-sub" data-animate="fade-up" data-delay="100">IOR's executive team brings together deep industry expertise, operational rigour, and a genuine commitment to the customers and communities that depend on us.</p>
+  </div>
+  <div class="hero-split__right">
+    <div class="img-placeholder">
+      <strong>Leadership Hero</strong>
+      <span>IMAGE PLACEHOLDER</span>
+      <em>IOR leadership team, professional setting, Brisbane HQ</em>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-item" data-animate="fade-up" data-delay="0">
+      <span class="trust-item__icon">👥</span>
+      <div class="trust-item__text"><strong>500+ Team Members</strong><span>Across Australia</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="80">
+      <span class="trust-item__icon">🇦🇺</span>
+      <div class="trust-item__text"><strong>100% Australian Owned</strong><span>Family-founded, still independent</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="160">
+      <span class="trust-item__icon">📅</span>
+      <div class="trust-item__text"><strong>40+ Years</strong><span>Of industry experience</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="240">
+      <span class="trust-item__icon">🏆</span>
+      <div class="trust-item__text"><strong>Stonepeak-Backed</strong><span>Infrastructure capital partnership</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM GRID -->
+<section class="team-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Executive Team</div>
+      <h2 class="section-title" data-animate="fade-up">Meet the people behind IOR.</h2>
+      <p class="section-body">Click any profile to read their full bio.</p>
+    </div>
+    <div class="team-grid">
+
+      <!-- CEO -->
+      <div class="profile-card c-suite" data-animate="fade-up" data-delay="0">
+        <img src="DrewMorlandHeadshot.webp" alt="Drew Morland — CEO" class="profile-card__photo">
+        <div class="profile-card__body">
+          <div class="profile-card__name">Drew Morland</div>
+          <div class="profile-card__title">Chief Executive Officer</div>
+          <div class="profile-card__excerpt">At the heart of everything IOR does is a commitment to the customers, communities and industries that keep Australia moving — and no one embodies that more than Drew.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">With over 20 years in the Australian fuel industry, Drew's career is a testament to what happens when deep operational knowledge meets genuine customer focus. He joined IOR as a sales representative and has worked his way through every part of the business — from the front line to the boardroom. As CEO, Drew leads IOR's national growth strategy, its infrastructure investment programme, and its ongoing mission to be the most reliable fuel company in Australia. He is a Director of the Australian Institute of Petroleum and holds a Bachelor of Business from QUT.</div>
+        </div>
+      </div>
+
+      <!-- EA — immediately after CEO per brief -->
+      <div class="profile-card ea-card" data-animate="fade-up" data-delay="60">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Angelique Oliver</div>
+          <div class="profile-card__title">Executive Assistant to the CEO</div>
+          <div class="profile-card__excerpt">Angelique is the person who keeps IOR's executive team connected, organised, and able to focus on what matters most: delivering for customers and communities.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">As Executive Assistant to IOR's leadership, Angelique plays a vital role in ensuring the business runs smoothly at the highest level. Her work spans executive coordination, stakeholder management, and the kind of behind-the-scenes operational support that allows IOR's leaders to focus on strategy, customers, and growth. Angelique brings professionalism, discretion, and a genuine commitment to the IOR team to everything she does.</div>
+        </div>
+      </div>
+
+      <!-- COO -->
+      <div class="profile-card c-suite" data-animate="fade-up" data-delay="120">
+        <img src="DLeishmanHeadshot_Square.webp" alt="Drew Leishman — COO" class="profile-card__photo">
+        <div class="profile-card__body">
+          <div class="profile-card__name">Drew Leishman</div>
+          <div class="profile-card__title">Chief Operating Officer</div>
+          <div class="profile-card__excerpt">When you work with IOR, the seamless experience you get from fuel supply through to infrastructure and delivery is a reflection of Drew's work behind the scenes.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">As COO, Drew is responsible for ensuring that every part of IOR's operations is built to serve customers reliably, safely, and at scale. His remit spans logistics, infrastructure, technology, and the day-to-day operational performance of IOR's national network. Drew joined IOR with a background in supply chain and operations management across the energy and resources sectors, and has been instrumental in building the operational systems that underpin IOR's growth.</div>
+        </div>
+      </div>
+
+      <!-- CFO -->
+      <div class="profile-card c-suite" data-animate="fade-up" data-delay="180">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Adriaan Esterhuizen</div>
+          <div class="profile-card__title">Chief Financial Officer</div>
+          <div class="profile-card__excerpt">Adriaan joined IOR in 2026, bringing with him a career built on transforming complex, multi-billion dollar businesses through disciplined financial leadership.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">A Chartered Accountant with extensive experience across energy, infrastructure, and resources, Adriaan brings the financial rigour and strategic thinking that IOR's next phase of growth demands. His background spans CFO and senior finance roles across major Australian and international businesses, with a track record of building finance functions that are genuinely business-enabling rather than purely compliance-focused.</div>
+        </div>
+      </div>
+
+      <!-- CSO -->
+      <div class="profile-card c-suite" data-animate="fade-up" data-delay="0">
+        <img src="HeadshotEdited_NMackenziecopy.webp" alt="Nick Mackenzie — CSO" class="profile-card__photo">
+        <div class="profile-card__body">
+          <div class="profile-card__name">Nick Mackenzie</div>
+          <div class="profile-card__title">Chief Strategy Officer &amp; Public Officer</div>
+          <div class="profile-card__excerpt">Nick shapes the future of IOR — identifying where the business needs to go and building the partnerships, capabilities, and strategies to get there.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">His remit spans group and business unit strategy, acquisitions and partnerships, and IOR's role as a sovereign Australian energy infrastructure company. Before joining IOR, Nick spent over 12 years as a consultant at Bain and Company, working with businesses across Australia, the Philippines, South Africa, and the UK. That global perspective — applied to a proudly Australian business — gives IOR a strategic edge that is rare in the fuel industry.</div>
+        </div>
+      </div>
+
+      <!-- GM Aviation -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="60">
+        <img src="BryceMorlandHeadshot_DHEdit.webp" alt="Bryce Morland — GM Aviation" class="profile-card__photo">
+        <div class="profile-card__body">
+          <div class="profile-card__name">Bryce Morland</div>
+          <div class="profile-card__title">General Manager, Aviation</div>
+          <div class="profile-card__excerpt">For the tourism operators, agricultural businesses, and regional communities that depend on aviation fuel, Bryce is the person working to ensure their supply is always there.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">As GM of Aviation at IOR and a qualified Commercial Pilot, Bryce brings a perspective that is rare in fuel supply: he understands aviation from both sides of the bowser. His leadership of IOR's aviation business spans the national Avgas and Jet A-1 network, airport fuelling services, bulk aviation delivery, and IOR's growing international aviation footprint. Bryce is passionate about the role aviation plays in connecting regional Australia and is committed to ensuring IOR's network keeps those connections alive.</div>
+        </div>
+      </div>
+
+      <!-- GM Supply & Trading -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="120">
+        <img src="ChrisWerfelHeadshot.webp" alt="Chris Werfel — GM Supply & Trading" class="profile-card__photo">
+        <div class="profile-card__body">
+          <div class="profile-card__name">Chris Werfel</div>
+          <div class="profile-card__title">General Manager, Supply &amp; Trading</div>
+          <div class="profile-card__excerpt">Chris is responsible for making sure IOR has the right fuel, in the right place, at the right price — so customers can always count on supply.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">Based across Singapore and Brisbane, Chris leads IOR's supply and trading function as well as IOR Terminals, bringing a global market perspective to a proudly Australian business. His role sits at the intersection of commodity trading, logistics, and infrastructure — ensuring that IOR's owned terminals and refinery are optimised to deliver supply certainty for customers regardless of global market conditions.</div>
+        </div>
+      </div>
+
+      <!-- GM Ground Fuels -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="180">
+        <img src="DanRobertsHeadshot_NOV24_Option2.webp" alt="Daniel Roberts — GM Ground Fuels" class="profile-card__photo">
+        <div class="profile-card__body">
+          <div class="profile-card__name">Daniel Roberts</div>
+          <div class="profile-card__title">General Manager, Ground Fuels</div>
+          <div class="profile-card__excerpt">Daniel is the person IOR's Ground Fuels customers rely on to deliver. Make sure the right fuel reaches the right customers, reliably, every time.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">His role spans IOR's national diesel network, on-site refuelling services, bulk diesel delivery, HyBlue™ AdBlue®, and lubricants — the full suite of ground fuel products that keep Australia's transport, mining, agriculture, and construction sectors moving. Daniel brings a deep understanding of what large fleet operators and industrial customers actually need from a fuel partner: reliability, simplicity, and a single point of accountability.</div>
+        </div>
+      </div>
+
+      <!-- GM Infrastructure -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="0">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Colin Quinn</div>
+          <div class="profile-card__title">General Manager, Infrastructure</div>
+          <div class="profile-card__excerpt">Colin is the person behind the physical backbone that makes IOR's fuel network possible — tanks, technology, fuelling infrastructure, manufacturing facilities.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">The assets that customers and communities depend on to access fuel reliably are Colin's responsibility. His team designs, builds, installs, and maintains the infrastructure that underpins IOR's entire service offering — from self-bunded storage tanks at remote mine sites to the fuelling systems at regional airports. Colin brings engineering rigour and a customer-first mindset to every infrastructure decision IOR makes.</div>
+        </div>
+      </div>
+
+      <!-- GM Technology -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="60">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Hamish Jarrett</div>
+          <div class="profile-card__title">General Manager, Technology</div>
+          <div class="profile-card__excerpt">The technology that IOR's customers interact with — and the systems that keep IOR's operations running reliably — are Hamish's domain.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">As GM of Technology, Hamish leads IOR's digital and technology agenda with a clear focus: build scalable, reliable systems that make IOR easier to do business with and harder to leave. His remit spans HyDip™ FMS, the FuelCharge app, the Customer Portal, and IOR's internal operational technology stack. Hamish brings a product mindset to enterprise technology — focused on outcomes for customers, not just technical capability.</div>
+        </div>
+      </div>
+
+      <!-- GM Logistics -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="120">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Marty Corry</div>
+          <div class="profile-card__title">General Manager, Logistics &amp; Distribution</div>
+          <div class="profile-card__excerpt">When fuel needs to move — whether by road, sea, through a refinery, or via an import terminal — Marty makes it happen.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">As GM of Logistics and Distribution, Marty oversees every link in IOR's supply chain, from marine cargo imports and terminal operations through to last-mile delivery across IOR's national network. His background spans transport leadership at IOR, risk engineering at NTI, and a management contract with Chevron in Central Queensland — giving him a perspective that spans both the commercial and operational dimensions of fuel logistics.</div>
+        </div>
+      </div>
+
+      <!-- GM Customer, Marketing & Digital -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="180">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Nell Bond</div>
+          <div class="profile-card__title">General Manager, Customer, Marketing &amp; Digital</div>
+          <div class="profile-card__excerpt">Nell leads the teams responsible for making sure every customer interaction — digital, loyalty, or brand — is seamless, valuable, and worth coming back for.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">In an industry built on reliability, Nell's job is to make sure IOR's brand, digital presence, and customer experience are as dependable as the fuel itself. She has spent her entire career in customer-obsessed, digitally driven organisations — building her foundation in affiliate and loyalty marketing before moving into senior marketing and digital leadership roles. At IOR, she is driving the transformation of how the business connects with customers across every touchpoint.</div>
+        </div>
+      </div>
+
+      <!-- GM People, Culture & Safety -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="0">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Mark Philippi</div>
+          <div class="profile-card__title">General Manager, People, Culture &amp; Safety</div>
+          <div class="profile-card__excerpt">The experience IOR's customers receive starts with the people behind it. Mark's responsibility is to attract, develop, and support the 500-strong team that keeps IOR moving.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">As GM of People, Culture and Safety, Mark oversees the entire people portfolio including talent acquisition, learning &amp; development, employee relations, HSEQ, payroll &amp; remuneration, risk and organisational design. He is building the kind of culture where people feel proud to come to work — and where safety is not a compliance exercise but a genuine expression of how IOR looks after its team.</div>
+        </div>
+      </div>
+
+      <!-- GM Business Optimisation -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="60">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Linda Miller</div>
+          <div class="profile-card__title">General Manager, Business Optimisation &amp; Analytics</div>
+          <div class="profile-card__excerpt">Linda's role is about making IOR work better — for customers, for the business, and for the communities IOR serves.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">As GM of Business Optimisation and Analytics, she draws on data, financial insight, and deep operational understanding to identify where IOR can improve, grow, and create more value. An FCPA and GAICD-credentialled leader, Linda has held CFO and senior finance roles across transport (XL Express), agriculture (North Australian Pastoral Company), and multiple senior positions across the energy sector.</div>
+        </div>
+      </div>
+
+      <!-- GM Legal -->
+      <div class="profile-card gm-card" data-animate="fade-up" data-delay="120">
+        <div class="profile-card__photo-placeholder"><span>👤</span><em>Headshot TBC</em></div>
+        <div class="profile-card__body">
+          <div class="profile-card__name">Liz Inder</div>
+          <div class="profile-card__title">General Manager, Legal &amp; Company Secretary</div>
+          <div class="profile-card__excerpt">Liz brings an exceptional depth of industry knowledge to IOR's legal function — and a perspective that goes well beyond pure legal counsel.</div>
+          <button class="profile-card__expand" onclick="toggleBio(this)">Read full bio ↓</button>
+          <div class="profile-card__bio">Having spent nearly 17 years as an in-house solicitor at Freedom Fuels, Liz understands the fuel industry from the inside out. A QUT law graduate, Liz joined IOR as Head of Legal in early 2025, bringing with her a rare combination of long-standing industry expertise and practical, business-focused legal thinking. In a sector where regulatory complexity is a constant, Liz's ability to translate legal risk into commercial reality makes her an invaluable part of IOR's leadership team.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY OF SUPPLY BANNER -->
+<section class="security-banner">
+  <div class="container">
+    <div class="security-banner__text" data-animate="fade-right">
+      <h3>We own the infrastructure.<br>We won't run out.</h3>
+      <p>IOR is not a reseller. We own Lytton Terminal, Port Bonython Terminal, and the Eromanga Refinery — Australia's only inland crude oil refinery. When global supply chains tighten, our customers don't feel it. That's what sovereign supply actually means.</p>
+    </div>
+    <div class="security-banner__links" data-animate="fade-left">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--sky">Our Supply Chain →</a>
+      <a href="06b_Eromanga_Refinery.html" class="security-banner__link">Eromanga Refinery</a>
+      <a href="06a_Terminals.html" class="security-banner__link">Lytton &amp; Port Bonython</a>
+    </div>
+  </div>
+</section>
+
+<script>
+function toggleBio(btn) {
+  const bio = btn.nextElementSibling;
+  const isOpen = bio.classList.contains('open');
+  bio.classList.toggle('open');
+  btn.textContent = isOpen ? 'Read full bio ↓' : 'Close ↑';
+}
+</script>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>About IOR</h4>
+        <ul>
+          <li><a href="09a_Our_Leadership.html">Our Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability &amp; HSE</a></li>
+          <li><a href="09d_Case_Studies.html">Case Studies</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture</a></li>
+          <li><a href="08g_Construction_Civil.html">Construction</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08b_Regional_Contacts_v2.html">Regional Contacts</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 IOR Petroleum Pty Ltd. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">HSE Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay"></div>
+<div class="drawer">
+  <div class="drawer__header">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <button class="drawer__close">✕</button>
+  </div>
+  <div class="drawer__nav">
+    <div class="drawer__section">
+      <div class="drawer__section-label">Fuel Solutions</div>
+      <a href="03_Ground_Fuels_v2.html" class="drawer__link">Ground Fuels <span>›</span></a>
+      <a href="04_Aviation_v2.html" class="drawer__link">Aviation <span>›</span></a>
+      <a href="05_Equipment_Infrastructure_v2.html" class="drawer__link">Equipment &amp; Infrastructure <span>›</span></a>
+      <a href="06_Supply_Trading_v2.html" class="drawer__link">Supply &amp; Trading <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">About IOR</div>
+      <a href="09a_Our_Leadership.html" class="drawer__link">Our Leadership <span>›</span></a>
+      <a href="09b_Community.html" class="drawer__link">Community &amp; Giving Back <span>›</span></a>
+      <a href="09c_Sustainability.html" class="drawer__link">Sustainability &amp; HSE <span>›</span></a>
+      <a href="10_Careers_v2.html" class="drawer__link">Careers <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">Industries</div>
+      <a href="08_Industries_v2.html" class="drawer__link">All Industries <span>›</span></a>
+    </div>
+  </div>
+  <div class="drawer__footer">
+    <a href="https://customer.ior.com.au" class="btn btn--outline">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</div>
+<script src="ior-motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Careers — Go Far with IOR · IOR Energy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ior-global.css">
+  <style>
+    
+    .careers-hero { background: var(--ior-navy); color: var(--ior-white); padding: 100px 0 80px; }
+    .careers-hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 16px; }
+    .careers-hero__h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
+    .careers-hero__h1 span { color: var(--ior-sky); }
+    .careers-hero__sub { font-size: 1.2rem; color: rgba(255,255,255,0.8); max-width: 600px; margin-bottom: 40px; }
+    .careers-hero__ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+    .evp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; padding: 80px 0; }
+    .evp-card { background: var(--ior-white); border: 1px solid var(--ior-border); border-radius: var(--radius-md); padding: 40px 32px; transition: transform 0.2s, box-shadow 0.2s; }
+    .evp-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .evp-card__icon { font-size: 2.5rem; margin-bottom: 20px; }
+    .evp-card__title { font-size: 1.3rem; font-weight: 700; color: var(--ior-navy); margin-bottom: 12px; }
+    .evp-card__copy { font-size: 0.95rem; color: var(--ior-text-muted); line-height: 1.7; }
+    .values-section { background: var(--ior-navy); color: var(--ior-white); padding: 80px 0; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+    .value-card { border: 1px solid rgba(255,255,255,0.15); border-radius: var(--radius-md); padding: 32px; }
+    .value-card__title { font-size: 1.1rem; font-weight: 700; color: var(--ior-sky); margin-bottom: 12px; }
+    .value-card__points { list-style: none; padding: 0; margin: 0; }
+    .value-card__points li { font-size: 0.9rem; color: rgba(255,255,255,0.75); padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .value-card__points li:last-child { border-bottom: none; }
+    .perks-section { padding: 80px 0; background: var(--ior-off-white); }
+    .perks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .perk-card { background: var(--ior-white); border-radius: var(--radius-md); padding: 28px; border-left: 4px solid var(--ior-blue); }
+    .perk-card__role { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 8px; }
+    .perk-card__copy { font-size: 0.9rem; color: var(--ior-text-muted); line-height: 1.6; }
+    .testimonial-section { padding: 80px 0; }
+    .testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; margin-top: 48px; }
+    .testimonial-card { background: var(--ior-off-white); border-radius: var(--radius-md); padding: 32px; position: relative; }
+    .testimonial-card::before { content: '"'; font-size: 5rem; color: var(--ior-sky); line-height: 1; position: absolute; top: 16px; left: 24px; font-family: Georgia, serif; }
+    .testimonial-card__quote { font-size: 1rem; color: var(--ior-navy); line-height: 1.7; padding-top: 40px; font-style: italic; }
+    .testimonial-card__author { margin-top: 20px; font-size: 0.85rem; font-weight: 700; color: var(--ior-blue); }
+    .pathways-section { padding: 80px 0; background: var(--ior-off-white); }
+    .pathways-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+    .pathway-card { background: var(--ior-white); border-radius: var(--radius-md); padding: 36px; border: 1px solid var(--ior-border); transition: transform 0.2s, box-shadow 0.2s; }
+    .pathway-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+    .pathway-card__icon { font-size: 2rem; margin-bottom: 16px; }
+    .pathway-card__title { font-size: 1.2rem; font-weight: 700; color: var(--ior-navy); margin-bottom: 10px; }
+    .pathway-card__copy { font-size: 0.9rem; color: var(--ior-text-muted); margin-bottom: 20px; line-height: 1.6; }
+    .pathway-card__cta { font-size: 0.9rem; font-weight: 600; color: var(--ior-blue); text-decoration: none; }
+    .pathway-card__cta:hover { text-decoration: underline; }
+    @media (max-width: 768px) {
+      .evp-grid, .values-grid, .perks-grid, .testimonial-grid, .pathways-grid { grid-template-columns: 1fr; }
+    }
+    
+  </style>
+</head>
+<body>
+<div class="wf-nav">
+  <span class="wf-nav__module">MODULE 10 · Careers · 10_Careers_v2.html</span>
+  <span class="wf-nav__links">
+    <a href="00_Master_Index.html">Index</a> |
+    <a href="IOR_Design_System.html">Design System</a> |
+    <a href="10_Careers_v2.html">Careers Hub</a> | <a href="10a_Entry_Pathways.html">Entry Pathways</a> | <a href="10b_Apprentices.html">Apprentices</a> | <a href="10c_Graduates.html">Graduates</a> | <a href="10d_School_Based.html">School-Based</a> | <a href="10e_Working_Regionally.html">Working Regionally</a>
+  </span>
+  <span class="wf-nav__annotations">ANNOTATIONS: <span class="ann-std">■ Standard</span> <span class="ann-dq">■ Design Q</span></span>
+</div>
+<div class="utility-bar">
+  <div class="utility-bar__inner container">
+    <div class="utility-bar__left">
+      <span>📞 1800 467 669</span>
+      <span>📍 Find a Location</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="#">News &amp; Updates</a>
+      <a href="#">Careers</a>
+      <a href="#">Investor Relations</a>
+    </div>
+  </div>
+</div>
+<nav class="primary-nav" role="navigation" aria-label="Primary navigation">
+  <div class="primary-nav__inner container">
+    <a href="01_Homepage_and_Global.html" class="primary-nav__logo" aria-label="IOR Home">
+      <div class="logo-box">[IOR LOGO]</div>
+    </a>
+    <ul class="primary-nav__menu" role="menubar">
+      <li role="none"><a href="02_Fuel_Solutions_Hub_v2.html" role="menuitem">Fuel Solutions <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="07_Digital_Platforms_v2.html" role="menuitem">Digital Platforms <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08_Industries_v2.html" role="menuitem">Industries We Serve <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="09_About_IOR_v2.html" role="menuitem">About IOR <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08a_Contact_Us_v2.html" role="menuitem">Support &amp; Contact <span class="nav-arrow">▼</span></a></li>
+    </ul>
+    <div class="primary-nav__ctas">
+      <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+    </div>
+    <button class="primary-nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<nav class="drawer" id="drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer__header">
+    <div class="logo-box">[IOR LOGO]</div>
+    <button class="drawer__close" aria-label="Close menu">✕</button>
+  </div>
+  <ul class="drawer__menu">
+    <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a></li>
+    <li><a href="07_Digital_Platforms_v2.html">Digital Platforms</a></li>
+    <li><a href="08_Industries_v2.html">Industries We Serve</a></li>
+    <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+    <li><a href="08a_Contact_Us_v2.html">Support &amp; Contact</a></li>
+  </ul>
+  <div class="drawer__ctas">
+    <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</nav>
+
+<section class="careers-hero" data-animate="fade-in">
+  <div class="container">
+    <p class="careers-hero__eyebrow">CAREERS AT IOR</p>
+    <h1 class="careers-hero__h1">Go far <span>with IOR.</span></h1>
+    <p class="careers-hero__sub">You've seen what we do: fuelling Australia with a rapidly growing, fully integrated network. But what truly defines IOR is our people — and the culture they've built.</p>
+    <div class="careers-hero__ctas">
+      <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="btn btn--primary" target="_blank">View Open Roles →</a>
+      <a href="10a_Entry_Pathways.html" class="btn btn--ghost">Entry Pathways</a>
+    </div>
+  </div>
+</section>
+
+<nav class="quick-links-bar" aria-label="Careers navigation">
+  <div class="container quick-links-bar__inner">
+    <a href="10_Careers_v2.html" class="quick-link">Why IOR?</a>
+    <a href="10a_Entry_Pathways.html" class="quick-link">Entry Pathways</a>
+    <a href="10b_Apprentices.html" class="quick-link">Apprentices</a>
+    <a href="10c_Graduates.html" class="quick-link">Graduates</a>
+    <a href="10d_School_Based.html" class="quick-link">School-Based</a>
+    <a href="10e_Working_Regionally.html" class="quick-link">Working Regionally</a>
+    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="quick-link quick-link--cta" target="_blank">View Open Roles →</a>
+  </div>
+</nav>
+
+<!-- EVP Pillars -->
+<section class="section-pad" style="background: var(--ior-white);">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">WHY IOR</p>
+    <h2 class="section-h2" data-animate="fade-up">What to expect</h2>
+    <div class="evp-grid">
+      <div class="evp-card" data-animate="fade-up">
+        <div class="evp-card__icon">🤝</div>
+        <h3 class="evp-card__title">Right Team</h3>
+        <p class="evp-card__copy">Join a team you can rely on, who genuinely have each other's backs and make you feel like you belong. Mates looking after mates — that's the IOR way.</p>
+      </div>
+      <div class="evp-card" data-animate="fade-up">
+        <div class="evp-card__icon">📈</div>
+        <h3 class="evp-card__title">Right Track</h3>
+        <p class="evp-card__copy">The more we grow, the further you go. We'll back you to own your work, give new ideas a shot, and build a career that actually goes somewhere — fast.</p>
+      </div>
+      <div class="evp-card" data-animate="fade-up">
+        <div class="evp-card__icon">⚡</div>
+        <h3 class="evp-card__title">Right Now</h3>
+        <p class="evp-card__copy">Make a real impact, right now. We move fast, so you won't find endless red tape here. Just smart, ambitious people doing meaningful work that powers Australia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Perks -->
+<section class="perks-section">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">THE PERKS OF LIVING BLUE</p>
+    <h2 class="section-h2" data-animate="fade-up">Working at IOR is more than a job</h2>
+    <p class="section-sub" data-animate="fade-up">We're ambitious, growing fast, and looking for people who want to get stuck in. In exchange, we'll back you with the right tools, the right team, and real opportunity.</p>
+    <div class="perks-grid">
+      <div class="perk-card" data-animate="fade-up">
+        <p class="perk-card__role">For Drivers</p>
+        <p class="perk-card__copy">Get behind the wheel of a brand new Kenworth or Volvo you'll call your own, with support from a dedicated Driver Experience team. Your truck, your route, your career.</p>
+      </div>
+      <div class="perk-card" data-animate="fade-up">
+        <p class="perk-card__role">For Tradies</p>
+        <p class="perk-card__copy">Great rates and varied work — we do our own engine repairs in-house, so you're not doing the same thing every day. Real skills, real variety, real progression.</p>
+      </div>
+      <div class="perk-card" data-animate="fade-up">
+        <p class="perk-card__role">For Aviation Crew</p>
+        <p class="perk-card__copy">No day is the same in our fastest-growing business unit. We're on a mission to expand our international aviation network — and we need sharp people to help lead it.</p>
+      </div>
+      <div class="perk-card" data-animate="fade-up">
+        <p class="perk-card__role">For Corporate &amp; Admin</p>
+        <p class="perk-card__copy">Even from behind the scenes, you'll see the real-world impact of your work — whether it's keeping a remote community powered or getting a LifeFlight helicopter in the air.</p>
+      </div>
+    </div>
+    <p class="section-sub" style="margin-top: 32px;" data-animate="fade-up">Oh, and you'll also get staff and family discounts on fuel — a pretty handy perk right now.</p>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="values-section">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">OUR VALUES</p>
+    <h2 class="section-h2" data-animate="fade-up">Not words on a wall</h2>
+    <p class="section-sub" data-animate="fade-up">At IOR, our values aren't just words on a wall. They are the principles that guide our actions, decisions, and relationships every day.</p>
+    <div class="values-grid">
+      <div class="value-card" data-animate="fade-up">
+        <h3 class="value-card__title">Innovation: Finding Solutions</h3>
+        <ul class="value-card__points">
+          <li>We work hard to understand our customers and our team</li>
+          <li>We challenge ourselves to improve every time</li>
+          <li>We experiment and find creative solutions</li>
+        </ul>
+      </div>
+      <div class="value-card" data-animate="fade-up">
+        <h3 class="value-card__title">Our Communities: Serving People</h3>
+        <ul class="value-card__points">
+          <li>We make sure our team is respected, safe, and engaged</li>
+          <li>We grow together with customers and suppliers</li>
+          <li>We take responsibility for our communities' success</li>
+        </ul>
+      </div>
+      <div class="value-card" data-animate="fade-up">
+        <h3 class="value-card__title">Reliability: Getting Results</h3>
+        <ul class="value-card__points">
+          <li>We communicate early, clearly and directly</li>
+          <li>We do what we say</li>
+          <li>We always find a way</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonial-section">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">REAL PEOPLE. REAL CAREERS.</p>
+    <h2 class="section-h2" data-animate="fade-up">What our team says</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card" data-animate="fade-up">
+        <p class="testimonial-card__quote">It makes you feel proud to work for a company like IOR that sponsors so many important things for regional Australia, like LifeFlight. It's not just a job — it's something that matters.</p>
+        <p class="testimonial-card__author">Tammy Andrews · Roma Depot Supervisor</p>
+      </div>
+      <div class="testimonial-card" data-animate="fade-up">
+        <p class="testimonial-card__quote">An 18-year-old in IT support became our Chief Operating Officer. A work experience student ended up leading our national fuel infrastructure team. That's not an exception — that's what happens here.</p>
+        <p class="testimonial-card__author">Drew Leishman · Chief Operating Officer</p>
+      </div>
+      <div class="testimonial-card" data-animate="fade-up">
+        <p class="testimonial-card__quote">IOR is different. While many companies start on the coast and work their way inland, we did the reverse. We were born in the bush, and that entrepreneurial spirit has never left us.</p>
+        <p class="testimonial-card__author">Chris Werfel · CEO</p>
+      </div>
+      <div class="testimonial-card" data-animate="fade-up">
+        <p class="testimonial-card__quote">We're a growing company and there's always room for our people to step up. It's exciting. Just look at my career — I started on the tools and now I'm leading the whole operations function.</p>
+        <p class="testimonial-card__author">Drew Leishman · COO</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Entry Pathways -->
+<section class="pathways-section">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">START YOUR CAREER</p>
+    <h2 class="section-h2" data-animate="fade-up">Entry Pathways</h2>
+    <p class="section-sub" data-animate="fade-up">Whether you're fresh out of school, finishing a degree, or looking to learn a trade — IOR has a pathway for you.</p>
+    <div class="pathways-grid">
+      <a href="10b_Apprentices.html" class="pathway-card" style="text-decoration:none;" data-animate="fade-up">
+        <div class="pathway-card__icon">🔧</div>
+        <h3 class="pathway-card__title">Apprentices &amp; Trades</h3>
+        <p class="pathway-card__copy">Apprentice Boilermaker and Apprentice HV Mechanic roles in our critical infrastructure team. Learn on the tools, earn real qualifications, and build a career that lasts.</p>
+        <span class="pathway-card__cta">Explore Apprenticeships →</span>
+      </a>
+      <a href="10c_Graduates.html" class="pathway-card" style="text-decoration:none;" data-animate="fade-up">
+        <div class="pathway-card__icon">🎓</div>
+        <h3 class="pathway-card__title">Graduates &amp; Interns</h3>
+        <p class="pathway-card__copy">Start your corporate or tech career in our entrepreneurial environment. Pathways in Technology, Shared Services, and Operations Support.</p>
+        <span class="pathway-card__cta">Explore Graduate Roles →</span>
+      </a>
+      <a href="10d_School_Based.html" class="pathway-card" style="text-decoration:none;" data-animate="fade-up">
+        <div class="pathway-card__icon">🏫</div>
+        <h3 class="pathway-card__title">School-Based &amp; Trainees</h3>
+        <p class="pathway-card__copy">Get a head start on your career while still at school. Our school-based programs give young Australians real industry experience and a pathway to full-time employment.</p>
+        <span class="pathway-card__cta">Explore School Programs →</span>
+      </a>
+      <a href="10e_Working_Regionally.html" class="pathway-card" style="text-decoration:none;" data-animate="fade-up">
+        <div class="pathway-card__icon">🗺️</div>
+        <h3 class="pathway-card__title">Working Regionally</h3>
+        <p class="pathway-card__copy">Born in the bush. IOR was founded in regional Queensland and we're deeply committed to regional employment. Could you be part of the team that opens our next depot?</p>
+        <span class="pathway-card__cta">Explore Regional Roles →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="security-banner">
+  <div class="container security-banner__inner">
+    <div class="security-banner__text">
+      <p class="security-banner__eyebrow">SOVEREIGN SUPPLY CHAIN</p>
+      <h2>We own our infrastructure.<br>We won't run out.</h2>
+      <p>Lytton Terminal · Port Bonython Terminal · Eromanga Refinery · Stonepeak-backed. When global supply chains tighten, IOR customers don't feel it.</p>
+    </div>
+    <div class="security-banner__cta">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--white">Our Supply Chain →</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-grid container">
+    <div class="footer-col">
+      <div class="footer-logo">[IOR LOGO]</div>
+      <p class="footer-tagline">Australia's independent fuel company. Sovereign supply. National reach.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Fuel Solutions</h4>
+      <ul>
+        <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+        <li><a href="04_Aviation_v2.html">Aviation</a></li>
+        <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+        <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+        <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+        <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+        <li><a href="08f_Commercial_Aviation.html">Commercial &amp; General Aviation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+        <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+        <li><a href="10_Careers_v2.html">Careers</a></li>
+        <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2025 IOR Energy. All rights reserved. ABN 12 345 678 901</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Modern Slavery Statement</a>
+    </div>
+  </div>
+</footer>
+<script src="ior-motion.js"></script>
+</body>
+</html>

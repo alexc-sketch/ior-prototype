@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Studies — IOR Fuel Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ior-global.css">
+<style>
+.cs-hero { background: var(--ior-deep); min-height: 380px; }
+.cs-list { background: var(--ior-white); padding: var(--section-pad) 0; }
+.cs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 48px; }
+.cs-card {
+  background: var(--ior-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: transform var(--dur-mid) var(--ease-out), box-shadow var(--dur-mid) var(--ease-out);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+.cs-card:hover { transform: translateY(-4px); box-shadow: 0 16px 48px rgba(3,85,163,0.14); }
+.cs-card__img { aspect-ratio: 16/9; background: var(--ior-deep); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; color: rgba(255,255,255,0.5); font-size: 12px; }
+.cs-card__img span { font-size: 32px; }
+.cs-card__body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.cs-card__tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ior-blue); }
+.cs-card__title { font-size: 17px; font-weight: 800; color: var(--ior-charcoal); line-height: 1.35; }
+.cs-card__excerpt { font-size: 13px; color: var(--mid-grey); line-height: 1.7; flex: 1; }
+.cs-card__cta { font-size: 13px; font-weight: 700; color: var(--ior-blue); align-self: flex-start; margin-top: 4px; }
+@media (max-width: 1024px) { .cs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px) { .cs-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<!-- WIREFRAME NAV -->
+<nav class="wf-nav">
+  <strong>IOR WIREFRAMES</strong>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="IOR_Design_System.html">Design System</a>
+  <a href="09_About_IOR_v2.html">09 About IOR</a>
+  <a href="09a_Our_Leadership.html">09a Leadership</a>
+  <a href="09b_Community.html">09b Community</a>
+  <a href="09c_Sustainability.html">09c Sustainability</a>
+  <a href="09d_Case_Studies.html">09d Case Studies</a>
+  <a href="10_Careers_v2.html">10 Careers</a>
+  <span class="wf-nav__module">MODULE 09d · Case Studies · V1</span>
+</nav>
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__announce">📢 New: HyDip™ FMS now integrates with major fleet management platforms</div>
+    <div class="utility-links">
+      <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
+      <a href="08d_Make_a_Payment_v2.html">💳 Make a Payment</a>
+      <a href="#">📞 1300 467 823</a>
+    </div>
+  </div>
+</div>
+<!-- PRIMARY NAV -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links">
+      <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions ▾</a></li>
+      <li><a href="07_Digital_Platforms_v2.html">Digital Platforms ▾</a></li>
+      <li><a href="08_Industries_v2.html">Industries We Serve ▾</a></li>
+      <li><a href="09_About_IOR_v2.html" class="active">About IOR ▾</a></li>
+      <li><a href="08_Support_Hub_v2.html">Support &amp; Contact ▾</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary btn--sm">Apply for an Account</a>
+    </div>
+  </div>
+</nav>
+<!-- QUICK-LINKS BAR -->
+<div class="quick-links-bar">
+  <div class="container">
+    <a href="09_About_IOR_v2.html" class="ql-item">🏢 About IOR</a>
+    <a href="09a_Our_Leadership.html" class="ql-item">👥 Our Leadership</a>
+    <a href="09b_Community.html" class="ql-item">🤝 Community</a>
+    <a href="09c_Sustainability.html" class="ql-item">🌱 Sustainability &amp; HSE</a>
+    <a href="09d_Case_Studies.html" class="ql-item">📄 Case Studies</a>
+    <a href="10_Careers_v2.html" class="ql-item">💼 Careers</a>
+  </div>
+</div>
+
+<div class="ann ann--info">
+  <strong>Module 09d · Case Studies Listing · V1</strong>
+  3-column card grid. Each card links to a detail page. Real content from 3 provided PDFs: MPC Kinetic (Tanami pipeline), Tin Can Bay Marina (HyDip), Flight Training Adelaide (Toowoomba Wellcamp). No blog section on this page.
+</div>
+
+<section class="hero-split cs-hero">
+  <div class="hero-split__left">
+    <div class="eyebrow">About IOR · Case Studies</div>
+    <h1 data-animate="fade-up">Real customers.<br><span class="accent">Real results.</span></h1>
+    <p class="hero-sub" data-animate="fade-up" data-delay="100">From remote pipeline projects in the Tanami Desert to pilot training academies in regional Queensland — see how IOR delivers where it matters most.</p>
+  </div>
+  <div class="hero-split__right">
+    <div class="img-placeholder">
+      <strong>Case Studies Hero</strong>
+      <span>IMAGE PLACEHOLDER</span>
+      <em>Collage: road train, aircraft, mine site, marina — IOR in action</em>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-item" data-animate="fade-up" data-delay="0">
+      <span class="trust-item__icon">🏭</span>
+      <div class="trust-item__text"><strong>Mining &amp; Resources</strong><span>Remote supply, infrastructure</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="80">
+      <span class="trust-item__icon">✈️</span>
+      <div class="trust-item__text"><strong>Aviation</strong><span>Airport fuelling, pilot training</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="160">
+      <span class="trust-item__icon">⛵</span>
+      <div class="trust-item__text"><strong>Marine</strong><span>Marina fuelling, HyDip technology</span></div>
+    </div>
+    <div class="trust-item" data-animate="fade-up" data-delay="240">
+      <span class="trust-item__icon">🚛</span>
+      <div class="trust-item__text"><strong>Transport</strong><span>Fleet fuelling, RFID, bulk delivery</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="cs-list">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Case Studies</div>
+      <h2 class="section-title" data-animate="fade-up">IOR in action.</h2>
+    </div>
+    <div class="cs-grid" data-stagger>
+
+      <a href="09d1_MPC_Kinetic.html" class="cs-card">
+        <div class="cs-card__img">
+          <span>🏗️</span>
+          <em>Tanami Desert pipeline, remote site, bulk tanks</em>
+        </div>
+        <div class="cs-card__body">
+          <div class="cs-card__tag">Case Study · Mining &amp; Resources</div>
+          <div class="cs-card__title">MPC Kinetic: Fuelling the Tanami Natural Gas Pipeline</div>
+          <div class="cs-card__excerpt">Nine self-bunded tanks. Five remote locations. Three million litres of diesel. How IOR supported one of Australia's most logistically complex pipeline projects — and gave back to the community along the way.</div>
+          <span class="cs-card__cta">Read Case Study →</span>
+        </div>
+      </a>
+
+      <a href="09d2_Tin_Can_Bay.html" class="cs-card">
+        <div class="cs-card__img">
+          <span>⛵</span>
+          <em>Tin Can Bay Marina, Queensland, fuel bowser, boats</em>
+        </div>
+        <div class="cs-card__body">
+          <div class="cs-card__tag">Case Study · Marine · Digital</div>
+          <div class="cs-card__title">Tin Can Bay Marina: 24/7 Fuel Access with HyDip™</div>
+          <div class="cs-card__excerpt">A regional Queensland marina needed to modernise its fuel facility and unlock 24/7 revenue. IOR delivered a complete HyDip™ solution — new tanks, new technology, and a new revenue stream for the marina.</div>
+          <span class="cs-card__cta">Read Case Study →</span>
+        </div>
+      </a>
+
+      <a href="09d3_Flight_Training.html" class="cs-card">
+        <div class="cs-card__img">
+          <span>✈️</span>
+          <em>Toowoomba Wellcamp Airport, Qantas pilot training, aircraft</em>
+        </div>
+        <div class="cs-card__body">
+          <div class="cs-card__tag">Case Study · Aviation · Regional Development</div>
+          <div class="cs-card__title">Flight Training Adelaide: Fuelling the Next Generation of Pilots</div>
+          <div class="cs-card__excerpt">When the Qantas Group Pilot Training Academy opened at Toowoomba Wellcamp Airport, IOR built a state-of-the-art refuelling facility capable of fuelling three aircraft simultaneously. A story of innovation, regional investment, and IOR's commitment to aviation.</div>
+          <span class="cs-card__cta">Read Case Study →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY OF SUPPLY BANNER -->
+<section class="security-banner">
+  <div class="container">
+    <div class="security-banner__text" data-animate="fade-right">
+      <h3>We own the infrastructure.<br>We won't run out.</h3>
+      <p>IOR is not a reseller. We own Lytton Terminal, Port Bonython Terminal, and the Eromanga Refinery — Australia's only inland crude oil refinery. When global supply chains tighten, our customers don't feel it. That's what sovereign supply actually means.</p>
+    </div>
+    <div class="security-banner__links" data-animate="fade-left">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--sky">Our Supply Chain →</a>
+      <a href="06b_Eromanga_Refinery.html" class="security-banner__link">Eromanga Refinery</a>
+      <a href="06a_Terminals.html" class="security-banner__link">Lytton &amp; Port Bonython</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>About IOR</h4>
+        <ul>
+          <li><a href="09a_Our_Leadership.html">Our Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability &amp; HSE</a></li>
+          <li><a href="09d_Case_Studies.html">Case Studies</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture</a></li>
+          <li><a href="08g_Construction_Civil.html">Construction</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08b_Regional_Contacts_v2.html">Regional Contacts</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 IOR Petroleum Pty Ltd. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">HSE Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay"></div>
+<div class="drawer">
+  <div class="drawer__header">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <button class="drawer__close">✕</button>
+  </div>
+  <div class="drawer__nav">
+    <div class="drawer__section">
+      <div class="drawer__section-label">Fuel Solutions</div>
+      <a href="03_Ground_Fuels_v2.html" class="drawer__link">Ground Fuels <span>›</span></a>
+      <a href="04_Aviation_v2.html" class="drawer__link">Aviation <span>›</span></a>
+      <a href="05_Equipment_Infrastructure_v2.html" class="drawer__link">Equipment &amp; Infrastructure <span>›</span></a>
+      <a href="06_Supply_Trading_v2.html" class="drawer__link">Supply &amp; Trading <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">About IOR</div>
+      <a href="09a_Our_Leadership.html" class="drawer__link">Our Leadership <span>›</span></a>
+      <a href="09b_Community.html" class="drawer__link">Community &amp; Giving Back <span>›</span></a>
+      <a href="09c_Sustainability.html" class="drawer__link">Sustainability &amp; HSE <span>›</span></a>
+      <a href="10_Careers_v2.html" class="drawer__link">Careers <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">Industries</div>
+      <a href="08_Industries_v2.html" class="drawer__link">All Industries <span>›</span></a>
+    </div>
+  </div>
+  <div class="drawer__footer">
+    <a href="https://customer.ior.com.au" class="btn btn--outline">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</div>
+<script src="ior-motion.js"></script>
+</body>
+</html>

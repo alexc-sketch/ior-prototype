@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entry Pathways · IOR Careers · IOR Energy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ior-global.css">
+  <style>
+    
+    .pathways-hero { background: var(--ior-navy); color: var(--ior-white); padding: 100px 0 80px; }
+    .pathways-hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 16px; }
+    .pathways-hero__h1 { font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; }
+    .pathway-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--ior-border); margin-bottom: 48px; }
+    .pathway-tab { padding: 16px 28px; font-size: 0.95rem; font-weight: 600; color: var(--ior-text-muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color 0.2s, border-color 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
+    .pathway-tab.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+    .pathway-panel { display: none; }
+    .pathway-panel.active { display: block; }
+    .pathway-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+    .pathway-detail__img { background: var(--ior-off-white); border-radius: var(--radius-md); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--ior-border); }
+    .pathway-detail__img-note { text-align: center; color: var(--ior-text-muted); font-size: 0.85rem; padding: 20px; }
+    .pathway-detail__content h2 { font-size: 1.8rem; font-weight: 800; color: var(--ior-navy); margin-bottom: 16px; }
+    .pathway-detail__content p { color: var(--ior-text-muted); line-height: 1.7; margin-bottom: 16px; }
+    .pathway-detail__bullets { list-style: none; padding: 0; margin: 24px 0; }
+    .pathway-detail__bullets li { padding: 8px 0 8px 24px; position: relative; color: var(--ior-text); font-size: 0.95rem; border-bottom: 1px solid var(--ior-border); }
+    .pathway-detail__bullets li::before { content: "→"; position: absolute; left: 0; color: var(--ior-blue); font-weight: 700; }
+    @media (max-width: 768px) { .pathway-detail { grid-template-columns: 1fr; } }
+    
+  </style>
+</head>
+<body>
+<div class="wf-nav">
+  <span class="wf-nav__module">MODULE 10 · Entry Pathways · 10a_Entry_Pathways.html</span>
+  <span class="wf-nav__links">
+    <a href="00_Master_Index.html">Index</a> |
+    <a href="IOR_Design_System.html">Design System</a> |
+    <a href="10_Careers_v2.html">Careers Hub</a> | <a href="10a_Entry_Pathways.html">Entry Pathways</a> | <a href="10b_Apprentices.html">Apprentices</a> | <a href="10c_Graduates.html">Graduates</a> | <a href="10d_School_Based.html">School-Based</a> | <a href="10e_Working_Regionally.html">Working Regionally</a>
+  </span>
+  <span class="wf-nav__annotations">ANNOTATIONS: <span class="ann-std">■ Standard</span> <span class="ann-dq">■ Design Q</span></span>
+</div>
+<div class="utility-bar">
+  <div class="utility-bar__inner container">
+    <div class="utility-bar__left">
+      <span>📞 1800 467 669</span>
+      <span>📍 Find a Location</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="#">News &amp; Updates</a>
+      <a href="#">Careers</a>
+      <a href="#">Investor Relations</a>
+    </div>
+  </div>
+</div>
+<nav class="primary-nav" role="navigation" aria-label="Primary navigation">
+  <div class="primary-nav__inner container">
+    <a href="01_Homepage_and_Global.html" class="primary-nav__logo" aria-label="IOR Home">
+      <div class="logo-box">[IOR LOGO]</div>
+    </a>
+    <ul class="primary-nav__menu" role="menubar">
+      <li role="none"><a href="02_Fuel_Solutions_Hub_v2.html" role="menuitem">Fuel Solutions <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="07_Digital_Platforms_v2.html" role="menuitem">Digital Platforms <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08_Industries_v2.html" role="menuitem">Industries We Serve <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="09_About_IOR_v2.html" role="menuitem">About IOR <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08a_Contact_Us_v2.html" role="menuitem">Support &amp; Contact <span class="nav-arrow">▼</span></a></li>
+    </ul>
+    <div class="primary-nav__ctas">
+      <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+    </div>
+    <button class="primary-nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<nav class="drawer" id="drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer__header">
+    <div class="logo-box">[IOR LOGO]</div>
+    <button class="drawer__close" aria-label="Close menu">✕</button>
+  </div>
+  <ul class="drawer__menu">
+    <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a></li>
+    <li><a href="07_Digital_Platforms_v2.html">Digital Platforms</a></li>
+    <li><a href="08_Industries_v2.html">Industries We Serve</a></li>
+    <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+    <li><a href="08a_Contact_Us_v2.html">Support &amp; Contact</a></li>
+  </ul>
+  <div class="drawer__ctas">
+    <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</nav>
+
+<section class="pathways-hero" data-animate="fade-in">
+  <div class="container">
+    <p class="pathways-hero__eyebrow">CAREERS AT IOR</p>
+    <h1 class="pathways-hero__h1">Start your career<br>the right way.</h1>
+    <p style="font-size:1.1rem; color:rgba(255,255,255,0.8); max-width:560px; margin-bottom:32px;">Whether you're fresh out of school, finishing a degree, or looking to learn a trade — IOR has a pathway built for you.</p>
+    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="btn btn--primary" target="_blank">View Open Roles →</a>
+  </div>
+</section>
+
+<nav class="quick-links-bar" aria-label="Careers navigation">
+  <div class="container quick-links-bar__inner">
+    <a href="10_Careers_v2.html" class="quick-link">Why IOR?</a>
+    <a href="10a_Entry_Pathways.html" class="quick-link">Entry Pathways</a>
+    <a href="10b_Apprentices.html" class="quick-link">Apprentices</a>
+    <a href="10c_Graduates.html" class="quick-link">Graduates</a>
+    <a href="10d_School_Based.html" class="quick-link">School-Based</a>
+    <a href="10e_Working_Regionally.html" class="quick-link">Working Regionally</a>
+    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="quick-link quick-link--cta" target="_blank">View Open Roles →</a>
+  </div>
+</nav>
+
+<section class="section-pad">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">CHOOSE YOUR PATH</p>
+    <h2 class="section-h2" data-animate="fade-up">Four ways to join IOR</h2>
+
+    <div class="pathway-tabs">
+      <button class="pathway-tab active" data-tab="apprentices">🔧 Apprentices</button>
+      <button class="pathway-tab" data-tab="graduates">🎓 Graduates</button>
+      <button class="pathway-tab" data-tab="school">🏫 School-Based</button>
+      <button class="pathway-tab" data-tab="regional">🗺️ Working Regionally</button>
+    </div>
+
+    <div class="pathway-panel active" id="tab-apprentices">
+      <div class="pathway-detail">
+        <div class="pathway-detail__img">
+          <div class="pathway-detail__img-note">
+            <strong>IMAGE PLACEHOLDER</strong><br>
+            IOR Apprentice Mechanic at work<br>
+            <em>Workshop, hands-on tools, IOR branded</em>
+          </div>
+        </div>
+        <div class="pathway-detail__content">
+          <h2>Apprentices &amp; Trades</h2>
+          <p>We're actively hiring for roles like Apprentice Boilermaker and Apprentice HV Mechanic to join our critical infrastructure team. You'll learn on the tools, earn real qualifications, and build a career that lasts.</p>
+          <ul class="pathway-detail__bullets">
+            <li>Apprentice Boilermaker — fuel infrastructure fabrication</li>
+            <li>Apprentice HV Mechanic — heavy vehicle fleet maintenance</li>
+            <li>Structured on-the-job training with experienced mentors</li>
+            <li>Nationally recognised qualifications</li>
+            <li>Pathway to full-time employment at IOR</li>
+          </ul>
+          <a href="10b_Apprentices.html" class="btn btn--primary">Explore Apprenticeships →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pathway-panel" id="tab-graduates">
+      <div class="pathway-detail">
+        <div class="pathway-detail__img">
+          <div class="pathway-detail__img-note">
+            <strong>IMAGE PLACEHOLDER</strong><br>
+            IOR Graduate in corporate setting<br>
+            <em>Office environment, IOR branded, professional</em>
+          </div>
+        </div>
+        <div class="pathway-detail__content">
+          <h2>Graduates &amp; Interns</h2>
+          <p>Start your corporate or tech career in our entrepreneurial environment. We have pathways for graduates and interns across three key streams — and we move fast enough that you'll have real responsibility from day one.</p>
+          <ul class="pathway-detail__bullets">
+            <li>Technology — help develop proprietary tech like HyDip®</li>
+            <li>Shared Services — finance, marketing, legal, commercial, P&amp;C</li>
+            <li>Operations Support — ground fuels, aviation, supply chain</li>
+            <li>Mentoring from senior IOR leaders</li>
+            <li>Clear career path framework with digital tracking</li>
+          </ul>
+          <a href="10c_Graduates.html" class="btn btn--primary">Explore Graduate Roles →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pathway-panel" id="tab-school">
+      <div class="pathway-detail">
+        <div class="pathway-detail__img">
+          <div class="pathway-detail__img-note">
+            <strong>IMAGE PLACEHOLDER</strong><br>
+            Young person at IOR site<br>
+            <em>School-based trainee, IOR uniform, regional setting</em>
+          </div>
+        </div>
+        <div class="pathway-detail__content">
+          <h2>School-Based &amp; Trainees</h2>
+          <p>Get a head start on your career while still at school. Our school-based programs give young Australians real industry experience and a clear pathway to full-time employment at IOR.</p>
+          <ul class="pathway-detail__bullets">
+            <li>Earn while you learn — paid work experience</li>
+            <li>Nationally recognised training units</li>
+            <li>Available in regional and metro locations</li>
+            <li>Pathway to apprenticeship or full-time role</li>
+            <li>Supportive mentoring from day one</li>
+          </ul>
+          <a href="10d_School_Based.html" class="btn btn--primary">Explore School Programs →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pathway-panel" id="tab-regional">
+      <div class="pathway-detail">
+        <div class="pathway-detail__img">
+          <div class="pathway-detail__img-note">
+            <strong>IMAGE PLACEHOLDER</strong><br>
+            IOR regional depot, outback setting<br>
+            <em>Dust, wide sky, IOR signage, authentic regional feel</em>
+          </div>
+        </div>
+        <div class="pathway-detail__content">
+          <h2>Working Regionally</h2>
+          <p>IOR was born in the bush — the Inland Oil Refinery has operated out of Eromanga, QLD since 1984. Our entrepreneurial spirit has always been regional. Could you be part of the team that opens our next depot?</p>
+          <ul class="pathway-detail__bullets">
+            <li>Roles across QLD, NSW, VIC, SA, WA, NT</li>
+            <li>Local employment programs in regional communities</li>
+            <li>Brand new Kenworth or Volvo for drivers</li>
+            <li>Career growth without leaving the community you love</li>
+            <li>LifeFlight, AgForce, and community sponsorships</li>
+          </ul>
+          <a href="10e_Working_Regionally.html" class="btn btn--primary">Explore Regional Roles →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="security-banner">
+  <div class="container security-banner__inner">
+    <div class="security-banner__text">
+      <p class="security-banner__eyebrow">SOVEREIGN SUPPLY CHAIN</p>
+      <h2>We own our infrastructure.<br>We won't run out.</h2>
+      <p>Lytton Terminal · Port Bonython Terminal · Eromanga Refinery · Stonepeak-backed. When global supply chains tighten, IOR customers don't feel it.</p>
+    </div>
+    <div class="security-banner__cta">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--white">Our Supply Chain →</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-grid container">
+    <div class="footer-col">
+      <div class="footer-logo">[IOR LOGO]</div>
+      <p class="footer-tagline">Australia's independent fuel company. Sovereign supply. National reach.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Fuel Solutions</h4>
+      <ul>
+        <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+        <li><a href="04_Aviation_v2.html">Aviation</a></li>
+        <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+        <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+        <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+        <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+        <li><a href="08f_Commercial_Aviation.html">Commercial &amp; General Aviation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+        <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+        <li><a href="10_Careers_v2.html">Careers</a></li>
+        <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2025 IOR Energy. All rights reserved. ABN 12 345 678 901</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Modern Slavery Statement</a>
+    </div>
+  </div>
+</footer>
+<script src="ior-motion.js"></script>
+<script>
+  document.querySelectorAll('.pathway-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.pathway-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.pathway-panel').forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

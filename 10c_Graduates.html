@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graduates & Interns · IOR Careers · IOR Energy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ior-global.css">
+  <style>
+    
+    .grad-hero { background: var(--ior-navy); color: var(--ior-white); padding: 100px 0 80px; }
+    .sticky-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+    .sticky-split__img { background: var(--ior-off-white); position: sticky; top: 80px; height: calc(100vh - 80px); display: flex; align-items: center; justify-content: center; border: 2px dashed var(--ior-border); }
+    .sticky-split__content { padding: 64px 48px; }
+    .program-block { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--ior-border); }
+    .program-block:last-child { border-bottom: none; }
+    .program-block__tag { display: inline-block; background: var(--ior-sky); color: var(--ior-navy); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .program-block__title { font-size: 1.3rem; font-weight: 700; color: var(--ior-navy); margin-bottom: 12px; }
+    .program-block__copy { font-size: 0.95rem; color: var(--ior-text-muted); line-height: 1.7; margin-bottom: 16px; }
+    .program-block__bullets { list-style: none; padding: 0; }
+    .program-block__bullets li { padding: 6px 0 6px 20px; position: relative; font-size: 0.9rem; color: var(--ior-text); }
+    .program-block__bullets li::before { content: "→"; position: absolute; left: 0; color: var(--ior-blue); font-weight: 700; }
+    @media (max-width: 768px) { .sticky-split { grid-template-columns: 1fr; } .sticky-split__img { position: relative; height: 300px; } }
+    
+  </style>
+</head>
+<body>
+<div class="wf-nav">
+  <span class="wf-nav__module">MODULE 10 · Graduates · 10c_Graduates.html</span>
+  <span class="wf-nav__links">
+    <a href="00_Master_Index.html">Index</a> |
+    <a href="IOR_Design_System.html">Design System</a> |
+    <a href="10_Careers_v2.html">Careers Hub</a> | <a href="10a_Entry_Pathways.html">Entry Pathways</a> | <a href="10b_Apprentices.html">Apprentices</a> | <a href="10c_Graduates.html">Graduates</a> | <a href="10d_School_Based.html">School-Based</a> | <a href="10e_Working_Regionally.html">Working Regionally</a>
+  </span>
+  <span class="wf-nav__annotations">ANNOTATIONS: <span class="ann-std">■ Standard</span> <span class="ann-dq">■ Design Q</span></span>
+</div>
+<div class="utility-bar">
+  <div class="utility-bar__inner container">
+    <div class="utility-bar__left">
+      <span>📞 1800 467 669</span>
+      <span>📍 Find a Location</span>
+    </div>
+    <div class="utility-bar__right">
+      <a href="#">News &amp; Updates</a>
+      <a href="#">Careers</a>
+      <a href="#">Investor Relations</a>
+    </div>
+  </div>
+</div>
+<nav class="primary-nav" role="navigation" aria-label="Primary navigation">
+  <div class="primary-nav__inner container">
+    <a href="01_Homepage_and_Global.html" class="primary-nav__logo" aria-label="IOR Home">
+      <div class="logo-box">[IOR LOGO]</div>
+    </a>
+    <ul class="primary-nav__menu" role="menubar">
+      <li role="none"><a href="02_Fuel_Solutions_Hub_v2.html" role="menuitem">Fuel Solutions <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="07_Digital_Platforms_v2.html" role="menuitem">Digital Platforms <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08_Industries_v2.html" role="menuitem">Industries We Serve <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="09_About_IOR_v2.html" role="menuitem">About IOR <span class="nav-arrow">▼</span></a></li>
+      <li role="none"><a href="08a_Contact_Us_v2.html" role="menuitem">Support &amp; Contact <span class="nav-arrow">▼</span></a></li>
+    </ul>
+    <div class="primary-nav__ctas">
+      <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+    </div>
+    <button class="primary-nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<nav class="drawer" id="drawer" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer__header">
+    <div class="logo-box">[IOR LOGO]</div>
+    <button class="drawer__close" aria-label="Close menu">✕</button>
+  </div>
+  <ul class="drawer__menu">
+    <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a></li>
+    <li><a href="07_Digital_Platforms_v2.html">Digital Platforms</a></li>
+    <li><a href="08_Industries_v2.html">Industries We Serve</a></li>
+    <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+    <li><a href="08a_Contact_Us_v2.html">Support &amp; Contact</a></li>
+  </ul>
+  <div class="drawer__ctas">
+    <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</nav>
+
+<section class="grad-hero" data-animate="fade-in">
+  <div class="container">
+    <p style="font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--ior-sky);margin-bottom:16px;">GRADUATES &amp; INTERNS</p>
+    <h1 style="font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;margin-bottom:24px;">Start your career<br>where it actually goes somewhere.</h1>
+    <p style="font-size:1.1rem;color:rgba(255,255,255,0.8);max-width:560px;margin-bottom:32px;">IOR is entrepreneurial, fast-moving, and growing. If you want real responsibility from day one — not 12 months of coffee runs — this is the place.</p>
+    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="btn btn--primary" target="_blank">Apply Now →</a>
+  </div>
+</section>
+
+<nav class="quick-links-bar" aria-label="Careers navigation">
+  <div class="container quick-links-bar__inner">
+    <a href="10_Careers_v2.html" class="quick-link">Why IOR?</a>
+    <a href="10a_Entry_Pathways.html" class="quick-link">Entry Pathways</a>
+    <a href="10b_Apprentices.html" class="quick-link">Apprentices</a>
+    <a href="10c_Graduates.html" class="quick-link">Graduates</a>
+    <a href="10d_School_Based.html" class="quick-link">School-Based</a>
+    <a href="10e_Working_Regionally.html" class="quick-link">Working Regionally</a>
+    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="quick-link quick-link--cta" target="_blank">View Open Roles →</a>
+  </div>
+</nav>
+
+<!-- Sticky Split: Program Structure -->
+<section style="padding:80px 0;">
+  <div class="container">
+    <p class="section-eyebrow" data-animate="fade-up">GRADUATE PROGRAM</p>
+    <h2 class="section-h2" data-animate="fade-up">Three streams. One goal: go far.</h2>
+  </div>
+  <div class="sticky-split" style="margin-top:48px;">
+    <div class="sticky-split__img">
+      <div style="text-align:center;padding:32px;color:var(--ior-text-muted);">
+        <strong>IMAGE PLACEHOLDER</strong><br>
+        IOR Graduate team in office<br>
+        <em>Corporate setting, IOR branded, collaborative</em>
+      </div>
+    </div>
+    <div class="sticky-split__content">
+      <div class="program-block" data-animate="fade-up">
+        <span class="program-block__tag">STREAM 1</span>
+        <h3 class="program-block__title">Technology</h3>
+        <p class="program-block__copy">Help develop our proprietary technology and solutions, including HyDip® — our fuel management system used across Australia's mining, transport, and agriculture sectors.</p>
+        <ul class="program-block__bullets">
+          <li>Software development and product management</li>
+          <li>Data analytics and business intelligence</li>
+          <li>Cybersecurity and infrastructure</li>
+          <li>Work directly with our CTO and tech leadership</li>
+        </ul>
+      </div>
+      <div class="program-block" data-animate="fade-up">
+        <span class="program-block__tag">STREAM 2</span>
+        <h3 class="program-block__title">Shared Services</h3>
+        <p class="program-block__copy">Find your fit in finance, marketing, legal, commercial, or people and culture. You'll see the full picture of a growing Australian energy business from the inside.</p>
+        <ul class="program-block__bullets">
+          <li>Finance and commercial analysis</li>
+          <li>Marketing and brand</li>
+          <li>Legal and compliance</li>
+          <li>People and culture</li>
+        </ul>
+      </div>
+      <div class="program-block" data-animate="fade-up">
+        <span class="program-block__tag">STREAM 3</span>
+        <h3 class="program-block__title">Operations Support</h3>
+        <p class="program-block__copy">Learn the core of our business — supporting our ground fuels, aviation, or supply chain teams. This is where you understand how IOR actually works, from terminal to tank.</p>
+        <ul class="program-block__bullets">
+          <li>Ground fuels operations and logistics</li>
+          <li>Aviation network coordination</li>
+          <li>Supply chain and terminal operations</li>
+          <li>Infrastructure and depot management</li>
+        </ul>
+      </div>
+      <div style="margin-top:32px;" data-animate="fade-up">
+        <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="btn btn--primary" target="_blank">Apply for a Graduate Role →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Career Story -->
+<section class="section-pad" style="background:var(--ior-navy);color:var(--ior-white);">
+  <div class="container" style="max-width:800px;text-align:center;">
+    <p class="section-eyebrow" data-animate="fade-up">REAL CAREER STORY</p>
+    <blockquote style="font-size:1.4rem;font-style:italic;line-height:1.6;margin:32px 0;color:rgba(255,255,255,0.9);" data-animate="fade-up">"An 18-year-old in IT support became our Chief Operating Officer. A work experience student ended up leading our national fuel infrastructure team. That's not an exception — that's what happens when you combine ambition with real opportunity."</blockquote>
+    <p style="font-weight:700;color:var(--ior-sky);" data-animate="fade-up">Drew Leishman · Chief Operating Officer, IOR</p>
+  </div>
+</section>
+
+<section class="security-banner">
+  <div class="container security-banner__inner">
+    <div class="security-banner__text">
+      <p class="security-banner__eyebrow">SOVEREIGN SUPPLY CHAIN</p>
+      <h2>We own our infrastructure.<br>We won't run out.</h2>
+      <p>Lytton Terminal · Port Bonython Terminal · Eromanga Refinery · Stonepeak-backed. When global supply chains tighten, IOR customers don't feel it.</p>
+    </div>
+    <div class="security-banner__cta">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--white">Our Supply Chain →</a>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-grid container">
+    <div class="footer-col">
+      <div class="footer-logo">[IOR LOGO]</div>
+      <p class="footer-tagline">Australia's independent fuel company. Sovereign supply. National reach.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Fuel Solutions</h4>
+      <ul>
+        <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+        <li><a href="04_Aviation_v2.html">Aviation</a></li>
+        <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+        <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Industries</h4>
+      <ul>
+        <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+        <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+        <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+        <li><a href="08f_Commercial_Aviation.html">Commercial &amp; General Aviation</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+        <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+        <li><a href="10_Careers_v2.html">Careers</a></li>
+        <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <p>© 2025 IOR Energy. All rights reserved. ABN 12 345 678 901</p>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Modern Slavery Statement</a>
+    </div>
+  </div>
+</footer>
+<script src="ior-motion.js"></script>
+</body>
+</html>
