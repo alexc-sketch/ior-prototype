@@ -8,10 +8,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ior-blue: #0355A3; --ior-navy: #023A72; --ior-dark: #0A1628; --ior-deep: #0A2540;
+    --ior-blue: #0355A3; --ior-navy: #0A4066; --ior-dark: #0A1628; --ior-deep: #0A2540;
     --ior-sky: #4DA8DA; --fc-teal: #00D1CC; --fc-navy: #13114D;
     --grey-50: #F8F9FA; --grey-100: #E9ECEF; --grey-900: #1A1A2A;
-    --radius-md: 8px; --container: 1280px; --section-pad: 80px;
+    --radius-md: 0px; --container: 1280px; --section-pad: 80px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; color: #1A1A2A; background: #fff; line-height: 1.6; }
@@ -29,7 +29,7 @@
   .nav-link { color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500; padding: 8px 14px; }
   .nav-link--active { color: #fff; border-bottom: 2px solid var(--ior-sky); }
   .nav-actions { display: flex; align-items: center; gap: 8px; }
-  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 12px 24px; font-size: 14px; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; border: 2px solid transparent; text-decoration: none; transition: background .2s, color .2s; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 12px 24px; font-size: 14px; font-weight: 700; border-radius: 0; cursor: pointer; border: 2px solid transparent; text-decoration: none; transition: background .2s, color .2s; }
   .btn--primary { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
   .btn--primary:hover { background: var(--ior-navy); }
   .btn--outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
@@ -39,7 +39,7 @@
   .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
   .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 12px; }
   .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
-  .pill { display: inline-block; padding: 5px 12px; font-size: 12px; font-weight: 600; border: 1.5px solid var(--ior-sky); color: var(--ior-sky); border-radius: var(--radius-md); cursor: default; }
+  .pill { display: inline-block; padding: 5px 12px; font-size: 12px; font-weight: 600; border: 1.5px solid var(--ior-sky); color: var(--ior-sky); border-radius: 0; cursor: default; }
   .quick-links-bar { background: var(--ior-deep); border-top: 3px solid var(--ior-sky); padding: 0; }
   .quick-links-bar .container { display: flex; align-items: center; gap: 0; overflow-x: auto; }
   .quick-links-bar__link { color: rgba(255,255,255,.7); font-size: 13px; font-weight: 600; padding: 14px 20px; white-space: nowrap; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; }
@@ -50,12 +50,12 @@
   .hero__h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 20px; }
   .hero__body { font-size: 17px; color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 32px; }
   .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .hero__media { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-md); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.4); font-size: 13px; text-align: center; padding: 24px; }
+  .hero__media { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 0; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.4); font-size: 13px; text-align: center; padding: 24px; }
   .logo-grid { background: #fff; padding: 40px 0; border-bottom: 1px solid var(--grey-100); }
   .logo-grid .container { display: flex; flex-direction: column; align-items: center; gap: 24px; }
   .logo-grid__label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #999; }
   .logo-grid__logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; }
-  .logo-box { width: 120px; height: 48px; background: var(--grey-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #999; letter-spacing: .06em; }
+  .logo-box { width: 120px; height: 48px; background: var(--grey-100); border-radius: 0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #999; letter-spacing: .06em; }
   .stat-bar { background: var(--ior-blue); padding: 32px 0; }
   .stat-bar .container { display: grid; grid-template-columns: repeat(4, 1fr); }
   .stat-item { text-align: center; padding: 0 24px; border-right: 1px solid rgba(255,255,255,.2); }
@@ -67,7 +67,7 @@
   .feature-section .section-intro h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: var(--ior-dark); margin-bottom: 12px; }
   .feature-section .section-intro p { font-size: 16px; color: #555; }
   .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .feature-card { background: #fff; border-top: 4px solid var(--ior-blue); border-radius: var(--radius-md); padding: 32px 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .feature-card { background: #fff; border-top: 4px solid var(--ior-blue); border-radius: 0; padding: 32px 28px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
   .feature-card__icon { font-size: 32px; margin-bottom: 16px; }
   .feature-card__title { font-size: 18px; font-weight: 800; color: var(--ior-dark); margin-bottom: 10px; }
   .feature-card__body { font-size: 15px; color: #555; line-height: 1.65; }
@@ -76,13 +76,13 @@
   .steps-section .section-intro h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: #fff; margin-bottom: 12px; }
   .steps-section .section-intro p { font-size: 16px; color: rgba(255,255,255,.65); }
   .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .step-item { background: rgba(255,255,255,.04); border-top: 4px solid var(--ior-blue); border-radius: var(--radius-md); padding: 32px 28px; }
+  .step-item { background: rgba(255,255,255,.04); border-top: 4px solid var(--ior-blue); border-radius: 0; padding: 32px 28px; }
   .step__number { font-size: 72px; font-weight: 900; color: rgba(3,85,163,0.15); line-height: 1; margin-bottom: 16px; }
   .step__title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
   .step__body { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.65; }
   .gated-asset { background: var(--ior-deep); padding: var(--section-pad) 0; border-top: 4px solid var(--ior-sky); }
   .gated-asset .container { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
-  .pdf-mockup { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius-md); aspect-ratio: 3/4; max-width: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: rgba(255,255,255,.5); font-size: 13px; text-align: center; padding: 24px; }
+  .pdf-mockup { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: 0; aspect-ratio: 3/4; max-width: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: rgba(255,255,255,.5); font-size: 13px; text-align: center; padding: 24px; }
   .pdf-mockup__icon { font-size: 40px; }
   .gated-asset__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 12px; }
   .gated-asset__title { font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: #fff; margin-bottom: 16px; }
@@ -98,7 +98,7 @@
   .tab-btn.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
   .tab-panel { display: none; }
   .tab-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .related-card { border: 1px solid var(--grey-100); border-radius: var(--radius-md); overflow: hidden; }
+  .related-card { border: 1px solid var(--grey-100); border-radius: 0; overflow: hidden; }
   .related-card__img { background: var(--grey-100); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; text-align: center; padding: 12px; }
   .related-card__body { padding: 20px; }
   .related-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 8px; }
@@ -111,7 +111,7 @@
   .logo-trust__logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; }
   .testimonials { background: #fff; padding: var(--section-pad) 0; }
   .testimonials .container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .testimonial-card { background: var(--grey-50); border-top: 4px solid var(--ior-blue); border-radius: var(--radius-md); padding: 36px; }
+  .testimonial-card { background: var(--grey-50); border-top: 4px solid var(--ior-blue); border-radius: 0; padding: 36px; }
   .testimonial-card__quote { font-size: 17px; color: #333; line-height: 1.7; font-style: italic; margin-bottom: 24px; }
   .testimonial-card__author { font-size: 14px; font-weight: 700; color: var(--ior-dark); }
   .testimonial-card__role { font-size: 13px; color: #777; }
@@ -122,7 +122,7 @@
   .security-banner__actions { display: flex; gap: 12px; flex-wrap: wrap; }
   .fuelcharge-crosssell { background: var(--fc-navy); padding: var(--section-pad) 0; }
   .fuelcharge-crosssell .container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .fc-card { border-radius: var(--radius-md); padding: 40px; display: flex; flex-direction: column; gap: 16px; }
+  .fc-card { border-radius: 0; padding: 40px; display: flex; flex-direction: column; gap: 16px; }
   .fc-card--b2b { background: var(--ior-deep); border-top: 4px solid var(--ior-blue); }
   .fc-card--app { background: var(--fc-teal); border-top: 4px solid #fff; }
   .fc-card--app .fc-card__eyebrow, .fc-card--app .fc-card__title { color: var(--fc-navy); }
@@ -139,7 +139,7 @@
   .hubspot-section .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
   .hubspot-section__intro h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--ior-dark); margin-bottom: 16px; }
   .hubspot-section__intro p { font-size: 16px; color: #555; line-height: 1.7; }
-  .hubspot-embed-box { background: #fff; border: 2px dashed var(--grey-100); border-radius: var(--radius-md); padding: 48px 32px; text-align: center; color: #999; font-size: 13px; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  .hubspot-embed-box { background: #fff; border: 2px dashed var(--grey-100); border-radius: 0; padding: 48px 32px; text-align: center; color: #999; font-size: 13px; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
   .hubspot-embed-box__icon { font-size: 36px; }
   .hubspot-embed-box strong { color: #555; font-size: 15px; }
   .faq-section { background: #fff; padding: var(--section-pad) 0; border-top: 1px solid var(--grey-100); }
@@ -198,9 +198,9 @@
   .sos-banner__title { font-size: clamp(20px, 3vw, 28px); font-weight: 900; line-height: 1.2; color: #fff; }
   .sos-banner__sub { font-size: 14px; color: rgba(255,255,255,.65); margin-top: 8px; }
   .sos-banner__actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .site-footer { background: #0d1f33; padding: 64px max(24px, calc((100% - 1280px)/2)) 32px; }
+  .site-footer { background: var(--ior-deep); padding: 64px max(24px, calc((100% - 1280px)/2)) 32px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-  .footer-logo { width: 80px; height: 38px; background: rgba(255,255,255,.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6); font-size: 11px; font-weight: 700; margin-bottom: 16px; }
+  .footer-logo { width: 80px; height: 38px; background: rgba(255,255,255,.1); border-radius: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6); font-size: 11px; font-weight: 700; margin-bottom: 16px; }
   .footer-tagline { color: rgba(255,255,255,.55); font-size: 13px; line-height: 1.6; max-width: 260px; }
   .footer-col-title { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
   .footer-col a { display: block; color: rgba(255,255,255,.55); font-size: 13px; text-decoration: none; margin-bottom: 8px; transition: color .2s; }
@@ -209,7 +209,7 @@
   .footer-legal { color: rgba(255,255,255,.4); font-size: 12px; }
   .footer-legal a { color: rgba(255,255,255,.4); text-decoration: none; }
   .footer-legal a:hover { color: #38b6ff; }
-  .drawer { position: fixed; top: 0; right: -100%; width: min(360px, 90vw); height: 100vh; background: #0d1f33; z-index: 9999; transition: right .3s ease; overflow-y: auto; padding: 24px; }
+  .drawer { position: fixed; top: 0; right: -100%; width: min(360px, 90vw); height: 100vh; background: var(--ior-deep); z-index: 9999; transition: right .3s ease; overflow-y: auto; padding: 24px; }
   .drawer--open { right: 0; }
   .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 9998; opacity: 0; pointer-events: none; transition: opacity .3s; }
   .drawer-overlay--open { opacity: 1; pointer-events: all; }
@@ -488,7 +488,7 @@
         <li class="fc-feature">Available at all IOR Diesel Stops</li>
         <li class="fc-feature">Digital receipts &amp; reporting</li>
       </ul>
-      <a href="/digital-platforms/fuelcharge/" class="btn" style="align-self:flex-start;background:var(--fc-navy);color:#fff;border-color:var(--fc-navy);border-radius:var(--radius-md)">Learn About Fuelcharge →</a>
+      <a href="/digital-platforms/fuelcharge/" class="btn" style="align-self:flex-start;background:var(--fc-navy);color:#fff;border-color:var(--fc-navy);">Learn About Fuelcharge →</a>
     </div>
   </div>
 </section>
@@ -654,98 +654,70 @@
     </div>
   </div>
 </section>
-<footer class="footer">
+<footer class="footer" aria-label="Site footer">
   <div class="container">
-    <div class="footer__brand">
-      <div class="logo-placeholder">[IOR LOGO]</div>
-      <p>IOR Petroleum — Australia's sovereign fuel supply chain. Backed by our own refinery, import terminals, and a national logistics network.</p>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Digital Platforms</h4>
+        <ul>
+          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
+          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate</h4>
+        <ul>
+          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer__col">
-      <h4>Fuel Solutions</h4>
-      <a href="03_Ground_Fuels_v2.html">Ground Fuels</a>
-      <a href="04_Aviation_v2.html">Aviation</a>
-      <a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a>
+    <div class="footer-bottom">
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Modern Slavery Statement</a>
+        <a href="#">HSE Policy</a>
+      </div>
     </div>
-    <div class="footer__col">
-      <h4>Supply &amp; Trading</h4>
-      <a href="06a_Terminals.html">Terminals</a>
-      <a href="06b_Eromanga_Refinery.html">Eromanga Refinery</a>
-      <a href="06c_Condensates.html">Condensates</a>
-    </div>
-    <div class="footer__col">
-      <h4>Company</h4>
-      <a href="#">About IOR</a>
-      <a href="#">Careers</a>
-      <a href="/support-contact/contact-us/">Contact Us</a>
-      <a href="#">Privacy Policy</a>
-    </div>
-  </div>
-  <div class="container">
-    <div class="footer__bottom">
-      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved.</span>
-      <span>100% Australian Owned &amp; Operated</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
-  function switchTab(e, tabId) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    e.target.classList.add('active');
-    document.getElementById(tabId).classList.add('active');
-  }
-</script>
-
-
-<script>
-(function(){
-  document.querySelectorAll('.blog-section').forEach(function(section){
-    var tabs = section.querySelectorAll('.blog-tab');
-    var panels = section.querySelectorAll('.blog-panel');
-    tabs.forEach(function(tab, i){
-      tab.addEventListener('click', function(){
-        tabs.forEach(function(t){ t.classList.remove('active'); });
-        panels.forEach(function(p){ p.classList.remove('active'); });
-        tab.classList.add('active');
-        panels[i].classList.add('active');
-      });
-    });
-  });
-})();
-</script>
-
-
-<section class="sos-banner">
-  <div class="sos-banner__text">
-    <div class="sos-banner__eyebrow">Security of Supply</div>
-    <div class="sos-banner__title">Your fuel supply is never at risk.</div>
-    <div class="sos-banner__sub">IOR operates its own terminal infrastructure at Lytton (QLD) and Port Bonython (SA).</div>
-  </div>
-  <div class="sos-banner__actions">
-    <a href="06_Supply_Trading_v2.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.4);color:#fff;">Our Terminals</a>
-    <a href="#" class="btn btn--primary">Apply for an Account</a>
-  </div>
-</section>
-
-
-<footer class="site-footer">
-  <div class="footer-nav-grid">
-    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, QLD 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
-    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
-    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
-    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="08d_Make_a_Payment_v2.html" class="footer-col__link">Make a Payment</a><a href="08a_Contact_Us_v2.html" class="footer-col__link">Contact Us</a><a href="08e_Policy_Downloads_v2.html" class="footer-col__link">Policy Downloads</a></div></div>
-    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">QLD</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NSW</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">VIC</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">SA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">WA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NT</a></div></div>
-  </div>
-  <div class="footer-legal">
-    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
-    <div class="footer-social"><a href="#" class="footer-social__icon">in</a><a href="#" class="footer-social__icon">f</a><a href="#" class="footer-social__icon">📷</a><a href="#" class="footer-social__icon">▶</a></div>
   </div>
 </footer>
 

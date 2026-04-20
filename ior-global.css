@@ -844,14 +844,14 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ── FOOTER ── */
 .footer {
-  background: var(--ior-deep);
+  background: var(--ior-blue);
   padding: var(--section-pad) 0 32px;
   border-top: 1px solid var(--border-dark);
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 24px;
   margin-bottom: 48px;
 }
 .footer-brand__logo { font-size: 20px; font-weight: 900; color: var(--ior-white); letter-spacing: -0.02em; margin-bottom: 12px; }
@@ -863,12 +863,14 @@ h1, h2, h3, h4, h5, h6 {
   text-transform: uppercase;
   color: var(--ior-white);
   margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-.footer-col a { color: rgba(255,255,255,0.55); font-size: 13px; transition: color var(--dur-fast); }
+.footer-col a { color: rgba(255,255,255,0.75); font-size: 13px; transition: color var(--dur-fast); }
 .footer-col a:hover { color: var(--ior-white); }
 .footer-bottom {
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid rgba(255,255,255,0.15);
   padding-top: 24px;
   display: flex;
   align-items: center;
@@ -876,10 +878,10 @@ h1, h2, h3, h4, h5, h6 {
   flex-wrap: wrap;
   gap: 12px;
   font-size: 12px;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.55);
 }
-.footer-bottom a { color: rgba(255,255,255,0.35); margin-left: 16px; transition: color var(--dur-fast); }
-.footer-bottom a:hover { color: rgba(255,255,255,0.7); }
+.footer-bottom a { color: rgba(255,255,255,0.65); margin-left: 16px; transition: color var(--dur-fast); }
+.footer-bottom a:hover { color: var(--ior-white); }
 .footer-social { display: flex; gap: 8px; }
 .social-icon {
   width: 32px;
@@ -1022,7 +1024,7 @@ h1, h2, h3, h4, h5, h6 {
 /* ── RESPONSIVE ── */
 @media (max-width: 1024px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .fmt-layout { grid-template-columns: 1fr; }
   .fmt-accordion__image-panel { position: relative; height: 280px; top: 0; }
   .blog-grid { grid-template-columns: repeat(2, 1fr); }

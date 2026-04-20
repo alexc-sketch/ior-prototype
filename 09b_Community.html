@@ -25,7 +25,7 @@
 .community-hero__img {
   background: rgba(255,255,255,.06);
   border: 1px dashed rgba(255,255,255,.2);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   min-height: 320px;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@
 /* Pillars section */
 .pillars-section { background: var(--off-white); padding: var(--section-pad) var(--spx); }
 .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
-.pillar-card { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border-light); padding: 36px 28px; border-top: 4px solid var(--ior-blue); }
+.pillar-card { background: #fff; border-radius: 0; border: 1px solid var(--border-light); padding: 36px 28px; border-top: 4px solid var(--ior-blue); }
 .pillar-card__icon { font-size: 32px; margin-bottom: 16px; }
 .pillar-card__title { font-size: 18px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 12px; }
 .pillar-card__body { font-size: 14px; color: var(--mid-grey); line-height: 1.7; }
@@ -65,7 +65,7 @@
 .alt-block__img {
   background: var(--off-white);
   border: 1px dashed var(--border-light);
-  border-radius: var(--radius-md);
+  border-radius: 0;
   min-height: 280px;
   display: flex;
   flex-direction: column;
@@ -96,7 +96,7 @@
 
 /* Community sponsorships grid */
 .community-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-.community-card { background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 28px; border-top: 4px solid var(--ior-sky); transition: transform .2s, box-shadow .2s; }
+.community-card { background: #fff; border: 1px solid var(--border-light); border-radius: 0; padding: 28px; border-top: 4px solid var(--ior-sky); transition: transform .2s, box-shadow .2s; }
 .community-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
 .community-card__icon { font-size: 28px; margin-bottom: 12px; }
 .community-card__title { font-size: 16px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 8px; }
@@ -106,7 +106,7 @@
 .video-section { background: var(--ior-deep); padding: var(--section-pad) var(--spx); }
 .video-section .section-header__h2 { color: #fff; }
 .video-section .section-header__lead { color: rgba(255,255,255,.65); }
-.video-embed { border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 16/9; width: 100%; max-width: 800px; margin: 0 auto; display: block; }
+.video-embed { border-radius: 0; overflow: hidden; aspect-ratio: 16/9; width: 100%; max-width: 800px; margin: 0 auto; display: block; }
 
 @media (max-width: 900px) {
   .community-hero { grid-template-columns: 1fr; }
@@ -143,7 +143,7 @@
     <div class="utility-links">
       <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
       <a href="08d_Make_a_Payment_v2.html">💳 Make a Payment</a>
-      <a href="#">📞 1300 467 823</a>
+      <a href="#">📞 1300 457 467</a>
     </div>
   </div>
 </div>
@@ -395,7 +395,7 @@
       <div class="community-card__body">A direct link between IOR's procurement and local suppliers — keeping money in the regions that fuel our business.</div>
     </div>
   </div>
-  <div style="margin-top:48px; padding:32px; background:#fff; border-radius:var(--radius-md); border:1px solid var(--border-light); max-width:600px;">
+  <div style="margin-top:48px; padding:32px; background:#fff; border:1px solid var(--border-light); max-width:600px;">
     <div class="section-header__eyebrow">Sponsorship Applications</div>
     <h3 style="font-size:20px;font-weight:800;color:var(--ior-charcoal);margin-bottom:12px;">Apply for IOR Community Sponsorship</h3>
     <p style="font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:20px;">To register your interest in sponsorship from IOR, download and complete the IOR Sponsorship Application Form.</p>
@@ -485,54 +485,72 @@
 </section>
 
 <!-- SOS BANNER -->
-<section class="sos-banner">
-  <div class="sos-banner__text">
-    <div class="sos-banner__eyebrow">Security of Supply</div>
-    <div class="sos-banner__title">Your fuel supply is never at risk.</div>
-    <div class="sos-banner__sub">IOR operates its own terminal infrastructure at Lytton (QLD) and Port Bonython (SA).</div>
-  </div>
-  <div class="sos-banner__actions">
-    <a href="06_Supply_Trading_v2.html" class="btn btn--primary">Our Infrastructure →</a>
-    <a href="08a_Contact_Us_v2.html" class="btn btn--outline" style="color:#fff;border-color:rgba(255,255,255,.3);">Talk to Us</a>
-  </div>
-</section>
 
 <!-- FOOTER -->
-<footer class="site-footer">
-  <div class="footer-grid">
-    <div class="footer-col">
-      <div class="footer-logo">[IOR]</div>
-      <p class="footer-tagline">Australia's independent fuel company. Sovereign supply. National network. 40+ years of reliability.</p>
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Digital Platforms</h4>
+        <ul>
+          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
+          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate</h4>
+        <ul>
+          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Fuel Solutions</div>
-      <a href="03_Ground_Fuels_v2.html">Ground Fuels</a>
-      <a href="04_Aviation_v2.html">Aviation</a>
-      <a href="05_Equipment_Infrastructure_v2.html">Equipment</a>
-      <a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a>
-      <a href="07_Digital_Platforms_v2.html">Digital Platforms</a>
+    <div class="footer-bottom">
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Modern Slavery Statement</a>
+        <a href="#">HSE Policy</a>
+      </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Industries</div>
-      <a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a>
-      <a href="08d_Mining_Resources.html">Mining &amp; Resources</a>
-      <a href="08c_Agriculture_Harvest.html">Agriculture</a>
-      <a href="08f_Commercial_Aviation.html">Aviation</a>
-      <a href="08g_Construction_Civil.html">Construction</a>
-    </div>
-    <div class="footer-col">
-      <div class="footer-col-title">Company</div>
-      <a href="09_About_IOR_v2.html">About IOR</a>
-      <a href="09a_Our_Leadership.html">Leadership</a>
-      <a href="09b_Community.html">Community</a>
-      <a href="09c_Sustainability.html">Sustainability</a>
-      <a href="10_Careers_v2.html">Careers</a>
-      <a href="08_Support_Hub_v2.html">Contact</a>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-legal">© 2025 IOR Energy. All rights reserved. <a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a></div>
-    <div class="footer-legal">ABN 12 345 678 901 · 1300 467 823</div>
   </div>
 </footer>
 

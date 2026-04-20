@@ -48,7 +48,7 @@ img{max-width:100%;display:block}
 .hamburger span{display:block;width:22px;height:2px;background:var(--ior-charcoal);transition:var(--transition-base)}
 @media(max-width:1023px){.nav-links{display:none}.hamburger{display:flex}}
 /* BUTTONS */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:16px;font-weight:700;letter-spacing:.02em;cursor:pointer;border:2px solid transparent;border-radius:var(--radius-md);transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast);text-decoration:none;font-family:var(--font)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:16px;font-weight:700;letter-spacing:.02em;cursor:pointer;border:2px solid transparent;border-radius:0;transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast);text-decoration:none;font-family:var(--font)}
 .btn--primary{background:var(--ior-blue);color:#fff;border-color:var(--ior-blue)}
 .btn--primary:hover{background:var(--ior-navy);border-color:var(--ior-navy)}
 .btn--purple{background:var(--hydip-purple);color:#fff;border-color:var(--hydip-purple)}
@@ -89,12 +89,12 @@ img{max-width:100%;display:block}
 .hero-hydip{background:var(--ior-deep);border-top:5px solid var(--hydip-purple);padding:clamp(64px,8vw,100px) var(--spx) clamp(48px,6vw,80px)}
 .hero-hydip .inner{display:grid;grid-template-columns:1fr;gap:40px}
 @media(min-width:1024px){.hero-hydip .inner{grid-template-columns:1fr 1fr;align-items:center}}
-.hero-hydip__eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);background:rgba(91,45,142,.2);padding:4px 12px;border-radius:var(--radius-md);margin-bottom:16px}
+.hero-hydip__eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);background:rgba(91,45,142,.2);padding:4px 12px;border-radius:0;margin-bottom:16px}
 .hero-hydip h1{font-size:clamp(36px,5vw,64px);font-weight:var(--fw-black);line-height:1.05;color:#fff;margin-bottom:20px}
 .hero-hydip h1 .accent{color:var(--hydip-purple)}
 .hero-hydip__sub{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.8);max-width:520px;margin-bottom:32px;line-height:1.6}
 .hero-hydip__ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hero-hydip__right{background:rgba(91,45,142,.12);border:1px solid rgba(91,45,142,.3);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:20px}
+.hero-hydip__right{background:rgba(91,45,142,.12);border:1px solid rgba(91,45,142,.3);border-radius:0;padding:32px;display:flex;flex-direction:column;gap:20px}
 .hero-stat{display:flex;flex-direction:column;gap:4px}
 .hero-stat__num{font-size:40px;font-weight:var(--fw-black);color:var(--hydip-purple);line-height:1}
 .hero-stat__label{font-size:14px;color:rgba(255,255,255,.65);font-weight:600}
@@ -103,15 +103,15 @@ img{max-width:100%;display:block}
 .logo-strip{background:#fff;border-bottom:1px solid var(--border-light);padding:28px var(--spx)}
 .logo-strip__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ior-mid-grey);text-align:center;margin-bottom:20px}
 .logo-strip__row{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,48px);flex-wrap:wrap}
-.logo-ph{width:110px;height:40px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;font-size:10px;font-family:monospace;color:var(--ior-mid-grey);font-weight:700;border-radius:var(--radius-md)}
+.logo-ph{width:110px;height:40px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;font-size:10px;font-family:monospace;color:var(--ior-mid-grey);font-weight:700;border-radius:0}
 /* PROBLEM 2-TONE */
 .problem-section{background:var(--off-white);padding:var(--sp) var(--spx)}
 .problem-2tone{display:grid;grid-template-columns:1fr;gap:32px}
 @media(min-width:768px){.problem-2tone{grid-template-columns:1fr 1fr}}
-.problem-2tone__left{background:var(--ior-deep);border-radius:var(--radius-md);padding:40px;border-top:4px solid var(--hydip-purple)}
+.problem-2tone__left{background:var(--ior-deep);border-radius:0;padding:40px;border-top:4px solid var(--hydip-purple)}
 .problem-2tone__left h2{font-size:clamp(22px,2.5vw,32px);font-weight:var(--fw-black);color:#fff;margin-bottom:16px;line-height:1.25}
 .problem-2tone__left p{font-size:16px;color:rgba(255,255,255,.75);line-height:1.65}
-.problem-2tone__right{background:#fff;border-radius:var(--radius-md);padding:40px;border-top:4px solid var(--ior-sky)}
+.problem-2tone__right{background:#fff;border-radius:0;padding:40px;border-top:4px solid var(--ior-sky)}
 .problem-2tone__right h2{font-size:clamp(22px,2.5vw,32px);font-weight:var(--fw-black);color:var(--ior-deep);margin-bottom:16px;line-height:1.25}
 .problem-2tone__right p{font-size:16px;color:var(--ior-mid-grey);line-height:1.65}
 /* 4-COMPONENT TABS */
@@ -130,13 +130,13 @@ img{max-width:100%;display:block}
 .feature-list{display:flex;flex-direction:column;gap:12px}
 .feature-item{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--ior-charcoal);line-height:1.4}
 .feature-item::before{content:'✓';color:var(--hydip-purple);font-weight:700;flex-shrink:0;margin-top:2px}
-.component-panel__media{background:var(--hydip-light);border-radius:var(--radius-md);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:13px;font-family:monospace;color:var(--hydip-purple);text-align:center;padding:24px;border:1px solid rgba(91,45,142,.2)}
+.component-panel__media{background:var(--hydip-light);border-radius:0;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:13px;font-family:monospace;color:var(--hydip-purple);text-align:center;padding:24px;border:1px solid rgba(91,45,142,.2)}
 /* EASY AS 1-2-3 — GHOST NUMBERS 48px (MASTER RULE) */
 .steps-section{background:var(--ior-deep);padding:var(--sp) var(--spx)}
 .steps-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
 @media(min-width:600px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.steps-grid{grid-template-columns:repeat(3,1fr)}}
-.step-card{background:rgba(255,255,255,.05);border-top:4px solid var(--hydip-purple);border-radius:var(--radius-md);padding:32px;position:relative;overflow:hidden}
+.step-card{background:rgba(255,255,255,.05);border-top:4px solid var(--hydip-purple);border-radius:0;padding:32px;position:relative;overflow:hidden}
 .step-card__ghost{position:absolute;top:-8px;right:16px;font-size:48px;font-weight:900;color:rgba(91,45,142,.2);line-height:1;pointer-events:none;user-select:none}
 .step-card__num{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);margin-bottom:12px}
 .step-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:#fff;margin-bottom:10px}
@@ -145,7 +145,7 @@ img{max-width:100%;display:block}
 .gated-section{background:var(--off-white);padding:var(--sp) var(--spx)}
 .gated-inner{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
 @media(min-width:768px){.gated-inner{grid-template-columns:auto 1fr}}
-.pdf-mockup{width:180px;height:240px;background:var(--hydip-light);border:2px solid rgba(91,45,142,.3);border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex-shrink:0;padding:20px;text-align:center}
+.pdf-mockup{width:180px;height:240px;background:var(--hydip-light);border:2px solid rgba(91,45,142,.3);border-radius:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex-shrink:0;padding:20px;text-align:center}
 .pdf-mockup__icon{font-size:40px}
 .pdf-mockup__label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hydip-purple)}
 .gated-text h2{font-size:clamp(24px,3vw,40px);font-weight:var(--fw-black);color:var(--ior-deep);margin-bottom:12px}
@@ -154,7 +154,7 @@ img{max-width:100%;display:block}
 .testimonial-section{background:var(--ior-deep);padding:var(--sp) var(--spx)}
 .testimonial-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
 @media(min-width:768px){.testimonial-grid{grid-template-columns:1fr 1fr}}
-.testimonial-card{background:rgba(255,255,255,.05);border-top:4px solid var(--hydip-purple);border-radius:var(--radius-md);padding:32px}
+.testimonial-card{background:rgba(255,255,255,.05);border-top:4px solid var(--hydip-purple);border-radius:0;padding:32px}
 .testimonial-card__quote{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.9);line-height:1.6;font-style:italic;margin-bottom:24px}
 .testimonial-card__name{font-size:15px;font-weight:700;color:#fff}
 .testimonial-card__role{font-size:13px;color:rgba(255,255,255,.55)}
@@ -169,8 +169,8 @@ img{max-width:100%;display:block}
 @media(min-width:600px){.insights-grid{grid-template-columns:repeat(2,1fr)}}
 @media(min-width:1024px){.insights-grid{grid-template-columns:repeat(3,1fr)}}
 .insight-card{display:flex;flex-direction:column;gap:14px}
-.insight-card__img{width:100%;aspect-ratio:16/9;background:var(--hydip-light);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:11px;font-family:monospace;color:var(--hydip-purple)}
-.insight-card__tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hydip-purple);background:var(--hydip-light);padding:3px 10px;border-radius:var(--radius-md)}
+.insight-card__img{width:100%;aspect-ratio:16/9;background:var(--hydip-light);border-radius:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-family:monospace;color:var(--hydip-purple)}
+.insight-card__tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hydip-purple);background:var(--hydip-light);padding:3px 10px;border-radius:0}
 .insight-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:var(--ior-deep);line-height:1.2}
 .insight-card__read{font-size:14px;color:var(--hydip-purple);font-weight:600}
 /* FAQs */
@@ -188,11 +188,11 @@ img{max-width:100%;display:block}
 @media(min-width:1024px){.form-section__inner{grid-template-columns:1fr 1fr;align-items:start}}
 .form-section__left h2{font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;margin-bottom:16px;line-height:1.2}
 .form-section__left p{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.75);line-height:1.6}
-.hubspot-embed{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:16px}
+.hubspot-embed{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:0;padding:32px;display:flex;flex-direction:column;gap:16px}
 .hubspot-embed__label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky);margin-bottom:8px}
 .hs-field{display:flex;flex-direction:column;gap:6px}
 .hs-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
-.hs-input{padding:12px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-md);color:#fff;font-size:15px;font-family:var(--font);outline:none;transition:border-color var(--transition-fast)}
+.hs-input{padding:12px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:0;color:#fff;font-size:15px;font-family:var(--font);outline:none;transition:border-color var(--transition-fast)}
 .hs-input:focus{border-color:var(--hydip-purple)}
 .hs-input::placeholder{color:rgba(255,255,255,.35)}
 .hs-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -338,9 +338,9 @@ img{max-width:100%;display:block}
 <section class="tabs-section" id="what">
   <div class="inner">
     <div class="fade-up" style="margin-bottom:40px;">
-      <span class="section-eyebrow">What HyDip™ FMS Does</span>
+      <span class="eyebrow">What HyDip™ FMS Does</span>
       <h2 class="section-title">Four components. One complete system.</h2>
-      <p class="section-sub">HyDip™ FMS is built around four integrated components that work together to give you complete fuel visibility.</p>
+      <p class="section-body">HyDip™ FMS is built around four integrated components that work together to give you complete fuel visibility.</p>
     </div>
     <div class="component-tabs" role="tablist">
       <button class="component-tab active" role="tab" onclick="switchComp(event,'tank-monitoring')">Tank Monitoring</button>
@@ -569,21 +569,6 @@ img{max-width:100%;display:block}
   </div>
 </section>
 
-<section class="sos-banner">
-  <div class="inner">
-    <div class="sos-banner__inner">
-      <div class="sos-banner__text fade-up">
-        <h2>Your fuel supply is never at risk.</h2>
-        <p>IOR's owned terminal infrastructure at Lytton and Port Bonython means we control our supply chain end-to-end — giving you certainty of supply, even in a disrupted market.</p>
-      </div>
-      <div class="sos-banner__ctas fade-up fade-up--d1">
-        <a href="06_Supply_Trading_v2.html" class="btn btn--ghost">Supply &amp; Trading →</a>
-        <a href="06a_Terminals.html" class="btn btn--ghost">Our Terminals →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="pre-footer">
   <div class="inner">
     <div class="pre-footer__inner">
@@ -697,18 +682,70 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </section>
-<footer class="site-footer">
-  <div class="footer-nav-grid">
-    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
-    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="05_Equipment_Infrastructure_v2.html" class="footer-col__link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
-    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
-    <div><div class="footer-col__title">Corporate</div><div class="footer-col__links"><a href="#" class="footer-col__link">About IOR</a><a href="#" class="footer-col__link">Careers</a><a href="#" class="footer-col__link">Case Studies</a><a href="#" class="footer-col__link">News &amp; Updates</a></div></div>
-    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="#" class="footer-col__link">Make a Payment</a><a href="#" class="footer-col__link">Contact Us</a></div></div>
-    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="#" class="footer-state-pill">QLD</a><a href="#" class="footer-state-pill">NSW</a><a href="#" class="footer-state-pill">VIC</a><a href="#" class="footer-state-pill">SA</a><a href="#" class="footer-state-pill">WA</a><a href="#" class="footer-state-pill">NT</a></div></div>
-  </div>
-  <div class="footer-legal">
-    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
-    <div class="footer-social"><a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a><a href="#" class="footer-social__icon" aria-label="Facebook">f</a><a href="#" class="footer-social__icon" aria-label="Instagram">📷</a><a href="#" class="footer-social__icon" aria-label="YouTube">▶</a></div>
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Digital Platforms</h4>
+        <ul>
+          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
+          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate</h4>
+        <ul>
+          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Modern Slavery Statement</a>
+        <a href="#">HSE Policy</a>
+      </div>
+    </div>
   </div>
 </footer>
 
@@ -719,7 +756,7 @@ img{max-width:100%;display:block}
     <div class="drawer__item"><div class="drawer__link" data-sub="sub-fuel">Fuel Solutions <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-fuel"><a href="03_Ground_Fuels_v2.html" class="drawer__sub-link">Ground Fuels</a><a href="04_Aviation_v2.html" class="drawer__sub-link">Aviation</a><a href="06_Supply_Trading_v2.html" class="drawer__sub-link">Supply &amp; Trading</a></div></div>
     <div class="drawer__item"><div class="drawer__link" data-sub="sub-digital">Digital Platforms <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-digital"><a href="07a_HyDip_FMS_v2.html" class="drawer__sub-link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="drawer__sub-link">Fuelcharge</a><a href="07c_Customer_Portal_v2.html" class="drawer__sub-link">Customer Portal</a></div></div>
   </nav>
-  <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;border-radius:var(--radius-md);">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;border-radius:var(--radius-md);">Apply for an Account</a></div>
+  <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
 </div>
 
 <script>

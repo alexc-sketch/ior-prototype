@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>News &amp; Insights — IOR | Fuel Industry Insights, Case Studies &amp; Updates</title>
+<meta name="description" content="The latest fuel industry insights, case studies, community stories, and company updates from IOR — Australia's sovereign fuel infrastructure company.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="ior-global.css">
+<style>
+/* ── BLOG LIST PAGE STYLES ─────────────────────────────────── */
+/* Elementor-compatible: each section maps to an Elementor section/widget */
+
+/* Hero */
+.blog-hero {
+  background: var(--ior-deep);
+  padding: 72px 0 56px;
+}
+.blog-hero__eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ior-sky); margin-bottom: 14px;
+}
+.blog-hero__h1 {
+  font-size: clamp(32px, 5vw, 52px); font-weight: 900;
+  color: #fff; line-height: 1.1; margin-bottom: 16px;
+}
+.blog-hero__lead {
+  font-size: 17px; color: rgba(255,255,255,.7);
+  line-height: 1.7; max-width: 580px;
+}
+
+/* Category filter bar — Elementor: Nav Menu widget or custom HTML widget */
+.category-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--border-light);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+  box-shadow: 0 2px 12px rgba(0,0,0,.06);
+}
+.category-bar__inner {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding: 0;
+}
+.category-bar__inner::-webkit-scrollbar { display: none; }
+.cat-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--mid-grey);
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+.cat-btn:hover { color: var(--ior-blue); }
+.cat-btn.active {
+  color: var(--ior-blue);
+  border-bottom-color: var(--ior-blue);
+}
+.cat-btn__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ior-light-blue-bg);
+  color: var(--ior-blue);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  min-width: 20px;
+}
+
+/* Featured post — Elementor: Image Box widget (full-width) */
+.featured-post {
+  background: var(--off-white);
+  padding: 64px 0;
+}
+.featured-post__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.featured-post__img {
+  background: var(--ior-deep);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255,255,255,.3);
+  font-size: 13px;
+  text-align: center;
+  padding: 24px;
+}
+.featured-post__tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ior-blue);
+  background: var(--ior-light-blue-bg);
+  padding: 4px 10px;
+  margin-bottom: 16px;
+}
+.featured-post__title {
+  font-size: clamp(22px, 3vw, 32px); font-weight: 900;
+  color: var(--ior-charcoal); line-height: 1.25; margin-bottom: 16px;
+}
+.featured-post__excerpt {
+  font-size: 15px; color: var(--mid-grey);
+  line-height: 1.75; margin-bottom: 24px;
+}
+.featured-post__meta {
+  font-size: 12px; color: var(--mid-grey);
+  margin-bottom: 24px;
+}
+.featured-post__meta span { margin-right: 16px; }
+
+/* Main content area — 2-column layout */
+.blog-main {
+  padding: 64px 0;
+  background: #fff;
+}
+.blog-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Post grid — Elementor: Posts widget */
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+.post-card {
+  background: #fff;
+  border: 1px solid var(--border-light);
+  border-top: 3px solid var(--ior-blue);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.post-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(3,85,163,.1);
+}
+.post-card--community { border-top-color: var(--ior-sky); }
+.post-card--sustainability { border-top-color: #2E7D32; }
+.post-card--aviation { border-top-color: var(--aviation-gold); }
+.post-card--careers { border-top-color: #7B1FA2; }
+.post-card__img {
+  background: var(--off-white);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mid-grey);
+  font-size: 12px;
+  text-align: center;
+  padding: 16px;
+}
+.post-card__body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+.post-card__tag {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--ior-blue);
+  margin-bottom: 10px;
+}
+.post-card--community .post-card__tag { color: var(--ior-sky); }
+.post-card--sustainability .post-card__tag { color: #2E7D32; }
+.post-card--aviation .post-card__tag { color: var(--aviation-gold); }
+.post-card--careers .post-card__tag { color: #7B1FA2; }
+.post-card__title {
+  font-size: 16px; font-weight: 800;
+  color: var(--ior-charcoal); line-height: 1.4;
+  margin-bottom: 10px; flex: 1;
+}
+.post-card__excerpt {
+  font-size: 13px; color: var(--mid-grey);
+  line-height: 1.65; margin-bottom: 16px;
+}
+.post-card__meta {
+  font-size: 11px; color: var(--mid-grey);
+  display: flex; gap: 12px; align-items: center;
+  margin-bottom: 12px;
+}
+.post-card__read {
+  font-size: 13px; font-weight: 700;
+  color: var(--ior-blue); text-decoration: none;
+  align-self: flex-start;
+}
+.post-card__read:hover { text-decoration: underline; }
+
+/* Pagination */
+.pagination {
+  display: flex; gap: 8px; align-items: center;
+  margin-top: 48px; justify-content: center;
+}
+.pagination__btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  border: 1px solid var(--border-light);
+  background: #fff; color: var(--ior-charcoal);
+  font-size: 14px; font-weight: 600; cursor: pointer;
+  text-decoration: none; transition: all 0.2s;
+}
+.pagination__btn:hover, .pagination__btn.active {
+  background: var(--ior-blue); color: #fff; border-color: var(--ior-blue);
+}
+.pagination__btn--prev, .pagination__btn--next {
+  width: auto; padding: 0 16px; font-size: 13px;
+}
+
+/* Sidebar — Elementor: Sidebar widget area */
+.blog-sidebar { display: flex; flex-direction: column; gap: 32px; }
+.sidebar-widget {
+  background: var(--off-white);
+  padding: 28px;
+  border-top: 3px solid var(--ior-blue);
+}
+.sidebar-widget__title {
+  font-size: 13px; font-weight: 800; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--ior-charcoal);
+  margin-bottom: 20px; padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+.sidebar-cat-list { list-style: none; padding: 0; margin: 0; }
+.sidebar-cat-list li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0; border-bottom: 1px solid var(--border-light);
+}
+.sidebar-cat-list li:last-child { border-bottom: none; }
+.sidebar-cat-list a {
+  font-size: 14px; color: var(--ior-charcoal); text-decoration: none;
+  font-weight: 500; transition: color 0.2s;
+}
+.sidebar-cat-list a:hover { color: var(--ior-blue); }
+.sidebar-cat-list .count {
+  font-size: 11px; font-weight: 700; color: var(--mid-grey);
+  background: #fff; padding: 2px 8px; border: 1px solid var(--border-light);
+}
+.sidebar-recent { display: flex; flex-direction: column; gap: 16px; }
+.sidebar-recent__item { display: flex; gap: 12px; align-items: flex-start; }
+.sidebar-recent__img {
+  width: 64px; height: 48px; flex-shrink: 0;
+  background: var(--ior-deep);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.3); font-size: 9px; text-align: center;
+}
+.sidebar-recent__title {
+  font-size: 13px; font-weight: 700; color: var(--ior-charcoal);
+  line-height: 1.4; text-decoration: none;
+}
+.sidebar-recent__title:hover { color: var(--ior-blue); }
+.sidebar-recent__meta { font-size: 11px; color: var(--mid-grey); margin-top: 4px; }
+.sidebar-cta {
+  background: var(--ior-blue);
+  padding: 28px;
+  text-align: center;
+}
+.sidebar-cta__title {
+  font-size: 16px; font-weight: 900; color: #fff;
+  margin-bottom: 10px; line-height: 1.3;
+}
+.sidebar-cta__body {
+  font-size: 13px; color: rgba(255,255,255,.75);
+  line-height: 1.6; margin-bottom: 20px;
+}
+.sidebar-tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
+.sidebar-tag {
+  font-size: 12px; font-weight: 600; color: var(--ior-blue);
+  background: var(--ior-light-blue-bg); padding: 4px 10px;
+  text-decoration: none; transition: all 0.2s;
+}
+.sidebar-tag:hover { background: var(--ior-blue); color: #fff; }
+
+/* Load more / pagination area */
+.load-more-bar {
+  text-align: center; padding: 48px 0 0;
+  border-top: 1px solid var(--border-light);
+  margin-top: 48px;
+}
+
+/* Category section dividers */
+.cat-section-label {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ior-blue);
+  padding: 0 0 12px; margin: 40px 0 24px;
+  border-bottom: 2px solid var(--ior-blue);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.cat-section-label a {
+  font-size: 12px; color: var(--ior-blue); text-decoration: none; font-weight: 600;
+}
+.cat-section-label a:hover { text-decoration: underline; }
+
+/* Hidden post cards for JS filtering */
+.post-card[data-cat] { display: flex; }
+.post-card.hidden { display: none !important; }
+
+/* Newsletter signup strip */
+.newsletter-strip {
+  background: var(--ior-navy);
+  padding: 48px 0;
+}
+.newsletter-strip__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.newsletter-strip__text h2 {
+  font-size: clamp(22px, 3vw, 30px); font-weight: 900;
+  color: #fff; margin-bottom: 10px;
+}
+.newsletter-strip__text p {
+  font-size: 15px; color: rgba(255,255,255,.7); line-height: 1.65;
+}
+.newsletter-form {
+  display: flex; gap: 0;
+}
+.newsletter-form input {
+  flex: 1; padding: 14px 16px; font-size: 14px;
+  border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08);
+  color: #fff; outline: none;
+}
+.newsletter-form input::placeholder { color: rgba(255,255,255,.4); }
+.newsletter-form button {
+  padding: 14px 24px; background: var(--ior-blue); color: #fff;
+  font-size: 14px; font-weight: 700; border: none; cursor: pointer;
+  white-space: nowrap; transition: background 0.2s;
+}
+.newsletter-form button:hover { background: var(--ior-deep); }
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .blog-layout { grid-template-columns: 1fr; }
+  .blog-sidebar { display: grid; grid-template-columns: repeat(2, 1fr); }
+  .featured-post__grid { grid-template-columns: 1fr; gap: 32px; }
+  .newsletter-strip__inner { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 768px) {
+  .posts-grid { grid-template-columns: 1fr; }
+  .blog-sidebar { grid-template-columns: 1fr; }
+  .category-bar__inner { gap: 0; }
+  .cat-btn { padding: 14px 14px; font-size: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- WIREFRAME NAV -->
+<nav class="wf-nav">
+  <strong>IOR WIREFRAMES</strong>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="IOR_Design_System.html">Design System</a>
+  <a href="09_About_IOR_v2.html">About IOR</a>
+  <a href="11_Blog_List.html" style="font-weight:700;">11 Blog List</a>
+  <span class="wf-nav__module">MODULE 11 · News &amp; Insights · Blog List · V1</span>
+  <span class="wf-nav__annotation">ELEMENTOR NOTE: Category filter = Nav Menu or custom HTML widget. Posts grid = Posts widget (custom skin). Sidebar = Elementor sidebar widget area. Newsletter = custom HTML widget. Each section = Elementor section with container.</span>
+</nav>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__announce">📢 IOR White Sands NOW OPEN — Australia's newest inland fuel stop</div>
+    <div class="utility-links">
+      <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
+      <a href="08d_Make_a_Payment_v2.html">💳 Make a Payment</a>
+      <a href="tel:1300457467">📞 1300 457 467</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMARY NAV -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links">
+      <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions ▾</a></li>
+      <li><a href="07_Digital_Platforms_v2.html">Digital Platforms ▾</a></li>
+      <li><a href="08_Industries_v2.html">Industries We Serve ▾</a></li>
+      <li><a href="09_About_IOR_v2.html">About IOR ▾</a></li>
+      <li><a href="08_Support_Hub_v2.html">Support &amp; Contact ▾</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <button class="nav-hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary btn--sm">Apply for an Account</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ──────────────────────────────────────────────────── -->
+<!-- Elementor: Section with dark background, Text Editor widget -->
+<section class="blog-hero" aria-label="News and Insights">
+  <div class="container">
+    <div class="blog-hero__eyebrow">News &amp; Insights</div>
+    <h1 class="blog-hero__h1">The IOR Perspective.</h1>
+    <p class="blog-hero__lead">Fuel industry insights, case studies, community stories, and company updates from Australia's sovereign fuel infrastructure company.</p>
+  </div>
+</section>
+
+<!-- ── CATEGORY FILTER BAR ───────────────────────────────────── -->
+<!-- Elementor: Nav Menu widget or custom HTML widget with JS filter -->
+<!-- Elementor note: Use dynamic tags to populate post counts from WP query -->
+<div class="category-bar" role="navigation" aria-label="Filter by category">
+  <div class="container">
+    <div class="category-bar__inner" role="list">
+      <button class="cat-btn active" data-filter="all" role="listitem">
+        All Posts <span class="cat-btn__count">24</span>
+      </button>
+      <button class="cat-btn" data-filter="industry-insights" role="listitem">
+        Industry Insights <span class="cat-btn__count">8</span>
+      </button>
+      <button class="cat-btn" data-filter="case-studies" role="listitem">
+        Case Studies <span class="cat-btn__count">5</span>
+      </button>
+      <button class="cat-btn" data-filter="community" role="listitem">
+        Community <span class="cat-btn__count">4</span>
+      </button>
+      <button class="cat-btn" data-filter="sustainability" role="listitem">
+        Sustainability &amp; HSE <span class="cat-btn__count">3</span>
+      </button>
+      <button class="cat-btn" data-filter="aviation" role="listitem">
+        Aviation <span class="cat-btn__count">2</span>
+      </button>
+      <button class="cat-btn" data-filter="careers" role="listitem">
+        Careers &amp; Culture <span class="cat-btn__count">2</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURED POST ─────────────────────────────────────────── -->
+<!-- Elementor: Image Box widget (full-width, 2-col) with Featured Post tag -->
+<section class="featured-post" aria-label="Featured article">
+  <div class="container">
+    <div class="featured-post__grid">
+      <div class="featured-post__img" aria-label="Featured article image placeholder">
+        <div>
+          <strong style="display:block;color:rgba(255,255,255,.5);margin-bottom:8px;">FEATURED IMAGE</strong>
+          <em style="color:rgba(255,255,255,.3);">IOR White Sands — aerial view, outback Queensland</em>
+        </div>
+      </div>
+      <div class="featured-post__content">
+        <span class="featured-post__tag">Company News</span>
+        <h2 class="featured-post__title">IOR White Sands NOW OPEN: Australia's Newest Inland Fuel Stop</h2>
+        <p class="featured-post__excerpt">IOR has officially opened its newest inland fuel stop at White Sands — expanding our network deeper into outback Queensland and delivering sovereign fuel supply to communities that need it most.</p>
+        <div class="featured-post__meta">
+          <span>📅 April 2026</span>
+          <span>✍️ IOR Marketing</span>
+          <span>⏱ 4 min read</span>
+        </div>
+        <a href="#" class="btn btn--primary">Read Article →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── MAIN CONTENT + SIDEBAR ────────────────────────────────── -->
+<!-- Elementor: 2-column section — Posts widget (left) + Sidebar widget area (right) -->
+<section class="blog-main" aria-label="All articles">
+  <div class="container">
+    <div class="blog-layout">
+
+      <!-- POSTS COLUMN -->
+      <div class="posts-column">
+
+        <!-- Category: Industry Insights -->
+        <div class="cat-section-label" data-cat-header="industry-insights">
+          Industry Insights
+          <a href="#">View all →</a>
+        </div>
+        <div class="posts-grid" id="posts-grid">
+
+          <article class="post-card" data-cat="industry-insights">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>Diesel price chart</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Industry Insights</span>
+              <h3 class="post-card__title">Diesel Price Volatility in 2026: What Australian Fleet Operators Need to Know</h3>
+              <p class="post-card__excerpt">Global supply disruptions, refinery capacity, and the AUD/USD exchange rate are all driving diesel price volatility. Here's how to protect your fleet.</p>
+              <div class="post-card__meta">
+                <span>April 2026</span>
+                <span>5 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card" data-cat="industry-insights">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>Fuel supply chain</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Industry Insights</span>
+              <h3 class="post-card__title">Why Sovereign Fuel Supply Matters More Than Ever for Australian Industry</h3>
+              <p class="post-card__excerpt">When global supply chains tighten, Australian businesses that rely on imported fuel feel it first. IOR's domestic infrastructure changes that equation.</p>
+              <div class="post-card__meta">
+                <span>March 2026</span>
+                <span>6 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card" data-cat="industry-insights">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>AdBlue / HyBlue</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Industry Insights</span>
+              <h3 class="post-card__title">AdBlue Shortages: How HyBlue™ Kept Australian Fleets Moving</h3>
+              <p class="post-card__excerpt">The 2022 AdBlue shortage exposed a critical vulnerability in Australia's supply chain. IOR's HyBlue™ product provided a domestic solution when global supply failed.</p>
+              <div class="post-card__meta">
+                <span>February 2026</span>
+                <span>4 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card" data-cat="industry-insights">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>Mining fuel management</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Industry Insights</span>
+              <h3 class="post-card__title">Fuel Management in Remote Mining: The Hidden Cost of Poor Visibility</h3>
+              <p class="post-card__excerpt">Remote mining operations can lose thousands of litres to theft, spillage, and inefficiency each month. Real-time fuel management changes that.</p>
+              <div class="post-card__meta">
+                <span>January 2026</span>
+                <span>7 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <!-- Category: Case Studies -->
+          <div class="cat-section-label" data-cat-header="case-studies" style="grid-column: 1 / -1;">
+            Case Studies
+            <a href="09d_Case_Studies.html">View all →</a>
+          </div>
+
+          <article class="post-card" data-cat="case-studies">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>MPC Kinetic Tanami pipeline</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Case Study</span>
+              <h3 class="post-card__title">MPC Kinetic: Fuelling Australia's Longest Onshore Pipeline Project</h3>
+              <p class="post-card__excerpt">When MPC Kinetic needed a fuel partner for the Tanami pipeline — one of Australia's most remote infrastructure projects — IOR delivered. Here's how.</p>
+              <div class="post-card__meta">
+                <span>March 2026</span>
+                <span>8 min read</span>
+              </div>
+              <a href="09d1_MPC_Kinetic.html" class="post-card__read">Read Case Study →</a>
+            </div>
+          </article>
+
+          <article class="post-card" data-cat="case-studies">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>Tin Can Bay Marina</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Case Study</span>
+              <h3 class="post-card__title">Tin Can Bay Marina: Reliable Marine Fuel for Queensland's Fishing Fleet</h3>
+              <p class="post-card__excerpt">Tin Can Bay Marina needed a fuel partner who understood the unique demands of a working fishing port. IOR's marine fuel solution delivered reliability and compliance.</p>
+              <div class="post-card__meta">
+                <span>February 2026</span>
+                <span>6 min read</span>
+              </div>
+              <a href="09d2_Tin_Can_Bay.html" class="post-card__read">Read Case Study →</a>
+            </div>
+          </article>
+
+          <article class="post-card" data-cat="case-studies">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>Flight training Toowoomba</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Case Study</span>
+              <h3 class="post-card__title">Toowoomba Flight Training Academy: Precision Aviation Fuel at Scale</h3>
+              <p class="post-card__excerpt">A Qantas-linked flight training academy at Toowoomba Wellcamp Airport needed a Jet A-1 partner who could match their precision standards. IOR delivered.</p>
+              <div class="post-card__meta">
+                <span>January 2026</span>
+                <span>5 min read</span>
+              </div>
+              <a href="09d3_Flight_Training.html" class="post-card__read">Read Case Study →</a>
+            </div>
+          </article>
+
+          <!-- Category: Community -->
+          <div class="cat-section-label" data-cat-header="community" style="grid-column: 1 / -1;">
+            Community
+            <a href="09b_Community.html">View all →</a>
+          </div>
+
+          <article class="post-card post-card--community" data-cat="community">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>LifeFlight helicopter</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Community</span>
+              <h3 class="post-card__title">How IOR's LifeFlight Partnership Is Saving Lives in Outback Queensland</h3>
+              <p class="post-card__excerpt">When the nearest hospital is 400km away, the LifeFlight helicopter is the only option. IOR's sponsorship helps keep it in the air.</p>
+              <div class="post-card__meta">
+                <span>March 2026</span>
+                <span>4 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card post-card--community" data-cat="community">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>Heart of Australia road train</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Community</span>
+              <h3 class="post-card__title">Heart of Australia: 150,000km of Specialist Care on Wheels</h3>
+              <p class="post-card__excerpt">Over 5,000 patients. 250+ lives saved. Heart of Australia's road train clinics reach communities that would otherwise go without specialist care.</p>
+              <div class="post-card__meta">
+                <span>February 2026</span>
+                <span>5 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <!-- Category: Sustainability -->
+          <div class="cat-section-label" data-cat-header="sustainability" style="grid-column: 1 / -1;">
+            Sustainability &amp; HSE
+            <a href="09c_Sustainability.html">View all →</a>
+          </div>
+
+          <article class="post-card post-card--sustainability" data-cat="sustainability">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>ISO certification</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Sustainability &amp; HSE</span>
+              <h3 class="post-card__title">IOR Achieves ISO 45001:2018 Recertification — What It Means for Our Customers</h3>
+              <p class="post-card__excerpt">IOR's ISO 45001:2018 recertification confirms our Occupational Health &amp; Safety Management System meets the world's highest standard. Here's what that means in practice.</p>
+              <div class="post-card__meta">
+                <span>April 2026</span>
+                <span>4 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card post-card--sustainability" data-cat="sustainability">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>Zero harm safety</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Sustainability &amp; HSE</span>
+              <h3 class="post-card__title">Zero Harm: What IOR's Safety Culture Looks Like on the Ground</h3>
+              <p class="post-card__excerpt">Zero Harm isn't a slogan at IOR — it's a daily operating standard. From pre-start checks to incident reporting, here's how our safety culture works in practice.</p>
+              <div class="post-card__meta">
+                <span>March 2026</span>
+                <span>6 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <!-- Category: Aviation -->
+          <div class="cat-section-label" data-cat-header="aviation" style="grid-column: 1 / -1;">
+            Aviation
+            <a href="04_Aviation_v2.html">View all →</a>
+          </div>
+
+          <article class="post-card post-card--aviation" data-cat="aviation">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>IOR Aviation Camden</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Aviation</span>
+              <h3 class="post-card__title">IOR Aviation Lands in Camden: Expanding the Network South of Sydney</h3>
+              <p class="post-card__excerpt">IOR Aviation has opened at Camden Airport — bringing our Jet A-1 and Avgas network to one of New South Wales' busiest general aviation hubs.</p>
+              <div class="post-card__meta">
+                <span>March 2026</span>
+                <span>3 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <!-- Category: Careers -->
+          <div class="cat-section-label" data-cat-header="careers" style="grid-column: 1 / -1;">
+            Careers &amp; Culture
+            <a href="10_Careers_v2.html">View all →</a>
+          </div>
+
+          <article class="post-card post-card--careers" data-cat="careers">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>IOR team regional</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Careers &amp; Culture</span>
+              <h3 class="post-card__title">Stewart Morland Takes Top Prize at Surat Basin Energy Awards</h3>
+              <p class="post-card__excerpt">IOR's Surat Basin Regional Manager Stewart Morland was recognised at the 2025 Surat Basin Energy Awards — a testament to the people who make IOR what it is.</p>
+              <div class="post-card__meta">
+                <span>February 2026</span>
+                <span>3 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+          <article class="post-card post-card--careers" data-cat="careers">
+            <div class="post-card__img">IMAGE PLACEHOLDER<br><em>IOR apprentice</em></div>
+            <div class="post-card__body">
+              <span class="post-card__tag">Careers &amp; Culture</span>
+              <h3 class="post-card__title">From Apprentice to Depot Manager: How IOR Grows Its Own Leaders</h3>
+              <p class="post-card__excerpt">IOR's apprenticeship program has produced some of our most senior leaders. Here's the story of one apprentice who went all the way to depot manager in five years.</p>
+              <div class="post-card__meta">
+                <span>January 2026</span>
+                <span>5 min read</span>
+              </div>
+              <a href="#" class="post-card__read">Read Article →</a>
+            </div>
+          </article>
+
+        </div><!-- /posts-grid -->
+
+        <!-- Pagination -->
+        <div class="pagination" role="navigation" aria-label="Page navigation">
+          <a href="#" class="pagination__btn pagination__btn--prev">← Previous</a>
+          <a href="#" class="pagination__btn active">1</a>
+          <a href="#" class="pagination__btn">2</a>
+          <a href="#" class="pagination__btn">3</a>
+          <span style="padding:0 8px;color:var(--mid-grey);">…</span>
+          <a href="#" class="pagination__btn">8</a>
+          <a href="#" class="pagination__btn pagination__btn--next">Next →</a>
+        </div>
+
+      </div><!-- /posts-column -->
+
+      <!-- SIDEBAR -->
+      <!-- Elementor: Sidebar widget area — assign widgets in WP Customizer -->
+      <aside class="blog-sidebar" aria-label="Blog sidebar">
+
+        <!-- Widget: Categories -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title">Browse by Category</div>
+          <ul class="sidebar-cat-list">
+            <li>
+              <a href="#" data-filter="all">All Posts</a>
+              <span class="count">24</span>
+            </li>
+            <li>
+              <a href="#" data-filter="industry-insights">Industry Insights</a>
+              <span class="count">8</span>
+            </li>
+            <li>
+              <a href="#" data-filter="case-studies">Case Studies</a>
+              <span class="count">5</span>
+            </li>
+            <li>
+              <a href="#" data-filter="community">Community</a>
+              <span class="count">4</span>
+            </li>
+            <li>
+              <a href="#" data-filter="sustainability">Sustainability &amp; HSE</a>
+              <span class="count">3</span>
+            </li>
+            <li>
+              <a href="#" data-filter="aviation">Aviation</a>
+              <span class="count">2</span>
+            </li>
+            <li>
+              <a href="#" data-filter="careers">Careers &amp; Culture</a>
+              <span class="count">2</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Widget: Recent Posts -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title">Recent Posts</div>
+          <div class="sidebar-recent">
+            <div class="sidebar-recent__item">
+              <div class="sidebar-recent__img">IMG</div>
+              <div>
+                <a href="#" class="sidebar-recent__title">IOR White Sands NOW OPEN</a>
+                <div class="sidebar-recent__meta">April 2026</div>
+              </div>
+            </div>
+            <div class="sidebar-recent__item">
+              <div class="sidebar-recent__img">IMG</div>
+              <div>
+                <a href="#" class="sidebar-recent__title">ISO 45001:2018 Recertification</a>
+                <div class="sidebar-recent__meta">April 2026</div>
+              </div>
+            </div>
+            <div class="sidebar-recent__item">
+              <div class="sidebar-recent__img">IMG</div>
+              <div>
+                <a href="#" class="sidebar-recent__title">IOR Aviation Lands in Camden</a>
+                <div class="sidebar-recent__meta">March 2026</div>
+              </div>
+            </div>
+            <div class="sidebar-recent__item">
+              <div class="sidebar-recent__img">IMG</div>
+              <div>
+                <a href="#" class="sidebar-recent__title">MPC Kinetic: Tanami Pipeline</a>
+                <div class="sidebar-recent__meta">March 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Widget: CTA -->
+        <div class="sidebar-cta">
+          <div class="sidebar-cta__title">Ready to partner with IOR?</div>
+          <p class="sidebar-cta__body">Apply for a fuel account and get access to Australia's most reliable sovereign fuel network.</p>
+          <a href="08a_Contact_Us_v2.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.4);color:#fff;width:100%;justify-content:center;">Apply for an Account →</a>
+        </div>
+
+        <!-- Widget: Tag Cloud -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title">Popular Topics</div>
+          <div class="sidebar-tag-cloud">
+            <a href="#" class="sidebar-tag">Diesel</a>
+            <a href="#" class="sidebar-tag">Aviation Fuel</a>
+            <a href="#" class="sidebar-tag">Fleet Management</a>
+            <a href="#" class="sidebar-tag">HyDip FMS</a>
+            <a href="#" class="sidebar-tag">ISO 45001</a>
+            <a href="#" class="sidebar-tag">Zero Harm</a>
+            <a href="#" class="sidebar-tag">LifeFlight</a>
+            <a href="#" class="sidebar-tag">Mining</a>
+            <a href="#" class="sidebar-tag">Agriculture</a>
+            <a href="#" class="sidebar-tag">Apprentices</a>
+            <a href="#" class="sidebar-tag">Eromanga</a>
+            <a href="#" class="sidebar-tag">Fuelcharge</a>
+          </div>
+        </div>
+
+        <!-- Widget: Related Case Studies -->
+        <div class="sidebar-widget">
+          <div class="sidebar-widget__title">Featured Case Studies</div>
+          <div class="sidebar-recent">
+            <div class="sidebar-recent__item">
+              <div class="sidebar-recent__img" style="background:var(--ior-navy);">IMG</div>
+              <div>
+                <a href="09d1_MPC_Kinetic.html" class="sidebar-recent__title">MPC Kinetic — Tanami Pipeline</a>
+                <div class="sidebar-recent__meta">Infrastructure · Mining</div>
+              </div>
+            </div>
+            <div class="sidebar-recent__item">
+              <div class="sidebar-recent__img" style="background:var(--ior-navy);">IMG</div>
+              <div>
+                <a href="09d2_Tin_Can_Bay.html" class="sidebar-recent__title">Tin Can Bay Marina</a>
+                <div class="sidebar-recent__meta">Marine · Regional</div>
+              </div>
+            </div>
+            <div class="sidebar-recent__item">
+              <div class="sidebar-recent__img" style="background:var(--ior-navy);">IMG</div>
+              <div>
+                <a href="09d3_Flight_Training.html" class="sidebar-recent__title">Toowoomba Flight Training</a>
+                <div class="sidebar-recent__meta">Aviation · Education</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </aside><!-- /blog-sidebar -->
+
+    </div><!-- /blog-layout -->
+  </div><!-- /container -->
+</section>
+
+<!-- ── NEWSLETTER STRIP ───────────────────────────────────────── -->
+<!-- Elementor: Custom HTML widget or Form widget -->
+<section class="newsletter-strip" aria-label="Newsletter signup">
+  <div class="container">
+    <div class="newsletter-strip__inner">
+      <div class="newsletter-strip__text">
+        <h2>Stay ahead of the fuel industry.</h2>
+        <p>Get IOR's latest insights, case studies, and company news delivered to your inbox. No spam — just the fuel intelligence your business needs.</p>
+      </div>
+      <div>
+        <form class="newsletter-form" action="#" method="post" aria-label="Newsletter signup form">
+          <input type="email" name="email" placeholder="Your work email address" required aria-label="Email address">
+          <button type="submit">Subscribe →</button>
+        </form>
+        <p style="font-size:11px;color:rgba(255,255,255,.4);margin-top:10px;">By subscribing you agree to our <a href="#" style="color:rgba(255,255,255,.5);">Privacy Policy</a>. Unsubscribe at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────── -->
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Digital Platforms</h4>
+        <ul>
+          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
+          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate</h4>
+        <ul>
+          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Modern Slavery Statement</a>
+        <a href="#">HSE Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer-overlay"></div>
+<div class="drawer">
+  <div class="drawer__header">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <button class="drawer__close">✕</button>
+  </div>
+  <div class="drawer__nav">
+    <div class="drawer__section">
+      <div class="drawer__section-label">Fuel Solutions</div>
+      <a href="03_Ground_Fuels_v2.html" class="drawer__link">Ground Fuels <span>›</span></a>
+      <a href="04_Aviation_v2.html" class="drawer__link">Aviation <span>›</span></a>
+      <a href="05_Equipment_Infrastructure_v2.html" class="drawer__link">Equipment &amp; Infrastructure <span>›</span></a>
+      <a href="06_Supply_Trading_v2.html" class="drawer__link">Supply &amp; Trading <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">About IOR</div>
+      <a href="09a_Our_Leadership.html" class="drawer__link">Our Leadership <span>›</span></a>
+      <a href="09b_Community.html" class="drawer__link">Community &amp; Giving Back <span>›</span></a>
+      <a href="09c_Sustainability.html" class="drawer__link">Sustainability &amp; HSE <span>›</span></a>
+      <a href="10_Careers_v2.html" class="drawer__link">Careers <span>›</span></a>
+      <a href="11_Blog_List.html" class="drawer__link">News &amp; Insights <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">Industries</div>
+      <a href="08_Industries_v2.html" class="drawer__link">All Industries <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">Support</div>
+      <a href="08a_Contact_Us_v2.html" class="drawer__link">Contact Us <span>›</span></a>
+      <a href="08c_Find_a_Location_v2.html" class="drawer__link">Find a Location <span>›</span></a>
+    </div>
+  </div>
+  <div class="drawer__footer">
+    <a href="https://customer.ior.com.au" class="btn btn--outline">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</div>
+
+<script src="ior-motion.js"></script>
+<script>
+// ── CATEGORY FILTER ─────────────────────────────────────────────
+// Elementor note: In WordPress, this is handled by the Posts widget's
+// built-in AJAX filter or a plugin like JetSmartFilters / JetEngine.
+// This vanilla JS implementation demonstrates the UX behaviour.
+
+(function() {
+  const catBtns = document.querySelectorAll('.cat-btn, .sidebar-cat-list a[data-filter]');
+  const posts = document.querySelectorAll('.post-card[data-cat]');
+  const catHeaders = document.querySelectorAll('[data-cat-header]');
+
+  function filterPosts(filter) {
+    // Update active state on all filter buttons
+    document.querySelectorAll('.cat-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.filter === filter);
+    });
+
+    // Show/hide posts
+    posts.forEach(post => {
+      if (filter === 'all' || post.dataset.cat === filter) {
+        post.classList.remove('hidden');
+      } else {
+        post.classList.add('hidden');
+      }
+    });
+
+    // Show/hide category section headers
+    catHeaders.forEach(header => {
+      if (filter === 'all' || header.dataset.catHeader === filter) {
+        header.style.display = '';
+      } else {
+        header.style.display = 'none';
+      }
+    });
+  }
+
+  catBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      const filter = this.dataset.filter;
+      if (filter) filterPosts(filter);
+    });
+  });
+})();
+
+// ── MOBILE DRAWER ────────────────────────────────────────────────
+(function() {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const drawer = document.querySelector('.drawer');
+  const overlay = document.querySelector('.drawer-overlay');
+  const closeBtn = document.querySelector('.drawer__close');
+  if (!hamburger) return;
+  function openDrawer() { drawer.classList.add('open'); overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function closeDrawer() { drawer.classList.remove('open'); overlay.classList.remove('open'); document.body.style.overflow = ''; }
+  hamburger.addEventListener('click', openDrawer);
+  closeBtn && closeBtn.addEventListener('click', closeDrawer);
+  overlay.addEventListener('click', closeDrawer);
+})();
+</script>
+
+</body>
+</html>

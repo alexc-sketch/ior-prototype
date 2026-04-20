@@ -14,14 +14,14 @@
     .alt-block { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-bottom: 80px; }
     .alt-block:nth-child(even) { direction: rtl; }
     .alt-block:nth-child(even) > * { direction: ltr; }
-    .alt-block__img { background: var(--ior-off-white); border-radius: var(--radius-md); aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--ior-border); }
+    .alt-block__img { background: var(--off-white); border-radius: 0; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; border: 2px dashed var(--border-light); }
     .alt-block__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
     .alt-block__title { font-size: 1.6rem; font-weight: 800; color: var(--ior-navy); margin-bottom: 16px; }
-    .alt-block__copy { font-size: 0.95rem; color: var(--ior-text-muted); line-height: 1.7; margin-bottom: 20px; }
+    .alt-block__copy { font-size: 0.95rem; color: var(--mid-grey); line-height: 1.7; margin-bottom: 20px; }
     .regional-benefits { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 20px; }
     .regional-benefit { display: flex; gap: 12px; align-items: flex-start; }
     .regional-benefit__icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
-    .regional-benefit__text { font-size: 0.9rem; color: var(--ior-text-muted); line-height: 1.5; }
+    .regional-benefit__text { font-size: 0.9rem; color: var(--mid-grey); line-height: 1.5; }
     @media (max-width: 768px) { .alt-block { grid-template-columns: 1fr; direction: ltr; } .regional-benefits { grid-template-columns: 1fr; } }
     
   </style>
@@ -37,35 +37,35 @@
   <span class="wf-nav__annotations">ANNOTATIONS: <span class="ann-std">■ Standard</span> <span class="ann-dq">■ Design Q</span></span>
 </div>
 <div class="utility-bar">
-  <div class="utility-bar__inner container">
-    <div class="utility-bar__left">
-      <span>📞 1800 467 669</span>
-      <span>📍 Find a Location</span>
+  <div class="container">
+    <div class="utility-bar__announce">
+      <a href="tel:1300457467" class="utility-bar__link">📞 1300 457 467</a>
+      <a href="08c_Find_a_Location_v2.html" class="utility-bar__link">📍 Find a Location</a>
     </div>
-    <div class="utility-bar__right">
-      <a href="#">News &amp; Updates</a>
+    <div class="utility-links">
+      <a href="11_Blog_List.html">News &amp; Insights</a>
       <a href="#">Careers</a>
       <a href="#">Investor Relations</a>
     </div>
   </div>
 </div>
 <nav class="primary-nav" role="navigation" aria-label="Primary navigation">
-  <div class="primary-nav__inner container">
-    <a href="01_Homepage_and_Global.html" class="primary-nav__logo" aria-label="IOR Home">
-      <div class="logo-box">[IOR LOGO]</div>
+  <div class="container">
+    <a href="01_Homepage_and_Global.html" class="nav-logo" aria-label="IOR Home">
+      <div class="nav-logo">[IOR LOGO]</div>
     </a>
-    <ul class="primary-nav__menu" role="menubar">
-      <li role="none"><a href="02_Fuel_Solutions_Hub_v2.html" role="menuitem">Fuel Solutions <span class="nav-arrow">▼</span></a></li>
-      <li role="none"><a href="07_Digital_Platforms_v2.html" role="menuitem">Digital Platforms <span class="nav-arrow">▼</span></a></li>
-      <li role="none"><a href="08_Industries_v2.html" role="menuitem">Industries We Serve <span class="nav-arrow">▼</span></a></li>
-      <li role="none"><a href="09_About_IOR_v2.html" role="menuitem">About IOR <span class="nav-arrow">▼</span></a></li>
-      <li role="none"><a href="08a_Contact_Us_v2.html" role="menuitem">Support &amp; Contact <span class="nav-arrow">▼</span></a></li>
+    <ul class="nav-links" role="menubar">
+      <li role="none"><a href="02_Fuel_Solutions_Hub_v2.html" role="menuitem">Fuel Solutions </a></li>
+      <li role="none"><a href="07_Digital_Platforms_v2.html" role="menuitem">Digital Platforms </a></li>
+      <li role="none"><a href="08_Industries_v2.html" role="menuitem">Industries We Serve </a></li>
+      <li role="none"><a href="09_About_IOR_v2.html" role="menuitem">About IOR </a></li>
+      <li role="none"><a href="08a_Contact_Us_v2.html" role="menuitem">Support &amp; Contact </a></li>
     </ul>
-    <div class="primary-nav__ctas">
-      <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+    <div class="nav-ctas">
+      <a href="08a_Contact_Us_v2.html" class="btn btn--outline">Customer Login</a>
       <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
     </div>
-    <button class="primary-nav__hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -73,18 +73,18 @@
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <nav class="drawer" id="drawer" aria-label="Mobile navigation" aria-hidden="true">
   <div class="drawer__header">
-    <div class="logo-box">[IOR LOGO]</div>
+    <div class="nav-logo">[IOR LOGO]</div>
     <button class="drawer__close" aria-label="Close menu">✕</button>
   </div>
-  <ul class="drawer__menu">
+  <ul class="drawer__nav">
     <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a></li>
     <li><a href="07_Digital_Platforms_v2.html">Digital Platforms</a></li>
     <li><a href="08_Industries_v2.html">Industries We Serve</a></li>
     <li><a href="09_About_IOR_v2.html">About IOR</a></li>
     <li><a href="08a_Contact_Us_v2.html">Support &amp; Contact</a></li>
   </ul>
-  <div class="drawer__ctas">
-    <a href="08a_Contact_Us_v2.html" class="btn btn--ghost">Customer Login</a>
+  <div class="drawer__footer">
+    <a href="08a_Contact_Us_v2.html" class="btn btn--outline">Customer Login</a>
     <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
   </div>
 </nav>
@@ -99,14 +99,14 @@
 </section>
 
 <nav class="quick-links-bar" aria-label="Careers navigation">
-  <div class="container quick-links-bar__inner">
-    <a href="10_Careers_v2.html" class="quick-link">Why IOR?</a>
-    <a href="10a_Entry_Pathways.html" class="quick-link">Entry Pathways</a>
-    <a href="10b_Apprentices.html" class="quick-link">Apprentices</a>
-    <a href="10c_Graduates.html" class="quick-link">Graduates</a>
-    <a href="10d_School_Based.html" class="quick-link">School-Based</a>
-    <a href="10e_Working_Regionally.html" class="quick-link">Working Regionally</a>
-    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="quick-link quick-link--cta" target="_blank">View Open Roles →</a>
+  <div class="container">
+    <a href="10_Careers_v2.html" class="ql-item">Why IOR?</a>
+    <a href="10a_Entry_Pathways.html" class="ql-item">Entry Pathways</a>
+    <a href="10b_Apprentices.html" class="ql-item">Apprentices</a>
+    <a href="10c_Graduates.html" class="ql-item">Graduates</a>
+    <a href="10d_School_Based.html" class="ql-item">School-Based</a>
+    <a href="10e_Working_Regionally.html" class="ql-item">Working Regionally</a>
+    <a href="https://www.seek.com.au/jobs?advertiserid=ior" class="ql-item ql-item--cta" target="_blank">View Open Roles →</a>
   </div>
 </nav>
 
@@ -121,7 +121,7 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:32px;">
       <div>
         <iframe
-          style="width:100%;aspect-ratio:16/9;border-radius:8px;border:none;"
+          style="width:100%;aspect-ratio:16/9;border:none;"
           src="https://www.youtube.com/embed/YEEQHCUrujo"
           title="IOR EVP — Drew's Story"
           frameborder="0"
@@ -133,7 +133,7 @@
       </div>
       <div>
         <iframe
-          style="width:100%;aspect-ratio:16/9;border-radius:8px;border:none;"
+          style="width:100%;aspect-ratio:16/9;border:none;"
           src="https://www.youtube.com/embed/KHstAN5AuUs"
           title="IOR EVP — Darren's Story"
           frameborder="0"
@@ -153,7 +153,7 @@
 
     <div class="alt-block" data-animate="fade-up">
       <div class="alt-block__img">
-        <div style="text-align:center;padding:24px;color:var(--ior-text-muted);font-size:0.85rem;">
+        <div style="text-align:center;padding:24px;color:var(--mid-grey);font-size:0.85rem;">
           <strong>IMAGE PLACEHOLDER</strong><br>
           IOR regional depot, outback QLD<br>
           <em>Dust, wide sky, IOR signage, authentic</em>
@@ -170,7 +170,7 @@
 
     <div class="alt-block" data-animate="fade-up">
       <div class="alt-block__img">
-        <div style="text-align:center;padding:24px;color:var(--ior-text-muted);font-size:0.85rem;">
+        <div style="text-align:center;padding:24px;color:var(--mid-grey);font-size:0.85rem;">
           <strong>IMAGE PLACEHOLDER</strong><br>
           IOR team member in regional community<br>
           <em>Community event, IOR branded, warm and authentic</em>
@@ -192,7 +192,7 @@
 
     <div class="alt-block" data-animate="fade-up">
       <div class="alt-block__img">
-        <div style="text-align:center;padding:24px;color:var(--ior-text-muted);font-size:0.85rem;">
+        <div style="text-align:center;padding:24px;color:var(--mid-grey);font-size:0.85rem;">
           <strong>IMAGE PLACEHOLDER</strong><br>
           IOR Kenworth truck on outback highway<br>
           <em>Road train, dust, scale, IOR branded</em>
@@ -217,64 +217,87 @@
 <!-- Testimonial -->
 <section class="section-pad" style="background:var(--ior-navy);color:var(--ior-white);">
   <div class="container" style="max-width:800px;text-align:center;">
-    <p class="section-eyebrow" data-animate="fade-up">REGIONAL VOICE</p>
+    <p class="eyebrow" data-animate="fade-up">REGIONAL VOICE</p>
     <blockquote style="font-size:1.3rem;font-style:italic;line-height:1.6;margin:32px 0;color:rgba(255,255,255,0.9);" data-animate="fade-up">"It makes you feel proud to work for a company like IOR that sponsors so many important things for regional Australia, like LifeFlight. It's not just a job — it's something that matters."</blockquote>
     <p style="font-weight:700;color:var(--ior-sky);" data-animate="fade-up">Tammy Andrews · Roma Depot Supervisor</p>
   </div>
 </section>
 
 <section class="security-banner">
-  <div class="container security-banner__inner">
+  <div class="container">
     <div class="security-banner__text">
       <p class="security-banner__eyebrow">SOVEREIGN SUPPLY CHAIN</p>
       <h2>We own our infrastructure.<br>We won't run out.</h2>
       <p>Lytton Terminal · Port Bonython Terminal · Eromanga Refinery · Stonepeak-backed. When global supply chains tighten, IOR customers don't feel it.</p>
     </div>
     <div class="security-banner__cta">
-      <a href="06_Supply_Trading_v2.html" class="btn btn--white">Our Supply Chain →</a>
+      <a href="06_Supply_Trading_v2.html" class="btn btn--outline">Our Supply Chain →</a>
     </div>
   </div>
 </section>
-<footer class="site-footer">
-  <div class="footer-grid container">
-    <div class="footer-col">
-      <div class="footer-logo">[IOR LOGO]</div>
-      <p class="footer-tagline">Australia's independent fuel company. Sovereign supply. National reach.</p>
+<footer class="footer" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Digital Platforms</h4>
+        <ul>
+          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
+          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate</h4>
+        <ul>
+          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h4>Fuel Solutions</h4>
-      <ul>
-        <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
-        <li><a href="04_Aviation_v2.html">Aviation</a></li>
-        <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
-        <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Industries</h4>
-      <ul>
-        <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
-        <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
-        <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
-        <li><a href="08f_Commercial_Aviation.html">Commercial &amp; General Aviation</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Company</h4>
-      <ul>
-        <li><a href="09_About_IOR_v2.html">About IOR</a></li>
-        <li><a href="09a_Our_Leadership.html">Leadership</a></li>
-        <li><a href="10_Careers_v2.html">Careers</a></li>
-        <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom container">
-    <p>© 2025 IOR Energy. All rights reserved. ABN 12 345 678 901</p>
-    <div class="footer-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Use</a>
-      <a href="#">Modern Slavery Statement</a>
+    <div class="footer-bottom">
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Modern Slavery Statement</a>
+        <a href="#">HSE Policy</a>
+      </div>
     </div>
   </div>
 </footer>

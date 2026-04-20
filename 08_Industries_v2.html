@@ -46,7 +46,7 @@ img { max-width: 100%; display: block; }
 .page-badge .meta span { background: #e2e8f0; padding: 2px 8px; }
 
 /* BUTTONS */
-.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; border: 2px solid transparent; border-radius: var(--radius-md); transition: background 200ms, color 200ms, border-color 200ms; text-decoration: none; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; border: 2px solid transparent; border-radius: 0; transition: background 200ms, color 200ms, border-color 200ms; text-decoration: none; }
 .btn--primary { background: var(--ior-blue); color: var(--ior-white); border-color: var(--ior-blue); }
 .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
 .btn--ghost { background: transparent; color: var(--ior-white); border-color: var(--ior-white); }
@@ -197,9 +197,9 @@ img { max-width: 100%; display: block; }
   .sos-banner__title { font-size: clamp(20px, 3vw, 28px); font-weight: 900; line-height: 1.2; color: #fff; }
   .sos-banner__sub { font-size: 14px; color: rgba(255,255,255,.65); margin-top: 8px; }
   .sos-banner__actions { display: flex; gap: 12px; flex-wrap: wrap; }
-  .site-footer { background: #0d1f33; padding: 64px max(24px, calc((100% - 1280px)/2)) 32px; }
+  .site-footer { background: var(--ior-deep); padding: 64px max(24px, calc((100% - 1280px)/2)) 32px; }
   .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
-  .footer-logo { width: 80px; height: 38px; background: rgba(255,255,255,.1); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6); font-size: 11px; font-weight: 700; margin-bottom: 16px; }
+  .footer-logo { width: 80px; height: 38px; background: rgba(255,255,255,.1); border-radius: 0; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6); font-size: 11px; font-weight: 700; margin-bottom: 16px; }
   .footer-tagline { color: rgba(255,255,255,.55); font-size: 13px; line-height: 1.6; max-width: 260px; }
   .footer-col-title { color: #fff; font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 16px; }
   .footer-col a { display: block; color: rgba(255,255,255,.55); font-size: 13px; text-decoration: none; margin-bottom: 8px; transition: color .2s; }
@@ -208,7 +208,7 @@ img { max-width: 100%; display: block; }
   .footer-legal { color: rgba(255,255,255,.4); font-size: 12px; }
   .footer-legal a { color: rgba(255,255,255,.4); text-decoration: none; }
   .footer-legal a:hover { color: #38b6ff; }
-  .drawer { position: fixed; top: 0; right: -100%; width: min(360px, 90vw); height: 100vh; background: #0d1f33; z-index: 9999; transition: right .3s ease; overflow-y: auto; padding: 24px; }
+  .drawer { position: fixed; top: 0; right: -100%; width: min(360px, 90vw); height: 100vh; background: var(--ior-deep); z-index: 9999; transition: right .3s ease; overflow-y: auto; padding: 24px; }
   .drawer--open { right: 0; }
   .drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 9998; opacity: 0; pointer-events: none; transition: opacity .3s; }
   .drawer-overlay--open { opacity: 1; pointer-events: all; }
@@ -373,7 +373,7 @@ img { max-width: 100%; display: block; }
 <section class="industries-section">
   <div class="container">
     <div class="section-header">
-      <div class="section-eyebrow">Built for Every Industry We Serve</div>
+      <div class="eyebrow">Built for Every Industry We Serve</div>
       <h2 class="section-title">No two operations are the same.</h2>
       <p class="section-body">A transport fleet has different demands than a mine site or an airport. IOR delivers commercial sector fuel solutions tailored to each environment, backed by a single, integrated supply network.</p>
     </div>
@@ -454,7 +454,7 @@ img { max-width: 100%; display: block; }
 <section class="capability-section">
   <div class="container">
     <div>
-      <div class="section-eyebrow">Infrastructure That Scales</div>
+      <div class="eyebrow">Infrastructure That Scales</div>
       <h2 class="section-title">One system. Every sector.</h2>
       <p class="section-body">We bring fuel supply, infrastructure, and technology into one system, giving you national coverage with less complexity.</p>
       <ul class="capability-list">
@@ -514,33 +514,33 @@ img { max-width: 100%; display: block; }
   <div class="container">
     <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
       <div data-animate="fade-up">
-        <div class="section-eyebrow">Infrastructure That Scales</div>
+        <div class="eyebrow">Infrastructure That Scales</div>
         <h2 class="section-title">One system. Every sector.</h2>
         <p style="font-size:16px; color:#4a5568; line-height:1.7; margin-bottom:32px;">We bring fuel supply, infrastructure, and technology into one system — giving you national coverage with less complexity. Whether you run a transport fleet, a remote mine, or a pastoral station, IOR's integrated capability scales with your operation.</p>
         <a href="08c_Find_a_Location_v2.html" class="btn btn--primary">Find a Location Near You →</a>
       </div>
       <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;" data-animate="fade-up">
-        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff;  border:1px solid #e2e8f0;">
           <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
           <span style="font-size:15px; color:#2d3748; line-height:1.5;">National commercial fuel network across key transport and regional corridors</span>
         </li>
-        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff;  border:1px solid #e2e8f0;">
           <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
           <span style="font-size:15px; color:#2d3748; line-height:1.5;">Bulk diesel fuel Australia-wide with secure supply continuity</span>
         </li>
-        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff;  border:1px solid #e2e8f0;">
           <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
           <span style="font-size:15px; color:#2d3748; line-height:1.5;">On-site storage and infrastructure deployment</span>
         </li>
-        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff;  border:1px solid #e2e8f0;">
           <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
           <span style="font-size:15px; color:#2d3748; line-height:1.5;">Integrated fleet fuel management and real-time monitoring via HyDip™ FMS</span>
         </li>
-        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff;  border:1px solid #e2e8f0;">
           <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
           <span style="font-size:15px; color:#2d3748; line-height:1.5;">24/7 access across diesel and aviation networks</span>
         </li>
-        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff;  border:1px solid #e2e8f0;">
           <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
           <span style="font-size:15px; color:#2d3748; line-height:1.5;">ISO-aligned operations and full audit trail</span>
         </li>
@@ -668,108 +668,70 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" aria-label="Site footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="nav-logo" style="display:inline-block;">[IOR LOGO]</div>
-        <p>Australia's most vertically integrated fuel and energy partner. Fuelling industry since 1984.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
-        <ul>
-          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
-          <li><a href="08b_Oil_Gas.html">Oil &amp; Gas</a></li>
-          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
-          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
-          <li><a href="08e_Livestock.html">Livestock</a></li>
-          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
-          <li><a href="08g_Construction_Civil.html">Construction &amp; Civil</a></li>
-          <li><a href="08h_Government_Defence.html">Government &amp; Defence</a></li>
-        </ul>
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
       </div>
       <div class="footer-col">
         <h4>Fuel Solutions</h4>
         <ul>
-          <li><a href="03a_Diesel_Network.html">IOR Diesel Network</a></li>
-          <li><a href="03b_On_Site_Refuelling.html">On-Site Refuelling</a></li>
-          <li><a href="03c_Bulk_Diesel_Delivery.html">Bulk Diesel Delivery</a></li>
-          <li><a href="04_Aviation_v2.html">Aviation Fuels</a></li>
+          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
+          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Digital Platforms</h4>
         <ul>
           <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
-          <li><a href="07b_FuelCharge_v2.html">Fuelcharge</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
           <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Support</h4>
+        <h4>Industries</h4>
         <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Corporate</h4>
+        <ul>
+          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
           <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
           <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
-          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
           <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 IOR Petroleum. All rights reserved. 100% Australian owned.</span>
-      <div><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Modern Slavery Statement</a></div>
-      <div class="footer-social">
-        <div class="social-icon">in</div>
-        <div class="social-icon">f</div>
-        <div class="social-icon">▶</div>
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Modern Slavery Statement</a>
+        <a href="#">HSE Policy</a>
       </div>
     </div>
-  </div>
-</footer>
-
-
-<script>
-(function(){
-  document.querySelectorAll('.blog-section').forEach(function(section){
-    var tabs = section.querySelectorAll('.blog-tab');
-    var panels = section.querySelectorAll('.blog-panel');
-    tabs.forEach(function(tab, i){
-      tab.addEventListener('click', function(){
-        tabs.forEach(function(t){ t.classList.remove('active'); });
-        panels.forEach(function(p){ p.classList.remove('active'); });
-        tab.classList.add('active');
-        panels[i].classList.add('active');
-      });
-    });
-  });
-})();
-</script>
-
-
-<section class="sos-banner">
-  <div class="sos-banner__text">
-    <div class="sos-banner__eyebrow">Security of Supply</div>
-    <div class="sos-banner__title">Your fuel supply is never at risk.</div>
-    <div class="sos-banner__sub">IOR operates its own terminal infrastructure at Lytton (QLD) and Port Bonython (SA).</div>
-  </div>
-  <div class="sos-banner__actions">
-    <a href="06_Supply_Trading_v2.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.4);color:#fff;">Our Terminals</a>
-    <a href="#" class="btn btn--primary">Apply for an Account</a>
-  </div>
-</section>
-
-
-<footer class="site-footer">
-  <div class="footer-nav-grid">
-    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, QLD 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
-    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
-    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
-    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="08d_Make_a_Payment_v2.html" class="footer-col__link">Make a Payment</a><a href="08a_Contact_Us_v2.html" class="footer-col__link">Contact Us</a><a href="08e_Policy_Downloads_v2.html" class="footer-col__link">Policy Downloads</a></div></div>
-    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">QLD</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NSW</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">VIC</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">SA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">WA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NT</a></div></div>
-  </div>
-  <div class="footer-legal">
-    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
-    <div class="footer-social"><a href="#" class="footer-social__icon">in</a><a href="#" class="footer-social__icon">f</a><a href="#" class="footer-social__icon">📷</a><a href="#" class="footer-social__icon">▶</a></div>
   </div>
 </footer>
 

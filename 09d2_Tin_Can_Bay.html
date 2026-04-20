@@ -17,11 +17,11 @@
 .cs-detail-main ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
 .cs-detail-main ul li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--mid-grey); line-height: 1.6; }
 .cs-detail-main ul li::before { content: '→'; color: var(--ior-blue); font-weight: 700; flex-shrink: 0; }
-.cs-quote { background: var(--ior-deep); border-radius: var(--radius-md); padding: 32px; margin: 40px 0; }
+.cs-quote { background: var(--ior-deep); border-radius: 0; padding: 32px; margin: 40px 0; }
 .cs-quote blockquote { font-size: 18px; font-style: italic; color: var(--ior-white); line-height: 1.7; margin: 0 0 16px; }
 .cs-quote cite { font-size: 13px; font-weight: 700; color: var(--ior-sky); font-style: normal; }
 .cs-sidebar { position: sticky; top: 100px; display: flex; flex-direction: column; gap: 20px; }
-.sidebar-card { background: var(--off-white); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 24px; }
+.sidebar-card { background: var(--off-white); border: 1px solid var(--border-light); border-radius: 0; padding: 24px; }
 .sidebar-card__title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ior-blue); margin-bottom: 16px; }
 .sidebar-stat { display: flex; flex-direction: column; gap: 4px; padding: 12px 0; border-bottom: 1px solid var(--border-light); }
 .sidebar-stat:last-child { border-bottom: none; }
@@ -54,7 +54,7 @@
     <div class="utility-links">
       <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
       <a href="08d_Make_a_Payment_v2.html">💳 Make a Payment</a>
-      <a href="#">📞 1300 467 823</a>
+      <a href="#">📞 1300 457 467</a>
     </div>
   </div>
 </div>
@@ -188,7 +188,7 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer" aria-label="Site footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
@@ -196,22 +196,20 @@
         <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
       </div>
       <div class="footer-col">
-        <h4>About IOR</h4>
-        <ul>
-          <li><a href="09a_Our_Leadership.html">Our Leadership</a></li>
-          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
-          <li><a href="09c_Sustainability.html">Sustainability &amp; HSE</a></li>
-          <li><a href="09d_Case_Studies.html">Case Studies</a></li>
-          <li><a href="10_Careers_v2.html">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
         <h4>Fuel Solutions</h4>
         <ul>
           <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
           <li><a href="04_Aviation_v2.html">Aviation</a></li>
-          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment</a></li>
+          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
           <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Digital Platforms</h4>
+        <ul>
+          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
+          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -219,89 +217,41 @@
         <ul>
           <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
           <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
-          <li><a href="08c_Agriculture_Harvest.html">Agriculture</a></li>
-          <li><a href="08g_Construction_Civil.html">Construction</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Support</h4>
+        <h4>Corporate</h4>
         <ul>
-          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
-          <li><a href="08b_Regional_Contacts_v2.html">Regional Contacts</a></li>
-          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
+          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
+          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
+          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
+          <li><a href="10_Careers_v2.html">Careers</a></li>
+          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Actions</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
           <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 IOR Petroleum Pty Ltd. All rights reserved.</span>
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
       <div>
         <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
+        <a href="#">Terms &amp; Conditions</a>
+        <a href="#">Modern Slavery Statement</a>
         <a href="#">HSE Policy</a>
       </div>
     </div>
-  </div>
-</footer>
-
-<!-- MOBILE DRAWER -->
-<div class="drawer-overlay"></div>
-<div class="drawer">
-  <div class="drawer__header">
-    <div class="nav-logo">[IOR LOGO]</div>
-    <button class="drawer__close">✕</button>
-  </div>
-  <div class="drawer__nav">
-    <div class="drawer__section">
-      <div class="drawer__section-label">Fuel Solutions</div>
-      <a href="03_Ground_Fuels_v2.html" class="drawer__link">Ground Fuels <span>›</span></a>
-      <a href="04_Aviation_v2.html" class="drawer__link">Aviation <span>›</span></a>
-      <a href="05_Equipment_Infrastructure_v2.html" class="drawer__link">Equipment &amp; Infrastructure <span>›</span></a>
-      <a href="06_Supply_Trading_v2.html" class="drawer__link">Supply &amp; Trading <span>›</span></a>
-    </div>
-    <div class="drawer__section">
-      <div class="drawer__section-label">About IOR</div>
-      <a href="09a_Our_Leadership.html" class="drawer__link">Our Leadership <span>›</span></a>
-      <a href="09b_Community.html" class="drawer__link">Community &amp; Giving Back <span>›</span></a>
-      <a href="09c_Sustainability.html" class="drawer__link">Sustainability &amp; HSE <span>›</span></a>
-      <a href="10_Careers_v2.html" class="drawer__link">Careers <span>›</span></a>
-    </div>
-    <div class="drawer__section">
-      <div class="drawer__section-label">Industries</div>
-      <a href="08_Industries_v2.html" class="drawer__link">All Industries <span>›</span></a>
-    </div>
-  </div>
-  <div class="drawer__footer">
-    <a href="https://customer.ior.com.au" class="btn btn--outline">Customer Login</a>
-    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
-  </div>
-</div>
-<script src="ior-motion.js"></script>
-
-<section class="sos-banner">
-  <div class="sos-banner__text">
-    <div class="sos-banner__eyebrow">Security of Supply</div>
-    <div class="sos-banner__title">Your fuel supply is never at risk.</div>
-    <div class="sos-banner__sub">IOR operates its own terminal infrastructure at Lytton (QLD) and Port Bonython (SA).</div>
-  </div>
-  <div class="sos-banner__actions">
-    <a href="06_Supply_Trading_v2.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.4);color:#fff;">Our Terminals</a>
-    <a href="#" class="btn btn--primary">Apply for an Account</a>
-  </div>
-</section>
-
-
-<footer class="site-footer">
-  <div class="footer-nav-grid">
-    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, QLD 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
-    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
-    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
-    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="08d_Make_a_Payment_v2.html" class="footer-col__link">Make a Payment</a><a href="08a_Contact_Us_v2.html" class="footer-col__link">Contact Us</a><a href="08e_Policy_Downloads_v2.html" class="footer-col__link">Policy Downloads</a></div></div>
-    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">QLD</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NSW</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">VIC</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">SA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">WA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NT</a></div></div>
-  </div>
-  <div class="footer-legal">
-    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
-    <div class="footer-social"><a href="#" class="footer-social__icon">in</a><a href="#" class="footer-social__icon">f</a><a href="#" class="footer-social__icon">📷</a><a href="#" class="footer-social__icon">▶</a></div>
   </div>
 </footer>
 
