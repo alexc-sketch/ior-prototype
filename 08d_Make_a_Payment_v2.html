@@ -108,10 +108,19 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
 .payment-detail__value { font-size: 15px; font-weight: 700; color: var(--text-dark); font-family: monospace; }
 .payment-note { font-size: 12px; color: var(--text-light); margin-top: 16px; line-height: 1.5; }
 .online-pay-embed { background: var(--off-white); border: 2px dashed var(--border-light); border-radius: var(--radius-md); padding: 48px 32px; text-align: center; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
-.online-pay-embed__label { font-size: 15px; font-weight: 700; color: var(--ior-navy); }
-.online-pay-embed__note { font-size: 13px; color: var(--text-light); max-width: 280px; }
-@media (max-width: 768px) { .payment-grid { grid-template-columns: 1fr; } }
-
+.online-pay-embed__label { font-size: 15px; font-weight: 700; color: var(--ior-na.payment-note { font-size: 12px; color: var(--text-light); margin-top: 16px; line-height: 1.5; }
+.tls-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius-md); padding: 8px 16px; font-size: 13px; font-weight: 700; color: #fff; margin-top: 20px; }
+.tls-badge__icon { font-size: 16px; }
+.card-btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
+.card-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 16px; border: 2px solid var(--border-light); border-radius: var(--radius-md); background: var(--white); cursor: pointer; font-family: var(--font-primary); transition: all var(--transition-base); text-decoration: none; }
+.card-btn:hover { border-color: var(--ior-blue); box-shadow: 0 4px 16px rgba(3,85,163,.12); transform: translateY(-2px); }
+.card-btn__logo { font-size: 22px; font-weight: 900; }
+.card-btn__label { font-size: 11px; font-weight: 700; color: var(--text-mid); letter-spacing: 0.05em; text-transform: uppercase; }
+.card-btn__fee { font-size: 10px; color: var(--text-light); }
+.eft-alert { background: #EBF4FF; border: 1px solid #BFD7F5; border-left: 4px solid var(--ior-blue); border-radius: var(--radius-md); padding: 16px 20px; margin-top: 16px; }
+.eft-alert__title { font-size: 13px; font-weight: 700; color: var(--ior-navy); margin-bottom: 6px; }
+.eft-alert__text { font-size: 12px; color: #1A3A5C; line-height: 1.5; }
+@media (max-width: 768px) { .payment-grid { grid-template-columns: 1fr; } .card-btn-group { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -167,6 +176,7 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
   <div class="hero-util__eyebrow">Account Management</div>
   <h1 class="hero-util__title">Make a Payment.</h1>
   <p class="hero-util__sub">Pay your IOR invoice securely online, by EFT, or via BPAY. Always reference your invoice number.</p>
+  <div class="tls-badge"><span class="tls-badge__icon">🔒</span> 256-bit TLS Encrypted &nbsp;·&nbsp; PCI-DSS Compliant &nbsp;·&nbsp; Secure Payment Gateway</div>
 </section>
 
 <section class="payment-section">
@@ -181,7 +191,18 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
       <div class="online-pay-embed">
         <div class="online-pay-embed__label">[ ONLINE PAYMENT PORTAL EMBED ]</div>
         <div class="online-pay-embed__note">Secure payment gateway embed. Configure with IOR merchant account details.</div>
-        <a href="#" class="btn btn--primary" style="margin-top:8px;">Pay Now →</a>
+      </div>
+      <div class="card-btn-group">
+        <a href="#" class="card-btn">
+          <div class="card-btn__logo" style="color:#016FD0;">AMEX</div>
+          <div class="card-btn__label">American Express</div>
+          <div class="card-btn__fee">1.8% surcharge</div>
+        </a>
+        <a href="#" class="card-btn">
+          <div class="card-btn__logo" style="color:#1A1F71;">VISA <span style="color:#EB001B;">MC</span></div>
+          <div class="card-btn__label">Visa / Mastercard</div>
+          <div class="card-btn__fee">1.2% surcharge</div>
+        </a>
       </div>
     </div>
     <div class="payment-card payment-card--highlight">
@@ -204,7 +225,10 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
         <div class="payment-detail__label">Account Number</div>
         <div class="payment-detail__value">123456 [TBC — confirm with IOR]</div>
       </div>
-      <div class="payment-note">⚠️ Always include your invoice number as the payment reference. Email remittance to <a href="mailto:accounts@ior.com.au" style="color:var(--ior-blue);">accounts@ior.com.au</a></div>
+      <div class="eft-alert">
+        <div class="eft-alert__title">📋 Important: Always include your invoice number</div>
+        <div class="eft-alert__text">Reference your IOR invoice number on all EFT transfers. Email your remittance advice to <a href="mailto:accounts@ior.com.au" style="color:var(--ior-blue);font-weight:700;">accounts@ior.com.au</a> to ensure prompt allocation.</div>
+      </div>
     </div>
     <div class="payment-card">
       <div class="payment-card__icon">📱</div>
