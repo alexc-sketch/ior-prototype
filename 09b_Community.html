@@ -8,19 +8,117 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="ior-global.css">
 <style>
-.community-hero { background: var(--ior-deep); min-height: 420px; }
-.alt-blocks { padding: var(--section-pad) 0; background: var(--ior-white); }
+/* ---- COMMUNITY PAGE STYLES ---- */
+.community-hero {
+  background: var(--ior-deep);
+  min-height: 460px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 80px var(--spx);
+  gap: 64px;
+}
+.community-hero__text { color: #fff; }
+.community-hero__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 16px; }
+.community-hero__h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
+.community-hero__lead { font-size: 17px; color: rgba(255,255,255,.75); line-height: 1.7; max-width: 520px; }
+.community-hero__img {
+  background: rgba(255,255,255,.06);
+  border: 1px dashed rgba(255,255,255,.2);
+  border-radius: var(--radius-md);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(255,255,255,.4);
+  font-size: 13px;
+  text-align: center;
+  padding: 32px;
+}
+.community-hero__img-icon { font-size: 40px; }
+
+/* Pillars section */
+.pillars-section { background: var(--off-white); padding: var(--section-pad) var(--spx); }
+.pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 48px; }
+.pillar-card { background: #fff; border-radius: var(--radius-md); border: 1px solid var(--border-light); padding: 36px 28px; border-top: 4px solid var(--ior-blue); }
+.pillar-card__icon { font-size: 32px; margin-bottom: 16px; }
+.pillar-card__title { font-size: 18px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 12px; }
+.pillar-card__body { font-size: 14px; color: var(--mid-grey); line-height: 1.7; }
+.pillar-card ul { padding-left: 16px; margin-top: 8px; }
+.pillar-card ul li { margin-bottom: 6px; }
+
+/* Sponsorships section */
+.sponsorships-section { background: #fff; padding: var(--section-pad) var(--spx); }
+.section-header { margin-bottom: 48px; }
+.section-header__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+.section-header__h2 { font-size: clamp(28px, 4vw, 40px); font-weight: 900; color: var(--ior-charcoal); line-height: 1.2; margin-bottom: 16px; }
+.section-header__lead { font-size: 16px; color: var(--mid-grey); line-height: 1.7; max-width: 640px; }
+
+/* Alt blocks for each sponsorship */
+.alt-blocks { display: flex; flex-direction: column; gap: 0; }
 .alt-block { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; padding: 64px 0; border-bottom: 1px solid var(--border-light); }
 .alt-block:last-child { border-bottom: none; }
 .alt-block--reverse .alt-block__img { order: 2; }
 .alt-block--reverse .alt-block__text { order: 1; }
-.alt-block__img { border-radius: var(--radius-md); overflow: hidden; }
+.alt-block__img {
+  background: var(--off-white);
+  border: 1px dashed var(--border-light);
+  border-radius: var(--radius-md);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--mid-grey);
+  font-size: 13px;
+  text-align: center;
+  padding: 32px;
+}
+.alt-block__img-icon { font-size: 48px; }
 .alt-block__eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ior-blue); margin-bottom: 12px; }
 .alt-block__title { font-size: 28px; font-weight: 900; color: var(--ior-charcoal); line-height: 1.25; margin-bottom: 16px; }
 .alt-block__body { font-size: 15px; color: var(--mid-grey); line-height: 1.8; margin-bottom: 24px; }
-.alt-block__quote { background: var(--off-white); border-left: 4px solid var(--ior-blue); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 20px 24px; font-style: italic; font-size: 14px; color: var(--ior-charcoal); line-height: 1.7; margin-bottom: 20px; }
+.alt-block__quote {
+  background: var(--off-white);
+  border-left: 4px solid var(--ior-blue);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: 20px 24px;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--ior-charcoal);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
 .alt-block__quote cite { display: block; font-style: normal; font-size: 12px; font-weight: 700; color: var(--ior-blue); margin-top: 8px; }
-@media (max-width: 768px) { .alt-block { grid-template-columns: 1fr; gap: 32px; } .alt-block--reverse .alt-block__img { order: 0; } .alt-block--reverse .alt-block__text { order: 0; } }
+
+/* Community sponsorships grid */
+.community-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.community-card { background: #fff; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 28px; border-top: 4px solid var(--ior-sky); transition: transform .2s, box-shadow .2s; }
+.community-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.community-card__icon { font-size: 28px; margin-bottom: 12px; }
+.community-card__title { font-size: 16px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 8px; }
+.community-card__body { font-size: 13px; color: var(--mid-grey); line-height: 1.6; }
+
+/* Video section */
+.video-section { background: var(--ior-deep); padding: var(--section-pad) var(--spx); }
+.video-section .section-header__h2 { color: #fff; }
+.video-section .section-header__lead { color: rgba(255,255,255,.65); }
+.video-embed { border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 16/9; width: 100%; max-width: 800px; margin: 0 auto; display: block; }
+
+@media (max-width: 900px) {
+  .community-hero { grid-template-columns: 1fr; }
+  .pillars-grid { grid-template-columns: 1fr; }
+  .alt-block { grid-template-columns: 1fr; gap: 32px; }
+  .alt-block--reverse .alt-block__img { order: 0; }
+  .alt-block--reverse .alt-block__text { order: 0; }
+  .community-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .community-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -35,7 +133,8 @@
   <a href="09c_Sustainability.html">09c Sustainability</a>
   <a href="09d_Case_Studies.html">09d Case Studies</a>
   <a href="10_Careers_v2.html">10 Careers</a>
-  <span class="wf-nav__module">MODULE 09b · Community & Giving Back · V1</span>
+  <span class="wf-nav__module">MODULE 09b · Community & Giving Back · V2</span>
+  <span class="wf-nav__annotation">ANNOTATION: Real content from ior.com.au/community/ — LifeFlight, Heart of Australia, Outback Futures, It's a Bloke Thing, Westpac Lifesaver</span>
 </nav>
 <!-- UTILITY BAR -->
 <div class="utility-bar">
@@ -60,7 +159,7 @@
       <li><a href="08_Support_Hub_v2.html">Support &amp; Contact ▾</a></li>
     </ul>
     <div class="nav-ctas">
-      <button class="nav-hamburger" aria-label="Open menu">
+      <button class="nav-hamburger" id="hamburgerBtn" aria-label="Open menu">
         <span></span><span></span><span></span>
       </button>
       <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
@@ -71,240 +170,412 @@
 <!-- QUICK-LINKS BAR -->
 <div class="quick-links-bar">
   <div class="container">
-    <a href="09_About_IOR_v2.html" class="ql-item">🏢 About IOR</a>
-    <a href="09a_Our_Leadership.html" class="ql-item">👥 Our Leadership</a>
-    <a href="09b_Community.html" class="ql-item">🤝 Community</a>
-    <a href="09c_Sustainability.html" class="ql-item">🌱 Sustainability &amp; HSE</a>
-    <a href="09d_Case_Studies.html" class="ql-item">📄 Case Studies</a>
-    <a href="10_Careers_v2.html" class="ql-item">💼 Careers</a>
+    <a href="09_About_IOR_v2.html" class="ql-item">About IOR</a>
+    <a href="09a_Our_Leadership.html" class="ql-item">Our Leadership</a>
+    <a href="09b_Community.html" class="ql-item ql-item--active">Community</a>
+    <a href="09c_Sustainability.html" class="ql-item">Sustainability &amp; HSE</a>
+    <a href="09d_Case_Studies.html" class="ql-item">Case Studies</a>
+    <a href="10_Careers_v2.html" class="ql-item">Careers</a>
   </div>
 </div>
 
-<div class="ann ann--info">
-  <strong>Module 09b · Community &amp; Giving Back · V1</strong>
-  Alternating image/text blocks. Features: Red Dust Role Models, MPC Kinetic Tanami project community impact, regional sponsorships, LifeFlight. Real content from case study PDFs.
-</div>
-
-<section class="hero-split community-hero">
-  <div class="hero-split__left">
-    <div class="eyebrow">About IOR · Community</div>
-    <h1 data-animate="fade-up">We fuel the communities<br><span class="accent">that fuel Australia.</span></h1>
-    <p class="hero-sub" data-animate="fade-up" data-delay="100">IOR operates in the most remote, most demanding, and most important corners of Australia. That comes with a responsibility — and a privilege — to give back to the communities we serve.</p>
+<!-- HERO -->
+<section class="community-hero" data-animate="fade-in">
+  <div class="community-hero__text">
+    <div class="community-hero__eyebrow">Community & Giving Back</div>
+    <h1 class="community-hero__h1">We never forget where we came from.</h1>
+    <p class="community-hero__lead">IOR was built in regional Australia. We operate in the places others overlook — and we believe that growth should create joint value between our business and the communities that make it possible.</p>
+    <p class="community-hero__lead" style="margin-top:16px;">Our community support model is built on three pillars: direct support, social support, and economic support. We don't just fuel industries — we invest in the people and places behind them.</p>
   </div>
-  <div class="hero-split__right">
-    <div class="img-placeholder">
-      <strong>Community Hero</strong>
-      <span>IMAGE PLACEHOLDER</span>
-      <em>Remote community, outback Australia, IOR team member with locals</em>
+  <div class="community-hero__img">
+    <div class="community-hero__img-icon">🚁</div>
+    <strong>IMAGE PLACEHOLDER</strong>
+    <em>LifeFlight helicopter in flight — outback Queensland</em>
+    <span style="font-size:11px;margin-top:8px;">Art direction: aerial shot, golden hour, dust, scale</span>
+  </div>
+</section>
+
+<!-- COMMUNITY VIDEO (from IOR YouTube) -->
+<section class="video-section">
+  <div class="section-header" style="text-align:center; max-width:640px; margin:0 auto 40px;">
+    <div class="section-header__eyebrow">IOR Community</div>
+    <h2 class="section-header__h2">At IOR, we never forget where we came from.</h2>
+    <p class="section-header__lead">Watch how IOR gives back to the communities that fuel our growth.</p>
+  </div>
+  <div style="max-width:800px; margin:0 auto;">
+    <iframe class="video-embed"
+      src="https://www.youtube.com/embed/GMmcRbgk1AY"
+      title="IOR Community — At IOR, we never forget where we came from"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- THREE PILLARS -->
+<section class="pillars-section">
+  <div class="section-header">
+    <div class="section-header__eyebrow">IOR Community Support Model</div>
+    <h2 class="section-header__h2">Three pillars. One commitment.</h2>
+    <p class="section-header__lead">As an organisation, we seek to ensure that our growth creates joint value between our business and the community. Our approach to supporting Australian communities is structured across three pillars.</p>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card" data-animate="fade-up">
+      <div class="pillar-card__icon">🤝</div>
+      <div class="pillar-card__title">Direct Support</div>
+      <div class="pillar-card__body">
+        We seek to minimise our environmental impact and ensure our operations provide direct support to the community.
+        <ul>
+          <li>Bringing energy to regional Australia</li>
+          <li>Providing a quality, reliable service</li>
+          <li>Managing health and safety risks</li>
+          <li>Minimising our environmental impact</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pillar-card" data-animate="fade-up" style="animation-delay:.1s">
+      <div class="pillar-card__icon">💛</div>
+      <div class="pillar-card__title">Social Support</div>
+      <div class="pillar-card__body">
+        We build long-standing relationships and earn the trust of the communities in which we work, through targeted social investments.
+        <ul>
+          <li>Corporate Social Responsibility investment</li>
+          <li>Reconciliation Action Plan commitment</li>
+          <li>Equal opportunity for all who work with IOR</li>
+        </ul>
+      </div>
+    </div>
+    <div class="pillar-card" data-animate="fade-up" style="animation-delay:.2s">
+      <div class="pillar-card__icon">📈</div>
+      <div class="pillar-card__title">Economic Support</div>
+      <div class="pillar-card__body">
+        Through our operations, we directly enable economic and jobs growth in the regions we serve.
+        <ul>
+          <li>Local employment program — talent from within communities</li>
+          <li>Buy local program — direct link to local suppliers</li>
+          <li>Engagement with AgForce and resources industry bodies</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="trust-strip">
-  <div class="container">
-    <div class="trust-item" data-animate="fade-up" data-delay="0">
-      <span class="trust-item__icon">🏘️</span>
-      <div class="trust-item__text"><strong>Regional Investment</strong><span>Sponsorships across rural Australia</span></div>
-    </div>
-    <div class="trust-item" data-animate="fade-up" data-delay="80">
-      <span class="trust-item__icon">✈️</span>
-      <div class="trust-item__text"><strong>LifeFlight Partner</strong><span>Supporting aeromedical services</span></div>
-    </div>
-    <div class="trust-item" data-animate="fade-up" data-delay="160">
-      <span class="trust-item__icon">🌟</span>
-      <div class="trust-item__text"><strong>Red Dust Role Models</strong><span>Indigenous youth mentoring</span></div>
-    </div>
-    <div class="trust-item" data-animate="fade-up" data-delay="240">
-      <span class="trust-item__icon">🤝</span>
-      <div class="trust-item__text"><strong>AgForce Partner</strong><span>Supporting Australian agriculture</span></div>
-    </div>
+<!-- CORPORATE SPONSORSHIPS — ALT BLOCKS -->
+<section class="sponsorships-section">
+  <div class="section-header">
+    <div class="section-header__eyebrow">Corporate Sponsorships</div>
+    <h2 class="section-header__h2">Proudly supporting organisations that save lives.</h2>
+    <p class="section-header__lead">Our core value of supporting and developing regional, rural and remote Australia drives us to be the major sponsor of several not-for-profit and profit-for-purpose organisations.</p>
   </div>
-</div>
 
-<section class="alt-blocks">
-  <div class="container">
-
+  <div class="alt-blocks">
+    <!-- LifeFlight -->
     <div class="alt-block" data-animate="fade-up">
       <div class="alt-block__img">
-        <div class="img-placeholder" style="min-height:360px;">
-          <strong>Red Dust Role Models</strong>
-          <span>IMAGE PLACEHOLDER</span>
-          <em>Indigenous youth program, outback community, mentoring session</em>
-        </div>
+        <div class="alt-block__img-icon">🚁</div>
+        <strong>IMAGE PLACEHOLDER</strong>
+        <em>RACQ LifeFlight helicopter — night rescue, outback QLD</em>
       </div>
       <div class="alt-block__text">
-        <div class="alt-block__eyebrow">Indigenous Community · Giving Back</div>
-        <h2 class="alt-block__title">Red Dust Role Models: investing in the next generation.</h2>
-        <p class="alt-block__body">IOR is a proud supporter of Red Dust Role Models — an organisation that sends professional athletes and role models into remote Indigenous communities to deliver health, education, and wellbeing programs. For IOR, this partnership is personal. Many of the communities Red Dust serves are the same communities that depend on IOR's fuel network to keep their hospitals, schools, and essential services running.</p>
+        <div class="alt-block__eyebrow">Major Sponsor</div>
+        <h3 class="alt-block__title">RACQ LifeFlight Rescue</h3>
+        <p class="alt-block__body">LifeFlight is one of Australia's largest aeromedical charities, providing rapid response medical care to thousands of people each year. Queensland's rural and remote communities rely on the LifeFlight helicopters to bring the hospital to them in their darkest hour.</p>
+        <p class="alt-block__body">IOR is proud to be a major sponsor of LifeFlight — because in the places we operate, access to emergency medical care isn't a given. It's something worth fighting for.</p>
         <div class="alt-block__quote">
-          "The Break the Cycle 2018 program brought together 60 young people from the Tanami region. IOR's support made it possible."
-          <cite>— Red Dust Role Models, Annual Report 2018</cite>
+          "When minutes matter and the nearest hospital is hundreds of kilometres away, LifeFlight is the difference between life and death. IOR's support helps make that possible."
+          <cite>— IOR Community Partnership</cite>
         </div>
-        <a href="09d_Case_Studies.html" class="btn btn--primary">Read the MPC Kinetic Case Study →</a>
+        <a href="https://www.lifeflight.org.au" target="_blank" class="btn btn--outline btn--sm">Learn More About LifeFlight →</a>
       </div>
     </div>
 
+    <!-- Heart of Australia -->
     <div class="alt-block alt-block--reverse" data-animate="fade-up">
       <div class="alt-block__img">
-        <div class="img-placeholder" style="min-height:360px;">
-          <strong>LifeFlight Partnership</strong>
-          <span>IMAGE PLACEHOLDER</span>
-          <em>LifeFlight helicopter, IOR aviation fuelling, regional Queensland</em>
-        </div>
+        <div class="alt-block__img-icon">❤️</div>
+        <strong>IMAGE PLACEHOLDER</strong>
+        <em>Heart of Australia road train clinic — regional Queensland</em>
       </div>
       <div class="alt-block__text">
-        <div class="alt-block__eyebrow">Aeromedical · Community Safety</div>
-        <h2 class="alt-block__title">Keeping LifeFlight in the air.</h2>
-        <p class="alt-block__body">IOR is a long-standing partner of LifeFlight — Australia's largest aeromedical service. When a LifeFlight helicopter takes off to reach a patient in a remote location, IOR aviation fuel is often what makes that flight possible. This partnership is one of the most direct expressions of IOR's purpose: fuelling the services that keep Australians safe.</p>
-        <p class="alt-block__body">IOR supplies Jet A-1 aviation fuel to LifeFlight bases across Queensland, ensuring the fleet is always ready to respond — 24 hours a day, 365 days a year.</p>
-        <a href="04_Aviation_v2.html" class="btn btn--primary">Our Aviation Network →</a>
+        <div class="alt-block__eyebrow">Major Sponsor</div>
+        <h3 class="alt-block__title">Heart of Australia</h3>
+        <p class="alt-block__body">Heart of Australia delivers specialist medical services to regional, rural and remote area communities across Queensland. Using customised road trains — specialist medical clinics-on-wheels — they have seen over 5,000 patients across 150,000km on the road and helped save more than 250 lives.</p>
+        <p class="alt-block__body">The same roads IOR's fuel network runs along are the roads Heart of Australia travels to reach patients who would otherwise go without specialist care. We're proud to help keep those wheels turning.</p>
+        <a href="https://heartofaustralia.com" target="_blank" class="btn btn--outline btn--sm">Learn More About Heart of Australia →</a>
       </div>
     </div>
 
+    <!-- Outback Futures -->
     <div class="alt-block" data-animate="fade-up">
       <div class="alt-block__img">
-        <div class="img-placeholder" style="min-height:360px;">
-          <strong>Toowoomba Wellcamp</strong>
-          <span>IMAGE PLACEHOLDER</span>
-          <em>Qantas pilot training academy, Toowoomba Wellcamp Airport, aircraft on tarmac</em>
-        </div>
+        <div class="alt-block__img-icon">🌾</div>
+        <strong>IMAGE PLACEHOLDER</strong>
+        <em>Outback Futures mental health services — remote Queensland</em>
       </div>
       <div class="alt-block__text">
-        <div class="alt-block__eyebrow">Regional Development · Aviation</div>
-        <h2 class="alt-block__title">Training the next generation of Australian pilots.</h2>
-        <p class="alt-block__body">When the Qantas Group Pilot Training Academy opened at Toowoomba Wellcamp Airport in 2020, IOR was there — building a state-of-the-art refuelling facility capable of fuelling three aircraft simultaneously from a 55,000-litre tank. This project was about more than fuel. It was about IOR's commitment to regional Queensland and to the industries that will define Australia's future.</p>
-        <div class="alt-block__quote">
-          "IOR demonstrated its entrepreneurial and innovative capability to meet our needs at the Toowoomba Wellcamp Airport facility."
-          <cite>— Flight Training Adelaide (FTA), 2020</cite>
-        </div>
-        <a href="09d_Case_Studies.html" class="btn btn--primary">Read the Full Case Study →</a>
+        <div class="alt-block__eyebrow">Major Sponsor</div>
+        <h3 class="alt-block__title">Outback Futures</h3>
+        <p class="alt-block__body">Outback Futures is a not-for-profit organisation committed to providing regular, professional and consistent mental and allied health and wellbeing services to rural and remote Queenslanders.</p>
+        <p class="alt-block__body">In the regions IOR serves, mental health support is often the hardest resource to access. Outback Futures changes that — and IOR is proud to support their work in the communities where we operate.</p>
+        <a href="https://outbackfutures.org.au" target="_blank" class="btn btn--outline btn--sm">Learn More About Outback Futures →</a>
       </div>
     </div>
 
+    <!-- It's a Bloke Thing -->
     <div class="alt-block alt-block--reverse" data-animate="fade-up">
       <div class="alt-block__img">
-        <div class="img-placeholder" style="min-height:360px;">
-          <strong>AgForce Partnership</strong>
-          <span>IMAGE PLACEHOLDER</span>
-          <em>Australian farmer, grain harvest, IOR fuel delivery truck</em>
-        </div>
+        <div class="alt-block__img-icon">🎗️</div>
+        <strong>IMAGE PLACEHOLDER</strong>
+        <em>It's a Bloke Thing roadshow — regional Queensland towns</em>
       </div>
       <div class="alt-block__text">
-        <div class="alt-block__eyebrow">Agriculture · Regional Australia</div>
-        <h2 class="alt-block__title">Standing behind Australian agriculture.</h2>
-        <p class="alt-block__body">IOR is a proud AgForce partner — supporting the peak body for Queensland's rural industries. Agriculture is one of IOR's most important customer sectors, and this partnership reflects a genuine commitment to the farmers, graziers, and agribusinesses that feed Australia and the world.</p>
-        <p class="alt-block__body">Through the AgForce partnership, IOR provides preferential fuel pricing, dedicated account management, and seasonal delivery guarantees to AgForce members across Queensland and beyond.</p>
-        <a href="08c_Agriculture_Harvest.html" class="btn btn--primary">Agriculture &amp; Harvest →</a>
+        <div class="alt-block__eyebrow">Major Sponsor</div>
+        <h3 class="alt-block__title">It's a Bloke Thing</h3>
+        <p class="alt-block__body">It's a Bloke Thing raises funds to educate men and women in rural Australia about prostate cancer. Their roadshow visits over 65 towns throughout regional Queensland annually, covering over 25,000km. The organisation's goal is to raise public awareness around prostate cancer and its treatment.</p>
+        <p class="alt-block__body">Men in regional Australia are less likely to seek medical help. It's a Bloke Thing meets them where they are — and IOR is proud to support that mission.</p>
+        <a href="https://itsablokething.com.au" target="_blank" class="btn btn--outline btn--sm">Learn More →</a>
       </div>
     </div>
 
+    <!-- Westpac Lifesaver -->
+    <div class="alt-block" data-animate="fade-up">
+      <div class="alt-block__img">
+        <div class="alt-block__img-icon">🏄</div>
+        <strong>IMAGE PLACEHOLDER</strong>
+        <em>Westpac Lifesaver helicopter — South East Queensland coast patrol</em>
+      </div>
+      <div class="alt-block__text">
+        <div class="alt-block__eyebrow">Major Sponsor</div>
+        <h3 class="alt-block__title">Westpac Lifesaver Rescue Helicopter Service QLD</h3>
+        <p class="alt-block__body">One of the oldest community-based helicopter rescue services in the world, operating across South-East Queensland since 1976. The service patrols the South East Queensland coast and carries out beach surveillance, shark warnings, preventative actions, missing person searches and rescues.</p>
+        <p class="alt-block__body">IOR's support helps keep this vital service in the air — protecting the communities and coastlines of South East Queensland.</p>
+        <a href="#" class="btn btn--outline btn--sm">Learn More →</a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- SECURITY OF SUPPLY BANNER -->
-<section class="security-banner">
-  <div class="container">
-    <div class="security-banner__text" data-animate="fade-right">
-      <h3>We own the infrastructure.<br>We won't run out.</h3>
-      <p>IOR is not a reseller. We own Lytton Terminal, Port Bonython Terminal, and the Eromanga Refinery — Australia's only inland crude oil refinery. When global supply chains tighten, our customers don't feel it. That's what sovereign supply actually means.</p>
+<!-- COMMUNITY SPONSORSHIPS GRID -->
+<section class="pillars-section">
+  <div class="section-header">
+    <div class="section-header__eyebrow">Community Sponsorships</div>
+    <h2 class="section-header__h2">Supporting the regions we call home.</h2>
+    <p class="section-header__lead">In each of the regions in which we work, we are proud to support events, causes, and initiatives. Our support may take many forms including staff volunteering, financial contributions, or in-kind donations of fuel.</p>
+  </div>
+  <div class="community-grid">
+    <div class="community-card" data-animate="fade-up">
+      <div class="community-card__icon">🌾</div>
+      <div class="community-card__title">Agricultural Events</div>
+      <div class="community-card__body">Sponsoring field days, shows, and agricultural community events across regional Queensland, NSW, SA, and WA.</div>
     </div>
-    <div class="security-banner__links" data-animate="fade-left">
-      <a href="06_Supply_Trading_v2.html" class="btn btn--sky">Our Supply Chain →</a>
-      <a href="06b_Eromanga_Refinery.html" class="security-banner__link">Eromanga Refinery</a>
-      <a href="06a_Terminals.html" class="security-banner__link">Lytton &amp; Port Bonython</a>
+    <div class="community-card" data-animate="fade-up" style="animation-delay:.1s">
+      <div class="community-card__icon">⛽</div>
+      <div class="community-card__title">In-Kind Fuel Donations</div>
+      <div class="community-card__body">Providing fuel to community events, volunteer organisations, and emergency services in the regions we operate.</div>
     </div>
+    <div class="community-card" data-animate="fade-up" style="animation-delay:.2s">
+      <div class="community-card__icon">👷</div>
+      <div class="community-card__title">Staff Volunteering</div>
+      <div class="community-card__body">IOR team members actively volunteer in the communities where they live and work, contributing time and skills to local causes.</div>
+    </div>
+    <div class="community-card" data-animate="fade-up" style="animation-delay:.3s">
+      <div class="community-card__icon">🤝</div>
+      <div class="community-card__title">Reconciliation Action Plan</div>
+      <div class="community-card__body">IOR is committed to a Reconciliation Action Plan, recognising and respecting the Traditional Owners of the lands on which we operate.</div>
+    </div>
+    <div class="community-card" data-animate="fade-up" style="animation-delay:.4s">
+      <div class="community-card__icon">🏆</div>
+      <div class="community-card__title">Local Employment</div>
+      <div class="community-card__body">Our local employment program attracts talent from within the communities in which we work, creating sustainable regional jobs.</div>
+    </div>
+    <div class="community-card" data-animate="fade-up" style="animation-delay:.5s">
+      <div class="community-card__icon">🛒</div>
+      <div class="community-card__title">Buy Local Program</div>
+      <div class="community-card__body">A direct link between IOR's procurement and local suppliers — keeping money in the regions that fuel our business.</div>
+    </div>
+  </div>
+  <div style="margin-top:48px; padding:32px; background:#fff; border-radius:var(--radius-md); border:1px solid var(--border-light); max-width:600px;">
+    <div class="section-header__eyebrow">Sponsorship Applications</div>
+    <h3 style="font-size:20px;font-weight:800;color:var(--ior-charcoal);margin-bottom:12px;">Apply for IOR Community Sponsorship</h3>
+    <p style="font-size:14px;color:var(--mid-grey);line-height:1.7;margin-bottom:20px;">To register your interest in sponsorship from IOR, download and complete the IOR Sponsorship Application Form.</p>
+    <a href="08e_Policy_Downloads_v2.html" class="btn btn--primary">Download Application Form →</a>
+  </div>
+</section>
+
+<!-- BLOG / CASE STUDIES SECTION -->
+<section class="blog-section">
+  <div class="blog-section__header">
+    <div class="blog-section__eyebrow">Community · Stories</div>
+    <h2 class="blog-section__title">IOR in the community.</h2>
+    <p class="blog-section__lead">Real stories from the regions we serve.</p>
+  </div>
+  <div class="blog-tabs">
+    <button class="blog-tab blog-tab--active" data-tab="case-studies">Case Studies</button>
+    <button class="blog-tab" data-tab="blog">Blog</button>
+  </div>
+  <div class="blog-tab-panel blog-tab-panel--active" id="tab-case-studies">
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-card__img" style="background:var(--ior-deep);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:12px;text-align:center;padding:16px;">IMAGE PLACEHOLDER<br><em>LifeFlight helicopter</em></div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Community</div>
+          <h3 class="blog-card__title">How IOR's LifeFlight partnership is saving lives in outback Queensland</h3>
+          <p class="blog-card__excerpt">When the nearest hospital is 400km away, the LifeFlight helicopter is the only option. IOR's sponsorship helps keep it in the air.</p>
+          <a href="#" class="blog-card__link">Read Case Study →</a>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__img" style="background:var(--ior-deep);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:12px;text-align:center;padding:16px;">IMAGE PLACEHOLDER<br><em>Heart of Australia road train</em></div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Community</div>
+          <h3 class="blog-card__title">Heart of Australia: 150,000km of specialist care on wheels</h3>
+          <p class="blog-card__excerpt">Over 5,000 patients. 250+ lives saved. Heart of Australia's road train clinics reach communities that would otherwise go without specialist care.</p>
+          <a href="#" class="blog-card__link">Read Case Study →</a>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__img" style="background:var(--ior-deep);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);font-size:12px;text-align:center;padding:16px;">IMAGE PLACEHOLDER<br><em>Outback Futures mental health</em></div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Community</div>
+          <h3 class="blog-card__title">Outback Futures: bringing mental health services to remote Queensland</h3>
+          <p class="blog-card__excerpt">In the regions IOR serves, mental health support is often the hardest resource to access. Outback Futures is changing that.</p>
+          <a href="#" class="blog-card__link">Read Case Study →</a>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="09d_Case_Studies.html" class="btn btn--outline">View All Case Studies →</a>
+    </div>
+  </div>
+  <div class="blog-tab-panel" id="tab-blog">
+    <div class="blog-grid">
+      <article class="blog-card">
+        <div class="blog-card__img" style="background:var(--off-white);display:flex;align-items:center;justify-content:center;color:var(--mid-grey);font-size:12px;text-align:center;padding:16px;">IMAGE PLACEHOLDER</div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Community</div>
+          <h3 class="blog-card__title">Why IOR invests in regional Australia — not just regional fuel</h3>
+          <p class="blog-card__excerpt">Our community model isn't a PR exercise. It's a reflection of who we are and where we came from.</p>
+          <a href="#" class="blog-card__link">Read Article →</a>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__img" style="background:var(--off-white);display:flex;align-items:center;justify-content:center;color:var(--mid-grey);font-size:12px;text-align:center;padding:16px;">IMAGE PLACEHOLDER</div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Community</div>
+          <h3 class="blog-card__title">IOR's Reconciliation Action Plan — our commitment to Country</h3>
+          <p class="blog-card__excerpt">Recognising and respecting the Traditional Owners of the lands on which we operate is not optional. It's foundational.</p>
+          <a href="#" class="blog-card__link">Read Article →</a>
+        </div>
+      </article>
+      <article class="blog-card">
+        <div class="blog-card__img" style="background:var(--off-white);display:flex;align-items:center;justify-content:center;color:var(--mid-grey);font-size:12px;text-align:center;padding:16px;">IMAGE PLACEHOLDER</div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Community</div>
+          <h3 class="blog-card__title">Buy local, hire local: how IOR's procurement keeps money in the regions</h3>
+          <p class="blog-card__excerpt">When IOR grows, the communities we operate in grow with us. That's the intent behind our buy local and local employment programs.</p>
+          <a href="#" class="blog-card__link">Read Article →</a>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:40px;">
+      <a href="#" class="btn btn--outline">View All Articles →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SOS BANNER -->
+<section class="sos-banner">
+  <div class="sos-banner__text">
+    <div class="sos-banner__eyebrow">Security of Supply</div>
+    <div class="sos-banner__title">Your fuel supply is never at risk.</div>
+    <div class="sos-banner__sub">IOR operates its own terminal infrastructure at Lytton (QLD) and Port Bonython (SA).</div>
+  </div>
+  <div class="sos-banner__actions">
+    <a href="06_Supply_Trading_v2.html" class="btn btn--primary">Our Infrastructure →</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--outline" style="color:#fff;border-color:rgba(255,255,255,.3);">Talk to Us</a>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-brand__logo">[IOR LOGO]</div>
-        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
-      </div>
-      <div class="footer-col">
-        <h4>About IOR</h4>
-        <ul>
-          <li><a href="09a_Our_Leadership.html">Our Leadership</a></li>
-          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
-          <li><a href="09c_Sustainability.html">Sustainability &amp; HSE</a></li>
-          <li><a href="09d_Case_Studies.html">Case Studies</a></li>
-          <li><a href="10_Careers_v2.html">Careers</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Fuel Solutions</h4>
-        <ul>
-          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
-          <li><a href="04_Aviation_v2.html">Aviation</a></li>
-          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment</a></li>
-          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
-        <ul>
-          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
-          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
-          <li><a href="08c_Agriculture_Harvest.html">Agriculture</a></li>
-          <li><a href="08g_Construction_Civil.html">Construction</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Support</h4>
-        <ul>
-          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
-          <li><a href="08b_Regional_Contacts_v2.html">Regional Contacts</a></li>
-          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
-          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
-        </ul>
-      </div>
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-col">
+      <div class="footer-logo">[IOR]</div>
+      <p class="footer-tagline">Australia's independent fuel company. Sovereign supply. National network. 40+ years of reliability.</p>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 IOR Petroleum Pty Ltd. All rights reserved.</span>
-      <div>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Use</a>
-        <a href="#">HSE Policy</a>
-      </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Fuel Solutions</div>
+      <a href="03_Ground_Fuels_v2.html">Ground Fuels</a>
+      <a href="04_Aviation_v2.html">Aviation</a>
+      <a href="05_Equipment_Infrastructure_v2.html">Equipment</a>
+      <a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a>
+      <a href="07_Digital_Platforms_v2.html">Digital Platforms</a>
     </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Industries</div>
+      <a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a>
+      <a href="08d_Mining_Resources.html">Mining &amp; Resources</a>
+      <a href="08c_Agriculture_Harvest.html">Agriculture</a>
+      <a href="08f_Commercial_Aviation.html">Aviation</a>
+      <a href="08g_Construction_Civil.html">Construction</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title">Company</div>
+      <a href="09_About_IOR_v2.html">About IOR</a>
+      <a href="09a_Our_Leadership.html">Leadership</a>
+      <a href="09b_Community.html">Community</a>
+      <a href="09c_Sustainability.html">Sustainability</a>
+      <a href="10_Careers_v2.html">Careers</a>
+      <a href="08_Support_Hub_v2.html">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-legal">© 2025 IOR Energy. All rights reserved. <a href="#">Privacy Policy</a> · <a href="#">Terms of Use</a></div>
+    <div class="footer-legal">ABN 12 345 678 901 · 1300 467 823</div>
   </div>
 </footer>
 
 <!-- MOBILE DRAWER -->
-<div class="drawer-overlay"></div>
-<div class="drawer">
-  <div class="drawer__header">
-    <div class="nav-logo">[IOR LOGO]</div>
-    <button class="drawer__close">✕</button>
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="drawer__head">
+    <span style="color:#fff;font-weight:700;">[IOR]</span>
+    <button class="drawer__close" id="drawerClose" aria-label="Close">✕</button>
   </div>
-  <div class="drawer__nav">
-    <div class="drawer__section">
-      <div class="drawer__section-label">Fuel Solutions</div>
-      <a href="03_Ground_Fuels_v2.html" class="drawer__link">Ground Fuels <span>›</span></a>
-      <a href="04_Aviation_v2.html" class="drawer__link">Aviation <span>›</span></a>
-      <a href="05_Equipment_Infrastructure_v2.html" class="drawer__link">Equipment &amp; Infrastructure <span>›</span></a>
-      <a href="06_Supply_Trading_v2.html" class="drawer__link">Supply &amp; Trading <span>›</span></a>
-    </div>
-    <div class="drawer__section">
-      <div class="drawer__section-label">About IOR</div>
-      <a href="09a_Our_Leadership.html" class="drawer__link">Our Leadership <span>›</span></a>
-      <a href="09b_Community.html" class="drawer__link">Community &amp; Giving Back <span>›</span></a>
-      <a href="09c_Sustainability.html" class="drawer__link">Sustainability &amp; HSE <span>›</span></a>
-      <a href="10_Careers_v2.html" class="drawer__link">Careers <span>›</span></a>
-    </div>
-    <div class="drawer__section">
-      <div class="drawer__section-label">Industries</div>
-      <a href="08_Industries_v2.html" class="drawer__link">All Industries <span>›</span></a>
-    </div>
-  </div>
-  <div class="drawer__footer">
-    <a href="https://customer.ior.com.au" class="btn btn--outline">Customer Login</a>
-    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
-  </div>
+  <nav class="drawer__nav">
+    <a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a>
+    <a href="07_Digital_Platforms_v2.html">Digital Platforms</a>
+    <a href="08_Industries_v2.html">Industries We Serve</a>
+    <a href="09_About_IOR_v2.html">About IOR</a>
+    <a href="08_Support_Hub_v2.html">Support &amp; Contact</a>
+    <a href="08c_Find_a_Location_v2.html">Find a Location</a>
+    <a href="08d_Make_a_Payment_v2.html">Make a Payment</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary" style="margin-top:16px;display:block;text-align:center;">Apply for an Account</a>
+  </nav>
 </div>
+
 <script src="ior-motion.js"></script>
+<script>
+// Blog tabs
+document.querySelectorAll('.blog-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.blog-tab').forEach(t => t.classList.remove('blog-tab--active'));
+    document.querySelectorAll('.blog-tab-panel').forEach(p => p.classList.remove('blog-tab-panel--active'));
+    tab.classList.add('blog-tab--active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('blog-tab-panel--active');
+  });
+});
+// Mobile drawer
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const drawerClose = document.getElementById('drawerClose');
+const mobileDrawer = document.getElementById('mobileDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+function openDrawer() { mobileDrawer.classList.add('drawer--open'); drawerOverlay.classList.add('drawer-overlay--open'); }
+function closeDrawer() { mobileDrawer.classList.remove('drawer--open'); drawerOverlay.classList.remove('drawer-overlay--open'); }
+if (hamburgerBtn) hamburgerBtn.addEventListener('click', openDrawer);
+if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+</script>
 </body>
 </html>

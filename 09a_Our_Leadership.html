@@ -478,5 +478,77 @@ function toggleBio(btn) {
   </div>
 </div>
 <script src="ior-motion.js"></script>
+
+<section class="sos-banner">
+  <div class="sos-banner__text">
+    <div class="sos-banner__eyebrow">Security of Supply</div>
+    <div class="sos-banner__title">Your fuel supply is never at risk.</div>
+    <div class="sos-banner__sub">IOR operates its own terminal infrastructure at Lytton (QLD) and Port Bonython (SA).</div>
+  </div>
+  <div class="sos-banner__actions">
+    <a href="06_Supply_Trading_v2.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.4);color:#fff;">Our Terminals</a>
+    <a href="#" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-nav-grid">
+    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, QLD 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
+    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
+    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
+    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="08d_Make_a_Payment_v2.html" class="footer-col__link">Make a Payment</a><a href="08a_Contact_Us_v2.html" class="footer-col__link">Contact Us</a><a href="08e_Policy_Downloads_v2.html" class="footer-col__link">Policy Downloads</a></div></div>
+    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">QLD</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NSW</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">VIC</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">SA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">WA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NT</a></div></div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
+    <div class="footer-social"><a href="#" class="footer-social__icon">in</a><a href="#" class="footer-social__icon">f</a><a href="#" class="footer-social__icon">📷</a><a href="#" class="footer-social__icon">▶</a></div>
+  </div>
+</footer>
+
+
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="drawer__header"><span class="drawer__logo">[IOR LOGO]</span><button class="drawer__close" id="drawerClose">✕</button></div>
+  <nav class="drawer__nav">
+    <button class="drawer__link" data-sub="sub-fuel">Fuel Solutions <span class="drawer__link-chevron">▼</span></button>
+    <div class="drawer__sub" id="sub-fuel"><a href="03_Ground_Fuels_v2.html" class="drawer__sub-link">Ground Fuels</a><a href="04_Aviation_v2.html" class="drawer__sub-link">Aviation</a><a href="06_Supply_Trading_v2.html" class="drawer__sub-link">Supply &amp; Trading</a></div>
+    <button class="drawer__link" data-sub="sub-support">Support &amp; Contact <span class="drawer__link-chevron">▼</span></button>
+    <div class="drawer__sub" id="sub-support"><a href="08a_Contact_Us_v2.html" class="drawer__sub-link">Contact Us</a><a href="08b_Regional_Contacts_v2.html" class="drawer__sub-link">Regional Contacts</a><a href="08c_Find_a_Location_v2.html" class="drawer__sub-link">Find a Location</a><a href="08d_Make_a_Payment_v2.html" class="drawer__sub-link">Make a Payment</a><a href="08e_Policy_Downloads_v2.html" class="drawer__sub-link">Policy Downloads</a></div>
+  </nav>
+  <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
+</div>
+
+
+<script>
+const navEl = document.getElementById('primary-nav');
+window.addEventListener('scroll', () => { if (!navEl) return; navEl.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
+const hamburger = document.getElementById('mob-hamburger');
+const drawerEl = document.getElementById('mobileDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const drawerClose = document.getElementById('drawerClose');
+let isDrawerOpen = false;
+function openDrawer() { isDrawerOpen = true; drawerEl.classList.add('drawer--open'); drawerOverlay.classList.add('drawer-overlay--open'); drawerEl.removeAttribute('aria-hidden'); drawerOverlay.removeAttribute('aria-hidden'); document.body.style.overflow = 'hidden'; }
+function closeDrawer() { isDrawerOpen = false; drawerEl.classList.remove('drawer--open'); drawerOverlay.classList.remove('drawer-overlay--open'); drawerEl.setAttribute('aria-hidden','true'); drawerOverlay.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+if (hamburger) hamburger.addEventListener('click', () => isDrawerOpen ? closeDrawer() : openDrawer());
+if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && isDrawerOpen) closeDrawer(); });
+document.querySelectorAll('.drawer__link').forEach(link => {
+  link.addEventListener('click', () => {
+    const subId = link.getAttribute('data-sub'); if (!subId) return;
+    const subEl = document.getElementById(subId); if (!subEl) return;
+    const chevron = link.querySelector('.drawer__link-chevron');
+    const isOpen = subEl.classList.contains('drawer__sub--open');
+    document.querySelectorAll('.drawer__sub--open').forEach(s => s.classList.remove('drawer__sub--open'));
+    document.querySelectorAll('.drawer__link-chevron--open').forEach(c => c.classList.remove('drawer__link-chevron--open'));
+    if (!isOpen) { subEl.classList.add('drawer__sub--open'); if (chevron) chevron.classList.add('drawer__link-chevron--open'); }
+  });
+});
+</script>
+
+
+</body>
+
 </body>
 </html>
