@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Industries We Serve — IOR Wireframe · 08</title>
+<style>
+/* ============================================================
+   IOR DESIGN SYSTEM TOKENS
+============================================================ */
+:root {
+  --ior-blue:     #0355A3;
+  --ior-navy:     #0A4066;
+  --ior-deep:     #0B1929;
+  --ior-sky:      #4DA8DA;
+  --ior-light:    #E8F1FB;
+  --ior-gold:     #D98300;
+  --ior-charcoal: #1F2937;
+  --ior-white:    #FFFFFF;
+  --off-white:    #F5F7FA;
+  --mid-grey:     #6B7280;
+  --dark-grey:    #374151;
+  --radius-md:    8px;
+  --font:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --container:    1280px;
+  --section-pad:  clamp(48px, 6vw, 80px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font); font-size: 16px; line-height: 1.6; color: var(--ior-charcoal); background: var(--ior-white); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+
+/* WIREFRAME TOOL */
+.wf-nav { position: sticky; top: 0; z-index: 9999; background: #1A1A2E; border-bottom: 3px solid #E94560; display: flex; align-items: center; gap: 16px; padding: 8px 16px; font-size: 12px; font-family: monospace; color: #fff; flex-wrap: wrap; }
+.wf-nav a { color: #E94560; text-decoration: underline; margin-right: 8px; }
+.wf-nav__module { color: #aaa; }
+.ann { border-left: 4px solid #e6ac00; background: #FFF9E6; padding: 10px 14px; font-size: 12px; line-height: 1.5; color: #333; }
+.ann strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #7a5c00; margin-bottom: 4px; }
+.ann--ok { border-left-color: #28a745; background: #F0FFF4; }
+.ann--ok strong { color: #155724; }
+.page-badge { background: var(--ior-white); border: 2px solid var(--ior-blue); padding: 16px 24px; }
+.page-badge h2 { font-size: 18px; color: var(--ior-charcoal); margin: 4px 0 8px; }
+.page-badge .meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; }
+.page-badge .meta span { background: #e2e8f0; padding: 2px 8px; }
+
+/* BUTTONS */
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; cursor: pointer; border: 2px solid transparent; border-radius: var(--radius-md); transition: background 200ms, color 200ms, border-color 200ms; text-decoration: none; }
+.btn--primary { background: var(--ior-blue); color: var(--ior-white); border-color: var(--ior-blue); }
+.btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
+.btn--ghost { background: transparent; color: var(--ior-white); border-color: var(--ior-white); }
+.btn--ghost:hover { background: rgba(255,255,255,0.1); }
+.btn--outline { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+.btn--outline:hover { background: var(--ior-light); }
+.btn--sm { padding: 10px 20px; font-size: 14px; }
+
+/* UTILITY BAR */
+.utility-bar { background: var(--ior-blue); padding: 10px 0; font-size: 14px; color: var(--ior-white); }
+.utility-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.utility-links { display: flex; gap: 20px; align-items: center; }
+.utility-links a { color: var(--ior-white); font-weight: 600; opacity: 0.9; }
+.utility-links a:hover { opacity: 1; }
+
+/* PRIMARY NAV */
+.primary-nav { position: sticky; top: 0; z-index: 100; background: var(--ior-white); border-bottom: 1px solid rgba(3,85,163,0.15); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.primary-nav .container { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+.nav-logo { font-size: 24px; font-weight: 900; color: var(--ior-blue); letter-spacing: -0.02em; }
+.nav-links { display: flex; list-style: none; gap: 4px; align-items: center; }
+.nav-links a { display: block; padding: 8px 14px; font-size: 15px; font-weight: 700; color: var(--ior-charcoal); border-bottom: 3px solid transparent; transition: color 150ms, border-color 150ms; }
+.nav-links a:hover { color: var(--ior-blue); }
+.nav-links a.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+.nav-ctas { display: flex; gap: 10px; align-items: center; }
+
+/* QUICK-LINKS BAR */
+.quick-links-bar { background: var(--ior-deep); border-top: 3px solid var(--ior-sky); position: sticky; top: 72px; z-index: 900; }
+.quick-links-bar .container { display: flex; align-items: stretch; min-height: 52px; }
+.ql-item { flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px; padding: 12px 10px; border-right: 1px solid rgba(255,255,255,0.08); color: var(--ior-white); font-size: 12px; font-weight: 700; cursor: pointer; transition: background 200ms; text-align: center; }
+.ql-item:last-child { border-right: none; }
+.ql-item:hover { background: rgba(255,255,255,0.06); }
+.ql-item.active { background: rgba(77,168,218,0.15); color: var(--ior-sky); }
+
+/* HERO */
+.hero-split { display: grid; grid-template-columns: 55fr 45fr; min-height: 460px; background: var(--ior-navy); }
+.hero-split__left { padding: clamp(40px, 5vw, 64px) clamp(24px, 4vw, 56px); display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.hero-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ior-sky); }
+.hero-split h1 { font-size: clamp(28px, 3.2vw, 46px); font-weight: 900; line-height: 1.05; color: var(--ior-white); }
+.hero-split h1 .accent { color: var(--ior-sky); }
+.hero-sub { font-size: clamp(15px, 1.3vw, 17px); color: rgba(255,255,255,0.8); max-width: 500px; line-height: 1.6; }
+.hero-proofline { font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 0.04em; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-split__right { background: var(--ior-deep); display: flex; align-items: center; justify-content: center; min-height: 320px; }
+.hero-img-placeholder { text-align: center; color: rgba(255,255,255,0.3); font-size: 12px; font-family: monospace; padding: 24px; border: 1px dashed rgba(255,255,255,0.15); max-width: 340px; }
+.hero-img-placeholder strong { display: block; color: var(--ior-sky); font-size: 14px; margin-bottom: 8px; }
+
+/* LOGO CAROUSEL */
+.logo-carousel-wrap { background: var(--ior-white); padding: 32px 0; border-bottom: 1px solid rgba(3,85,163,0.1); overflow: hidden; }
+.logo-carousel-label { text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 18px; }
+.logo-carousel-track-outer { overflow: hidden; }
+.logo-carousel-track { display: flex; gap: 36px; animation: logoScroll 28s linear infinite; width: max-content; }
+@keyframes logoScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.logo-placeholder { width: 130px; height: 52px; background: var(--off-white); border: 1px solid #e2e8f0; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--mid-grey); flex-shrink: 0; text-align: center; padding: 8px; }
+
+/* STAT BAR */
+.stat-bar { background: var(--ior-blue); padding: 36px 0; }
+.stat-bar .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.stat-item { text-align: center; padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.2); color: var(--ior-white); }
+.stat-item:last-child { border-right: none; }
+.stat-item__number { font-size: clamp(28px, 3vw, 44px); font-weight: 900; line-height: 1; margin-bottom: 6px; }
+.stat-item__label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.8; }
+
+/* SECTION HEADERS */
+.section-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+.section-title { font-size: clamp(24px, 2.8vw, 38px); font-weight: 900; color: var(--ior-charcoal); line-height: 1.1; margin-bottom: 12px; }
+.section-body { font-size: 17px; color: var(--mid-grey); max-width: 640px; line-height: 1.6; }
+.section-header { margin-bottom: 48px; }
+.section-header--center { text-align: center; }
+.section-header--center .section-body { margin: 0 auto; }
+
+/* INDUSTRY CARDS GRID */
+.industries-section { background: var(--off-white); padding: var(--section-pad) 0; }
+.industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.industry-card { background: var(--ior-white); border-top: 4px solid var(--ior-blue); padding: 32px 28px 28px; display: flex; flex-direction: column; gap: 14px; transition: box-shadow 200ms; }
+.industry-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,0.10); }
+.industry-card__icon { font-size: 32px; line-height: 1; }
+.industry-card__title { font-size: 18px; font-weight: 900; color: var(--ior-charcoal); line-height: 1.2; }
+.industry-card__body { font-size: 14px; color: var(--mid-grey); line-height: 1.6; flex: 1; }
+.industry-card__cta { font-size: 14px; font-weight: 700; color: var(--ior-blue); display: inline-flex; align-items: center; gap: 6px; border-bottom: 2px solid var(--ior-blue); padding-bottom: 2px; align-self: flex-start; }
+.industry-card__cta:hover { opacity: 0.7; }
+
+/* CAPABILITY SECTION */
+.capability-section { background: var(--ior-white); padding: var(--section-pad) 0; }
+.capability-section .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.capability-list { list-style: none; display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
+.capability-list li { display: flex; align-items: flex-start; gap: 14px; font-size: 15px; color: var(--dark-grey); line-height: 1.5; }
+.capability-list li::before { content: '✓'; font-size: 14px; font-weight: 900; color: var(--ior-blue); flex-shrink: 0; margin-top: 2px; }
+.capability-img { background: var(--ior-deep); min-height: 380px; display: flex; align-items: center; justify-content: center; }
+.capability-img-placeholder { text-align: center; color: rgba(255,255,255,0.3); font-size: 12px; font-family: monospace; padding: 24px; border: 1px dashed rgba(255,255,255,0.15); max-width: 300px; }
+.capability-img-placeholder strong { display: block; color: var(--ior-sky); font-size: 14px; margin-bottom: 8px; }
+
+/* INDUSTRY STATS STRIP */
+.industry-stats-strip { background: var(--ior-deep); padding: 48px 0; }
+.industry-stats-strip .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.istat { text-align: center; padding: 16px 20px; border-right: 1px solid rgba(255,255,255,0.1); color: var(--ior-white); }
+.istat:last-child { border-right: none; }
+.istat__number { font-size: clamp(28px, 3vw, 44px); font-weight: 900; line-height: 1; margin-bottom: 6px; color: var(--ior-sky); }
+.istat__label { font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(255,255,255,0.6); }
+
+/* CTA SECTION */
+.cta-section { background: var(--ior-blue); padding: var(--section-pad) 0; text-align: center; }
+.cta-section h2 { font-size: clamp(24px, 2.5vw, 36px); font-weight: 900; color: var(--ior-white); margin-bottom: 16px; }
+.cta-section p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 560px; margin: 0 auto 32px; line-height: 1.6; }
+.cta-section .btn--ghost { border-color: rgba(255,255,255,0.5); }
+
+/* SECURITY BANNER */
+.security-banner { background: var(--ior-deep); padding: 48px 0; }
+.security-banner .container { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.security-banner__text h3 { font-size: clamp(20px, 2vw, 28px); font-weight: 900; color: var(--ior-white); margin-bottom: 10px; }
+.security-banner__text p { font-size: 15px; color: rgba(255,255,255,0.65); max-width: 600px; line-height: 1.6; }
+.security-banner__links { display: flex; gap: 16px; flex-wrap: wrap; }
+.security-banner__link { font-size: 14px; font-weight: 700; color: var(--ior-sky); border-bottom: 2px solid var(--ior-sky); padding-bottom: 2px; }
+
+/* FOOTER */
+.footer { background: var(--ior-deep); padding: var(--section-pad) 0 32px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+.footer-brand p { margin-top: 12px; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 260px; }
+.footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ior-white); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: rgba(255,255,255,0.6); transition: color 150ms; font-size: 14px; }
+.footer-col a:hover { color: var(--ior-white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: rgba(255,255,255,0.4); }
+.footer-bottom a { color: rgba(255,255,255,0.4); margin-left: 16px; }
+.footer-bottom a:hover { color: var(--ior-white); }
+.footer-social { display: flex; gap: 8px; }
+.social-icon { width: 32px; height: 32px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 12px; color: rgba(255,255,255,0.5); border-radius: 50%; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .industries-grid { grid-template-columns: repeat(2, 1fr); }
+  .capability-section .container { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .hero-split { grid-template-columns: 1fr; }
+  .hero-split__right { display: none; }
+  .industries-grid { grid-template-columns: 1fr; }
+  .quick-links-bar .container { flex-wrap: wrap; }
+  .ql-item { flex: none; width: 50%; }
+  .stat-bar .container { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- WIREFRAME NAV -->
+<nav class="wf-nav">
+  <strong>IOR WIREFRAMES</strong>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="08_Industries_v2.html">08 Industries ✓</a>
+  <a href="08a_Transport_Logistics.html">08a Transport</a>
+  <a href="08b_Oil_Gas.html">08b Oil &amp; Gas</a>
+  <a href="08c_Agriculture_Harvest.html">08c Agriculture</a>
+  <a href="08d_Mining_Resources.html">08d Mining</a>
+  <a href="08e_Livestock.html">08e Livestock</a>
+  <a href="08f_Commercial_Aviation.html">08f Aviation</a>
+  <a href="08g_Construction_Civil.html">08g Construction</a>
+  <a href="08h_Government_Defence.html">08h Government</a>
+  <span class="wf-nav__module">MODULE 08 · Industries We Serve · V1</span>
+</nav>
+
+<div class="page-badge">
+  <h2>08 · Industries We Serve — Hub</h2>
+  <div class="meta">
+    <span>Staging: /industries/</span>
+    <span>8 industry sub-pages</span>
+    <span>Quick-links bar: all 8 industries</span>
+    <span>Trust Flow at bottom</span>
+  </div>
+</div>
+
+<!-- UTILITY BAR -->
+<div class="utility-bar">
+  <div class="container">
+    <div>📢 Announcement Message Placeholder</div>
+    <div class="utility-links">
+      <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
+      <a href="08d_Make_a_Payment_v2.html">✉️ Make a Payment</a>
+      <a href="#">📞 1300 457 467</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRIMARY NAV -->
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links">
+      <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions ▾</a></li>
+      <li><a href="07_Digital_Platforms_v2.html">Digital Platforms ▾</a></li>
+      <li><a href="08_Industries_v2.html" class="active">Industries We Serve ▾</a></li>
+      <li><a href="#">About IOR ▾</a></li>
+      <li><a href="08_Support_Hub_v2.html">Support &amp; Contact ▾</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
+      <a href="/support-contact/contact-us/" class="btn btn--primary btn--sm">Apply for an Account</a>
+    </div>
+  </div>
+</nav>
+
+<!-- QUICK-LINKS BAR — 8 Industries -->
+<div class="ann ann--ok">
+  <strong>QUICK-LINKS BAR · 8 Industry sub-pages · Sticky below nav</strong>
+</div>
+<div class="quick-links-bar">
+  <div class="container">
+    <a href="08a_Transport_Logistics.html" class="ql-item">🚛 Transport</a>
+    <a href="08b_Oil_Gas.html" class="ql-item">🛢️ Oil &amp; Gas</a>
+    <a href="08c_Agriculture_Harvest.html" class="ql-item">🌾 Agriculture</a>
+    <a href="08d_Mining_Resources.html" class="ql-item">⛏️ Mining</a>
+    <a href="08e_Livestock.html" class="ql-item">🐄 Livestock</a>
+    <a href="08f_Commercial_Aviation.html" class="ql-item">✈️ Aviation</a>
+    <a href="08g_Construction_Civil.html" class="ql-item">🏗️ Construction</a>
+    <a href="08h_Government_Defence.html" class="ql-item">🛡️ Government</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<div class="ann ann--ok">
+  <strong>HERO · Full-width split · Left-aligned · Approved pattern</strong>
+</div>
+<section class="hero-split">
+  <div class="hero-split__left">
+    <div class="hero-eyebrow">Industries We Serve</div>
+    <h1>Fuel solutions engineered for <span class="accent">Australia's hardest-working industries</span></h1>
+    <p class="hero-sub">One partner for every sector. IOR delivers industrial fuel solutions tailored to the operational demands of transport, mining, aviation, agriculture, and beyond.</p>
+    <p class="hero-proofline">125+ network sites &nbsp;·&nbsp; 190M+ litres storage &nbsp;·&nbsp; 24/7 access</p>
+    <div class="hero-ctas">
+      <a href="/fuel-solutions/" class="btn btn--primary">Explore Fuel Solutions →</a>
+      <a href="/support-contact/contact-us/" class="btn btn--ghost">Speak to a Specialist</a>
+    </div>
+  </div>
+  <div class="hero-split__right">
+    <div class="hero-img-placeholder">
+      <strong>IMAGE PLACEHOLDER</strong>
+      Composite: mining truck · road train · farm · aviation ramp<br><br>
+      <em>High-quality, no watermark. Landscape 4:3.</em>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO CAROUSEL -->
+<div class="logo-carousel-wrap">
+  <div class="logo-carousel-label">Trusted by</div>
+  <div class="logo-carousel-track-outer">
+    <div class="logo-carousel-track">
+      <div class="logo-placeholder">K.S. Easter Transport</div>
+      <div class="logo-placeholder">Incitec Pivot</div>
+      <div class="logo-placeholder">Norwood Agriculture</div>
+      <div class="logo-placeholder">MPC Kinetic</div>
+      <div class="logo-placeholder">Games LinQ</div>
+      <div class="logo-placeholder">Alliance Airlines</div>
+      <div class="logo-placeholder">K.S. Easter Transport</div>
+      <div class="logo-placeholder">Incitec Pivot</div>
+      <div class="logo-placeholder">Norwood Agriculture</div>
+      <div class="logo-placeholder">MPC Kinetic</div>
+      <div class="logo-placeholder">Games LinQ</div>
+      <div class="logo-placeholder">Alliance Airlines</div>
+    </div>
+  </div>
+</div>
+
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="container">
+    <div class="stat-item">
+      <div class="stat-item__number">40+</div>
+      <div class="stat-item__label">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__number">125+</div>
+      <div class="stat-item__label">Network Locations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__number">100%</div>
+      <div class="stat-item__label">Australian Owned</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-item__number">ISO</div>
+      <div class="stat-item__label">Aligned Operations</div>
+    </div>
+  </div>
+</div>
+
+<!-- INDUSTRY CARDS GRID -->
+<div class="ann ann--ok">
+  <strong>INDUSTRY CARDS GRID · 8 cards · 4-col layout · Each links to sub-page</strong>
+</div>
+<section class="industries-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Built for Every Industry We Serve</div>
+      <h2 class="section-title">No two operations are the same.</h2>
+      <p class="section-body">A transport fleet has different demands than a mine site or an airport. IOR delivers commercial sector fuel solutions tailored to each environment, backed by a single, integrated supply network.</p>
+    </div>
+    <div class="industries-grid">
+
+      <!-- Transport & Logistics -->
+      <div class="industry-card">
+        <div class="industry-card__icon">🚛</div>
+        <div class="industry-card__title">Transport &amp; Logistics</div>
+        <p class="industry-card__body">24/7 national diesel network built for heavy fleet operations and zero downtime. High-flow sites, driver access, and integrated fleet fuel management.</p>
+        <a href="08a_Transport_Logistics.html" class="industry-card__cta">Explore Transport Solutions →</a>
+      </div>
+
+      <!-- Oil & Gas -->
+      <div class="industry-card">
+        <div class="industry-card__icon">🛢️</div>
+        <div class="industry-card__title">Oil &amp; Gas</div>
+        <p class="industry-card__body">Specialist enterprise fuel supply for remote and high-risk operations. On-site refuelling, fluid logistics, and temporary storage for drilling and production environments.</p>
+        <a href="08b_Oil_Gas.html" class="industry-card__cta">Explore Oil &amp; Gas Solutions →</a>
+      </div>
+
+      <!-- Agriculture & Harvest -->
+      <div class="industry-card">
+        <div class="industry-card__icon">🌾</div>
+        <div class="industry-card__title">Agriculture &amp; Harvest</div>
+        <p class="industry-card__body">Reliable commercial sector fuel delivered directly to farms and regional operations. Bulk diesel, AdBlue, and lubricants supporting seasonal demand.</p>
+        <a href="08c_Agriculture_Harvest.html" class="industry-card__cta">Explore Agriculture Solutions →</a>
+      </div>
+
+      <!-- Mining & Resources -->
+      <div class="industry-card">
+        <div class="industry-card__icon">⛏️</div>
+        <div class="industry-card__title">Mining &amp; Resources</div>
+        <p class="industry-card__body">Remote-ready industrial fuel solutions designed for high-volume demand, strict compliance, and continuous operation. Bulk supply, on-site storage, and monitored fuel systems.</p>
+        <a href="08d_Mining_Resources.html" class="industry-card__cta">Explore Mining Solutions →</a>
+      </div>
+
+      <!-- Livestock -->
+      <div class="industry-card">
+        <div class="industry-card__icon">🐄</div>
+        <div class="industry-card__title">Livestock &amp; Rural Operations</div>
+        <p class="industry-card__body">Specialised industrial fuel solutions supporting remote transport, stations, and aviation operations. Fuel supply where others do not operate.</p>
+        <a href="08e_Livestock.html" class="industry-card__cta">Explore Livestock Solutions →</a>
+      </div>
+
+      <!-- Commercial & General Aviation -->
+      <div class="industry-card">
+        <div class="industry-card__icon">✈️</div>
+        <div class="industry-card__title">Commercial &amp; General Aviation</div>
+        <p class="industry-card__body">JIG-compliant Jet A-1 supply for commercial operations, plus regional self-serve access to Avgas and Jet A-1 via Fuelcharge.</p>
+        <a href="08f_Commercial_Aviation.html" class="industry-card__cta">Explore Aviation Solutions →</a>
+      </div>
+
+      <!-- Construction & Civil -->
+      <div class="industry-card">
+        <div class="industry-card__icon">🏗️</div>
+        <div class="industry-card__title">Construction &amp; Civil</div>
+        <p class="industry-card__body">Flexible enterprise fuel supply supporting project-based operations across changing sites. On-site refuelling, mobile delivery, and temporary storage.</p>
+        <a href="08g_Construction_Civil.html" class="industry-card__cta">Explore Construction Solutions →</a>
+      </div>
+
+      <!-- Government & Defence -->
+      <div class="industry-card">
+        <div class="industry-card__icon">🛡️</div>
+        <div class="industry-card__title">Government &amp; Defence</div>
+        <p class="industry-card__body">Sovereign enterprise fuel supply aligned to compliance, audit requirements, and national security. End-to-end control from supply to deployment.</p>
+        <a href="08h_Government_Defence.html" class="industry-card__cta">Explore Government Solutions →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITY SECTION -->
+<div class="ann ann--ok">
+  <strong>CAPABILITY SECTION · Infrastructure that scales across every sector</strong>
+</div>
+<section class="capability-section">
+  <div class="container">
+    <div>
+      <div class="section-eyebrow">Infrastructure That Scales</div>
+      <h2 class="section-title">One system. Every sector.</h2>
+      <p class="section-body">We bring fuel supply, infrastructure, and technology into one system, giving you national coverage with less complexity.</p>
+      <ul class="capability-list">
+        <li>National commercial fuel network across key transport and regional corridors</li>
+        <li>Bulk diesel fuel Australia-wide with secure supply continuity</li>
+        <li>On-site storage and infrastructure deployment</li>
+        <li>Integrated fleet fuel management and real-time monitoring</li>
+        <li>24/7 access across diesel and aviation networks</li>
+        <li>ISO-aligned operations and full audit trail</li>
+      </ul>
+    </div>
+    <div class="capability-img">
+      <div class="capability-img-placeholder">
+        <strong>IMAGE PLACEHOLDER</strong>
+        IOR terminal infrastructure<br>OR Eromanga Refinery aerial<br>OR on-site tank deployment<br><br>
+        <em>High-quality. Landscape 4:3.</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRY STATS STRIP -->
+<section class="industry-stats-strip">
+  <div class="container">
+    <div class="istat">
+      <div class="istat__number">190M+</div>
+      <div class="istat__label">Litres Storage Capacity</div>
+    </div>
+    <div class="istat">
+      <div class="istat__number">125+</div>
+      <div class="istat__label">Network Locations</div>
+    </div>
+    <div class="istat">
+      <div class="istat__number">40+</div>
+      <div class="istat__label">Years Operating</div>
+    </div>
+    <div class="istat">
+      <div class="istat__number">100%</div>
+      <div class="istat__label">Australian-Owned Supply Chain</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Discuss your industry requirements</h2>
+    <p>Speak to our team about tailored enterprise fuel supply and infrastructure solutions designed for your industry.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="/support-contact/contact-us/" class="btn btn--ghost" style="font-size:17px;padding:16px 36px;">Speak to an Industry Specialist →</a>
+    </div>
+  </div>
+</section>
+
+<!-- INFRASTRUCTURE THAT SCALES SECTION -->
+<section style="background:#f5f7fa; padding:80px 0;">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;">
+      <div data-animate="fade-up">
+        <div class="section-eyebrow">Infrastructure That Scales</div>
+        <h2 class="section-title">One system. Every sector.</h2>
+        <p style="font-size:16px; color:#4a5568; line-height:1.7; margin-bottom:32px;">We bring fuel supply, infrastructure, and technology into one system — giving you national coverage with less complexity. Whether you run a transport fleet, a remote mine, or a pastoral station, IOR's integrated capability scales with your operation.</p>
+        <a href="08c_Find_a_Location_v2.html" class="btn btn--primary">Find a Location Near You →</a>
+      </div>
+      <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px;" data-animate="fade-up">
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+          <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
+          <span style="font-size:15px; color:#2d3748; line-height:1.5;">National commercial fuel network across key transport and regional corridors</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+          <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
+          <span style="font-size:15px; color:#2d3748; line-height:1.5;">Bulk diesel fuel Australia-wide with secure supply continuity</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+          <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
+          <span style="font-size:15px; color:#2d3748; line-height:1.5;">On-site storage and infrastructure deployment</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+          <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
+          <span style="font-size:15px; color:#2d3748; line-height:1.5;">Integrated fleet fuel management and real-time monitoring via HyDip™ FMS</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+          <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
+          <span style="font-size:15px; color:#2d3748; line-height:1.5;">24/7 access across diesel and aviation networks</span>
+        </li>
+        <li style="display:flex; align-items:flex-start; gap:14px; padding:16px 20px; background:#fff; border-radius:8px; border:1px solid #e2e8f0;">
+          <span style="width:28px; height:28px; background:var(--ior-blue); border-radius:50%; display:flex; align-items:center; justify-content:center; flex-shrink:0; color:#fff; font-size:13px; font-weight:700;">✓</span>
+          <span style="font-size:15px; color:#2d3748; line-height:1.5;">ISO-aligned operations and full audit trail</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECURITY OF SUPPLY BANNER -->
+<section class="security-banner">
+  <div class="container">
+    <div class="security-banner__text">
+      <h3>Your fuel supply is never at risk.</h3>
+      <p>Most fuel companies are resellers. IOR is different — we own the terminals, we operate Australia's only inland refinery, and our supply chain is backed by Stonepeak infrastructure capital. When global supply chains tighten, our customers don't feel it.</p>
+      <p style="margin-top:10px; font-size:13px; color:rgba(255,255,255,0.45);">Lytton Terminal &nbsp;·&nbsp; Port Bonython Terminal &nbsp;·&nbsp; Eromanga Refinery &nbsp;·&nbsp; Stonepeak-backed</p>
+    </div>
+    <div class="security-banner__links">
+      <a href="06_Supply_Trading_v2.html" class="security-banner__link">Our Infrastructure →</a>
+      <a href="06a_Terminals.html" class="security-banner__link">View Terminals →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / INSIGHTS SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-section__header" data-animate="fade-up">
+      <div class="blog-section__header-left">
+        <div class="eyebrow eyebrow--dark">Industries We Serve · Case Studies &amp; Insights</div>
+        <h2 class="blog-section__title">Every sector. Every scale. One partner.</h2>
+      </div>
+    </div>
+    <div class="blog-tabs" role="tablist">
+      <button class="blog-tab active" role="tab" aria-selected="true">Case Studies</button>
+      <button class="blog-tab" role="tab" aria-selected="false">Blog &amp; Insights</button>
+    </div>
+    <!-- Case Studies Panel -->
+    <div class="blog-panel active" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Linfox</span>
+          <span class="blog-card__img-note">Linfox fleet, IOR stop, highway</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Transport</div>
+          <div class="blog-card__title">Linfox: eliminating fuel admin across Australia's largest logistics fleet</div>
+          <div class="blog-card__excerpt">2,000+ vehicles. One RFID tag. One monthly invoice. How IOR became the fuel partner of choice for Australia's largest logistics company.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Mining Sites</span>
+          <span class="blog-card__img-note">Mine sites, tanker, aerial</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Mining</div>
+          <div class="blog-card__title">Tier 1 miner: fuel certainty across 6 remote sites in 3 states</div>
+          <div class="blog-card__excerpt">Bulk delivery, on-site infrastructure, and HyDip™ FMS monitoring — how IOR became the single fuel partner for a major mining operation.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">AACo</span>
+          <span class="blog-card__img-note">Cattle station, helicopter, IOR</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Agriculture</div>
+          <div class="blog-card__title">AACo: aviation and ground fuels for Australia's largest cattle company</div>
+          <div class="blog-card__excerpt">Helicopter mustering. Cattle truck fleets. Remote station supply. IOR's dual ground and aviation fuel solution for AACo's national operations.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Case Studies →</a>
+      </div>
+    </div>
+    <!-- Blog Panel -->
+    <div class="blog-panel" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Industry Solutions</span>
+          <span class="blog-card__img-note">Industry collage, IOR</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Industry</div>
+          <div class="blog-card__title">Why industry-specific fuel supply matters: the IOR approach</div>
+          <div class="blog-card__excerpt">Transport operators, miners, farmers, and aviators have fundamentally different fuel needs. IOR's industry-specific solutions explained.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Sovereign Supply</span>
+          <span class="blog-card__img-note">Eromanga Refinery, supply chain</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Supply Chain</div>
+          <div class="blog-card__title">Sovereign fuel supply for Australian industry: why it matters in 2025</div>
+          <div class="blog-card__excerpt">Import-dependent fuel supply is a strategic vulnerability for Australian industry. IOR's domestic supply chain is the alternative.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Tech Stack</span>
+          <span class="blog-card__img-note">Digital platforms, industries</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Technology</div>
+          <div class="blog-card__title">Digital fuel management across industries: the IOR technology stack</div>
+          <div class="blog-card__excerpt">HyDip™ FMS, FuelCharge, and the Customer Portal — how IOR's digital platforms serve every industry from transport to aviation.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="display:inline-block;">[IOR LOGO]</div>
+        <p>Australia's most vertically integrated fuel and energy partner. Fuelling industry since 1984.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08b_Oil_Gas.html">Oil &amp; Gas</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08e_Livestock.html">Livestock</a></li>
+          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
+          <li><a href="08g_Construction_Civil.html">Construction &amp; Civil</a></li>
+          <li><a href="08h_Government_Defence.html">Government &amp; Defence</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Fuel Solutions</h4>
+        <ul>
+          <li><a href="03a_Diesel_Network.html">IOR Diesel Network</a></li>
+          <li><a href="03b_On_Site_Refuelling.html">On-Site Refuelling</a></li>
+          <li><a href="03c_Bulk_Diesel_Delivery.html">Bulk Diesel Delivery</a></li>
+          <li><a href="04_Aviation_v2.html">Aviation Fuels</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Digital Platforms</h4>
+        <ul>
+          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
+          <li><a href="07b_FuelCharge_v2.html">Fuelcharge</a></li>
+          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 IOR Petroleum. All rights reserved. 100% Australian owned.</span>
+      <div><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Modern Slavery Statement</a></div>
+      <div class="footer-social">
+        <div class="social-icon">in</div>
+        <div class="social-icon">f</div>
+        <div class="social-icon">▶</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+(function(){
+  document.querySelectorAll('.blog-section').forEach(function(section){
+    var tabs = section.querySelectorAll('.blog-tab');
+    var panels = section.querySelectorAll('.blog-panel');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        panels.forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        panels[i].classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

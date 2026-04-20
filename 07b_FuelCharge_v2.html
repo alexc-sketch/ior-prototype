@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuelcharge — IOR Digital Platforms · 07b (V2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ior-blue:#0355A3;--ior-navy:#0A4066;--ior-deep:#0B1929;--ior-sky:#4DA8DA;--ior-light:#E8F1FB;--ior-light-blue-bg:#EBF4FB;--ior-charcoal:#1F2937;--ior-mid-grey:#6B7280;--off-white:#F5F7FA;--border-light:rgba(3,85,163,0.12);--fc-teal:#00D1CC;--fc-navy:#13114D;--fc-teal-dark:#00A8A4;--radius-md:8px;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--container:1280px;--sp:clamp(48px,6vw,80px);--spx:clamp(16px,4vw,48px);--fw-bold:700;--fw-black:900;--transition-fast:150ms ease;--transition-base:250ms ease;--z-nav:100;--z-drawer:300}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ior-charcoal);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.inner{max-width:var(--container);margin:0 auto;padding:0 var(--spx)}
+.wf-nav{position:sticky;top:0;z-index:9999;background:#1A1A2E;border-bottom:3px solid #E94560;display:flex;align-items:center;gap:16px;padding:8px 16px;font-size:11px;font-family:monospace;color:#fff;flex-wrap:wrap}
+.wf-nav a{color:#E94560;text-decoration:underline;margin-right:8px}
+.utility-bar{background:var(--ior-blue);padding:8px var(--spx);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.utility-bar__actions{display:flex;align-items:center;gap:20px}
+.utility-bar__link{font-size:14px;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px;opacity:.9;transition:opacity var(--transition-fast)}
+.utility-bar__link:hover{opacity:1}
+.utility-bar__divider{width:1px;height:14px;background:rgba(255,255,255,.4)}
+.primary-nav{position:sticky;top:0;z-index:var(--z-nav);background:#fff;border-bottom:1px solid var(--border-light);box-shadow:0 2px 12px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;padding:0 var(--spx);height:72px;gap:24px;transition:height var(--transition-base),box-shadow var(--transition-base)}
+.primary-nav--scrolled{height:56px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.nav-logo{font-size:22px;font-weight:900;color:var(--ior-blue);letter-spacing:-.02em;white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;list-style:none;gap:4px;align-items:center}
+.nav-link{display:block;padding:8px 14px;font-size:15px;font-weight:700;color:var(--ior-charcoal);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:color var(--transition-fast),border-color var(--transition-fast)}
+.nav-link:hover{color:var(--ior-blue)}
+.nav-link.active{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
+.nav-ctas{display:flex;gap:10px;align-items:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ior-charcoal);transition:var(--transition-base)}
+@media(max-width:1023px){.nav-links{display:none}.hamburger{display:flex}}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:16px;font-weight:700;letter-spacing:.02em;cursor:pointer;border:2px solid transparent;border-radius:var(--radius-md);transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast);text-decoration:none;font-family:var(--font)}
+.btn--primary{background:var(--ior-blue);color:#fff;border-color:var(--ior-blue)}
+.btn--primary:hover{background:var(--ior-navy);border-color:var(--ior-navy)}
+.btn--teal{background:var(--fc-teal);color:var(--fc-navy);border-color:var(--fc-teal)}
+.btn--teal:hover{background:var(--fc-teal-dark);border-color:var(--fc-teal-dark);color:#fff}
+.btn--navy{background:var(--fc-navy);color:#fff;border-color:var(--fc-navy)}
+.btn--ghost{background:transparent;color:#fff;border-color:#fff}
+.btn--ghost:hover{background:rgba(255,255,255,.1)}
+.btn--outline{background:transparent;color:var(--ior-blue);border-color:var(--ior-blue)}
+.btn--sm{padding:10px 20px;font-size:14px}
+.btn--lg{padding:18px 36px;font-size:18px}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;z-index:calc(var(--z-drawer) - 1);transition:opacity var(--transition-base)}
+.drawer-overlay--open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,90vw);background:var(--ior-deep);z-index:var(--z-drawer);transform:translateX(100%);transition:transform var(--transition-base);display:flex;flex-direction:column;overflow-y:auto}
+.drawer--open{transform:translateX(0)}
+.drawer__head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.drawer__close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:4px}
+.drawer__nav{flex:1;padding:8px 0}
+.drawer__item{border-bottom:1px solid rgba(255,255,255,.08)}
+.drawer__link{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.drawer__link-chevron::after{content:'›';font-size:18px;transition:transform var(--transition-fast)}
+.drawer__link-chevron--open::after{transform:rotate(90deg)}
+.drawer__sub{display:none;background:rgba(255,255,255,.04);padding:4px 0}
+.drawer__sub--open{display:block}
+.drawer__sub-link{display:block;padding:10px 20px 10px 36px;color:rgba(255,255,255,.75);font-size:14px}
+.drawer__sub-link:hover{color:#fff}
+.drawer__ctas{padding:16px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1)}
+.quick-links-bar{position:sticky;top:72px;z-index:900;background:var(--fc-navy);border-top:3px solid var(--fc-teal)}
+.quick-links-bar .inner{display:flex;align-items:stretch;min-height:52px}
+.ql-item{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-right:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.85);font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background var(--transition-fast);text-align:center}
+.ql-item:last-child{border-right:none}
+.ql-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.ql-item.active{color:var(--fc-teal);border-bottom:2px solid var(--fc-teal)}
+.hero-fc{background:var(--fc-navy);border-top:5px solid var(--fc-teal);padding:clamp(64px,8vw,100px) var(--spx) clamp(48px,6vw,80px)}
+.hero-fc .inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.hero-fc .inner{grid-template-columns:1fr 1fr;align-items:center}}
+.hero-fc__eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);background:rgba(0,209,204,.15);padding:4px 12px;border-radius:var(--radius-md);margin-bottom:16px}
+.hero-fc h1{font-size:clamp(36px,5vw,64px);font-weight:var(--fw-black);line-height:1.05;color:#fff;margin-bottom:20px}
+.hero-fc h1 .accent{color:var(--fc-teal)}
+.hero-fc__sub{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.8);max-width:520px;margin-bottom:32px;line-height:1.6}
+.hero-fc__ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px}
+.hero-fc__app-badges{display:flex;gap:12px;flex-wrap:wrap}
+.app-badge{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-md);padding:10px 16px;color:#fff;font-size:13px;font-weight:600}
+.hero-fc__right{background:rgba(0,209,204,.08);border:1px solid rgba(0,209,204,.25);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:20px}
+.hero-stat{display:flex;flex-direction:column;gap:4px}
+.hero-stat__num{font-size:40px;font-weight:var(--fw-black);color:var(--fc-teal);line-height:1}
+.hero-stat__label{font-size:14px;color:rgba(255,255,255,.65);font-weight:600}
+.hero-stat-divider{height:1px;background:rgba(255,255,255,.1)}
+.logo-strip{background:#fff;border-bottom:1px solid var(--border-light);padding:28px var(--spx)}
+.logo-strip__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ior-mid-grey);text-align:center;margin-bottom:20px}
+.logo-strip__row{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,48px);flex-wrap:wrap}
+.logo-ph{width:110px;height:40px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;font-size:10px;font-family:monospace;color:var(--ior-mid-grey);font-weight:700;border-radius:var(--radius-md)}
+.audience-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.audience-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.audience-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.audience-grid{grid-template-columns:repeat(3,1fr)}}
+.flip-card{perspective:1000px;height:320px;cursor:pointer}
+.flip-card__inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flip-card:hover .flip-card__inner,.flip-card.flipped .flip-card__inner{transform:rotateY(180deg)}
+.flip-card__front,.flip-card__back{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;justify-content:flex-end}
+.flip-card__front{background:var(--fc-navy);border-top:4px solid var(--fc-teal)}
+.flip-card__back{background:var(--fc-teal);transform:rotateY(180deg);justify-content:center;gap:16px}
+.flip-card__icon{font-size:40px;margin-bottom:12px}
+.flip-card__front-title{font-size:clamp(20px,2vw,28px);font-weight:var(--fw-black);color:#fff;margin-bottom:8px}
+.flip-card__front-sub{font-size:14px;color:rgba(255,255,255,.65)}
+.flip-card__hint{font-size:12px;color:rgba(255,255,255,.4);margin-top:8px}
+.flip-card__back-title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-black);color:var(--fc-navy)}
+.flip-card__back-body{font-size:15px;color:var(--fc-navy);line-height:1.55}
+.flip-card__back-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--fc-navy);background:rgba(19,17,77,.1);padding:10px 16px;border-radius:var(--radius-md)}
+.how-section{background:var(--fc-navy);padding:var(--sp) var(--spx)}
+.steps-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.steps-grid{grid-template-columns:repeat(3,1fr)}}
+.step-card{background:rgba(255,255,255,.05);border-top:4px solid var(--fc-teal);border-radius:var(--radius-md);padding:32px;position:relative;overflow:hidden}
+.step-card__ghost{position:absolute;top:-8px;right:16px;font-size:48px;font-weight:900;color:rgba(0,209,204,.2);line-height:1;pointer-events:none;user-select:none}
+.step-card__num{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);margin-bottom:12px}
+.step-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:#fff;margin-bottom:10px}
+.step-card__body{font-size:15px;color:rgba(255,255,255,.7);line-height:1.6}
+.features-section{background:#fff;padding:var(--sp) var(--spx)}
+.features-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.features-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.features-grid{grid-template-columns:repeat(3,1fr)}}
+.feature-card{background:var(--off-white);border-top:4px solid var(--fc-teal);border-radius:var(--radius-md);padding:28px}
+.feature-card__icon{font-size:32px;margin-bottom:14px}
+.feature-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:var(--ior-deep);margin-bottom:8px}
+.feature-card__body{font-size:14px;color:var(--ior-mid-grey);line-height:1.65}
+.map-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.map-section .inner{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+@media(min-width:1024px){.map-section .inner{grid-template-columns:1fr 1fr}}
+.map-placeholder{width:100%;aspect-ratio:4/3;background:var(--ior-light-blue-bg);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:13px;font-family:monospace;color:var(--ior-mid-grey);text-align:center;padding:24px;border:1px solid var(--border-light)}
+.testimonial-section{background:var(--fc-navy);padding:var(--sp) var(--spx)}
+.testimonial-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:768px){.testimonial-grid{grid-template-columns:1fr 1fr}}
+.testimonial-card{background:rgba(255,255,255,.05);border-top:4px solid var(--fc-teal);border-radius:var(--radius-md);padding:32px}
+.testimonial-card__quote{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.9);line-height:1.6;font-style:italic;margin-bottom:24px}
+.testimonial-card__name{font-size:15px;font-weight:700;color:#fff}
+.testimonial-card__role{font-size:13px;color:rgba(255,255,255,.55)}
+.insights-section{background:#fff;padding:var(--sp) var(--spx)}
+.insights-tabs{display:flex;border-bottom:2px solid var(--border-light);margin-bottom:32px}
+.insights-tab{padding:12px 24px;font-size:15px;font-weight:700;color:var(--ior-mid-grey);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color var(--transition-fast),border-color var(--transition-fast);font-family:var(--font)}
+.insights-tab.active{color:var(--fc-teal);border-bottom-color:var(--fc-teal)}
+.insights-tab-panel{display:none}
+.insights-tab-panel.active{display:block}
+.insights-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.insights-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.insights-grid{grid-template-columns:repeat(3,1fr)}}
+.insight-card{display:flex;flex-direction:column;gap:14px}
+.insight-card__img{width:100%;aspect-ratio:16/9;background:rgba(0,209,204,.1);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:11px;font-family:monospace;color:var(--fc-teal)}
+.insight-card__tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fc-navy);background:rgba(0,209,204,.2);padding:3px 10px;border-radius:var(--radius-md)}
+.insight-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:var(--ior-deep);line-height:1.2}
+.insight-card__read{font-size:14px;color:var(--fc-teal);font-weight:600}
+.faq-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.faq-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border-light)}
+.faq-item{border-bottom:1px solid var(--border-light)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;cursor:pointer;font-size:clamp(16px,1.4vw,20px);font-weight:700;color:var(--ior-deep)}
+.faq-q::after{content:'+';font-size:24px;font-weight:400;color:var(--fc-teal);flex-shrink:0;transition:transform var(--transition-fast)}
+.faq-item--open .faq-q::after{transform:rotate(45deg)}
+.faq-a{display:none;padding-bottom:20px;font-size:16px;color:var(--ior-mid-grey);line-height:1.65}
+.faq-item--open .faq-a{display:block}
+.form-section{background:var(--fc-navy);padding:var(--sp) var(--spx)}
+.form-section__inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.form-section__inner{grid-template-columns:1fr 1fr;align-items:start}}
+.form-section__left h2{font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;margin-bottom:16px;line-height:1.2}
+.form-section__left p{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.75);line-height:1.6}
+.hubspot-embed{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:16px}
+.hubspot-embed__label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);margin-bottom:8px}
+.hs-field{display:flex;flex-direction:column;gap:6px}
+.hs-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.hs-input{padding:12px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-md);color:#fff;font-size:15px;font-family:var(--font);outline:none;transition:border-color var(--transition-fast)}
+.hs-input:focus{border-color:var(--fc-teal)}
+.hs-input::placeholder{color:rgba(255,255,255,.35)}
+.hs-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.hs-row{grid-template-columns:1fr}}
+.sos-banner{background:var(--ior-deep);border-top:4px solid var(--ior-blue);padding:clamp(32px,4vw,56px) var(--spx)}
+.sos-banner__inner{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+@media(min-width:768px){.sos-banner__inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.sos-banner__text h2{font-size:clamp(20px,2vw,28px);font-weight:var(--fw-black);color:#fff;margin-bottom:8px}
+.sos-banner__text p{font-size:16px;color:rgba(255,255,255,.7);max-width:560px}
+.sos-banner__ctas{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.pre-footer{background:var(--fc-teal);padding:clamp(48px,6vw,80px) var(--spx)}
+.pre-footer__inner{display:flex;flex-direction:column;gap:24px}
+@media(min-width:768px){.pre-footer__inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.pre-footer__title{font-size:clamp(24px,3vw,40px);font-weight:var(--fw-black);color:var(--fc-navy)}
+.pre-footer__ctas{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--ior-blue);padding-block:clamp(48px,6vw,80px);padding-inline:var(--spx)}
+.footer-nav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+@media(min-width:768px){.footer-nav-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1200px){.footer-nav-grid{grid-template-columns:repeat(6,1fr)}}
+.footer-col__title{font-size:16px;font-weight:var(--fw-bold);color:#fff;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.2)}
+.footer-col__links{display:flex;flex-direction:column;gap:14px}
+.footer-col__link{font-size:14px;color:rgba(255,255,255,.85);transition:color var(--transition-fast)}
+.footer-col__link:hover{color:#fff}
+.footer-state-pills{display:flex;flex-wrap:wrap;gap:5px}
+.footer-state-pill{padding:6px 12px;background:rgba(255,255,255,.15);font-size:14px;color:#fff;transition:background var(--transition-fast)}
+.footer-state-pill:hover{background:rgba(255,255,255,.3)}
+.footer-legal{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);display:flex;flex-direction:column;gap:12px}
+@media(min-width:768px){.footer-legal{flex-direction:row;align-items:center;justify-content:space-between}}
+.footer-legal__text{font-size:12px;color:rgba(255,255,255,.6)}
+.footer-social{display:flex;gap:10px}
+.footer-social__icon{width:36px;height:36px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-family:monospace;transition:background var(--transition-fast)}
+.footer-social__icon:hover{background:rgba(255,255,255,.3)}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 500ms ease,transform 500ms ease}
+.fade-up.is-visible{opacity:1;transform:translateY(0)}
+.fade-up--d1{transition-delay:100ms}
+.fade-up--d2{transition-delay:200ms}
+/* ── FC HOW IT WORKS TABS ──────────────────────────────── */
+.fc-step-tab{display:flex;align-items:flex-start;gap:20px;padding:20px 24px;cursor:pointer;border-left:4px solid transparent;transition:all .25s ease;border-radius:0 var(--radius-md) var(--radius-md) 0}
+.fc-step-tab:hover{background:rgba(255,255,255,.04)}
+.fc-step-tab--active{background:rgba(0,209,204,.08);border-left-color:var(--fc-teal)}
+.fc-step-tab__num{font-size:32px;font-weight:900;color:rgba(0,209,204,.3);line-height:1;flex-shrink:0;min-width:36px;transition:color .25s ease}
+.fc-step-tab--active .fc-step-tab__num{color:var(--fc-teal)}
+.fc-step-tab__title{font-size:18px;font-weight:700;color:rgba(255,255,255,.5);margin-bottom:0;transition:color .25s ease}
+.fc-step-tab--active .fc-step-tab__title{color:#fff}
+.fc-step-tab__body{font-size:14px;color:rgba(255,255,255,.6);line-height:1.6;margin-top:8px;max-height:0;overflow:hidden;transition:max-height .3s ease,opacity .3s ease;opacity:0}
+.fc-step-tab--active .fc-step-tab__body{max-height:120px;opacity:1}
+@media(min-width:900px){#fc-how-grid{grid-template-columns:1fr 1fr !important}}
+
+</style>
+</head>
+<body>
+<div class="wf-nav">
+  <strong style="color:#E94560;">IOR WIREFRAME</strong>
+  <span style="color:#aaa;">MODULE 07b — Fuelcharge (V2)</span>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="07_Digital_Platforms_v2.html">← Digital Platforms Hub</a>
+  <a href="07a_HyDip_FMS_v2.html">07a HyDip™ FMS</a>
+  <a href="07c_Customer_Portal_v2.html">07c Customer Portal</a>
+</div>
+<header>
+  <div class="utility-bar">
+    <span style="font-size:14px;color:#fff;">📢 Announcement placeholder</span>
+    <div class="utility-bar__actions">
+      <a href="#" class="utility-bar__link">📍 Find a Location</a>
+      <div class="utility-bar__divider"></div>
+      <a href="#" class="utility-bar__link">✉️ Make a Payment</a>
+      <div class="utility-bar__divider"></div>
+      <a href="tel:1300457467" class="utility-bar__link">📞 1300 457 467</a>
+    </div>
+  </div>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <a href="01_Homepage_and_Global.html" class="nav-logo">[IOR LOGO]</a>
+    <ul class="nav-links">
+      <li><button class="nav-link" data-menu="fuel">Fuel Solutions</button></li>
+      <li><button class="nav-link active" data-menu="digital">Digital Platforms</button></li>
+      <li><button class="nav-link" data-menu="industries">Industries We Serve</button></li>
+      <li><button class="nav-link" data-menu="about">About IOR</button></li>
+      <li><button class="nav-link" data-menu="support">Support &amp; Contact</button></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn--outline" style="padding:10px 20px;font-size:14px;">Customer Login →</a>
+      <a href="#" class="btn btn--primary" style="padding:10px 20px;font-size:14px;">Apply for an Account →</a>
+      <div class="hamburger" id="mob-hamburger" role="button" tabindex="0" aria-label="Open menu"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+<nav class="quick-links-bar" aria-label="Fuelcharge quick navigation">
+  <div class="inner">
+    <a href="#who" class="ql-item active">Who It's For</a>
+    <a href="#how" class="ql-item">How It Works</a>
+    <a href="#features" class="ql-item">Features</a>
+    <a href="#map" class="ql-item">📍 Find a Site</a>
+    <a href="#contact-form" class="ql-item">Get the App</a>
+  </div>
+</nav>
+<section class="hero-fc">
+  <div class="inner">
+    <div class="fade-up">
+      <span class="hero-fc__eyebrow">Fuelcharge by IOR</span>
+      <h1>Fuel up anywhere.<br><span class="accent">No account needed.</span></h1>
+      <p class="hero-fc__sub">Fuelcharge is IOR's pay-as-you-go fuel card — accepted at 110+ IOR Diesel Network sites across Australia. No account. No contract. Just fuel when you need it.</p>
+      <div class="hero-fc__ctas">
+        <a href="#contact-form" class="btn btn--teal btn--lg">Get the Fuelcharge App →</a>
+        <a href="#who" class="btn btn--ghost">See Who It's For →</a>
+      </div>
+      <div class="hero-fc__app-badges">
+        <div class="app-badge">🍎 App Store</div>
+        <div class="app-badge">▶ Google Play</div>
+      </div>
+    </div>
+    <div class="hero-fc__right fade-up fade-up--d1">
+      <div class="hero-stat"><span class="hero-stat__num">110+</span><span class="hero-stat__label">IOR Diesel Network sites accepting Fuelcharge</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat__num">24/7</span><span class="hero-stat__label">Access — no staffed attendant required</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat__num">$0</span><span class="hero-stat__label">Account fees — pay only for what you use</span></div>
+    </div>
+  </div>
+</section>
+<div class="logo-strip">
+  <p class="logo-strip__label">Available at leading IOR network sites</p>
+  <div class="logo-strip__row">
+    <div class="logo-ph">[SITE 1]</div><div class="logo-ph">[SITE 2]</div><div class="logo-ph">[SITE 3]</div>
+    <div class="logo-ph">[SITE 4]</div><div class="logo-ph">[SITE 5]</div><div class="logo-ph">[SITE 6]</div>
+  </div>
+</div>
+<section class="audience-section" id="who">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;text-align:center;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);display:block;margin-bottom:12px;">Who Fuelcharge Is For</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);line-height:1.2;">Hover to see how Fuelcharge works for you.</h2>
+    </div>
+    <div class="audience-grid">
+      <div class="flip-card fade-up"><div class="flip-card__inner"><div class="flip-card__front"><div class="flip-card__icon">🚛</div><h3 class="flip-card__front-title">Rural &amp; Regional Drivers</h3><p class="flip-card__front-sub">Owner-operators, contractors, and rural workers who need reliable diesel on the road.</p><span class="flip-card__hint">Hover to see more →</span></div><div class="flip-card__back"><h3 class="flip-card__back-title">Fuel on your terms</h3><p class="flip-card__back-body">Access 110+ IOR sites across regional Australia — including remote highway stops. Pay by card or app. No account needed. No minimum spend.</p><span class="flip-card__back-cta">Get the App →</span></div></div></div>
+      <div class="flip-card fade-up fade-up--d1"><div class="flip-card__inner"><div class="flip-card__front"><div class="flip-card__icon">✈️</div><h3 class="flip-card__front-title">Pilots &amp; Aviation</h3><p class="flip-card__front-sub">Private pilots and charter operators who need Avgas and Jet A-1 at IOR aviation sites.</p><span class="flip-card__hint">Hover to see more →</span></div><div class="flip-card__back"><h3 class="flip-card__back-title">Aviation fuel, simplified</h3><p class="flip-card__back-body">Fuelcharge is accepted at IOR Aviation Network sites for Avgas 100LL and Jet A-1. Check site availability in the app before you fly.</p><span class="flip-card__back-cta">Find Aviation Sites →</span></div></div></div>
+      <div class="flip-card fade-up fade-up--d2"><div class="flip-card__inner"><div class="flip-card__front"><div class="flip-card__icon">🏢</div><h3 class="flip-card__front-title">Small Businesses</h3><p class="flip-card__front-sub">Small fleets and businesses that want pay-as-you-go fuel without the commitment of a full account.</p><span class="flip-card__hint">Hover to see more →</span></div><div class="flip-card__back"><h3 class="flip-card__back-title">No account, no problem</h3><p class="flip-card__back-body">Fuelcharge gives small businesses access to IOR's network without a credit account. Pay per transaction. Upgrade to a full IOR account anytime.</p><span class="flip-card__back-cta">Get Started →</span></div></div></div>
+    </div>
+  </div>
+</section>
+<section class="how-section" id="how">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;text-align:center;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);display:block;margin-bottom:12px;">Getting Started</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;line-height:1.2;">Up and running in 3 steps</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-up"><div class="step-card__ghost">1</div><div class="step-card__num">Step 01</div><h3 class="step-card__title">Download the app</h3><p class="step-card__body">Download the Fuelcharge app from the App Store or Google Play. Create your account in under 2 minutes — no paperwork required.</p></div>
+      <div class="step-card fade-up fade-up--d1"><div class="step-card__ghost">2</div><div class="step-card__num">Step 02</div><h3 class="step-card__title">Find a site</h3><p class="step-card__body">Use the app to find your nearest IOR Diesel Network site. Filter by fuel type, amenities, and 24/7 access. 110+ sites across Australia.</p></div>
+      <div class="step-card fade-up fade-up--d2"><div class="step-card__ghost">3</div><div class="step-card__num">Step 03</div><h3 class="step-card__title">Fuel up &amp; go</h3><p class="step-card__body">Tap to pay at the bowser using the app or your Fuelcharge card. Transaction receipts are saved automatically in the app.</p></div>
+    </div>
+  </div>
+</section>
+<section class="features-section" id="features">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);display:block;margin-bottom:12px;">App Features</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);line-height:1.2;">Everything you need, in your pocket.</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card fade-up"><div class="feature-card__icon">📍</div><h3 class="feature-card__title">Site Finder</h3><p class="feature-card__body">Find your nearest IOR site with real-time availability, fuel types, amenities, and opening hours.</p></div>
+      <div class="feature-card fade-up fade-up--d1"><div class="feature-card__icon">💳</div><h3 class="feature-card__title">Tap to Pay</h3><p class="feature-card__body">Pay at the bowser directly from the app. No card required. Supports Apple Pay and Google Pay.</p></div>
+      <div class="feature-card fade-up fade-up--d2"><div class="feature-card__icon">🧾</div><h3 class="feature-card__title">Digital Receipts</h3><p class="feature-card__body">Every transaction is saved automatically. Export receipts for expense claims or tax records.</p></div>
+      <div class="feature-card fade-up"><div class="feature-card__icon">🔔</div><h3 class="feature-card__title">Price Alerts</h3><p class="feature-card__body">Set fuel price alerts for your preferred sites. Know when prices change before you arrive.</p></div>
+      <div class="feature-card fade-up fade-up--d1"><div class="feature-card__icon">📊</div><h3 class="feature-card__title">Spend Tracking</h3><p class="feature-card__body">Track your fuel spend by month, site, and fuel type. Useful for expense management and budgeting.</p></div>
+      <div class="feature-card fade-up fade-up--d2"><div class="feature-card__icon">⬆️</div><h3 class="feature-card__title">Upgrade Anytime</h3><p class="feature-card__body">Ready for a full IOR account? Upgrade directly from the app and unlock volume pricing and credit terms.</p></div>
+    </div>
+  </div>
+</section>
+<section class="map-section" id="map">
+  <div class="inner">
+    <div class="fade-up">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);display:block;margin-bottom:12px;">Find a Site</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);margin-bottom:16px;line-height:1.2;">110+ sites across Australia.</h2>
+      <p style="font-size:clamp(16px,1.4vw,20px);color:var(--ior-mid-grey);max-width:520px;margin-bottom:32px;line-height:1.6;">From the highway to the outback — Fuelcharge is accepted at IOR Diesel Network sites in every state and territory.</p>
+      <a href="#" class="btn btn--teal">Open Full Map →</a>
+    </div>
+    <div class="map-placeholder fade-up fade-up--d1">[INTERACTIVE MAP — StorePoint or Google Maps embed<br>Filter: Fuelcharge-enabled sites]</div>
+  </div>
+</section>
+<section class="testimonial-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;"><h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;">What Fuelcharge users say.</h2></div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up"><p class="testimonial-card__quote">"I drive the Barkly Highway regularly and Fuelcharge has been a lifesaver. I can see which IOR stops are open before I leave and pay straight from my phone."</p><div class="testimonial-card__name">Owner-Operator</div><div class="testimonial-card__role">Longhaul Freight, NT</div></div>
+      <div class="testimonial-card fade-up fade-up--d1"><p class="testimonial-card__quote">"We use Fuelcharge for our small fleet while we wait for our IOR account to be set up. It's been seamless — the receipts go straight into our accounting system."</p><div class="testimonial-card__name">Operations Coordinator</div><div class="testimonial-card__role">Small Logistics Business, QLD</div></div>
+    </div>
+  </div>
+</section>
+<section class="insights-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);display:block;margin-bottom:12px;">Further Reading</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);">Insights from IOR's <span style="color:var(--fc-teal);">digital platforms.</span></h2>
+    </div>
+    <div class="insights-tabs" role="tablist">
+      <button class="insights-tab active" role="tab" onclick="switchTab(event,'cs-fc')">Case Studies</button>
+      <button class="insights-tab" role="tab" onclick="switchTab(event,'blog-fc')">Blog Posts</button>
+    </div>
+    <div class="insights-tab-panel active" id="cs-fc"><div class="insights-grid"><div class="insight-card fade-up"><div class="insight-card__img">[IMAGE — Longhaul Freight]</div><span class="insight-card__tag">Case Study</span><h3 class="insight-card__title">How Fuelcharge helped a NT owner-operator cut fuel admin by 80%</h3><a href="#" class="insight-card__read">Read Case Study →</a></div><div class="insight-card fade-up fade-up--d1"><div class="insight-card__img">[IMAGE — Small Fleet]</div><span class="insight-card__tag">Case Study</span><h3 class="insight-card__title">Pay-as-you-go fuel for a growing QLD logistics business</h3><a href="#" class="insight-card__read">Read Case Study →</a></div><div class="insight-card fade-up fade-up--d2"><div class="insight-card__img">[IMAGE — Aviation]</div><span class="insight-card__tag">Case Study</span><h3 class="insight-card__title">Fuelcharge at IOR Aviation: how private pilots are fuelling smarter</h3><a href="#" class="insight-card__read">Read Case Study →</a></div></div></div>
+    <div class="insights-tab-panel" id="blog-fc"><div class="insights-grid"><div class="insight-card fade-up"><div class="insight-card__img">[IMAGE — Blog 1]</div><span class="insight-card__tag">Blog</span><h3 class="insight-card__title">Fuelcharge vs. a full IOR account: which is right for you?</h3><a href="#" class="insight-card__read">Read Article →</a></div><div class="insight-card fade-up fade-up--d1"><div class="insight-card__img">[IMAGE — Blog 2]</div><span class="insight-card__tag">Blog</span><h3 class="insight-card__title">5 ways to reduce fuel admin for your small business</h3><a href="#" class="insight-card__read">Read Article →</a></div><div class="insight-card fade-up fade-up--d2"><div class="insight-card__img">[IMAGE — Blog 3]</div><span class="insight-card__tag">Blog</span><h3 class="insight-card__title">The IOR Diesel Network: what you need to know before you drive</h3><a href="#" class="insight-card__read">Read Article →</a></div></div></div>
+  </div>
+</section>
+<!-- APP DOWNLOAD BLOCK -->
+<section style="background:var(--fc-navy);padding:clamp(48px,6vw,80px) var(--spx);">
+  <div class="inner">
+    <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:24px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fc-teal);">Get Started Free</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:900;color:#fff;line-height:1.2;max-width:560px;">Download the Fuelcharge app today.</h2>
+      <p style="font-size:18px;color:rgba(255,255,255,.7);max-width:480px;line-height:1.6;">Free to download. No account or contract required. Available on iOS and Android.</p>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin-top:8px;">
+        <!-- App Store Badge -->
+        <a href="https://apps.apple.com/au/app/fuelcharge/id1234567890" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;padding:12px 24px;border-radius:var(--radius-md);text-decoration:none;min-width:180px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div style="text-align:left;line-height:1.2;">
+            <div style="font-size:10px;opacity:.7;letter-spacing:.05em;">DOWNLOAD ON THE</div>
+            <div style="font-size:18px;font-weight:700;letter-spacing:-.01em;">App Store</div>
+          </div>
+        </a>
+        <!-- Google Play Badge -->
+        <a href="https://play.google.com/store/apps/details?id=au.com.fuelcharge" target="_blank" rel="noopener"
+           style="display:inline-flex;align-items:center;gap:12px;background:#000;color:#fff;padding:12px 24px;border-radius:var(--radius-md);text-decoration:none;min-width:180px;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.24.99.19l12.49-7.2-2.79-2.79-10.69 9.8zm-1.68-20.5c-.1.27-.16.57-.16.9v19.68c0 .33.06.63.16.9l.08.08 11.02-11.02v-.26L1.58 3.18l-.08.08zM20.49 10.7l-2.77-1.6-3.1 3.1 3.1 3.1 2.79-1.61c.8-.46.8-1.52-.02-1.99zm-17.31 11.5l10.69-9.8-2.79-2.79L.5 20.1c.3.17.64.24.99.19l.69-.09z"/></svg>
+          <div style="text-align:left;line-height:1.2;">
+            <div style="font-size:10px;opacity:.7;letter-spacing:.05em;">GET IT ON</div>
+            <div style="font-size:18px;font-weight:700;letter-spacing:-.01em;">Google Play</div>
+          </div>
+        </a>
+      </div>
+      <p style="font-size:13px;color:rgba(255,255,255,.4);margin-top:4px;">Or scan the QR code at any IOR Diesel Network site to download instantly.</p>
+    </div>
+  </div>
+</section>
+<section class="faq-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;"><h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);">Frequently Asked Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is Fuelcharge different from an IOR account?</div><div class="faq-a">Yes. Fuelcharge is a pay-as-you-go product — no credit account, no contract, no minimum spend. An IOR account gives you credit terms, volume pricing, and access to the full Customer Portal. You can upgrade from Fuelcharge to a full account at any time.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Where is Fuelcharge accepted?</div><div class="faq-a">Fuelcharge is accepted at 110+ IOR Diesel Network sites across Australia, including remote highway stops. Use the app to find your nearest site and check fuel availability before you travel.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What fuel types does Fuelcharge cover?</div><div class="faq-a">Fuelcharge covers diesel and AdBlue at IOR Diesel Network sites, and Avgas 100LL and Jet A-1 at IOR Aviation Network sites where available.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is there a Fuelcharge card, or is it app-only?</div><div class="faq-a">Fuelcharge is available as both an app and a physical card. The app is the recommended option — it includes the site finder, digital receipts, and spend tracking. Contact us to request a physical Fuelcharge card.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Are there any fees?</div><div class="faq-a">There are no account fees or subscription fees for Fuelcharge. You pay only for the fuel you purchase. Standard card payment surcharges may apply at some sites.</div></div>
+    </div>
+  </div>
+</section>
+<section class="sos-banner">
+  <div class="inner">
+    <div class="sos-banner__inner">
+      <div class="sos-banner__text fade-up"><h2>Your fuel supply is never at risk.</h2><p>IOR's owned terminal infrastructure at Lytton and Port Bonython means we control our supply chain end-to-end — giving you certainty of supply, even in a disrupted market.</p></div>
+      <div class="sos-banner__ctas fade-up fade-up--d1"><a href="06_Supply_Trading_v2.html" class="btn btn--ghost">Supply &amp; Trading →</a><a href="06a_Terminals.html" class="btn btn--ghost">Our Terminals →</a></div>
+    </div>
+  </div>
+</section>
+<section class="pre-footer">
+  <div class="inner">
+    <div class="pre-footer__inner">
+      <h2 class="pre-footer__title">Ready to fuel up anywhere?</h2>
+      <div class="pre-footer__ctas"><a href="#contact-form" class="btn btn--navy">Get the App →</a><a href="/support-contact/contact-us/" class="btn btn--ghost" style="color:var(--fc-navy);border-color:var(--fc-navy);">Talk to Us →</a></div>
+    </div>
+  </div>
+</section>
+<!-- BLOG / INSIGHTS SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-section__header" data-animate="fade-up">
+      <div class="blog-section__header-left">
+        <div class="eyebrow eyebrow--dark">FuelCharge · Case Studies &amp; Insights</div>
+        <h2 class="blog-section__title">Tap. Fuel. Fly. No account required.</h2>
+      </div>
+    </div>
+    <div class="blog-tabs" role="tablist">
+      <button class="blog-tab active" role="tab" aria-selected="true">Case Studies</button>
+      <button class="blog-tab" role="tab" aria-selected="false">Blog &amp; Insights</button>
+    </div>
+    <div class="blog-panel active" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Charter Growth</span>
+          <span class="blog-card__img-note">Charter aircraft, FuelCharge app</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Aviation</div>
+          <div class="blog-card__title">From 3 to 18 aircraft: how FuelCharge scaled with a growing charter operation</div>
+          <div class="blog-card__excerpt">No credit check. No account application. FuelCharge gave a growing charter operator instant access to IOR's aviation network as their fleet expanded.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">GA Pilot</span>
+          <span class="blog-card__img-note">GA aircraft, pilot, FuelCharge</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · GA</div>
+          <div class="blog-card__title">Weekend flyer to cross-country: how FuelCharge changed the way a GA pilot fuels</div>
+          <div class="blog-card__excerpt">One app. Every IOR aviation site. No account. No paperwork. How FuelCharge made cross-country flying simpler for a GA pilot.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">RFDS Volunteer</span>
+          <span class="blog-card__img-note">RFDS aircraft, volunteer pilot</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · RFDS</div>
+          <div class="blog-card__title">RFDS volunteer pilots: FuelCharge for aeromedical support missions</div>
+          <div class="blog-card__excerpt">RFDS volunteer pilots need fast, frictionless fuel access. FuelCharge's no-account model made it the natural choice for aeromedical support operations.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Case Studies →</a>
+      </div>
+    </div>
+    <div class="blog-panel" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Comparison</span>
+          <span class="blog-card__img-note">FuelCharge vs account comparison</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Aviation</div>
+          <div class="blog-card__title">FuelCharge vs traditional aviation fuel accounts: the comparison</div>
+          <div class="blog-card__excerpt">Account applications, credit checks, and monthly invoices vs tap-and-fuel. FuelCharge is designed for pilots who want simplicity.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">FuelCharge Tech</span>
+          <span class="blog-card__img-note">FuelCharge app, NFC, aircraft</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Technology</div>
+          <div class="blog-card__title">How FuelCharge works: the technology behind tap-and-fuel aviation</div>
+          <div class="blog-card__excerpt">NFC, QR codes, and real-time payment processing — the technology behind IOR's FuelCharge platform.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Flight Planning</span>
+          <span class="blog-card__img-note">Pilot, map, FuelCharge app</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · GA</div>
+          <div class="blog-card__title">Planning a cross-country flight with FuelCharge: a pilot's guide</div>
+          <div class="blog-card__excerpt">Finding FuelCharge sites, checking availability, and planning your fuel stops — the IOR guide to cross-country flying with FuelCharge.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-nav-grid">
+    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
+    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="05_Equipment_Infrastructure_v2.html" class="footer-col__link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
+    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
+    <div><div class="footer-col__title">Corporate</div><div class="footer-col__links"><a href="#" class="footer-col__link">About IOR</a><a href="#" class="footer-col__link">Careers</a><a href="#" class="footer-col__link">Case Studies</a><a href="#" class="footer-col__link">News &amp; Updates</a></div></div>
+    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="#" class="footer-col__link">Make a Payment</a><a href="#" class="footer-col__link">Contact Us</a></div></div>
+    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="#" class="footer-state-pill">QLD</a><a href="#" class="footer-state-pill">NSW</a><a href="#" class="footer-state-pill">VIC</a><a href="#" class="footer-state-pill">SA</a><a href="#" class="footer-state-pill">WA</a><a href="#" class="footer-state-pill">NT</a></div></div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
+    <div class="footer-social"><a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a><a href="#" class="footer-social__icon" aria-label="Facebook">f</a><a href="#" class="footer-social__icon" aria-label="Instagram">📷</a><a href="#" class="footer-social__icon" aria-label="YouTube">▶</a></div>
+  </div>
+</footer>
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer__head"><span class="nav-logo" style="font-size:16px;">[IOR]</span><button class="drawer__close" id="drawerClose" aria-label="Close navigation menu">✕</button></div>
+  <nav class="drawer__nav">
+    <div class="drawer__item"><div class="drawer__link" data-sub="sub-fuel">Fuel Solutions <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-fuel"><a href="03_Ground_Fuels_v2.html" class="drawer__sub-link">Ground Fuels</a><a href="04_Aviation_v2.html" class="drawer__sub-link">Aviation</a><a href="06_Supply_Trading_v2.html" class="drawer__sub-link">Supply &amp; Trading</a></div></div>
+    <div class="drawer__item"><div class="drawer__link" data-sub="sub-digital">Digital Platforms <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-digital"><a href="07a_HyDip_FMS_v2.html" class="drawer__sub-link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="drawer__sub-link">Fuelcharge</a><a href="07c_Customer_Portal_v2.html" class="drawer__sub-link">Customer Portal</a></div></div>
+  </nav>
+  <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;border-radius:var(--radius-md);">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;border-radius:var(--radius-md);">Apply for an Account</a></div>
+</div>
+<script>
+const fo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('is-visible');fo.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+const navEl=document.getElementById('primary-nav');
+window.addEventListener('scroll',()=>{if(navEl)navEl.classList.toggle('primary-nav--scrolled',scrollY>80)},{passive:true});
+const ham=document.getElementById('mob-hamburger'),dr=document.getElementById('mobileDrawer'),ov=document.getElementById('drawerOverlay'),dc=document.getElementById('drawerClose');
+let open=false;
+function openD(){open=true;dr.classList.add('drawer--open');ov.classList.add('drawer-overlay--open');dr.removeAttribute('aria-hidden');document.body.style.overflow='hidden'}
+function closeD(){open=false;dr.classList.remove('drawer--open');ov.classList.remove('drawer-overlay--open');dr.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+if(ham)ham.addEventListener('click',()=>open?closeD():openD());
+if(dc)dc.addEventListener('click',closeD);
+if(ov)ov.addEventListener('click',closeD);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&open)closeD()});
+document.querySelectorAll('.drawer__link').forEach(l=>{l.addEventListener('click',()=>{const id=l.getAttribute('data-sub');if(!id)return;const s=document.getElementById(id);if(!s)return;const ch=l.querySelector('.drawer__link-chevron');const was=s.classList.contains('drawer__sub--open');document.querySelectorAll('.drawer__sub--open').forEach(x=>x.classList.remove('drawer__sub--open'));document.querySelectorAll('.drawer__link-chevron--open').forEach(x=>x.classList.remove('drawer__link-chevron--open'));if(!was){s.classList.add('drawer__sub--open');if(ch)ch.classList.add('drawer__link-chevron--open')}})});
+function switchTab(ev,id){document.querySelectorAll('.insights-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false')});document.querySelectorAll('.insights-tab-panel').forEach(p=>p.classList.remove('active'));ev.target.classList.add('active');ev.target.setAttribute('aria-selected','true');const p=document.getElementById(id);if(p)p.classList.add('active')}
+function toggleFaq(el){const item=el.parentElement;const wasOpen=item.classList.contains('faq-item--open');document.querySelectorAll('.faq-item--open').forEach(x=>x.classList.remove('faq-item--open'));if(!wasOpen)item.classList.add('faq-item--open')}
+
+function activateFcStep(el, idx) {
+  document.querySelectorAll('.fc-step-tab').forEach(t => t.classList.remove('fc-step-tab--active'));
+  el.classList.add('fc-step-tab--active');
+  const screens = [
+    {icon:'📱', label:'Download Fuelcharge', sub:'Available on App Store & Google Play'},
+    {icon:'🗺️', label:'Find your nearest IOR site', sub:'110+ sites across Australia — filter by fuel type & amenities'},
+    {icon:'⚡', label:'Pay & fill up', sub:'Tap to authorise. Digital receipt saved instantly.'}
+  ];
+  const s = screens[idx];
+  document.getElementById('fc-phone-icon').textContent = s.icon;
+  document.getElementById('fc-phone-label').textContent = s.label;
+  document.getElementById('fc-phone-sub').textContent = s.sub;
+}
+
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.blog-section').forEach(function(section){
+    var tabs = section.querySelectorAll('.blog-tab');
+    var panels = section.querySelectorAll('.blog-panel');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        panels.forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        panels[i].classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

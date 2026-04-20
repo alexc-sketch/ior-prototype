@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Customer Portal — IOR Digital Platforms · 07c (V2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--ior-blue:#0355A3;--ior-navy:#0A4066;--ior-deep:#0B1929;--ior-sky:#4DA8DA;--ior-light:#E8F1FB;--ior-light-blue-bg:#EBF4FB;--ior-charcoal:#1F2937;--ior-mid-grey:#6B7280;--off-white:#F5F7FA;--border-light:rgba(3,85,163,0.12);--fc-teal:#00D1CC;--fc-navy:#13114D;--radius-md:8px;--font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--container:1280px;--sp:clamp(48px,6vw,80px);--spx:clamp(16px,4vw,48px);--fw-bold:700;--fw-black:900;--transition-fast:150ms ease;--transition-base:250ms ease;--z-nav:100;--z-drawer:300}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ior-charcoal);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.inner{max-width:var(--container);margin:0 auto;padding:0 var(--spx)}
+.wf-nav{position:sticky;top:0;z-index:9999;background:#1A1A2E;border-bottom:3px solid #E94560;display:flex;align-items:center;gap:16px;padding:8px 16px;font-size:11px;font-family:monospace;color:#fff;flex-wrap:wrap}
+.wf-nav a{color:#E94560;text-decoration:underline;margin-right:8px}
+.utility-bar{background:var(--ior-blue);padding:8px var(--spx);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.utility-bar__actions{display:flex;align-items:center;gap:20px}
+.utility-bar__link{font-size:14px;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px;opacity:.9;transition:opacity var(--transition-fast)}
+.utility-bar__link:hover{opacity:1}
+.utility-bar__divider{width:1px;height:14px;background:rgba(255,255,255,.4)}
+.primary-nav{position:sticky;top:0;z-index:var(--z-nav);background:#fff;border-bottom:1px solid var(--border-light);box-shadow:0 2px 12px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;padding:0 var(--spx);height:72px;gap:24px;transition:height var(--transition-base),box-shadow var(--transition-base)}
+.primary-nav--scrolled{height:56px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.nav-logo{font-size:22px;font-weight:900;color:var(--ior-blue);letter-spacing:-.02em;white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;list-style:none;gap:4px;align-items:center}
+.nav-link{display:block;padding:8px 14px;font-size:15px;font-weight:700;color:var(--ior-charcoal);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:color var(--transition-fast),border-color var(--transition-fast)}
+.nav-link:hover{color:var(--ior-blue)}
+.nav-link.active{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
+.nav-ctas{display:flex;gap:10px;align-items:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ior-charcoal);transition:var(--transition-base)}
+@media(max-width:1023px){.nav-links{display:none}.hamburger{display:flex}}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:16px;font-weight:700;letter-spacing:.02em;cursor:pointer;border:2px solid transparent;border-radius:var(--radius-md);transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast);text-decoration:none;font-family:var(--font)}
+.btn--primary{background:var(--ior-blue);color:#fff;border-color:var(--ior-blue)}
+.btn--primary:hover{background:var(--ior-navy);border-color:var(--ior-navy)}
+.btn--ghost{background:transparent;color:#fff;border-color:#fff}
+.btn--ghost:hover{background:rgba(255,255,255,.1)}
+.btn--outline{background:transparent;color:var(--ior-blue);border-color:var(--ior-blue)}
+.btn--outline:hover{background:var(--ior-light)}
+.btn--sm{padding:10px 20px;font-size:14px}
+.btn--lg{padding:18px 36px;font-size:18px}
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;z-index:calc(var(--z-drawer) - 1);transition:opacity var(--transition-base)}
+.drawer-overlay--open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,90vw);background:var(--ior-deep);z-index:var(--z-drawer);transform:translateX(100%);transition:transform var(--transition-base);display:flex;flex-direction:column;overflow-y:auto}
+.drawer--open{transform:translateX(0)}
+.drawer__head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.drawer__close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:4px}
+.drawer__nav{flex:1;padding:8px 0}
+.drawer__item{border-bottom:1px solid rgba(255,255,255,.08)}
+.drawer__link{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.drawer__link-chevron::after{content:'›';font-size:18px;transition:transform var(--transition-fast)}
+.drawer__link-chevron--open::after{transform:rotate(90deg)}
+.drawer__sub{display:none;background:rgba(255,255,255,.04);padding:4px 0}
+.drawer__sub--open{display:block}
+.drawer__sub-link{display:block;padding:10px 20px 10px 36px;color:rgba(255,255,255,.75);font-size:14px}
+.drawer__sub-link:hover{color:#fff}
+.drawer__ctas{padding:16px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1)}
+.quick-links-bar{position:sticky;top:72px;z-index:900;background:var(--ior-navy);border-top:3px solid var(--ior-sky)}
+.quick-links-bar .inner{display:flex;align-items:stretch;min-height:52px}
+.ql-item{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-right:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.85);font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background var(--transition-fast);text-align:center}
+.ql-item:last-child{border-right:none}
+.ql-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.ql-item.active{color:var(--ior-sky);border-bottom:2px solid var(--ior-sky)}
+.hero-cp{background:var(--ior-deep);border-top:5px solid var(--ior-blue);padding:clamp(64px,8vw,100px) var(--spx) clamp(48px,6vw,80px)}
+.hero-cp .inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.hero-cp .inner{grid-template-columns:1fr 1fr;align-items:center}}
+.hero-cp__eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky);background:rgba(77,168,218,.15);padding:4px 12px;border-radius:var(--radius-md);margin-bottom:16px}
+.hero-cp h1{font-size:clamp(36px,5vw,64px);font-weight:var(--fw-black);line-height:1.05;color:#fff;margin-bottom:20px}
+.hero-cp h1 .accent{color:var(--ior-sky)}
+.hero-cp__sub{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.8);max-width:520px;margin-bottom:16px;line-height:1.6}
+.hero-cp__note{display:inline-flex;align-items:center;gap:8px;background:rgba(77,168,218,.15);border:1px solid rgba(77,168,218,.3);border-radius:var(--radius-md);padding:10px 16px;font-size:14px;color:rgba(255,255,255,.85);margin-bottom:32px}
+.hero-cp__ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-cp__right{background:rgba(77,168,218,.08);border:1px solid rgba(77,168,218,.25);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:20px}
+.hero-stat{display:flex;flex-direction:column;gap:4px}
+.hero-stat__num{font-size:40px;font-weight:var(--fw-black);color:var(--ior-sky);line-height:1}
+.hero-stat__label{font-size:14px;color:rgba(255,255,255,.65);font-weight:600}
+.hero-stat-divider{height:1px;background:rgba(255,255,255,.1)}
+.logo-strip{background:#fff;border-bottom:1px solid var(--border-light);padding:28px var(--spx)}
+.logo-strip__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ior-mid-grey);text-align:center;margin-bottom:20px}
+.logo-strip__row{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,48px);flex-wrap:wrap}
+.logo-ph{width:110px;height:40px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;font-size:10px;font-family:monospace;color:var(--ior-mid-grey);font-weight:700;border-radius:var(--radius-md)}
+.quadrant-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.quadrant-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.quadrant-grid{grid-template-columns:repeat(2,1fr)}}
+.quadrant-card{background:#fff;border-top:4px solid var(--ior-blue);border-radius:var(--radius-md);padding:32px}
+.quadrant-card__icon{font-size:40px;margin-bottom:16px}
+.quadrant-card__title{font-size:clamp(20px,2vw,28px);font-weight:var(--fw-black);color:var(--ior-deep);margin-bottom:10px}
+.quadrant-card__body{font-size:15px;color:var(--ior-mid-grey);line-height:1.65;margin-bottom:20px}
+.quadrant-card__features{display:flex;flex-direction:column;gap:8px}
+.quadrant-card__feature{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--ior-charcoal)}
+.quadrant-card__feature::before{content:'✓';color:var(--ior-blue);font-weight:700;flex-shrink:0;margin-top:2px}
+.paths-section{background:var(--ior-deep);padding:var(--sp) var(--spx)}
+.paths-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.paths-grid{grid-template-columns:repeat(3,1fr)}}
+.path-card{background:rgba(255,255,255,.06);border-top:4px solid var(--ior-blue);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:16px}
+.path-card--primary{background:var(--ior-blue);border-top-color:var(--ior-sky)}
+.path-card__eyebrow{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky)}
+.path-card--primary .path-card__eyebrow{color:rgba(255,255,255,.8)}
+.path-card__title{font-size:clamp(20px,2vw,28px);font-weight:var(--fw-black);color:#fff;line-height:1.2}
+.path-card__body{font-size:15px;color:rgba(255,255,255,.7);line-height:1.6;flex:1}
+.testimonial-section{background:#fff;padding:var(--sp) var(--spx);border-top:1px solid var(--border-light)}
+.testimonial-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:768px){.testimonial-grid{grid-template-columns:1fr 1fr}}
+.testimonial-card{background:var(--ior-deep);border-top:4px solid var(--ior-blue);border-radius:var(--radius-md);padding:32px}
+.testimonial-card__quote{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.9);line-height:1.6;font-style:italic;margin-bottom:24px}
+.testimonial-card__name{font-size:15px;font-weight:700;color:#fff}
+.testimonial-card__role{font-size:13px;color:rgba(255,255,255,.55)}
+.insights-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.insights-tabs{display:flex;border-bottom:2px solid var(--border-light);margin-bottom:32px}
+.insights-tab{padding:12px 24px;font-size:15px;font-weight:700;color:var(--ior-mid-grey);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color var(--transition-fast),border-color var(--transition-fast);font-family:var(--font)}
+.insights-tab.active{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
+.insights-tab-panel{display:none}
+.insights-tab-panel.active{display:block}
+.insights-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.insights-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.insights-grid{grid-template-columns:repeat(3,1fr)}}
+.insight-card{display:flex;flex-direction:column;gap:14px}
+.insight-card__img{width:100%;aspect-ratio:16/9;background:var(--ior-light-blue-bg);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:11px;font-family:monospace;color:var(--ior-mid-grey)}
+.insight-card__tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ior-blue);background:var(--ior-light);padding:3px 10px;border-radius:var(--radius-md)}
+.insight-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:var(--ior-deep);line-height:1.2}
+.insight-card__read{font-size:14px;color:var(--ior-blue);font-weight:600}
+.form-section{background:var(--ior-navy);padding:var(--sp) var(--spx)}
+.form-section__inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.form-section__inner{grid-template-columns:1fr 1fr;align-items:start}}
+.form-section__left h2{font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;margin-bottom:16px;line-height:1.2}
+.form-section__left p{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.75);line-height:1.6}
+.hubspot-embed{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:16px}
+.hubspot-embed__label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky);margin-bottom:8px}
+.hs-field{display:flex;flex-direction:column;gap:6px}
+.hs-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.hs-input{padding:12px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-md);color:#fff;font-size:15px;font-family:var(--font);outline:none;transition:border-color var(--transition-fast)}
+.hs-input:focus{border-color:var(--ior-sky)}
+.hs-input::placeholder{color:rgba(255,255,255,.35)}
+.hs-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.hs-row{grid-template-columns:1fr}}
+.faq-section{background:#fff;padding:var(--sp) var(--spx);border-top:1px solid var(--border-light)}
+.faq-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border-light)}
+.faq-item{border-bottom:1px solid var(--border-light)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;cursor:pointer;font-size:clamp(16px,1.4vw,20px);font-weight:700;color:var(--ior-deep)}
+.faq-q::after{content:'+';font-size:24px;font-weight:400;color:var(--ior-blue);flex-shrink:0;transition:transform var(--transition-fast)}
+.faq-item--open .faq-q::after{transform:rotate(45deg)}
+.faq-a{display:none;padding-bottom:20px;font-size:16px;color:var(--ior-mid-grey);line-height:1.65}
+.faq-item--open .faq-a{display:block}
+.sos-banner{background:var(--ior-deep);border-top:4px solid var(--ior-blue);padding:clamp(32px,4vw,56px) var(--spx)}
+.sos-banner__inner{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+@media(min-width:768px){.sos-banner__inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.sos-banner__text h2{font-size:clamp(20px,2vw,28px);font-weight:var(--fw-black);color:#fff;margin-bottom:8px}
+.sos-banner__text p{font-size:16px;color:rgba(255,255,255,.7);max-width:560px}
+.sos-banner__ctas{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.pre-footer{background:var(--ior-blue);padding:clamp(48px,6vw,80px) var(--spx)}
+.pre-footer__inner{display:flex;flex-direction:column;gap:24px}
+@media(min-width:768px){.pre-footer__inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.pre-footer__title{font-size:clamp(24px,3vw,40px);font-weight:var(--fw-black);color:#fff}
+.pre-footer__ctas{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+.site-footer{background:var(--ior-blue);padding-block:clamp(48px,6vw,80px);padding-inline:var(--spx);border-top:1px solid rgba(255,255,255,.2)}
+.footer-nav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+@media(min-width:768px){.footer-nav-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1200px){.footer-nav-grid{grid-template-columns:repeat(6,1fr)}}
+.footer-col__title{font-size:16px;font-weight:var(--fw-bold);color:#fff;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.2)}
+.footer-col__links{display:flex;flex-direction:column;gap:14px}
+.footer-col__link{font-size:14px;color:rgba(255,255,255,.85);transition:color var(--transition-fast)}
+.footer-col__link:hover{color:#fff}
+.footer-state-pills{display:flex;flex-wrap:wrap;gap:5px}
+.footer-state-pill{padding:6px 12px;background:rgba(255,255,255,.15);font-size:14px;color:#fff;transition:background var(--transition-fast)}
+.footer-state-pill:hover{background:rgba(255,255,255,.3)}
+.footer-legal{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);display:flex;flex-direction:column;gap:12px}
+@media(min-width:768px){.footer-legal{flex-direction:row;align-items:center;justify-content:space-between}}
+.footer-legal__text{font-size:12px;color:rgba(255,255,255,.6)}
+.footer-social{display:flex;gap:10px}
+.footer-social__icon{width:36px;height:36px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-family:monospace;transition:background var(--transition-fast)}
+.footer-social__icon:hover{background:rgba(255,255,255,.3)}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 500ms ease,transform 500ms ease}
+.fade-up.is-visible{opacity:1;transform:translateY(0)}
+.fade-up--d1{transition-delay:100ms}
+.fade-up--d2{transition-delay:200ms}
+</style>
+</head>
+<body>
+<div class="wf-nav">
+  <strong style="color:#E94560;">IOR WIREFRAME</strong>
+  <span style="color:#aaa;">MODULE 07c — Customer Portal (V2)</span>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="07_Digital_Platforms_v2.html">← Digital Platforms Hub</a>
+  <a href="07a_HyDip_FMS_v2.html">07a HyDip™ FMS</a>
+  <a href="07b_FuelCharge_v2.html">07b Fuelcharge</a>
+</div>
+<header>
+  <div class="utility-bar">
+    <span style="font-size:14px;color:#fff;">📢 Announcement placeholder</span>
+    <div class="utility-bar__actions">
+      <a href="#" class="utility-bar__link">📍 Find a Location</a>
+      <div class="utility-bar__divider"></div>
+      <a href="#" class="utility-bar__link">✉️ Make a Payment</a>
+      <div class="utility-bar__divider"></div>
+      <a href="tel:1300457467" class="utility-bar__link">📞 1300 457 467</a>
+    </div>
+  </div>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <a href="01_Homepage_and_Global.html" class="nav-logo">[IOR LOGO]</a>
+    <ul class="nav-links">
+      <li><button class="nav-link" data-menu="fuel">Fuel Solutions</button></li>
+      <li><button class="nav-link active" data-menu="digital">Digital Platforms</button></li>
+      <li><button class="nav-link" data-menu="industries">Industries We Serve</button></li>
+      <li><button class="nav-link" data-menu="about">About IOR</button></li>
+      <li><button class="nav-link" data-menu="support">Support &amp; Contact</button></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn--outline" style="padding:10px 20px;font-size:14px;">Customer Login →</a>
+      <a href="#" class="btn btn--primary" style="padding:10px 20px;font-size:14px;">Apply for an Account →</a>
+      <div class="hamburger" id="mob-hamburger" role="button" tabindex="0" aria-label="Open menu"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+<nav class="quick-links-bar" aria-label="Customer Portal quick navigation">
+  <div class="inner">
+    <a href="#features" class="ql-item active">Portal Features</a>
+    <a href="#paths" class="ql-item">Get Access</a>
+    <a href="#contact-form" class="ql-item">Request Access</a>
+    <a href="#faq" class="ql-item">FAQs</a>
+  </div>
+</nav>
+<section class="hero-cp">
+  <div class="inner">
+    <div class="fade-up">
+      <span class="hero-cp__eyebrow">IOR Customer Portal</span>
+      <h1>Your account.<br><span class="accent">Your fuel. Your data.</span></h1>
+      <p class="hero-cp__sub">The IOR Customer Portal gives every IOR account holder real-time visibility over their fuel spend, invoices, orders, and account management — all in one place.</p>
+      <div class="hero-cp__note">ℹ️ Every IOR account automatically includes Customer Portal access. No separate sign-up required.</div>
+      <div class="hero-cp__ctas">
+        <a href="https://portal.ior.com.au" class="btn btn--primary btn--lg">Login to Portal →</a>
+        <a href="#paths" class="btn btn--ghost">Apply for an Account →</a>
+      </div>
+    </div>
+    <div class="hero-cp__right fade-up fade-up--d1">
+      <div class="hero-stat"><span class="hero-stat__num">100%</span><span class="hero-stat__label">Of IOR account holders get Portal access — automatically</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat__num">24/7</span><span class="hero-stat__label">Access to invoices, orders, and account data</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat__num">Real-time</span><span class="hero-stat__label">Fuel spend tracking and reporting</span></div>
+    </div>
+  </div>
+</section>
+<div class="logo-strip">
+  <p class="logo-strip__label">Trusted by leading Australian businesses</p>
+  <div class="logo-strip__row">
+    <div class="logo-ph">[CLIENT 1]</div><div class="logo-ph">[CLIENT 2]</div><div class="logo-ph">[CLIENT 3]</div>
+    <div class="logo-ph">[CLIENT 4]</div><div class="logo-ph">[CLIENT 5]</div><div class="logo-ph">[CLIENT 6]</div>
+  </div>
+</div>
+<section class="quadrant-section" id="features">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-blue);display:block;margin-bottom:12px;">Portal Features</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);line-height:1.2;">Everything you need to manage your fuel account.</h2>
+    </div>
+    <div class="quadrant-grid">
+      <div class="quadrant-card fade-up"><div class="quadrant-card__icon">📊</div><h3 class="quadrant-card__title">Fuel Spend Reporting</h3><p class="quadrant-card__body">Real-time dashboards showing fuel spend by site, vehicle, cost centre, and date range. Export to CSV or PDF for accounting and compliance.</p><div class="quadrant-card__features"><div class="quadrant-card__feature">Spend by vehicle or fleet</div><div class="quadrant-card__feature">Site-level breakdown</div><div class="quadrant-card__feature">Custom date ranges</div><div class="quadrant-card__feature">CSV and PDF export</div></div></div>
+      <div class="quadrant-card fade-up fade-up--d1"><div class="quadrant-card__icon">🧾</div><h3 class="quadrant-card__title">Invoice Management</h3><p class="quadrant-card__body">View, download, and dispute invoices directly in the portal. No more waiting for paper invoices or chasing your account manager.</p><div class="quadrant-card__features"><div class="quadrant-card__feature">Instant invoice access</div><div class="quadrant-card__feature">Dispute resolution workflow</div><div class="quadrant-card__feature">Payment history</div><div class="quadrant-card__feature">Automated reminders</div></div></div>
+      <div class="quadrant-card fade-up"><div class="quadrant-card__icon">📦</div><h3 class="quadrant-card__title">Order Management</h3><p class="quadrant-card__body">Place, track, and manage bulk fuel orders. View delivery schedules, confirm receipt, and manage standing orders — all without calling your account manager.</p><div class="quadrant-card__features"><div class="quadrant-card__feature">Place bulk orders online</div><div class="quadrant-card__feature">Delivery tracking</div><div class="quadrant-card__feature">Standing order management</div><div class="quadrant-card__feature">Order history</div></div></div>
+      <div class="quadrant-card fade-up fade-up--d1"><div class="quadrant-card__icon">👥</div><h3 class="quadrant-card__title">Account Administration</h3><p class="quadrant-card__body">Manage users, permissions, cost centres, and contact details. Add or remove drivers, set spending limits, and control access by role.</p><div class="quadrant-card__features"><div class="quadrant-card__feature">Multi-user access</div><div class="quadrant-card__feature">Role-based permissions</div><div class="quadrant-card__feature">Cost centre management</div><div class="quadrant-card__feature">Driver card management</div></div></div>
+    </div>
+  </div>
+</section>
+<!-- PORTAL SCREENSHOTS -->
+<section style="background:var(--ior-deep);padding:clamp(48px,6vw,80px) var(--spx);">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;text-align:center;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky);display:block;margin-bottom:12px;">See It In Action</span>
+      <h2 style="font-size:clamp(24px,3vw,40px);font-weight:900;color:#fff;line-height:1.2;">Your account. Your data. Anywhere.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;align-items:end;" class="portal-screenshots">
+      <!-- Mobile screenshot 1 -->
+      <div class="fade-up" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div style="background:rgba(255,255,255,.06);border-radius:var(--radius-md);width:100%;aspect-ratio:9/16;max-width:200px;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border:2px dashed rgba(77,168,218,.3);">
+          <span style="font-size:32px;">📱</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.4);text-align:center;padding:0 12px;">[Mobile screenshot 1<br>e.g. Dashboard view]</span>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);text-align:center;">Fuel spend at a glance</p>
+      </div>
+      <!-- Desktop screenshot -->
+      <div class="fade-up fade-up--d1" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div style="background:rgba(255,255,255,.06);border-radius:var(--radius-md);width:100%;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border:2px dashed rgba(77,168,218,.3);">
+          <span style="font-size:32px;">🖥️</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.4);text-align:center;padding:0 12px;">[Desktop screenshot<br>e.g. Reports & invoices]</span>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);text-align:center;">Full reporting suite</p>
+      </div>
+      <!-- Mobile screenshot 2 -->
+      <div class="fade-up fade-up--d2" style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+        <div style="background:rgba(255,255,255,.06);border-radius:var(--radius-md);width:100%;aspect-ratio:9/16;max-width:200px;margin:0 auto;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border:2px dashed rgba(77,168,218,.3);">
+          <span style="font-size:32px;">📱</span>
+          <span style="font-size:12px;color:rgba(255,255,255,.4);text-align:center;padding:0 12px;">[Mobile screenshot 2<br>e.g. Order management]</span>
+        </div>
+        <p style="font-size:13px;color:rgba(255,255,255,.5);text-align:center;">Order management on the go</p>
+      </div>
+    </div>
+    <style>
+      @media(max-width:768px){.portal-screenshots{grid-template-columns:1fr !important}}
+      @media(min-width:769px) and (max-width:1024px){.portal-screenshots{grid-template-columns:1fr 1fr !important}}
+    </style>
+  </div>
+</section>
+<section class="paths-section" id="paths">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;text-align:center;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky);display:block;margin-bottom:12px;">Get Access</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;line-height:1.2;">Three ways to access the Portal.</h2>
+    </div>
+    <div class="paths-grid">
+      <div class="path-card path-card--primary fade-up">
+        <span class="path-card__eyebrow">Already a customer</span>
+        <h3 class="path-card__title">Login Now</h3>
+        <p class="path-card__body">If you have an IOR account, you already have Portal access. Use your account email to log in — no separate registration required.</p>
+        <a href="https://portal.ior.com.au" class="btn btn--ghost" style="justify-content:center;">Customer Login →</a>
+      </div>
+      <div class="path-card fade-up fade-up--d1">
+        <span class="path-card__eyebrow">New to IOR</span>
+        <h3 class="path-card__title">Apply for an Account</h3>
+        <p class="path-card__body">Apply for an IOR fuel account and get Portal access automatically. Applications are processed as soon as practical by our team.</p>
+        <a href="/support-contact/contact-us/" class="btn btn--primary" style="justify-content:center;">Apply Now →</a>
+      </div>
+      <div class="path-card fade-up fade-up--d2">
+        <span class="path-card__eyebrow">Need help accessing</span>
+        <h3 class="path-card__title">Request Access</h3>
+        <p class="path-card__body">If you have an IOR account but haven't set up Portal access yet, fill in the form below and our team will get you set up.</p>
+        <a href="#contact-form" class="btn btn--ghost" style="justify-content:center;">Request Access →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="testimonial-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;"><h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);">What our customers say.</h2></div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up"><p class="testimonial-card__quote">"The Customer Portal has completely changed how we manage our fuel account. We used to spend hours reconciling invoices — now it takes minutes."</p><div class="testimonial-card__name">Finance Manager</div><div class="testimonial-card__role">National Transport Business, QLD</div></div>
+      <div class="testimonial-card fade-up fade-up--d1"><p class="testimonial-card__quote">"Being able to see real-time spend by vehicle has been invaluable for our fleet management. The reporting is exactly what we needed."</p><div class="testimonial-card__name">Fleet Operations Manager</div><div class="testimonial-card__role">Agricultural Business, NSW</div></div>
+    </div>
+  </div>
+</section>
+<section class="insights-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-blue);display:block;margin-bottom:12px;">Further Reading</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);">Insights from IOR's <span style="color:var(--ior-blue);">digital platforms.</span></h2>
+    </div>
+    <div class="insights-tabs" role="tablist">
+      <button class="insights-tab active" role="tab" onclick="switchTab(event,'cs-cp')">Case Studies</button>
+      <button class="insights-tab" role="tab" onclick="switchTab(event,'blog-cp')">Blog Posts</button>
+    </div>
+    <div class="insights-tab-panel active" id="cs-cp"><div class="insights-grid"><div class="insight-card fade-up"><div class="insight-card__img">[IMAGE — Fleet Management]</div><span class="insight-card__tag">Case Study</span><h3 class="insight-card__title">How Norwood Agriculture cut fuel admin time by 60% with the IOR Customer Portal</h3><a href="#" class="insight-card__read">Read Case Study →</a></div><div class="insight-card fade-up fade-up--d1"><div class="insight-card__img">[IMAGE — Transport]</div><span class="insight-card__tag">Case Study</span><h3 class="insight-card__title">K.S. Easter Transport: real-time fleet visibility across 3 states</h3><a href="#" class="insight-card__read">Read Case Study →</a></div><div class="insight-card fade-up fade-up--d2"><div class="insight-card__img">[IMAGE — Mining]</div><span class="insight-card__tag">Case Study</span><h3 class="insight-card__title">MPC Kinetic: managing fuel for 200+ vehicles from one portal</h3><a href="#" class="insight-card__read">Read Case Study →</a></div></div></div>
+    <div class="insights-tab-panel" id="blog-cp"><div class="insights-grid"><div class="insight-card fade-up"><div class="insight-card__img">[IMAGE — Blog 1]</div><span class="insight-card__tag">Blog</span><h3 class="insight-card__title">5 ways the IOR Customer Portal saves your finance team time</h3><a href="#" class="insight-card__read">Read Article →</a></div><div class="insight-card fade-up fade-up--d1"><div class="insight-card__img">[IMAGE — Blog 2]</div><span class="insight-card__tag">Blog</span><h3 class="insight-card__title">How to set up cost centres in the IOR Customer Portal</h3><a href="#" class="insight-card__read">Read Article →</a></div><div class="insight-card fade-up fade-up--d2"><div class="insight-card__img">[IMAGE — Blog 3]</div><span class="insight-card__tag">Blog</span><h3 class="insight-card__title">IOR Portal vs. spreadsheets: why manual fuel tracking is costing you</h3><a href="#" class="insight-card__read">Read Article →</a></div></div></div>
+  </div>
+</section>
+<!-- HELP CENTRE REDIRECT -->
+<section style="background:var(--ior-light);border-top:4px solid var(--ior-blue);padding:clamp(32px,4vw,48px) var(--spx);" id="contact-form">
+  <div class="inner">
+    <div style="display:flex;flex-direction:column;gap:24px;align-items:flex-start;" class="fade-up">
+      <div>
+        <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-blue);display:block;margin-bottom:12px;">Having Issues?</span>
+        <h2 style="font-size:clamp(22px,2.5vw,36px);font-weight:900;color:var(--ior-deep);line-height:1.2;margin-bottom:12px;">Can't access your Portal account?</h2>
+        <p style="font-size:16px;color:var(--ior-charcoal);line-height:1.6;max-width:560px;">If you're having trouble logging in, have forgotten your password, or need to set up access for a new user — our Help Centre has step-by-step guides, or you can contact our support team directly.</p>
+      </div>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <a href="/support-contact/help-centre/" class="btn btn--primary">Visit Help Centre &amp; FAQs →</a>
+        <a href="/support-contact/contact-us/" class="btn btn--outline">Contact Support →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sos-banner">
+  <div class="inner">
+    <div class="sos-banner__inner">
+      <div class="sos-banner__text fade-up"><h2>Your fuel supply is never at risk.</h2><p>IOR's owned terminal infrastructure at Lytton and Port Bonython means we control our supply chain end-to-end — giving you certainty of supply, even in a disrupted market.</p></div>
+      <div class="sos-banner__ctas fade-up fade-up--d1"><a href="06_Supply_Trading_v2.html" class="btn btn--ghost">Supply &amp; Trading →</a><a href="06a_Terminals.html" class="btn btn--ghost">Our Terminals →</a></div>
+    </div>
+  </div>
+</section>
+<section class="pre-footer">
+  <div class="inner">
+    <div class="pre-footer__inner">
+      <h2 class="pre-footer__title">Ready to take control of your fuel account?</h2>
+      <div class="pre-footer__ctas"><a href="https://portal.ior.com.au" class="btn btn--ghost" style="color:var(--ior-deep);border-color:var(--ior-deep);">Login to Portal →</a><a href="/support-contact/contact-us/" class="btn btn--ghost" style="color:var(--ior-deep);border-color:var(--ior-deep);">Apply for an Account →</a></div>
+    </div>
+  </div>
+</section>
+<!-- BLOG / INSIGHTS SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-section__header" data-animate="fade-up">
+      <div class="blog-section__header-left">
+        <div class="eyebrow eyebrow--dark">Customer Portal · Case Studies &amp; Insights</div>
+        <h2 class="blog-section__title">One login. Complete visibility.</h2>
+      </div>
+    </div>
+    <div class="blog-tabs" role="tablist">
+      <button class="blog-tab active" role="tab" aria-selected="true">Case Studies</button>
+      <button class="blog-tab" role="tab" aria-selected="false">Blog &amp; Insights</button>
+    </div>
+    <div class="blog-panel active" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Mining Portal</span>
+          <span class="blog-card__img-note">Customer Portal, mining, laptop</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Mining</div>
+          <div class="blog-card__title">12 accounts. One portal. How a Tier 1 miner got fuel spend visibility</div>
+          <div class="blog-card__excerpt">Multiple sites, multiple fuel types, multiple account numbers. IOR's Customer Portal gave a major mining company a single view of their entire fuel spend.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Transport Portal</span>
+          <span class="blog-card__img-note">Portal dashboard, transport fleet</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Transport</div>
+          <div class="blog-card__title">How a national transport operator used the Customer Portal to cut fuel costs by 8%</div>
+          <div class="blog-card__excerpt">Transaction-level visibility revealed fuelling patterns that were costing money. The Customer Portal made the invisible visible.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Ag Portal</span>
+          <span class="blog-card__img-note">Customer Portal, farm, tablet</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Agriculture</div>
+          <div class="blog-card__title">Farm fuel management: how the Customer Portal simplified a multi-property operation</div>
+          <div class="blog-card__excerpt">Multiple properties. Multiple vehicles. One IOR account. The Customer Portal gave a large agricultural operation the visibility they needed.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Case Studies →</a>
+      </div>
+    </div>
+    <div class="blog-panel" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Portal Guide</span>
+          <span class="blog-card__img-note">Portal features, laptop</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Technology</div>
+          <div class="blog-card__title">What to look for in a fuel management portal: a buyer's guide</div>
+          <div class="blog-card__excerpt">Transaction history, invoice download, account management, and reporting — what a modern fuel management portal should include.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">FTC Portal</span>
+          <span class="blog-card__img-note">FTC, portal, accountant</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Operations</div>
+          <div class="blog-card__title">Using the Customer Portal for ATO fuel tax credit reconciliation</div>
+          <div class="blog-card__excerpt">Every transaction. Every litre. Every timestamp. How the IOR Customer Portal makes FTC reconciliation simple.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Cost Reduction</span>
+          <span class="blog-card__img-note">Cost chart, portal, fleet</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Finance</div>
+          <div class="blog-card__title">How real-time fuel spend visibility reduces fleet operating costs</div>
+          <div class="blog-card__excerpt">You can't manage what you can't measure. How transaction-level fuel visibility drives cost reduction in fleet operations.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-nav-grid">
+    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
+    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="05_Equipment_Infrastructure_v2.html" class="footer-col__link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
+    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
+    <div><div class="footer-col__title">Corporate</div><div class="footer-col__links"><a href="#" class="footer-col__link">About IOR</a><a href="#" class="footer-col__link">Careers</a><a href="#" class="footer-col__link">Case Studies</a><a href="#" class="footer-col__link">News &amp; Updates</a></div></div>
+    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="#" class="footer-col__link">Make a Payment</a><a href="#" class="footer-col__link">Contact Us</a></div></div>
+    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="#" class="footer-state-pill">QLD</a><a href="#" class="footer-state-pill">NSW</a><a href="#" class="footer-state-pill">VIC</a><a href="#" class="footer-state-pill">SA</a><a href="#" class="footer-state-pill">WA</a><a href="#" class="footer-state-pill">NT</a></div></div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
+    <div class="footer-social"><a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a><a href="#" class="footer-social__icon" aria-label="Facebook">f</a><a href="#" class="footer-social__icon" aria-label="Instagram">📷</a><a href="#" class="footer-social__icon" aria-label="YouTube">▶</a></div>
+  </div>
+</footer>
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer__head"><span class="nav-logo" style="font-size:16px;">[IOR]</span><button class="drawer__close" id="drawerClose" aria-label="Close navigation menu">✕</button></div>
+  <nav class="drawer__nav">
+    <div class="drawer__item"><div class="drawer__link" data-sub="sub-fuel">Fuel Solutions <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-fuel"><a href="03_Ground_Fuels_v2.html" class="drawer__sub-link">Ground Fuels</a><a href="04_Aviation_v2.html" class="drawer__sub-link">Aviation</a><a href="06_Supply_Trading_v2.html" class="drawer__sub-link">Supply &amp; Trading</a></div></div>
+    <div class="drawer__item"><div class="drawer__link" data-sub="sub-digital">Digital Platforms <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-digital"><a href="07a_HyDip_FMS_v2.html" class="drawer__sub-link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="drawer__sub-link">Fuelcharge</a><a href="07c_Customer_Portal_v2.html" class="drawer__sub-link">Customer Portal</a></div></div>
+  </nav>
+  <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;border-radius:var(--radius-md);">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;border-radius:var(--radius-md);">Apply for an Account</a></div>
+</div>
+<script>
+const fo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('is-visible');fo.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+const navEl=document.getElementById('primary-nav');
+window.addEventListener('scroll',()=>{if(navEl)navEl.classList.toggle('primary-nav--scrolled',scrollY>80)},{passive:true});
+const ham=document.getElementById('mob-hamburger'),dr=document.getElementById('mobileDrawer'),ov=document.getElementById('drawerOverlay'),dc=document.getElementById('drawerClose');
+let open=false;
+function openD(){open=true;dr.classList.add('drawer--open');ov.classList.add('drawer-overlay--open');dr.removeAttribute('aria-hidden');document.body.style.overflow='hidden'}
+function closeD(){open=false;dr.classList.remove('drawer--open');ov.classList.remove('drawer-overlay--open');dr.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+if(ham)ham.addEventListener('click',()=>open?closeD():openD());
+if(dc)dc.addEventListener('click',closeD);
+if(ov)ov.addEventListener('click',closeD);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&open)closeD()});
+document.querySelectorAll('.drawer__link').forEach(l=>{l.addEventListener('click',()=>{const id=l.getAttribute('data-sub');if(!id)return;const s=document.getElementById(id);if(!s)return;const ch=l.querySelector('.drawer__link-chevron');const was=s.classList.contains('drawer__sub--open');document.querySelectorAll('.drawer__sub--open').forEach(x=>x.classList.remove('drawer__sub--open'));document.querySelectorAll('.drawer__link-chevron--open').forEach(x=>x.classList.remove('drawer__link-chevron--open'));if(!was){s.classList.add('drawer__sub--open');if(ch)ch.classList.add('drawer__link-chevron--open')}})});
+function switchTab(ev,id){document.querySelectorAll('.insights-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false')});document.querySelectorAll('.insights-tab-panel').forEach(p=>p.classList.remove('active'));ev.target.classList.add('active');ev.target.setAttribute('aria-selected','true');const p=document.getElementById(id);if(p)p.classList.add('active')}
+function toggleFaq(el){const item=el.parentElement;const wasOpen=item.classList.contains('faq-item--open');document.querySelectorAll('.faq-item--open').forEach(x=>x.classList.remove('faq-item--open'));if(!wasOpen)item.classList.add('faq-item--open')}
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.blog-section').forEach(function(section){
+    var tabs = section.querySelectorAll('.blog-tab');
+    var panels = section.querySelectorAll('.blog-panel');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        panels.forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        panels[i].classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

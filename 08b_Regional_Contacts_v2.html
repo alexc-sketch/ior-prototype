@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regional Offices & Depots — IOR · 08b</title>
+<link rel="stylesheet" href="ior-global.css">
+
+</head>
+<body>
+<nav class="wf-nav">
+  <strong>IOR WIREFRAMES</strong>
+  <a href="00_Master_Index.html">← Index</a><a href="IOR_Design_System.html">Design System</a><a href="08_Support_Hub_v2.html">← Support Hub</a><a href="08a_Contact_Us_v2.html">08a Contact Us</a><a href="08c_Find_a_Location_v2.html">08c Find a Location</a>
+  <span class="wf-nav__module">MODULE 08b · Regional Contacts · V3</span>
+</nav>
+<div class="utility-bar">
+  <div class="container">
+    <div class="utility-bar__announce">📢 New: HyDip™ FMS now integrates with major fleet management platforms</div>
+    <div class="utility-links">
+      <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
+      <a href="08d_Make_a_Payment_v2.html">💳 Make a Payment</a>
+      <a href="#">📞 1300 467 823</a>
+    </div>
+  </div>
+</div>
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links"><li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions ▾</a></li><li><a href="07_Digital_Platforms_v2.html">Digital Platforms ▾</a></li><li><a href="08_Industries_v2.html">Industries We Serve ▾</a></li><li><a href="#">About IOR ▾</a></li><li><a href="08_Support_Hub_v2.html" class="active">Support &amp; Contact ▾</a></li></ul>
+    <div class="nav-ctas">
+      <button class="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary btn--sm">Apply for an Account</a>
+    </div>
+  </div>
+</nav>
+<div class="quick-links-bar"><div class="container"><a href="08_Support_Hub_v2.html" class="ql-item">🏠 Support Hub</a><a href="08a_Contact_Us_v2.html" class="ql-item">📞 Contact Us</a><a href="08b_Regional_Contacts_v2.html" class="ql-item active">📍 Regional Contacts</a><a href="08c_Find_a_Location_v2.html" class="ql-item">🗺️ Find a Location</a><a href="08d_Make_a_Payment_v2.html" class="ql-item">💳 Make a Payment</a><a href="08e_Policy_Downloads_v2.html" class="ql-item">📄 Policy Downloads</a></div></div>
+<div class="ann ann--info">
+  <strong>08b · Regional Contacts · V3</strong>
+  UX GOAL: Corporate and regional depot contact info — kept OFF the public fuel network map so truck drivers don't show up at corporate offices. Interactive SVG Australia map + State Tabs. Left column: SVG map with state highlights. Right column: Tabbed directory with contact cards.
+</div>
+<section style="background:var(--ior-deep);padding:clamp(40px,5vw,64px) 0;">
+  <div class="container">
+    <div class="eyebrow" style="color:var(--ior-sky);">Support &amp; Contact</div>
+    <h1 style="font-size:clamp(28px,3vw,44px);font-weight:900;color:var(--ior-white);margin:12px 0 16px;line-height:1.1;" data-animate="fade-up">Regional Offices &amp; Depots</h1>
+    <p style="font-size:16px;color:rgba(255,255,255,0.7);max-width:600px;line-height:1.65;" data-animate="fade-up" data-delay="100">These are IOR's corporate and logistics hubs — not public refuelling sites. If you're looking for a diesel stop or aviation fuel location, please use the <a href="08c_Find_a_Location_v2.html" style="color:var(--ior-sky);text-decoration:underline;">Find a Location</a> tool instead.</p>
+  </div>
+</section>
+<section style="background:var(--ior-white);padding:var(--section-pad) 0;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;" id="map-directory">
+      
+      <!-- LEFT: SVG MAP -->
+      <div>
+        <h3 style="font-size:16px;font-weight:700;color:var(--ior-charcoal);margin-bottom:20px;">Select a state to view offices &amp; depots</h3>
+        <svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:480px;cursor:pointer;" id="aus-map">
+          <!-- Western Australia -->
+          <path id="map-WA" d="M 80 150 L 280 150 L 280 680 L 80 680 Z" fill="#E8F1FB" stroke="#0355A3" stroke-width="2" onclick="selectState('WA')" style="transition:fill 0.2s;cursor:pointer;">
+            <title>Western Australia</title>
+          </path>
+          <text x="160" y="420" text-anchor="middle" font-size="18" font-weight="700" fill="#0355A3" pointer-events="none">WA</text>
+          
+          <!-- Northern Territory -->
+          <path id="map-NT" d="M 280 150 L 430 150 L 430 450 L 280 450 Z" fill="#E8F1FB" stroke="#0355A3" stroke-width="2" onclick="selectState('NT')" style="transition:fill 0.2s;cursor:pointer;">
+            <title>Northern Territory</title>
+          </path>
+          <text x="355" y="310" text-anchor="middle" font-size="18" font-weight="700" fill="#0355A3" pointer-events="none">NT</text>
+          
+          <!-- Queensland -->
+          <path id="map-QLD" d="M 430 150 L 680 150 L 680 500 L 430 500 Z" fill="#E8F1FB" stroke="#0355A3" stroke-width="2" onclick="selectState('QLD')" style="transition:fill 0.2s;cursor:pointer;">
+            <title>Queensland</title>
+          </path>
+          <text x="555" y="340" text-anchor="middle" font-size="18" font-weight="700" fill="#0355A3" pointer-events="none">QLD</text>
+          
+          <!-- South Australia -->
+          <path id="map-SA" d="M 280 450 L 500 450 L 500 680 L 280 680 Z" fill="#E8F1FB" stroke="#0355A3" stroke-width="2" onclick="selectState('SA')" style="transition:fill 0.2s;cursor:pointer;">
+            <title>South Australia</title>
+          </path>
+          <text x="390" y="575" text-anchor="middle" font-size="18" font-weight="700" fill="#0355A3" pointer-events="none">SA</text>
+          
+          <!-- New South Wales -->
+          <path id="map-NSW" d="M 500 450 L 700 450 L 700 650 L 500 650 Z" fill="#E8F1FB" stroke="#0355A3" stroke-width="2" onclick="selectState('NSW')" style="transition:fill 0.2s;cursor:pointer;">
+            <title>New South Wales</title>
+          </path>
+          <text x="600" y="560" text-anchor="middle" font-size="18" font-weight="700" fill="#0355A3" pointer-events="none">NSW</text>
+          
+          <!-- Victoria -->
+          <path id="map-VIC" d="M 500 650 L 700 650 L 700 750 L 500 750 Z" fill="#E8F1FB" stroke="#0355A3" stroke-width="2" onclick="selectState('VIC')" style="transition:fill 0.2s;cursor:pointer;">
+            <title>Victoria</title>
+          </path>
+          <text x="600" y="710" text-anchor="middle" font-size="16" font-weight="700" fill="#0355A3" pointer-events="none">VIC</text>
+          
+          <!-- Tasmania (simplified) -->
+          <path id="map-TAS" d="M 580 780 L 660 780 L 660 850 L 580 850 Z" fill="#E8F1FB" stroke="#0355A3" stroke-width="2" onclick="selectState('TAS')" style="transition:fill 0.2s;cursor:pointer;">
+            <title>Tasmania</title>
+          </path>
+          <text x="620" y="820" text-anchor="middle" font-size="13" font-weight="700" fill="#0355A3" pointer-events="none">TAS</text>
+        </svg>
+        <p style="font-size:12px;color:var(--mid-grey);margin-top:12px;">⚠️ Note: This is a simplified schematic map for wireframe purposes. Production version will use an accurate SVG map of Australia with correct state boundaries.</p>
+      </div>
+      
+      <!-- RIGHT: TABBED DIRECTORY -->
+      <div>
+        <div style="display:flex;gap:0;border-bottom:2px solid var(--border-light);margin-bottom:24px;overflow-x:auto;" id="state-tabs">
+          <button onclick="selectState('QLD')" class="state-tab active" data-state="QLD">QLD</button>
+          <button onclick="selectState('NSW')" class="state-tab" data-state="NSW">NSW</button>
+          <button onclick="selectState('VIC')" class="state-tab" data-state="VIC">VIC</button>
+          <button onclick="selectState('SA')" class="state-tab" data-state="SA">SA</button>
+          <button onclick="selectState('WA')" class="state-tab" data-state="WA">WA</button>
+          <button onclick="selectState('NT')" class="state-tab" data-state="NT">NT</button>
+        </div>
+        
+        <!-- QLD -->
+        <div id="panel-QLD" class="state-panel">
+          <div class="contact-card">
+            <div class="contact-card__name">Brisbane Corporate HQ</div>
+            <div class="contact-card__type">Corporate Office</div>
+            <div class="contact-card__detail">📍 Level 12, 123 Eagle Street, Brisbane QLD 4000</div>
+            <div class="contact-card__detail">📞 (07) 3000 0000</div>
+            <div class="contact-card__detail">✉️ brisbane@ior.com.au</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Lytton Terminal</div>
+            <div class="contact-card__type">Terminal Operations</div>
+            <div class="contact-card__detail">📍 Lytton Road, Lytton QLD 4178</div>
+            <div class="contact-card__detail">📞 (07) 3000 0001</div>
+            <div class="contact-card__detail">✉️ lytton@ior.com.au</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Gladstone Depot</div>
+            <div class="contact-card__type">Regional Depot</div>
+            <div class="contact-card__detail">📍 Industrial Drive, Gladstone QLD 4680</div>
+            <div class="contact-card__detail">📞 (07) 4900 0000</div>
+            <div class="contact-card__detail">✉️ gladstone@ior.com.au</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Toowoomba Depot</div>
+            <div class="contact-card__type">Regional Depot</div>
+            <div class="contact-card__detail">📍 Anzac Avenue, Toowoomba QLD 4350</div>
+            <div class="contact-card__detail">📞 (07) 4600 0000</div>
+            <div class="contact-card__detail">✉️ toowoomba@ior.com.au</div>
+          </div>
+        </div>
+        
+        <!-- NSW -->
+        <div id="panel-NSW" class="state-panel" style="display:none;">
+          <div class="contact-card">
+            <div class="contact-card__name">Sydney Office</div>
+            <div class="contact-card__type">State Office</div>
+            <div class="contact-card__detail">📍 Level 8, 1 Market Street, Sydney NSW 2000</div>
+            <div class="contact-card__detail">📞 (02) 9000 0000</div>
+            <div class="contact-card__detail">✉️ sydney@ior.com.au</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Newcastle Depot</div>
+            <div class="contact-card__type">Regional Depot</div>
+            <div class="contact-card__detail">📍 Industrial Road, Newcastle NSW 2300</div>
+            <div class="contact-card__detail">📞 (02) 4900 0000</div>
+            <div class="contact-card__detail">✉️ newcastle@ior.com.au</div>
+          </div>
+        </div>
+        
+        <!-- VIC -->
+        <div id="panel-VIC" class="state-panel" style="display:none;">
+          <div class="contact-card">
+            <div class="contact-card__name">Melbourne Office</div>
+            <div class="contact-card__type">State Office</div>
+            <div class="contact-card__detail">📍 Level 5, 600 Bourke Street, Melbourne VIC 3000</div>
+            <div class="contact-card__detail">📞 (03) 9000 0000</div>
+            <div class="contact-card__detail">✉️ melbourne@ior.com.au</div>
+          </div>
+        </div>
+        
+        <!-- SA -->
+        <div id="panel-SA" class="state-panel" style="display:none;">
+          <div class="contact-card">
+            <div class="contact-card__name">Adelaide Office</div>
+            <div class="contact-card__type">State Office</div>
+            <div class="contact-card__detail">📍 Level 3, 100 King William Street, Adelaide SA 5000</div>
+            <div class="contact-card__detail">📞 (08) 8000 0000</div>
+            <div class="contact-card__detail">✉️ adelaide@ior.com.au</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Port Bonython Terminal</div>
+            <div class="contact-card__type">Terminal Operations</div>
+            <div class="contact-card__detail">📍 Port Bonython Road, Whyalla SA 5600</div>
+            <div class="contact-card__detail">📞 (08) 8600 0000</div>
+            <div class="contact-card__detail">✉️ portbonython@ior.com.au</div>
+          </div>
+        </div>
+        
+        <!-- WA -->
+        <div id="panel-WA" class="state-panel" style="display:none;">
+          <div class="contact-card">
+            <div class="contact-card__name">Perth Office</div>
+            <div class="contact-card__type">State Office</div>
+            <div class="contact-card__detail">📍 Level 4, 200 St Georges Terrace, Perth WA 6000</div>
+            <div class="contact-card__detail">📞 (08) 9000 0000</div>
+            <div class="contact-card__detail">✉️ perth@ior.com.au</div>
+          </div>
+          <div class="contact-card">
+            <div class="contact-card__name">Karratha Depot</div>
+            <div class="contact-card__type">Regional Depot</div>
+            <div class="contact-card__detail">📍 Balmoral Road, Karratha WA 6714</div>
+            <div class="contact-card__detail">📞 (08) 9100 0000</div>
+            <div class="contact-card__detail">✉️ karratha@ior.com.au</div>
+          </div>
+        </div>
+        
+        <!-- NT -->
+        <div id="panel-NT" class="state-panel" style="display:none;">
+          <div class="contact-card">
+            <div class="contact-card__name">Darwin Office</div>
+            <div class="contact-card__type">State Office</div>
+            <div class="contact-card__detail">📍 Level 2, 16 Bennett Street, Darwin NT 0800</div>
+            <div class="contact-card__detail">📞 (08) 8900 0000</div>
+            <div class="contact-card__detail">✉️ darwin@ior.com.au</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.state-tab {
+  padding: 12px 20px; font-size: 14px; font-weight: 700; background: transparent;
+  border: none; border-bottom: 3px solid transparent; cursor: pointer;
+  color: var(--mid-grey); transition: color 200ms, border-color 200ms; white-space: nowrap;
+}
+.state-tab.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+.state-tab:hover { color: var(--ior-blue); }
+.contact-card {
+  background: var(--ior-white); border: 1px solid var(--border-light);
+  border-radius: var(--radius-md); padding: 20px; margin-bottom: 16px;
+  transition: box-shadow 200ms;
+}
+.contact-card:hover { box-shadow: 0 4px 16px rgba(3,85,163,0.1); }
+.contact-card__name { font-size: 16px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 4px; }
+.contact-card__type { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ior-blue); margin-bottom: 12px; }
+.contact-card__detail { font-size: 13px; color: var(--mid-grey); margin-bottom: 6px; line-height: 1.5; }
+@media (max-width: 768px) { #map-directory { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+function selectState(state) {
+  // Update map highlights
+  ['QLD','NSW','VIC','SA','WA','NT','TAS'].forEach(s => {
+    const path = document.getElementById('map-' + s);
+    if (path) path.setAttribute('fill', s === state ? '#0355A3' : '#E8F1FB');
+    const textEl = path ? path.parentNode.querySelector('text[x="' + path.getAttribute('x') + '"]') : null;
+  });
+  // Fix text color on selected state
+  document.querySelectorAll('#aus-map text').forEach(t => {
+    t.setAttribute('fill', '#0355A3');
+  });
+  const selectedPath = document.getElementById('map-' + state);
+  if (selectedPath) {
+    // Find sibling text
+    const allTexts = document.querySelectorAll('#aus-map text');
+    allTexts.forEach(t => {
+      if (t.textContent.trim() === state) t.setAttribute('fill', '#ffffff');
+    });
+  }
+  
+  // Update tabs
+  document.querySelectorAll('.state-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.dataset.state === state);
+  });
+  
+  // Show correct panel
+  document.querySelectorAll('.state-panel').forEach(panel => {
+    panel.style.display = panel.id === 'panel-' + state ? 'block' : 'none';
+  });
+}
+// Init with QLD selected
+selectState('QLD');
+</script>
+<section style="background:var(--off-white);padding:var(--section-pad) 0;">
+  <div class="container" style="max-width:720px;">
+    <div class="section-header" data-animate="fade-up" style="text-align:left;margin-bottom:32px;">
+      <div class="eyebrow eyebrow--dark">General Enquiries</div>
+      <h2 class="section-title">Not sure who to contact?</h2>
+      <p class="section-body" style="text-align:left;">For general support, account enquiries, or to be connected with the right team — use the main Contact Us form or call our national support line.</p>
+    </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;">
+      <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Go to Contact Us →</a>
+      <a href="tel:1300467823" class="btn btn--outline">📞 1300 467 823</a>
+    </div>
+    <div class="ann ann--info" style="margin-top:24px;">
+      <strong>Zendesk Form Placeholder</strong>
+      In production: embed Zendesk contact form widget here for general support enquiries. Form ID: ZENDESK_FORM_TBC.
+    </div>
+  </div>
+</section>
+<section class="security-banner">
+  <div class="container">
+    <div class="security-banner__text" data-animate="fade-right">
+      <h3>We own the infrastructure.<br>We won't run out.</h3>
+      <p>IOR is not a reseller. We own Lytton Terminal, Port Bonython Terminal, and the Eromanga Refinery — Australia's only inland crude oil refinery. When global supply chains tighten, our customers don't feel it. That's what sovereign supply actually means.</p>
+    </div>
+    <div class="security-banner__links" data-animate="fade-left">
+      <a href="06_Supply_Trading_v2.html" class="btn btn--sky">Our Supply Chain →</a>
+      <a href="06b_Eromanga_Refinery.html" class="security-banner__link">Eromanga Refinery</a>
+      <a href="06a_Terminals.html" class="security-banner__link">Lytton &amp; Port Bonython</a>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">[IOR LOGO]</div>
+        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Ground Fuels</h4>
+        <ul>
+          <li><a href="03a_Diesel_Network.html">Diesel Network</a></li>
+          <li><a href="03b_On_Site_Refuelling.html">On-Site Refuelling</a></li>
+          <li><a href="03c_Bulk_Diesel_Delivery.html">Bulk Diesel Delivery</a></li>
+          <li><a href="03d_HyBlue_AdBlue.html">HyBlue™ AdBlue®</a></li>
+          <li><a href="03e_Oils_Lubricants.html">Oils &amp; Lubricants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Aviation</h4>
+        <ul>
+          <li><a href="04_Aviation_v2.html">Aviation Hub</a></li>
+          <li><a href="04a_Aviation_Network.html">Aviation Network</a></li>
+          <li><a href="04b_Airport_Fuelling_Services.html">Airport Fuelling</a></li>
+          <li><a href="04c_Aviation_Bulk_Delivery.html">Bulk Delivery</a></li>
+          <li><a href="04d_Aviation_Oils_Lubricants.html">Oils &amp; Lubricants</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
+          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
+          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
+          <li><a href="08g_Construction_Civil.html">Construction &amp; Infrastructure</a></li>
+          <li><a href="08h_Government_Defence.html">Government &amp; Defence</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08b_Regional_Contacts_v2.html">Regional Contacts</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 IOR Petroleum Pty Ltd. All rights reserved.</span>
+      <div>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">HSE Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="drawer-overlay"></div>
+<div class="drawer">
+  <div class="drawer__header">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <button class="drawer__close">✕</button>
+  </div>
+  <div class="drawer__nav">
+    <div class="drawer__section">
+      <div class="drawer__section-label">Fuel Solutions</div>
+      <a href="03_Ground_Fuels_v2.html" class="drawer__link">Ground Fuels <span>›</span></a>
+      <a href="04_Aviation_v2.html" class="drawer__link">Aviation <span>›</span></a>
+      <a href="05_Equipment_Infrastructure_v2.html" class="drawer__link">Equipment &amp; Infrastructure <span>›</span></a>
+      <a href="06_Supply_Trading_v2.html" class="drawer__link">Supply &amp; Trading <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">Digital Platforms</div>
+      <a href="07a_HyDip_FMS_v2.html" class="drawer__link">HyDip™ FMS <span>›</span></a>
+      <a href="07b_FuelCharge_v2.html" class="drawer__link">FuelCharge <span>›</span></a>
+      <a href="07c_Customer_Portal_v2.html" class="drawer__link">Customer Portal <span>›</span></a>
+    </div>
+    <div class="drawer__section">
+      <div class="drawer__section-label">Industries</div>
+      <a href="08_Industries_v2.html" class="drawer__link">All Industries <span>›</span></a>
+    </div>
+  </div>
+  <div class="drawer__footer">
+    <a href="https://customer.ior.com.au" class="btn btn--outline">Customer Login</a>
+    <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</div>
+<script src="ior-motion.js"></script>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Policy Downloads — IOR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+:root {
+  --ior-blue: #0355A3; --ior-sky: #4DA8DA; --ior-navy: #0A2540; --ior-deep: #0B1929;
+  --white: #FFFFFF; --off-white: #F8F9FA; --border-light: #E2E8F0;
+  --text-dark: #1A202C; --text-mid: #4A5568; --text-light: #718096;
+  --radius-md: 8px; --font-primary: 'Inter', sans-serif;
+  --spx: clamp(20px, 5vw, 80px); --transition-base: 250ms ease; --z-nav: 1000; --z-drawer: 1100;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-primary); color: var(--text-dark); background: var(--white); -webkit-font-smoothing: antialiased; }
+.wf-nav { position: sticky; top: 0; z-index: 9999; background: #1A1A2E; border-bottom: 3px solid #E94560; display: flex; align-items: center; gap: 16px; padding: 8px 16px; font-size: 11px; font-family: monospace; color: #fff; flex-wrap: wrap; }
+.wf-nav a { color: #E94560; text-decoration: none; font-weight: 700; }
+.wf-badge { background: #E94560; color: #fff; padding: 2px 8px; border-radius: 4px; font-weight: 700; }
+.utility-bar { background: var(--ior-navy); padding: 8px var(--spx); display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
+.utility-bar__actions { display: flex; align-items: center; gap: 20px; }
+.utility-bar__link { color: rgba(255,255,255,.85); text-decoration: none; font-size: 12px; font-weight: 500; }
+.utility-bar__link:hover { opacity: .8; }
+.utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.4); }
+.primary-nav { position: sticky; top: 0; z-index: var(--z-nav); background: var(--white); border-bottom: 1px solid var(--border-light); box-shadow: 0 2px 12px rgba(0,0,0,.06); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--spx); height: 72px; gap: 24px; transition: height var(--transition-base), box-shadow var(--transition-base); }
+.primary-nav--scrolled { height: 56px; box-shadow: 0 4px 20px rgba(0,0,0,.12); }
+.nav-logo { font-size: 22px; font-weight: 900; color: var(--ior-navy); text-decoration: none; letter-spacing: -0.03em; flex-shrink: 0; }
+.nav-links { list-style: none; display: flex; align-items: center; gap: 4px; }
+.nav-link { background: none; border: none; padding: 8px 14px; font-size: 14px; font-weight: 600; color: var(--text-dark); cursor: pointer; border-radius: var(--radius-md); font-family: var(--font-primary); }
+.nav-link:hover { background: var(--off-white); color: var(--ior-blue); }
+.nav-ctas { display: flex; align-items: center; gap: 12px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; font-size: 14px; font-weight: 700; border-radius: var(--radius-md); text-decoration: none; cursor: pointer; border: 2px solid transparent; font-family: var(--font-primary); transition: all var(--transition-base); }
+.btn--primary { background: var(--ior-blue); color: var(--white); border-color: var(--ior-blue); }
+.btn--primary:hover { background: #024a8f; border-color: #024a8f; }
+.btn--outline { background: transparent; color: var(--ior-navy); border-color: var(--ior-navy); }
+.btn--outline:hover { background: var(--ior-navy); color: var(--white); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text-dark); border-radius: 2px; }
+.drawer-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: calc(var(--z-drawer) - 1); opacity: 0; pointer-events: none; transition: opacity var(--transition-base); }
+.drawer-overlay--open { opacity: 1; pointer-events: all; }
+.drawer { position: fixed; top: 0; right: 0; width: min(360px, 90vw); height: 100vh; background: var(--white); z-index: var(--z-drawer); transform: translateX(100%); transition: transform 350ms cubic-bezier(.4,0,.2,1); overflow-y: auto; display: flex; flex-direction: column; }
+.drawer--open { transform: translateX(0); }
+.drawer__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border-light); }
+.drawer__logo { font-size: 18px; font-weight: 900; color: var(--ior-navy); }
+.drawer__close { background: none; border: none; font-size: 20px; cursor: pointer; color: var(--text-mid); padding: 4px 8px; border-radius: var(--radius-md); }
+.drawer__nav { flex: 1; padding: 16px 0; overflow-y: auto; }
+.drawer__link { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; font-size: 15px; font-weight: 600; color: var(--text-dark); text-decoration: none; border: none; background: none; width: 100%; cursor: pointer; font-family: var(--font-primary); }
+.drawer__link:hover { background: var(--off-white); color: var(--ior-blue); }
+.drawer__link-chevron { font-size: 10px; transition: transform var(--transition-base); }
+.drawer__link-chevron--open { transform: rotate(180deg); }
+.drawer__sub { display: none; background: var(--off-white); }
+.drawer__sub--open { display: block; }
+.drawer__sub-link { display: block; padding: 10px 24px 10px 40px; font-size: 13px; color: var(--text-mid); text-decoration: none; }
+.drawer__sub-link:hover { color: var(--ior-blue); }
+.drawer__ctas { padding: 16px 24px; display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--border-light); }
+.quick-links-bar { position: sticky; top: 72px; z-index: 900; background: var(--ior-deep); border-top: 3px solid var(--ior-blue); padding: 0 var(--spx); display: flex; align-items: center; gap: 0; overflow-x: auto; scrollbar-width: none; }
+.quick-links-bar::-webkit-scrollbar { display: none; }
+.quick-link { color: rgba(255,255,255,.75); text-decoration: none; font-size: 13px; font-weight: 600; padding: 14px 18px; white-space: nowrap; border-bottom: 2px solid transparent; transition: all var(--transition-base); }
+.quick-link:hover, .quick-link.active { color: var(--white); border-bottom-color: var(--ior-sky); }
+.hero-util { background: var(--ior-navy); padding: 64px var(--spx) 48px; }
+.hero-util__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 12px; }
+.hero-util__title { font-size: clamp(32px, 5vw, 52px); font-weight: 900; color: var(--white); line-height: 1.1; margin-bottom: 16px; }
+.hero-util__sub { font-size: 17px; color: rgba(255,255,255,.7); max-width: 560px; line-height: 1.6; }
+.breadcrumb { font-size: 12px; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.breadcrumb a { color: rgba(255,255,255,.5); text-decoration: none; }
+.section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 12px; }
+.section-title { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--ior-navy); margin-bottom: 8px; }
+.section-sub { font-size: 16px; color: var(--text-mid); max-width: 560px; line-height: 1.6; margin-bottom: 48px; }
+.sos-banner { background: var(--ior-deep); padding: 48px var(--spx); display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.sos-banner__text { color: var(--white); }
+.sos-banner__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 8px; }
+.sos-banner__title { font-size: clamp(20px, 3vw, 28px); font-weight: 900; line-height: 1.2; }
+.sos-banner__sub { font-size: 14px; color: rgba(255,255,255,.65); margin-top: 8px; }
+.sos-banner__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.site-footer { background: var(--ior-deep); padding: 64px var(--spx) 32px; }
+.footer-nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 40px; margin-bottom: 48px; }
+.footer-col__title { font-size: 12px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+.footer-col__links { display: flex; flex-direction: column; gap: 10px; }
+.footer-col__link { font-size: 13px; color: rgba(255,255,255,.7); text-decoration: none; line-height: 1.5; }
+.footer-col__link:hover { color: var(--white); }
+.footer-state-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.footer-state-pill { font-size: 12px; font-weight: 700; color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.2); border-radius: var(--radius-md); padding: 4px 10px; text-decoration: none; }
+.footer-state-pill:hover { background: rgba(255,255,255,.1); color: var(--white); }
+.footer-legal { border-top: 1px solid rgba(255,255,255,.1); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-legal__text { font-size: 12px; color: rgba(255,255,255,.4); }
+.footer-social { display: flex; gap: 12px; }
+.footer-social__icon { width: 32px; height: 32px; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,.2); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.6); font-size: 12px; font-weight: 700; text-decoration: none; }
+@media (max-width: 768px) {
+  .nav-links, .nav-ctas .btn:not(:last-child) { display: none; }
+  .hamburger { display: flex; }
+}
+
+
+.policy-section { padding: 64px var(--spx); background: var(--off-white); }
+.policy-accordion { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.policy-group { background: var(--white); border-radius: var(--radius-md); border: 1px solid var(--border-light); overflow: hidden; }
+.policy-group__header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; background: var(--white); border: none; width: 100%; font-family: var(--font-primary); transition: background var(--transition-base); }
+.policy-group__header:hover { background: var(--off-white); }
+.policy-group__title { font-size: 16px; font-weight: 700; color: var(--ior-navy); display: flex; align-items: center; gap: 12px; }
+.policy-group__icon { font-size: 20px; }
+.policy-group__chevron { font-size: 12px; color: var(--text-mid); transition: transform var(--transition-base); }
+.policy-group--open .policy-group__chevron { transform: rotate(180deg); }
+.policy-group__body { display: none; border-top: 1px solid var(--border-light); }
+.policy-group--open .policy-group__body { display: block; }
+.policy-list { list-style: none; padding: 16px 0; }
+.policy-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 24px; border-bottom: 1px solid var(--border-light); gap: 16px; }
+.policy-item:last-child { border-bottom: none; }
+.policy-item__info { flex: 1; }
+.policy-item__name { font-size: 14px; font-weight: 600; color: var(--text-dark); margin-bottom: 2px; }
+.policy-item__meta { font-size: 12px; color: var(--text-light); }
+.policy-item__download { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--ior-blue); color: var(--white); border-radius: var(--radius-md); font-size: 12px; font-weight: 700; text-decoration: none; white-space: nowrap; transition: background var(--transition-base); }
+.policy-item__download:hover { background: #024a8f; }
+.gated-note { background: var(--ior-navy); border-radius: var(--radius-md); padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: center; gap: 16px; max-width: 900px; margin-left: auto; margin-right: auto; margin-bottom: 32px; }
+.gated-note__icon { font-size: 24px; flex-shrink: 0; }
+.gated-note__text { color: var(--white); font-size: 14px; line-height: 1.6; }
+.gated-note__text a { color: var(--ior-sky); }
+
+</style>
+</head>
+<body>
+
+<div class="wf-nav">
+  <span class="wf-badge">WIREFRAME</span>
+  <span>IOR · Module 08 — Support &amp; Utility</span>
+  <a href="08_Support_Hub_v2.html">Hub</a> ·
+  <a href="08a_Contact_Us_v2.html">Contact Us</a> ·
+  <a href="08b_Regional_Contacts_v2.html">Regional Contacts</a> ·
+  <a href="08c_Find_a_Location_v2.html">Find a Location</a> ·
+  <a href="08d_Make_a_Payment_v2.html">Make a Payment</a> ·
+  <a href="08e_Policy_Downloads_v2.html">Policy Downloads</a>
+</div>
+<header>
+  <div class="utility-bar">
+    <span style="font-size:12px;color:#fff;">📢 Announcement Message Placeholder</span>
+    <div class="utility-bar__actions">
+      <a href="08c_Find_a_Location_v2.html" class="utility-bar__link">📍 Find a Location</a>
+      <div class="utility-bar__divider"></div>
+      <a href="08d_Make_a_Payment_v2.html" class="utility-bar__link">✉️ Make a Payment</a>
+      <div class="utility-bar__divider"></div>
+      <a href="tel:1300457467" class="utility-bar__link">📞 1300 457 467</a>
+    </div>
+  </div>
+  <nav class="primary-nav" id="primary-nav">
+    <a href="01_Homepage_and_Global.html" class="nav-logo">[IOR LOGO]</a>
+    <ul class="nav-links">
+      <li><button class="nav-link">Fuel Solutions</button></li>
+      <li><button class="nav-link">Digital Platforms</button></li>
+      <li><button class="nav-link">Industries We Serve</button></li>
+      <li><button class="nav-link">About IOR</button></li>
+      <li><button class="nav-link" style="color:var(--ior-blue);">Support &amp; Contact</button></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn--outline" style="padding:10px 20px;font-size:14px;">Customer Login</a>
+      <a href="#" class="btn btn--primary" style="padding:10px 20px;font-size:14px;">Apply for an Account</a>
+      <div class="hamburger" id="mob-hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+</header>
+
+<nav class="quick-links-bar" aria-label="Support section navigation">
+  <a href="08_Support_Hub_v2.html" class="quick-link">Support Hub</a>
+  <a href="08a_Contact_Us_v2.html" class="quick-link">Contact Us</a>
+  <a href="08b_Regional_Contacts_v2.html" class="quick-link">Regional Contacts</a>
+  <a href="08c_Find_a_Location_v2.html" class="quick-link">Find a Location</a>
+  <a href="08d_Make_a_Payment_v2.html" class="quick-link">Make a Payment</a>
+  <a href="08e_Policy_Downloads_v2.html" class="quick-link active">Policy Downloads</a>
+</nav>
+<section class="hero-util">
+  <div class="breadcrumb"><a href="01_Homepage_and_Global.html">Home</a> / <a href="08_Support_Hub_v2.html">Support</a> / Policy Downloads</div>
+  <div class="hero-util__eyebrow">Downloads & Resources</div>
+  <h1 class="hero-util__title">Policy & Form Downloads.</h1>
+  <p class="hero-util__sub">Download account forms, safety data sheets, compliance certificates, and product brochures.</p>
+</section>
+
+<section class="policy-section">
+  <div class="section-eyebrow">Downloads &amp; Resources</div>
+  <h2 class="section-title">Policy &amp; Form Downloads</h2>
+  <p class="section-sub">Download account application forms, safety data sheets, compliance certificates, and HSE policies. Some documents require an IOR account.</p>
+
+  <div class="gated-note" style="max-width:900px;margin:0 auto 32px;">
+    <div class="gated-note__icon">🔒</div>
+    <div class="gated-note__text">Some documents are available to IOR account holders only. <a href="08a_Contact_Us_v2.html">Contact us</a> or <a href="#">apply for an account</a> to access the full document library.</div>
+  </div>
+
+  <div class="policy-accordion">
+    <div class="policy-group policy-group--open" id="pg-account">
+      <button class="policy-group__header" onclick="toggleGroup('pg-account')">
+        <span class="policy-group__title"><span class="policy-group__icon">📋</span>Account &amp; Application Forms</span>
+        <span class="policy-group__chevron">▼</span>
+      </button>
+      <div class="policy-group__body">
+        <ul class="policy-list">
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">IOR Account Application Form</div><div class="policy-item__meta">PDF · Updated Jan 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Direct Debit Authority Form</div><div class="policy-item__meta">PDF · Updated Jan 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Credit Application Form</div><div class="policy-item__meta">PDF · Updated Jan 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Change of Details Form</div><div class="policy-item__meta">PDF · Updated Jan 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-group" id="pg-hse">
+      <button class="policy-group__header" onclick="toggleGroup('pg-hse')">
+        <span class="policy-group__title"><span class="policy-group__icon">🦺</span>HSE &amp; Safety Policies</span>
+        <span class="policy-group__chevron">▼</span>
+      </button>
+      <div class="policy-group__body">
+        <ul class="policy-list">
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">IOR HSE Policy Statement</div><div class="policy-item__meta">PDF · Updated Mar 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Fuel Handling Safety Guidelines</div><div class="policy-item__meta">PDF · Updated Feb 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Emergency Response Plan (Summary)</div><div class="policy-item__meta">PDF · Updated Jan 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Contractor Induction Checklist</div><div class="policy-item__meta">PDF · Updated Jan 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-group" id="pg-sds">
+      <button class="policy-group__header" onclick="toggleGroup('pg-sds')">
+        <span class="policy-group__title"><span class="policy-group__icon">⚗️</span>Safety Data Sheets (SDS)</span>
+        <span class="policy-group__chevron">▼</span>
+      </button>
+      <div class="policy-group__body">
+        <ul class="policy-list">
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Diesel Fuel SDS</div><div class="policy-item__meta">PDF · Updated Jan 2026 · GHS Compliant</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Jet A-1 Aviation Fuel SDS</div><div class="policy-item__meta">PDF · Updated Jan 2026 · GHS Compliant</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">HyBlue™ AdBlue SDS</div><div class="policy-item__meta">PDF · Updated Jan 2026 · GHS Compliant</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Avgas 100LL SDS</div><div class="policy-item__meta">PDF · Updated Jan 2026 · GHS Compliant</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-group" id="pg-compliance">
+      <button class="policy-group__header" onclick="toggleGroup('pg-compliance')">
+        <span class="policy-group__title"><span class="policy-group__icon">✅</span>Compliance &amp; Certificates</span>
+        <span class="policy-group__chevron">▼</span>
+      </button>
+      <div class="policy-group__body">
+        <ul class="policy-list">
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">ISO 9001:2015 Certificate</div><div class="policy-item__meta">PDF · Valid to Dec 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">JIG Compliance Certificate (Aviation)</div><div class="policy-item__meta">PDF · Valid to Dec 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Modern Slavery Statement</div><div class="policy-item__meta">PDF · FY2025</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Privacy Policy</div><div class="policy-item__meta">PDF · Updated Jan 2026</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="policy-group" id="pg-brochures">
+      <button class="policy-group__header" onclick="toggleGroup('pg-brochures')">
+        <span class="policy-group__title"><span class="policy-group__icon">📚</span>Product Brochures &amp; Capability Docs</span>
+        <span class="policy-group__chevron">▼</span>
+      </button>
+      <div class="policy-group__body">
+        <ul class="policy-list">
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">HyDip™ FMS Product Brochure</div><div class="policy-item__meta">PDF · 8 pages · Gated — IOR account required</div></div><a href="07a_HyDip_FMS_v2.html#contact-form" class="policy-item__download">🔒 Request</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Ground Fuels Capability Overview</div><div class="policy-item__meta">PDF · 12 pages · Gated — IOR account required</div></div><a href="08a_Contact_Us_v2.html" class="policy-item__download">🔒 Request</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">Aviation Fuelling Services Overview</div><div class="policy-item__meta">PDF · 8 pages · Gated — IOR account required</div></div><a href="08a_Contact_Us_v2.html" class="policy-item__download">🔒 Request</a></li>
+          <li class="policy-item"><div class="policy-item__info"><div class="policy-item__name">IOR Company Overview</div><div class="policy-item__meta">PDF · 16 pages · Public</div></div><a href="#" class="policy-item__download">⬇ Download</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sos-banner">
+  <div class="sos-banner__text">
+    <div class="sos-banner__eyebrow">Security of Supply</div>
+    <div class="sos-banner__title">Your fuel supply is never at risk.</div>
+    <div class="sos-banner__sub">IOR operates its own terminal infrastructure at Lytton (QLD) and Port Bonython (SA).</div>
+  </div>
+  <div class="sos-banner__actions">
+    <a href="06_Supply_Trading_v2.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.4);color:#fff;">Our Terminals</a>
+    <a href="#" class="btn btn--primary">Apply for an Account</a>
+  </div>
+</section>
+
+
+<footer class="site-footer">
+  <div class="footer-nav-grid">
+    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, QLD 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
+    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
+    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
+    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="08d_Make_a_Payment_v2.html" class="footer-col__link">Make a Payment</a><a href="08a_Contact_Us_v2.html" class="footer-col__link">Contact Us</a><a href="08e_Policy_Downloads_v2.html" class="footer-col__link">Policy Downloads</a></div></div>
+    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">QLD</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NSW</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">VIC</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">SA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">WA</a><a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NT</a></div></div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
+    <div class="footer-social"><a href="#" class="footer-social__icon">in</a><a href="#" class="footer-social__icon">f</a><a href="#" class="footer-social__icon">📷</a><a href="#" class="footer-social__icon">▶</a></div>
+  </div>
+</footer>
+
+
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
+  <div class="drawer__header"><span class="drawer__logo">[IOR LOGO]</span><button class="drawer__close" id="drawerClose">✕</button></div>
+  <nav class="drawer__nav">
+    <button class="drawer__link" data-sub="sub-fuel">Fuel Solutions <span class="drawer__link-chevron">▼</span></button>
+    <div class="drawer__sub" id="sub-fuel"><a href="03_Ground_Fuels_v2.html" class="drawer__sub-link">Ground Fuels</a><a href="04_Aviation_v2.html" class="drawer__sub-link">Aviation</a><a href="06_Supply_Trading_v2.html" class="drawer__sub-link">Supply &amp; Trading</a></div>
+    <button class="drawer__link" data-sub="sub-support">Support &amp; Contact <span class="drawer__link-chevron">▼</span></button>
+    <div class="drawer__sub" id="sub-support"><a href="08a_Contact_Us_v2.html" class="drawer__sub-link">Contact Us</a><a href="08b_Regional_Contacts_v2.html" class="drawer__sub-link">Regional Contacts</a><a href="08c_Find_a_Location_v2.html" class="drawer__sub-link">Find a Location</a><a href="08d_Make_a_Payment_v2.html" class="drawer__sub-link">Make a Payment</a><a href="08e_Policy_Downloads_v2.html" class="drawer__sub-link">Policy Downloads</a></div>
+  </nav>
+  <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
+</div>
+
+
+<script>
+const navEl = document.getElementById('primary-nav');
+window.addEventListener('scroll', () => { if (!navEl) return; navEl.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
+const hamburger = document.getElementById('mob-hamburger');
+const drawerEl = document.getElementById('mobileDrawer');
+const drawerOverlay = document.getElementById('drawerOverlay');
+const drawerClose = document.getElementById('drawerClose');
+let isDrawerOpen = false;
+function openDrawer() { isDrawerOpen = true; drawerEl.classList.add('drawer--open'); drawerOverlay.classList.add('drawer-overlay--open'); drawerEl.removeAttribute('aria-hidden'); drawerOverlay.removeAttribute('aria-hidden'); document.body.style.overflow = 'hidden'; }
+function closeDrawer() { isDrawerOpen = false; drawerEl.classList.remove('drawer--open'); drawerOverlay.classList.remove('drawer-overlay--open'); drawerEl.setAttribute('aria-hidden','true'); drawerOverlay.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
+if (hamburger) hamburger.addEventListener('click', () => isDrawerOpen ? closeDrawer() : openDrawer());
+if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && isDrawerOpen) closeDrawer(); });
+document.querySelectorAll('.drawer__link').forEach(link => {
+  link.addEventListener('click', () => {
+    const subId = link.getAttribute('data-sub'); if (!subId) return;
+    const subEl = document.getElementById(subId); if (!subEl) return;
+    const chevron = link.querySelector('.drawer__link-chevron');
+    const isOpen = subEl.classList.contains('drawer__sub--open');
+    document.querySelectorAll('.drawer__sub--open').forEach(s => s.classList.remove('drawer__sub--open'));
+    document.querySelectorAll('.drawer__link-chevron--open').forEach(c => c.classList.remove('drawer__link-chevron--open'));
+    if (!isOpen) { subEl.classList.add('drawer__sub--open'); if (chevron) chevron.classList.add('drawer__link-chevron--open'); }
+  });
+});
+</script>
+
+<script>
+function toggleGroup(id) {
+  const group = document.getElementById(id);
+  if (!group) return;
+  group.classList.toggle('policy-group--open');
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lytton & Port Bonython Terminals — IOR Supply & Trading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ior-blue: #0355A3; --ior-navy: #023A72; --ior-dark: #0A1628; --ior-deep: #0A2540;
+    --ior-sky: #4DA8DA; --fc-teal: #00D1CC; --fc-navy: #13114D;
+    --grey-50: #F8F9FA; --grey-100: #E9ECEF; --grey-900: #1A1A2A;
+    --radius-md: 8px; --container: 1280px; --section-pad: 80px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', sans-serif; color: #1A1A2A; background: #fff; line-height: 1.6; }
+  a { text-decoration: none; }
+  .wf-nav { background: #1A1A2E; border-bottom: 3px solid #E94560; display: flex; align-items: center; gap: 16px; padding: 8px 16px; font-size: 11px; font-family: monospace; flex-wrap: wrap; }
+  .wf-nav a { color: #E94560; text-decoration: none; font-weight: 700; }
+  .wf-nav__module { color: #aaa; margin-left: auto; }
+  .utility-bar { background: var(--ior-dark); color: rgba(255,255,255,.7); font-size: 12px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
+  .utility-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+  .utility-bar a { color: rgba(255,255,255,.7); font-weight: 500; margin-left: 16px; }
+  .primary-nav { background: var(--ior-dark); border-bottom: 1px solid rgba(255,255,255,.08); position: sticky; top: 35px; z-index: 100; }
+  .primary-nav .container { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+  .logo-placeholder { width: 120px; height: 36px; border: 2px dashed rgba(255,255,255,.3); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: 11px; font-weight: 700; letter-spacing: .08em; flex-shrink: 0; }
+  .nav-links { display: flex; align-items: center; gap: 4px; }
+  .nav-link { color: rgba(255,255,255,.8); font-size: 14px; font-weight: 500; padding: 8px 14px; }
+  .nav-link--active { color: #fff; border-bottom: 2px solid var(--ior-sky); }
+  .nav-actions { display: flex; align-items: center; gap: 8px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 12px 24px; font-size: 14px; font-weight: 700; border-radius: var(--radius-md); cursor: pointer; border: 2px solid transparent; text-decoration: none; transition: background .2s, color .2s; }
+  .btn--primary { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
+  .btn--primary:hover { background: var(--ior-navy); }
+  .btn--outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.5); }
+  .btn--outline:hover { border-color: #fff; }
+  .btn--login { background: rgba(255,255,255,.1); color: #fff; border-color: rgba(255,255,255,.2); font-size: 13px; padding: 8px 16px; }
+  .btn--sm { padding: 8px 16px; font-size: 13px; }
+  .btn--teal { background: var(--fc-teal); color: var(--fc-navy); border-color: var(--fc-teal); }
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+  .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 12px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+  .pill { display: inline-block; padding: 5px 12px; font-size: 12px; font-weight: 600; border: 1.5px solid var(--ior-sky); color: var(--ior-sky); border-radius: var(--radius-md); cursor: default; }
+  .quick-links-bar { background: var(--ior-deep); border-top: 3px solid var(--ior-sky); padding: 0; }
+  .quick-links-bar .container { display: flex; align-items: center; gap: 0; overflow-x: auto; }
+  .quick-links-bar__link { color: rgba(255,255,255,.7); font-size: 13px; font-weight: 600; padding: 14px 20px; white-space: nowrap; border-bottom: 3px solid transparent; transition: color .2s, border-color .2s; }
+  .quick-links-bar__link:hover, .quick-links-bar__link--active { color: #fff; border-bottom-color: var(--ior-sky); }
+  /* HERO */
+  .hero { background: var(--ior-deep); border-top: 5px solid var(--ior-sky); padding: 80px 0 60px; }
+  .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .hero__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 16px; }
+  .hero__h1 { font-size: clamp(32px, 4vw, 52px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 20px; }
+  .hero__body { font-size: 17px; color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 32px; }
+  .hero__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero__media { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: var(--radius-md); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.4); font-size: 13px; text-align: center; padding: 24px; }
+  /* LOGO GRID */
+  .logo-grid { background: #fff; padding: 40px 0; border-bottom: 1px solid var(--grey-100); }
+  .logo-grid .container { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .logo-grid__label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #999; }
+  .logo-grid__logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; }
+  .logo-box { width: 120px; height: 48px; background: var(--grey-100); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: #999; letter-spacing: .06em; }
+  /* STAT BAR */
+  .stat-bar { background: var(--ior-blue); padding: 32px 0; }
+  .stat-bar .container { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .stat-item { text-align: center; padding: 0 24px; border-right: 1px solid rgba(255,255,255,.2); }
+  .stat-item:last-child { border-right: none; }
+  .stat-item__number { font-size: clamp(24px, 3vw, 40px); font-weight: 900; color: #fff; line-height: 1; }
+  .stat-item__label { font-size: 13px; color: rgba(255,255,255,.75); margin-top: 6px; }
+  /* TERMINAL SPLIT */
+  .terminal-split { background: var(--grey-50); padding: var(--section-pad) 0; }
+  .terminal-split .section-intro { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+  .terminal-split .section-intro h2 { font-size: clamp(26px, 3vw, 38px); font-weight: 800; color: var(--ior-dark); margin-bottom: 12px; }
+  .terminal-split .section-intro p { font-size: 16px; color: #555; }
+  .terminal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .terminal-card { background: #fff; border-top: 4px solid var(--ior-blue); border-radius: var(--radius-md); overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  .terminal-card__img { background: var(--ior-deep); height: 200px; display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.4); font-size: 13px; text-align: center; padding: 24px; }
+  .terminal-card__body { padding: 32px; }
+  .terminal-card__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 8px; }
+  .terminal-card__title { font-size: 22px; font-weight: 800; color: var(--ior-dark); margin-bottom: 12px; }
+  .terminal-card__body-text { font-size: 15px; color: #555; line-height: 1.65; margin-bottom: 16px; }
+  .terminal-specs { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .terminal-spec { font-size: 14px; color: #444; padding-left: 20px; position: relative; }
+  .terminal-spec::before { content: '→'; position: absolute; left: 0; color: var(--ior-blue); font-weight: 700; }
+  /* STEPS */
+  .steps-section { background: var(--ior-dark); padding: var(--section-pad) 0; }
+  .steps-section .container > .section-intro { text-align: center; max-width: 600px; margin: 0 auto 48px; }
+  .steps-section .section-intro h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+  .steps-section .section-intro p { font-size: 16px; color: rgba(255,255,255,.65); }
+  .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .step-item { background: rgba(255,255,255,.04); border-top: 4px solid var(--ior-blue); border-radius: var(--radius-md); padding: 32px 28px; }
+  .step__number { font-size: 72px; font-weight: 900; color: rgba(3,85,163,0.15); line-height: 1; margin-bottom: 16px; }
+  .step__title { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .step__body { font-size: 15px; color: rgba(255,255,255,.65); line-height: 1.65; }
+  /* GATED ASSET */
+  .gated-asset { background: var(--ior-deep); padding: var(--section-pad) 0; border-top: 4px solid var(--ior-sky); }
+  .gated-asset .container { display: grid; grid-template-columns: 1fr 2fr; gap: 64px; align-items: center; }
+  .pdf-mockup { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius-md); aspect-ratio: 3/4; max-width: 220px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; color: rgba(255,255,255,.5); font-size: 13px; text-align: center; padding: 24px; }
+  .pdf-mockup__icon { font-size: 40px; }
+  .gated-asset__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 12px; }
+  .gated-asset__title { font-size: clamp(22px, 3vw, 32px); font-weight: 800; color: #fff; margin-bottom: 16px; }
+  .gated-asset__body { font-size: 16px; color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 24px; }
+  .gated-asset__list { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
+  .gated-asset__list li { font-size: 15px; color: rgba(255,255,255,.75); padding-left: 20px; position: relative; }
+  .gated-asset__list li::before { content: '→'; position: absolute; left: 0; color: var(--ior-sky); font-weight: 700; }
+  /* FURTHER READING */
+  .further-reading { background: #fff; padding: var(--section-pad) 0; }
+  .further-reading .section-header { text-align: center; margin-bottom: 40px; }
+  .further-reading .section-header h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--ior-dark); }
+  .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--grey-100); margin-bottom: 32px; }
+  .tab-btn { padding: 12px 24px; font-size: 14px; font-weight: 600; color: #777; background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; margin-bottom: -2px; transition: color .2s, border-color .2s; }
+  .tab-btn.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .related-card { border: 1px solid var(--grey-100); border-radius: var(--radius-md); overflow: hidden; }
+  .related-card__img { background: var(--grey-100); height: 160px; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999; text-align: center; padding: 12px; }
+  .related-card__body { padding: 20px; }
+  .related-card__tag { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 8px; }
+  .related-card__title { font-size: 15px; font-weight: 700; color: var(--ior-dark); margin-bottom: 8px; line-height: 1.4; }
+  .related-card__excerpt { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 12px; }
+  .related-card__link { font-size: 13px; font-weight: 700; color: var(--ior-blue); }
+  /* LOGO GRID (trust) */
+  .logo-trust { background: var(--grey-50); padding: 48px 0; border-top: 1px solid var(--grey-100); }
+  .logo-trust .container { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+  .logo-trust__label { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #999; }
+  .logo-trust__logos { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; align-items: center; }
+  /* TESTIMONIAL */
+  .testimonials { background: #fff; padding: var(--section-pad) 0; }
+  .testimonials .container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .testimonial-card { background: var(--grey-50); border-top: 4px solid var(--ior-blue); border-radius: var(--radius-md); padding: 36px; }
+  .testimonial-card__quote { font-size: 17px; color: #333; line-height: 1.7; font-style: italic; margin-bottom: 24px; }
+  .testimonial-card__author { font-size: 14px; font-weight: 700; color: var(--ior-dark); }
+  .testimonial-card__role { font-size: 13px; color: #777; }
+  /* SECURITY BANNER */
+  .security-banner { background: var(--ior-navy); padding: 48px 0; border-top: 4px solid var(--ior-sky); }
+  .security-banner .container { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+  .security-banner h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .security-banner p { font-size: 15px; color: rgba(255,255,255,.75); }
+  .security-banner__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  /* FUELCHARGE */
+  .fuelcharge-crosssell { background: var(--fc-navy); padding: var(--section-pad) 0; }
+  .fuelcharge-crosssell .container { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .fc-card { border-radius: var(--radius-md); padding: 40px; display: flex; flex-direction: column; gap: 16px; }
+  .fc-card--b2b { background: var(--ior-deep); border-top: 4px solid var(--ior-blue); }
+  .fc-card--app { background: var(--fc-teal); border-top: 4px solid #fff; }
+  .fc-card--app .fc-card__eyebrow, .fc-card--app .fc-card__title { color: var(--fc-navy); }
+  .fc-card--app .fc-card__body { color: rgba(19,17,77,.8); }
+  .fc-card--app .fc-feature { color: rgba(19,17,77,.85); }
+  .fc-card--app .fc-feature::before { color: var(--fc-navy); }
+  .fc-card__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-sky); }
+  .fc-card__title { font-size: 26px; font-weight: 800; color: #fff; }
+  .fc-card__body { font-size: 15px; color: rgba(255,255,255,.75); line-height: 1.65; }
+  .fc-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .fc-feature { font-size: 14px; color: rgba(255,255,255,.8); padding-left: 20px; position: relative; }
+  .fc-feature::before { content: '✓'; position: absolute; left: 0; font-weight: 700; color: var(--ior-sky); }
+  /* HUBSPOT */
+  .hubspot-section { background: var(--grey-50); padding: var(--section-pad) 0; border-top: 1px solid var(--grey-100); }
+  .hubspot-section .container { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .hubspot-section__intro h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--ior-dark); margin-bottom: 16px; }
+  .hubspot-section__intro p { font-size: 16px; color: #555; line-height: 1.7; }
+  .hubspot-embed-box { background: #fff; border: 2px dashed var(--grey-100); border-radius: var(--radius-md); padding: 48px 32px; text-align: center; color: #999; font-size: 13px; min-height: 320px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; }
+  .hubspot-embed-box__icon { font-size: 36px; }
+  .hubspot-embed-box strong { color: #555; font-size: 15px; }
+  /* FAQS */
+  .faq-section { background: #fff; padding: var(--section-pad) 0; border-top: 1px solid var(--grey-100); }
+  .faq-section .container > h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: var(--ior-dark); margin-bottom: 40px; text-align: center; }
+  .faq-list { max-width: 800px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--grey-100); }
+  .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 20px 0; font-size: 16px; font-weight: 600; color: var(--ior-dark); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  .faq-chevron { font-size: 12px; color: var(--ior-blue); transition: transform .3s; flex-shrink: 0; }
+  .faq-answer { display: none; padding: 0 0 20px; font-size: 15px; color: #555; line-height: 1.7; }
+  .faq-item.open .faq-answer { display: block; }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  /* FINAL CTA */
+  .final-cta { background: var(--ior-dark); padding: 60px 0; border-top: 4px solid var(--ior-blue); }
+  .final-cta .container { display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+  .final-cta__text h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 800; color: #fff; margin-bottom: 8px; }
+  .final-cta__text p { font-size: 16px; color: rgba(255,255,255,.7); }
+  .final-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  /* FOOTER */
+  .footer { background: var(--ior-dark); border-top: 1px solid rgba(255,255,255,.08); padding: 60px 0 32px; }
+  .footer .container { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer__brand p { font-size: 14px; color: rgba(255,255,255,.55); line-height: 1.7; margin-top: 16px; }
+  .footer__col h4 { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 16px; }
+  .footer__col a { display: block; font-size: 14px; color: rgba(255,255,255,.65); margin-bottom: 10px; }
+  .footer__col a:hover { color: #fff; }
+  .footer__bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 12px; color: rgba(255,255,255,.4); }
+  .ann { background: #FFF3CD; border-left: 4px solid #856404; padding: 10px 16px; font-size: 12px; line-height: 1.5; color: #3d2e00; }
+  .ann--dq { background: #F8D7DA; border-left-color: #842029; color: #3b0a0a; }
+  .ann strong { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 4px; }
+  .ann em { display: block; margin-top: 6px; font-style: italic; color: #666; }
+  .page-badge { background: var(--grey-900); color: #fff; padding: 20px 24px; border-left: 6px solid var(--ior-blue); }
+  .page-badge .module-badge { display: inline-block; background: var(--ior-blue); color: #fff; font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 2px 8px; margin-bottom: 8px; }
+  .page-badge h2 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .page-badge .meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: #aaa; }
+  .page-badge .meta span strong { color: #fff; }
+  @media (max-width: 1024px) {
+    .hero .container, .gated-asset .container, .hubspot-section .container,
+    .final-cta .container, .security-banner .container, .fuelcharge-crosssell .container { grid-template-columns: 1fr; }
+    .terminal-grid, .testimonials .container { grid-template-columns: 1fr; }
+    .footer .container { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .stat-bar .container { grid-template-columns: 1fr 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .tab-panel.active { grid-template-columns: 1fr; }
+    .nav-links, .nav-actions { display: none; }
+  }
+  @media (max-width: 480px) {
+    .stat-bar .container { grid-template-columns: 1fr; }
+    .footer .container { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="wf-nav">
+  <a href="00_Master_Index.html">← Master Index</a>
+  <a href="06_Supply_Trading_v2.html">← Supply &amp; Trading Hub</a>
+  <a href="06a_Terminals.html" style="color:#fff;">06a Terminals ●</a>
+  <a href="06b_Eromanga_Refinery.html">06b Eromanga Refinery</a>
+  <a href="06c_Condensates.html">06c Condensates</a>
+  <span class="wf-nav__module">MODULE 06 — PAGE 2 OF 4</span>
+</nav>
+
+<div class="page-badge">
+  <span class="module-badge">MODULE 06 — PAGE 2 OF 4</span>
+  <h2>Lytton &amp; Port Bonython Terminals — /fuel-solutions/supply-trading/terminals/</h2>
+  <div class="meta">
+    <span><strong>Focus keyword:</strong> bulk fuel import terminal Australia</span>
+    <span><strong>Primary CTA:</strong> Contact Trading Team → /support-contact/contact-us/</span>
+  </div>
+</div>
+
+<div class="utility-bar">
+  <div class="container">
+    <span>🇦🇺 100% Australian owned &amp; operated · Sovereign fuel supply since 1986</span>
+    <div><a href="#">Find a Diesel Stop</a><a href="#">Find an Airport</a><a href="#">Customer Login</a></div>
+  </div>
+</div>
+
+<div class="primary-nav">
+  <div class="container">
+    <div class="logo-placeholder">[IOR LOGO]</div>
+    <nav class="nav-links">
+      <a href="#" class="nav-link nav-link--active">Fuel Solutions ▾</a>
+      <a href="#" class="nav-link">Digital Platforms ▾</a>
+      <a href="#" class="nav-link">Industries We Serve ▾</a>
+      <a href="#" class="nav-link">About IOR ▾</a>
+      <a href="#" class="nav-link">Support &amp; Contact ▾</a>
+    </nav>
+    <div class="nav-actions">
+      <a href="#" class="btn btn--login">Customer Login</a>
+      <a href="/support-contact/contact-us/" class="btn btn--primary btn--sm">Contact Trading Team</a>
+    </div>
+  </div>
+</div>
+
+<div class="quick-links-bar">
+  <div class="container">
+    <a href="06_Supply_Trading_v2.html" class="quick-links-bar__link">Supply &amp; Trading</a>
+    <a href="06a_Terminals.html" class="quick-links-bar__link quick-links-bar__link--active">Lytton &amp; Port Bonython</a>
+    <a href="06b_Eromanga_Refinery.html" class="quick-links-bar__link">Eromanga Refinery</a>
+    <a href="06c_Condensates.html" class="quick-links-bar__link">Condensates</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <div>
+      <div class="hero__eyebrow">IOR Import Terminals</div>
+      <h1 class="hero__h1">East Coast &amp; South Australian <span style="color:var(--ior-sky)">fuel supply infrastructure.</span></h1>
+      <p class="hero__body">IOR's Lytton and Port Bonython terminals provide the strategic import and storage infrastructure that underpins national fuel supply — delivering bulk product to operators across Queensland, New South Wales, South Australia, and the Northern Territory.</p>
+      <div class="hero__actions">
+        <a href="/support-contact/contact-us/" class="btn btn--primary">Contact Trading Team →</a>
+        <a href="#terminals" class="btn btn--outline">View Terminal Capabilities ↓</a>
+      </div>
+      <div class="pills" style="margin-top:24px">
+        <span class="pill">Bulk Import</span>
+        <span class="pill">East Coast Supply</span>
+        <span class="pill">South Australia</span>
+        <span class="pill">Strategic Storage</span>
+        <span class="pill">National Distribution</span>
+      </div>
+    </div>
+    <div class="hero__media">
+      IMAGE PLACEHOLDER<br>Lytton Terminal aerial view<br>Aspect ratio: 16:9
+    </div>
+  </div>
+</section>
+
+<section class="logo-grid">
+  <div class="container">
+    <div class="logo-grid__label">Trusted by Australia's leading operators</div>
+    <div class="logo-grid__logos">
+      <div class="logo-box">INCITEC PIVOT</div>
+      <div class="logo-box">MPC KINETIC</div>
+      <div class="logo-box">K.S. EASTER</div>
+      <div class="logo-box">NORWOOD AG</div>
+      <div class="logo-box">CLIENT LOGO</div>
+      <div class="logo-box">CLIENT LOGO</div>
+    </div>
+  </div>
+</section>
+
+<section class="stat-bar">
+  <div class="container">
+    <div class="stat-item"><div class="stat-item__number">2</div><div class="stat-item__label">Strategic import terminals</div></div>
+    <div class="stat-item"><div class="stat-item__number">East Coast</div><div class="stat-item__label">Lytton Terminal, Brisbane QLD</div></div>
+    <div class="stat-item"><div class="stat-item__number">South Australia</div><div class="stat-item__label">Port Bonython Terminal</div></div>
+    <div class="stat-item"><div class="stat-item__number">100% IOR</div><div class="stat-item__label">Owned &amp; operated</div></div>
+  </div>
+</section>
+
+<section class="terminal-split" id="terminals">
+  <div class="container">
+    <div class="section-intro">
+      <div class="eyebrow">Our Terminal Network</div>
+      <h2>Two terminals. <span style="color:var(--ior-blue)">One national supply chain.</span></h2>
+      <p>IOR's terminal network provides the bulk import and storage infrastructure that underpins fuel supply security for operators across Australia's East Coast and South Australia.</p>
+    </div>
+    <div class="terminal-grid">
+      <div class="terminal-card">
+        <div class="terminal-card__img">IMAGE PLACEHOLDER<br>Lytton Terminal, Brisbane QLD</div>
+        <div class="terminal-card__body">
+          <div class="terminal-card__eyebrow">East Coast</div>
+          <div class="terminal-card__title">Lytton Terminal</div>
+          <p class="terminal-card__body-text">Located in Brisbane, Queensland, the Lytton Terminal is IOR's primary East Coast import and storage facility. It provides bulk fuel import, storage, and distribution capabilities for operators across Queensland and New South Wales.</p>
+          <ul class="terminal-specs">
+            <li class="terminal-spec">Bulk fuel import and storage</li>
+            <li class="terminal-spec">East Coast distribution hub</li>
+            <li class="terminal-spec">Diesel, petrol, and specialty products</li>
+            <li class="terminal-spec">Road and pipeline distribution</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Brisbane QLD</span>
+            <span class="pill">Bulk Import</span>
+            <span class="pill">East Coast</span>
+          </div>
+        </div>
+      </div>
+      <div class="terminal-card">
+        <div class="terminal-card__img">IMAGE PLACEHOLDER<br>Port Bonython Terminal, SA</div>
+        <div class="terminal-card__body">
+          <div class="terminal-card__eyebrow">South Australia</div>
+          <div class="terminal-card__title">Port Bonython Terminal</div>
+          <p class="terminal-card__body-text">Located on the Spencer Gulf in South Australia, Port Bonython provides strategic import and storage infrastructure for South Australian and Northern Territory operators — a critical link in IOR's national supply chain.</p>
+          <ul class="terminal-specs">
+            <li class="terminal-spec">Spencer Gulf deep-water port access</li>
+            <li class="terminal-spec">SA and NT distribution hub</li>
+            <li class="terminal-spec">Bulk diesel and specialty products</li>
+            <li class="terminal-spec">Road tanker distribution</li>
+          </ul>
+          <div class="pills">
+            <span class="pill">Spencer Gulf SA</span>
+            <span class="pill">Bulk Import</span>
+            <span class="pill">SA &amp; NT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps-section">
+  <div class="container">
+    <div class="section-intro">
+      <div class="eyebrow" style="color:var(--ior-sky)">Getting Started</div>
+      <h2>Accessing IOR terminal supply is straightforward.</h2>
+      <p>Three steps from enquiry to bulk supply.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-item">
+        <div class="step__number">1</div>
+        <div class="step__title">Contact our trading team</div>
+        <div class="step__body">Reach out via the form below or call our trading team directly. We'll discuss your volume requirements, delivery locations, and preferred supply arrangement.</div>
+      </div>
+      <div class="step-item">
+        <div class="step__number">2</div>
+        <div class="step__title">We prepare a supply proposal</div>
+        <div class="step__body">Our trading team will prepare a tailored supply proposal including pricing, delivery schedule, and account terms — processed as soon as practical.</div>
+      </div>
+      <div class="step-item">
+        <div class="step__number">3</div>
+        <div class="step__title">Supply begins</div>
+        <div class="step__body">Once terms are agreed, supply commences from your nominated terminal. Your account manager will coordinate all logistics and keep you informed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gated-asset">
+  <div class="container">
+    <div class="pdf-mockup">
+      <div class="pdf-mockup__icon">📄</div>
+      <strong style="color:rgba(255,255,255,.7)">IOR Terminal<br>Capabilities Overview</strong>
+      <span>PDF · TBC</span>
+    </div>
+    <div>
+      <div class="gated-asset__eyebrow">Free Download</div>
+      <h2 class="gated-asset__title">IOR Terminal Capabilities Overview</h2>
+      <p class="gated-asset__body">Download the IOR Terminal Capabilities Overview — a comprehensive guide to Lytton and Port Bonython terminal specifications, storage capacity, and distribution capabilities.</p>
+      <ul class="gated-asset__list">
+        <li>Lytton Terminal specifications and capacity</li>
+        <li>Port Bonython Terminal specifications and capacity</li>
+        <li>Product range and storage capabilities</li>
+        <li>Distribution network and logistics</li>
+      </ul>
+      <a href="/gated-assets/" class="btn btn--primary">Download Terminal Overview →</a>
+    </div>
+  </div>
+</section>
+
+<section class="further-reading">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Further Reading</div>
+      <h2>Case studies &amp; insights from <span style="color:var(--ior-blue)">IOR terminal customers.</span></h2>
+    </div>
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event,'cs')">Case Studies</button>
+      <button class="tab-btn" onclick="switchTab(event,'bl')">Blog &amp; Insights</button>
+    </div>
+    <div id="cs" class="tab-panel active">
+      <div class="related-card">
+        <div class="related-card__img">IMAGE PLACEHOLDER<br>Lytton Terminal bulk import</div>
+        <div class="related-card__body">
+          <div class="related-card__tag">Case Study</div>
+          <div class="related-card__title">Lytton Terminal: securing East Coast fuel supply through strategic import infrastructure.</div>
+          <div class="related-card__excerpt">How IOR's Lytton Terminal provides the strategic import and storage infrastructure that underpins East Coast fuel supply security.</div>
+          <a href="#" class="related-card__link">Read the case study →</a>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-card__img">IMAGE PLACEHOLDER<br>Incitec Pivot supply chain</div>
+        <div class="related-card__body">
+          <div class="related-card__tag">Case Study</div>
+          <div class="related-card__title">Incitec Pivot: scaling fuel distribution 800% with IOR's sovereign supply chain.</div>
+          <div class="related-card__excerpt">How IOR's sovereign infrastructure enabled Incitec Pivot to scale fuel distribution by 800% without supply disruption.</div>
+          <a href="#" class="related-card__link">Read the case study →</a>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-card__img">IMAGE PLACEHOLDER<br>K.S. Easter Transport</div>
+        <div class="related-card__body">
+          <div class="related-card__tag">Case Study</div>
+          <div class="related-card__title">K.S. Easter Transport: 20 years of reliable supply through IOR's terminal network.</div>
+          <div class="related-card__excerpt">How K.S. Easter Transport has relied on IOR's terminal infrastructure for over 20 years of uninterrupted fuel supply.</div>
+          <a href="#" class="related-card__link">Read the case study →</a>
+        </div>
+      </div>
+    </div>
+    <div id="bl" class="tab-panel">
+      <div class="related-card">
+        <div class="related-card__img">IMAGE PLACEHOLDER<br>Import terminal fuel security</div>
+        <div class="related-card__body">
+          <div class="related-card__tag">Blog</div>
+          <div class="related-card__title">Import terminals and fuel security: how IOR's terminal network supports national supply.</div>
+          <div class="related-card__excerpt">How strategic import terminals at Lytton and Port Bonython provide the bulk storage and distribution infrastructure that underpins IOR's national fuel supply network.</div>
+          <a href="#" class="related-card__link">Read more →</a>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-card__img">IMAGE PLACEHOLDER<br>Fuel supply chain resilience</div>
+        <div class="related-card__body">
+          <div class="related-card__tag">Blog</div>
+          <div class="related-card__title">Fuel supply chain resilience: why sovereign infrastructure matters for Australian industry.</div>
+          <div class="related-card__excerpt">The case for sovereign fuel infrastructure — and why IOR's terminal network provides a unique level of supply chain security.</div>
+          <a href="#" class="related-card__link">Read more →</a>
+        </div>
+      </div>
+      <div class="related-card">
+        <div class="related-card__img">IMAGE PLACEHOLDER<br>East Coast fuel distribution</div>
+        <div class="related-card__body">
+          <div class="related-card__tag">Blog</div>
+          <div class="related-card__title">East Coast fuel distribution: how Lytton Terminal underpins Queensland supply.</div>
+          <div class="related-card__excerpt">A look at how IOR's Lytton Terminal provides the bulk import and distribution infrastructure that keeps Queensland's fuel supply secure.</div>
+          <a href="#" class="related-card__link">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="logo-trust">
+  <div class="container">
+    <div class="logo-trust__label">Trusted by Australia's leading operators</div>
+    <div class="logo-trust__logos">
+      <div class="logo-box">INCITEC PIVOT</div>
+      <div class="logo-box">MPC KINETIC</div>
+      <div class="logo-box">K.S. EASTER</div>
+      <div class="logo-box">NORWOOD AG</div>
+      <div class="logo-box">CLIENT LOGO</div>
+      <div class="logo-box">CLIENT LOGO</div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="container">
+    <div class="testimonial-card">
+      <div class="testimonial-card__quote">"IOR's terminal infrastructure is what sets them apart. When we needed to scale our distribution by 800%, the Lytton Terminal was the only facility with the capacity and the operational capability to make it happen."</div>
+      <div class="testimonial-card__author">Jeanne Johns</div>
+      <div class="testimonial-card__role">Managing Director &amp; CEO, Incitec Pivot</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-card__quote">"We've been drawing supply from IOR's terminal network for over 20 years. The reliability is unmatched — and when supply gets tight, IOR always comes through."</div>
+      <div class="testimonial-card__author">Ken Easter</div>
+      <div class="testimonial-card__role">Director, K.S. Easter Transport</div>
+    </div>
+  </div>
+</section>
+
+<section class="security-banner">
+  <div class="container">
+    <div>
+      <h2>We own our terminals. <span style="color:var(--ior-sky)">We won't run out.</span></h2>
+      <p>IOR's terminal infrastructure means your operation keeps moving — regardless of market conditions.</p>
+    </div>
+    <div class="security-banner__actions">
+      <a href="06b_Eromanga_Refinery.html" class="btn btn--outline">Eromanga Refinery →</a>
+      <a href="06_Supply_Trading_v2.html" class="btn btn--outline" style="border-color:rgba(255,255,255,.3)">Supply &amp; Trading Hub →</a>
+    </div>
+  </div>
+</section>
+
+<section class="fuelcharge-crosssell">
+  <div class="container">
+    <div class="fc-card fc-card--b2b">
+      <div class="fc-card__eyebrow">For Businesses</div>
+      <div class="fc-card__title">Apply for an IOR Account</div>
+      <div class="fc-card__body">Get access to IOR's terminal supply network — wholesale pricing, account management, and priority supply during tight market conditions.</div>
+      <ul class="fc-features">
+        <li class="fc-feature">Wholesale pricing &amp; volume discounts</li>
+        <li class="fc-feature">Dedicated account manager</li>
+        <li class="fc-feature">Priority terminal supply</li>
+        <li class="fc-feature">Consolidated invoicing &amp; reporting</li>
+      </ul>
+      <a href="/support-contact/contact-us/" class="btn btn--primary" style="align-self:flex-start">Apply for an Account →</a>
+    </div>
+    <div class="fc-card fc-card--app">
+      <div class="fc-card__eyebrow">No Account? No Problem.</div>
+      <div class="fc-card__title">Fuelcharge</div>
+      <div class="fc-card__body">Access IOR's diesel network without a trading account. Fuelcharge lets you pay-as-you-go at IOR Diesel Stops — no application, no minimum volume.</div>
+      <ul class="fc-features">
+        <li class="fc-feature">No account required</li>
+        <li class="fc-feature">Pay-as-you-go access</li>
+        <li class="fc-feature">Available at all IOR Diesel Stops</li>
+        <li class="fc-feature">Digital receipts &amp; reporting</li>
+      </ul>
+      <a href="/digital-platforms/fuelcharge/" class="btn" style="align-self:flex-start;background:var(--fc-navy);color:#fff;border-color:var(--fc-navy);border-radius:var(--radius-md)">Learn About Fuelcharge →</a>
+    </div>
+  </div>
+</section>
+
+<section class="hubspot-section" id="contact-form">
+  <div class="container">
+    <div class="hubspot-section__intro">
+      <div class="eyebrow">Get in Touch</div>
+      <h2>Discuss your terminal supply requirements.</h2>
+      <p>Our trading team is ready to help you access IOR's terminal network. Whether you need bulk supply from Lytton or Port Bonython, we can help.</p>
+      <div class="pills" style="margin-top:24px">
+        <span class="pill">Lytton Terminal</span>
+        <span class="pill">Port Bonython</span>
+        <span class="pill">Bulk Supply</span>
+        <span class="pill">Wholesale Pricing</span>
+      </div>
+    </div>
+    <div class="hubspot-embed-box">
+      <div class="hubspot-embed-box__icon">📋</div>
+      <strong>HubSpot Form — Terminal Supply Enquiry</strong>
+      <span>Replace this block with the HubSpot embed code.<br>Form ID: TBC — Terminal Supply Enquiry</span>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <h2>Frequently asked questions</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Where is IOR's Lytton Terminal located? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>IOR's Lytton Terminal is located in Lytton, Brisbane, Queensland. It is IOR's primary East Coast import and storage facility, providing bulk fuel supply to operators across Queensland and New South Wales.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Where is IOR's Port Bonython Terminal located? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>IOR's Port Bonython Terminal is located on the Spencer Gulf in South Australia. It provides strategic import and storage infrastructure for South Australian and Northern Territory operators.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">What products can I access through IOR's terminals? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>IOR's terminals provide access to diesel, petrol, and specialty products including Eromanga UMF mining diesel. Contact our trading team to discuss your specific product requirements.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">How do I set up a terminal supply arrangement with IOR? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Contact IOR's trading team via the form on this page. Our team will discuss your volume requirements, delivery locations, and pricing arrangements. Terminal supply accounts typically include dedicated account management and priority supply.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">Does IOR offer priority supply during market tightness? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes. Because IOR owns its terminals and refinery, IOR customers receive priority supply during periods of market tightness or supply disruption. This is a critical advantage for operations that cannot afford fuel shortages.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <div class="final-cta__text">
+      <h2>Access IOR's terminal supply network.</h2>
+      <p>Contact our trading team to discuss your bulk supply requirements.</p>
+    </div>
+    <div class="final-cta__actions">
+      <a href="/support-contact/contact-us/" class="btn btn--primary">Contact Trading Team →</a>
+      <a href="/support-contact/contact-us/" class="btn btn--outline">Send an Enquiry ↑</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / INSIGHTS SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-section__header" data-animate="fade-up">
+      <div class="blog-section__header-left">
+        <div class="eyebrow eyebrow--dark">Lytton &amp; Port Bonython · Case Studies &amp; Insights</div>
+        <h2 class="blog-section__title">Australia's sovereign fuel infrastructure.</h2>
+      </div>
+    </div>
+    <div class="blog-tabs" role="tablist">
+      <button class="blog-tab active" role="tab" aria-selected="true">Case Studies</button>
+      <button class="blog-tab" role="tab" aria-selected="false">Blog &amp; Insights</button>
+    </div>
+    <!-- Case Studies Panel -->
+    <div class="blog-panel active" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Terminal Supply</span>
+          <span class="blog-card__img-note">Lytton Terminal, tanker, aerial</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Government</div>
+          <div class="blog-card__title">State government fuel supply: why terminal ownership matters</div>
+          <div class="blog-card__excerpt">When supply security is non-negotiable, owning the terminal changes everything. IOR's Lytton and Port Bonython terminals explained.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Mining Contract</span>
+          <span class="blog-card__img-note">Terminal loading, mining tanker</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Mining</div>
+          <div class="blog-card__title">Bulk fuel supply from Lytton Terminal: a Tier 1 mining contract</div>
+          <div class="blog-card__excerpt">Direct terminal access, dedicated account management, and sovereign supply continuity — how IOR won and retained a major mining fuel contract.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">SA Aviation</span>
+          <span class="blog-card__img-note">Port Bonython, aircraft, SA</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Aviation</div>
+          <div class="blog-card__title">JET A-1 supply from Port Bonython: SA aviation fuel security</div>
+          <div class="blog-card__excerpt">Port Bonython Terminal's strategic location makes it the natural supply hub for South Australian aviation fuel. How IOR serves SA's aviation sector.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Case Studies →</a>
+      </div>
+    </div>
+    <!-- Blog Panel -->
+    <div class="blog-panel" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Lytton Inside</span>
+          <span class="blog-card__img-note">Terminal infrastructure, tanks, pipes</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Infrastructure</div>
+          <div class="blog-card__title">Inside Lytton Terminal: Australia's east coast fuel distribution hub</div>
+          <div class="blog-card__excerpt">100M+ litre capacity, pipeline connections, and direct port access. A deep dive into IOR's Lytton Terminal infrastructure.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Supply Chain</span>
+          <span class="blog-card__img-note">Terminal vs reseller diagram</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Supply Chain</div>
+          <div class="blog-card__title">How terminal ownership changes the supply chain equation</div>
+          <div class="blog-card__excerpt">Resellers are price-takers. Terminal owners are price-makers. Why owning the infrastructure is the ultimate supply chain advantage.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Port Bonython</span>
+          <span class="blog-card__img-note">Port Bonython aerial, SA coast</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Trading</div>
+          <div class="blog-card__title">Port Bonython Terminal: SA's strategic fuel supply asset</div>
+          <div class="blog-card__excerpt">Location, capacity, and connectivity — why Port Bonython Terminal is central to IOR's South Australian supply strategy.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer__brand">
+      <div class="logo-placeholder">[IOR LOGO]</div>
+      <p>IOR Petroleum — Australia's sovereign fuel supply chain. Backed by our own refinery, import terminals, and a national logistics network.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Fuel Solutions</h4>
+      <a href="03_Ground_Fuels_v2.html">Ground Fuels</a>
+      <a href="04_Aviation_v2.html">Aviation</a>
+      <a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a>
+    </div>
+    <div class="footer__col">
+      <h4>Supply &amp; Trading</h4>
+      <a href="06a_Terminals.html">Terminals</a>
+      <a href="06b_Eromanga_Refinery.html">Eromanga Refinery</a>
+      <a href="06c_Condensates.html">Condensates</a>
+    </div>
+    <div class="footer__col">
+      <h4>Company</h4>
+      <a href="#">About IOR</a>
+      <a href="#">Careers</a>
+      <a href="/support-contact/contact-us/">Contact Us</a>
+      <a href="#">Privacy Policy</a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer__bottom">
+      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved.</span>
+      <span>100% Australian Owned &amp; Operated</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+  function switchTab(e, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.blog-section').forEach(function(section){
+    var tabs = section.querySelectorAll('.blog-tab');
+    var panels = section.querySelectorAll('.blog-panel');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        panels.forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        panels[i].classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

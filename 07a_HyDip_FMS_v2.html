@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HyDip™ FMS — IOR Digital Platforms · 07a (V2)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ior-blue:#0355A3; --ior-navy:#0A4066; --ior-deep:#0B1929;
+  --ior-sky:#4DA8DA; --ior-light:#E8F1FB; --ior-light-blue-bg:#EBF4FB;
+  --ior-charcoal:#1F2937; --ior-mid-grey:#6B7280;
+  --off-white:#F5F7FA; --border-light:rgba(3,85,163,0.12);
+  --hydip-purple:#5B2D8E; --hydip-light:#EDE5F5;
+  --radius-md:8px; --font:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --container:1280px; --sp:clamp(48px,6vw,80px); --spx:clamp(16px,4vw,48px);
+  --fw-bold:700; --fw-black:900;
+  --transition-fast:150ms ease; --transition-base:250ms ease;
+  --z-nav:100; --z-drawer:300;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--ior-charcoal);background:#fff;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.inner{max-width:var(--container);margin:0 auto;padding:0 var(--spx)}
+/* WIREFRAME NAV */
+.wf-nav{position:sticky;top:0;z-index:9999;background:#1A1A2E;border-bottom:3px solid #E94560;display:flex;align-items:center;gap:16px;padding:8px 16px;font-size:11px;font-family:monospace;color:#fff;flex-wrap:wrap}
+.wf-nav a{color:#E94560;text-decoration:underline;margin-right:8px}
+/* UTILITY BAR */
+.utility-bar{background:var(--ior-blue);padding:8px var(--spx);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.utility-bar__actions{display:flex;align-items:center;gap:20px}
+.utility-bar__link{font-size:14px;font-weight:600;color:#fff;display:flex;align-items:center;gap:6px;opacity:.9;transition:opacity var(--transition-fast)}
+.utility-bar__link:hover{opacity:1}
+.utility-bar__divider{width:1px;height:14px;background:rgba(255,255,255,.4)}
+/* PRIMARY NAV */
+.primary-nav{position:sticky;top:0;z-index:var(--z-nav);background:#fff;border-bottom:1px solid var(--border-light);box-shadow:0 2px 12px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;padding:0 var(--spx);height:72px;gap:24px;transition:height var(--transition-base),box-shadow var(--transition-base)}
+.primary-nav--scrolled{height:56px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.nav-logo{font-size:22px;font-weight:900;color:var(--ior-blue);letter-spacing:-.02em;white-space:nowrap;flex-shrink:0}
+.nav-links{display:flex;list-style:none;gap:4px;align-items:center}
+.nav-link{display:block;padding:8px 14px;font-size:15px;font-weight:700;color:var(--ior-charcoal);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;transition:color var(--transition-fast),border-color var(--transition-fast)}
+.nav-link:hover{color:var(--ior-blue)}
+.nav-link.active{color:var(--ior-blue);border-bottom-color:var(--ior-blue)}
+.nav-ctas{display:flex;gap:10px;align-items:center}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:2px;background:var(--ior-charcoal);transition:var(--transition-base)}
+@media(max-width:1023px){.nav-links{display:none}.hamburger{display:flex}}
+/* BUTTONS */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;font-size:16px;font-weight:700;letter-spacing:.02em;cursor:pointer;border:2px solid transparent;border-radius:var(--radius-md);transition:background var(--transition-fast),color var(--transition-fast),border-color var(--transition-fast);text-decoration:none;font-family:var(--font)}
+.btn--primary{background:var(--ior-blue);color:#fff;border-color:var(--ior-blue)}
+.btn--primary:hover{background:var(--ior-navy);border-color:var(--ior-navy)}
+.btn--purple{background:var(--hydip-purple);color:#fff;border-color:var(--hydip-purple)}
+.btn--purple:hover{background:#4a2475;border-color:#4a2475}
+.btn--purple-outline{background:transparent;color:var(--hydip-purple);border-color:var(--hydip-purple)}
+.btn--purple-outline:hover{background:var(--hydip-light)}
+.btn--outline{background:transparent;color:var(--ior-blue);border-color:var(--ior-blue)}
+.btn--outline:hover{background:var(--ior-light)}
+.btn--ghost{background:transparent;color:#fff;border-color:#fff}
+.btn--ghost:hover{background:rgba(255,255,255,.1)}
+.btn--sm{padding:10px 20px;font-size:14px}
+.btn--lg{padding:18px 36px;font-size:18px}
+/* DRAWER */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;z-index:calc(var(--z-drawer) - 1);transition:opacity var(--transition-base)}
+.drawer-overlay--open{opacity:1;pointer-events:all}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(360px,90vw);background:var(--ior-deep);z-index:var(--z-drawer);transform:translateX(100%);transition:transform var(--transition-base);display:flex;flex-direction:column;overflow-y:auto}
+.drawer--open{transform:translateX(0)}
+.drawer__head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+.drawer__close{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:4px}
+.drawer__nav{flex:1;padding:8px 0}
+.drawer__item{border-bottom:1px solid rgba(255,255,255,.08)}
+.drawer__link{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;color:#fff;font-size:15px;font-weight:700;cursor:pointer}
+.drawer__link-chevron::after{content:'›';font-size:18px;transition:transform var(--transition-fast)}
+.drawer__link-chevron--open::after{transform:rotate(90deg)}
+.drawer__sub{display:none;background:rgba(255,255,255,.04);padding:4px 0}
+.drawer__sub--open{display:block}
+.drawer__sub-link{display:block;padding:10px 20px 10px 36px;color:rgba(255,255,255,.75);font-size:14px}
+.drawer__sub-link:hover{color:#fff}
+.drawer__ctas{padding:16px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1)}
+/* QUICK-LINKS BAR — STICKY */
+.quick-links-bar{position:sticky;top:72px;z-index:900;background:var(--ior-deep);border-top:3px solid var(--hydip-purple)}
+.quick-links-bar .inner{display:flex;align-items:stretch;min-height:52px}
+.ql-item{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-right:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.85);font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background var(--transition-fast);text-align:center}
+.ql-item:last-child{border-right:none}
+.ql-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.ql-item.active{color:var(--hydip-purple);border-bottom:2px solid var(--hydip-purple)}
+/* HERO */
+.hero-hydip{background:var(--ior-deep);border-top:5px solid var(--hydip-purple);padding:clamp(64px,8vw,100px) var(--spx) clamp(48px,6vw,80px)}
+.hero-hydip .inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.hero-hydip .inner{grid-template-columns:1fr 1fr;align-items:center}}
+.hero-hydip__eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);background:rgba(91,45,142,.2);padding:4px 12px;border-radius:var(--radius-md);margin-bottom:16px}
+.hero-hydip h1{font-size:clamp(36px,5vw,64px);font-weight:var(--fw-black);line-height:1.05;color:#fff;margin-bottom:20px}
+.hero-hydip h1 .accent{color:var(--hydip-purple)}
+.hero-hydip__sub{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.8);max-width:520px;margin-bottom:32px;line-height:1.6}
+.hero-hydip__ctas{display:flex;gap:14px;flex-wrap:wrap}
+.hero-hydip__right{background:rgba(91,45,142,.12);border:1px solid rgba(91,45,142,.3);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:20px}
+.hero-stat{display:flex;flex-direction:column;gap:4px}
+.hero-stat__num{font-size:40px;font-weight:var(--fw-black);color:var(--hydip-purple);line-height:1}
+.hero-stat__label{font-size:14px;color:rgba(255,255,255,.65);font-weight:600}
+.hero-stat-divider{height:1px;background:rgba(255,255,255,.1)}
+/* LOGO STRIP — IMMEDIATELY UNDER HERO */
+.logo-strip{background:#fff;border-bottom:1px solid var(--border-light);padding:28px var(--spx)}
+.logo-strip__label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ior-mid-grey);text-align:center;margin-bottom:20px}
+.logo-strip__row{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,48px);flex-wrap:wrap}
+.logo-ph{width:110px;height:40px;background:var(--ior-light-blue-bg);display:flex;align-items:center;justify-content:center;font-size:10px;font-family:monospace;color:var(--ior-mid-grey);font-weight:700;border-radius:var(--radius-md)}
+/* PROBLEM 2-TONE */
+.problem-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.problem-2tone{display:grid;grid-template-columns:1fr;gap:32px}
+@media(min-width:768px){.problem-2tone{grid-template-columns:1fr 1fr}}
+.problem-2tone__left{background:var(--ior-deep);border-radius:var(--radius-md);padding:40px;border-top:4px solid var(--hydip-purple)}
+.problem-2tone__left h2{font-size:clamp(22px,2.5vw,32px);font-weight:var(--fw-black);color:#fff;margin-bottom:16px;line-height:1.25}
+.problem-2tone__left p{font-size:16px;color:rgba(255,255,255,.75);line-height:1.65}
+.problem-2tone__right{background:#fff;border-radius:var(--radius-md);padding:40px;border-top:4px solid var(--ior-sky)}
+.problem-2tone__right h2{font-size:clamp(22px,2.5vw,32px);font-weight:var(--fw-black);color:var(--ior-deep);margin-bottom:16px;line-height:1.25}
+.problem-2tone__right p{font-size:16px;color:var(--ior-mid-grey);line-height:1.65}
+/* 4-COMPONENT TABS */
+.tabs-section{background:#fff;padding:var(--sp) var(--spx)}
+.section-eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);margin-bottom:12px}
+.section-title{font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);line-height:1.2;margin-bottom:16px}
+.section-sub{font-size:clamp(16px,1.4vw,20px);color:var(--ior-mid-grey);max-width:600px}
+.component-tabs{display:flex;gap:0;border-bottom:2px solid var(--border-light);margin-bottom:40px;overflow-x:auto}
+.component-tab{padding:14px 24px;font-size:15px;font-weight:700;color:var(--ior-mid-grey);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;white-space:nowrap;transition:color var(--transition-fast),border-color var(--transition-fast);font-family:var(--font)}
+.component-tab.active{color:var(--hydip-purple);border-bottom-color:var(--hydip-purple)}
+.component-panel{display:none}
+.component-panel.active{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.component-panel.active{grid-template-columns:1fr 1fr;align-items:start}}
+.component-panel__text h3{font-size:clamp(22px,2.5vw,32px);font-weight:var(--fw-black);color:var(--ior-deep);margin-bottom:16px}
+.component-panel__text p{font-size:16px;color:var(--ior-mid-grey);line-height:1.65;margin-bottom:20px}
+.feature-list{display:flex;flex-direction:column;gap:12px}
+.feature-item{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:var(--ior-charcoal);line-height:1.4}
+.feature-item::before{content:'✓';color:var(--hydip-purple);font-weight:700;flex-shrink:0;margin-top:2px}
+.component-panel__media{background:var(--hydip-light);border-radius:var(--radius-md);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:13px;font-family:monospace;color:var(--hydip-purple);text-align:center;padding:24px;border:1px solid rgba(91,45,142,.2)}
+/* EASY AS 1-2-3 — GHOST NUMBERS 48px (MASTER RULE) */
+.steps-section{background:var(--ior-deep);padding:var(--sp) var(--spx)}
+.steps-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.steps-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.steps-grid{grid-template-columns:repeat(3,1fr)}}
+.step-card{background:rgba(255,255,255,.05);border-top:4px solid var(--hydip-purple);border-radius:var(--radius-md);padding:32px;position:relative;overflow:hidden}
+.step-card__ghost{position:absolute;top:-8px;right:16px;font-size:48px;font-weight:900;color:rgba(91,45,142,.2);line-height:1;pointer-events:none;user-select:none}
+.step-card__num{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);margin-bottom:12px}
+.step-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:#fff;margin-bottom:10px}
+.step-card__body{font-size:15px;color:rgba(255,255,255,.7);line-height:1.6}
+/* GATED ASSET */
+.gated-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.gated-inner{display:grid;grid-template-columns:1fr;gap:40px;align-items:center}
+@media(min-width:768px){.gated-inner{grid-template-columns:auto 1fr}}
+.pdf-mockup{width:180px;height:240px;background:var(--hydip-light);border:2px solid rgba(91,45,142,.3);border-radius:var(--radius-md);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex-shrink:0;padding:20px;text-align:center}
+.pdf-mockup__icon{font-size:40px}
+.pdf-mockup__label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hydip-purple)}
+.gated-text h2{font-size:clamp(24px,3vw,40px);font-weight:var(--fw-black);color:var(--ior-deep);margin-bottom:12px}
+.gated-text p{font-size:16px;color:var(--ior-mid-grey);line-height:1.65;margin-bottom:24px;max-width:520px}
+/* TESTIMONIAL */
+.testimonial-section{background:var(--ior-deep);padding:var(--sp) var(--spx)}
+.testimonial-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:768px){.testimonial-grid{grid-template-columns:1fr 1fr}}
+.testimonial-card{background:rgba(255,255,255,.05);border-top:4px solid var(--hydip-purple);border-radius:var(--radius-md);padding:32px}
+.testimonial-card__quote{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.9);line-height:1.6;font-style:italic;margin-bottom:24px}
+.testimonial-card__name{font-size:15px;font-weight:700;color:#fff}
+.testimonial-card__role{font-size:13px;color:rgba(255,255,255,.55)}
+/* TABBED INSIGHTS */
+.insights-section{background:#fff;padding:var(--sp) var(--spx)}
+.insights-tabs{display:flex;border-bottom:2px solid var(--border-light);margin-bottom:32px}
+.insights-tab{padding:12px 24px;font-size:15px;font-weight:700;color:var(--ior-mid-grey);border:none;background:none;cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-2px;transition:color var(--transition-fast),border-color var(--transition-fast);font-family:var(--font)}
+.insights-tab.active{color:var(--hydip-purple);border-bottom-color:var(--hydip-purple)}
+.insights-tab-panel{display:none}
+.insights-tab-panel.active{display:block}
+.insights-grid{display:grid;grid-template-columns:1fr;gap:clamp(16px,2.5vw,32px)}
+@media(min-width:600px){.insights-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.insights-grid{grid-template-columns:repeat(3,1fr)}}
+.insight-card{display:flex;flex-direction:column;gap:14px}
+.insight-card__img{width:100%;aspect-ratio:16/9;background:var(--hydip-light);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:11px;font-family:monospace;color:var(--hydip-purple)}
+.insight-card__tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--hydip-purple);background:var(--hydip-light);padding:3px 10px;border-radius:var(--radius-md)}
+.insight-card__title{font-size:clamp(18px,1.8vw,24px);font-weight:var(--fw-bold);color:var(--ior-deep);line-height:1.2}
+.insight-card__read{font-size:14px;color:var(--hydip-purple);font-weight:600}
+/* FAQs */
+.faq-section{background:var(--off-white);padding:var(--sp) var(--spx)}
+.faq-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border-light)}
+.faq-item{border-bottom:1px solid var(--border-light)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;cursor:pointer;font-size:clamp(16px,1.4vw,20px);font-weight:700;color:var(--ior-deep)}
+.faq-q::after{content:'+';font-size:24px;font-weight:400;color:var(--hydip-purple);flex-shrink:0;transition:transform var(--transition-fast)}
+.faq-item--open .faq-q::after{transform:rotate(45deg)}
+.faq-a{display:none;padding-bottom:20px;font-size:16px;color:var(--ior-mid-grey);line-height:1.65}
+.faq-item--open .faq-a{display:block}
+/* HUBSPOT FORM */
+.form-section{background:var(--ior-navy);padding:var(--sp) var(--spx)}
+.form-section__inner{display:grid;grid-template-columns:1fr;gap:40px}
+@media(min-width:1024px){.form-section__inner{grid-template-columns:1fr 1fr;align-items:start}}
+.form-section__left h2{font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;margin-bottom:16px;line-height:1.2}
+.form-section__left p{font-size:clamp(16px,1.4vw,20px);color:rgba(255,255,255,.75);line-height:1.6}
+.hubspot-embed{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-md);padding:32px;display:flex;flex-direction:column;gap:16px}
+.hubspot-embed__label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ior-sky);margin-bottom:8px}
+.hs-field{display:flex;flex-direction:column;gap:6px}
+.hs-label{font-size:13px;font-weight:600;color:rgba(255,255,255,.8)}
+.hs-input{padding:12px 16px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:var(--radius-md);color:#fff;font-size:15px;font-family:var(--font);outline:none;transition:border-color var(--transition-fast)}
+.hs-input:focus{border-color:var(--hydip-purple)}
+.hs-input::placeholder{color:rgba(255,255,255,.35)}
+.hs-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:600px){.hs-row{grid-template-columns:1fr}}
+/* SECURITY OF SUPPLY BANNER */
+.sos-banner{background:var(--ior-deep);border-top:4px solid var(--ior-blue);padding:clamp(32px,4vw,56px) var(--spx)}
+.sos-banner__inner{display:flex;flex-direction:column;gap:20px;align-items:flex-start}
+@media(min-width:768px){.sos-banner__inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.sos-banner__text h2{font-size:clamp(20px,2vw,28px);font-weight:var(--fw-black);color:#fff;margin-bottom:8px}
+.sos-banner__text p{font-size:16px;color:rgba(255,255,255,.7);max-width:560px}
+.sos-banner__ctas{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+/* PRE-FOOTER */
+.pre-footer{background:var(--hydip-purple);padding:clamp(48px,6vw,80px) var(--spx)}
+.pre-footer__inner{display:flex;flex-direction:column;gap:24px}
+@media(min-width:768px){.pre-footer__inner{flex-direction:row;align-items:center;justify-content:space-between}}
+.pre-footer__title{font-size:clamp(24px,3vw,40px);font-weight:var(--fw-black);color:#fff}
+.pre-footer__ctas{display:flex;gap:12px;flex-wrap:wrap;flex-shrink:0}
+/* GLOBAL FOOTER */
+.site-footer{background:var(--ior-blue);padding-block:clamp(48px,6vw,80px);padding-inline:var(--spx)}
+.footer-nav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+@media(min-width:768px){.footer-nav-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1200px){.footer-nav-grid{grid-template-columns:repeat(6,1fr)}}
+.footer-col__title{font-size:16px;font-weight:var(--fw-bold);color:#fff;padding-bottom:16px;margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.2)}
+.footer-col__links{display:flex;flex-direction:column;gap:14px}
+.footer-col__link{font-size:14px;color:rgba(255,255,255,.85);transition:color var(--transition-fast)}
+.footer-col__link:hover{color:#fff}
+.footer-state-pills{display:flex;flex-wrap:wrap;gap:5px}
+.footer-state-pill{padding:6px 12px;background:rgba(255,255,255,.15);font-size:14px;color:#fff;transition:background var(--transition-fast)}
+.footer-state-pill:hover{background:rgba(255,255,255,.3)}
+.footer-legal{margin-top:32px;padding-top:20px;border-top:1px solid rgba(255,255,255,.25);display:flex;flex-direction:column;gap:12px}
+@media(min-width:768px){.footer-legal{flex-direction:row;align-items:center;justify-content:space-between}}
+.footer-legal__text{font-size:12px;color:rgba(255,255,255,.6)}
+.footer-social{display:flex;gap:10px}
+.footer-social__icon{width:36px;height:36px;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:11px;color:#fff;font-family:monospace;transition:background var(--transition-fast)}
+.footer-social__icon:hover{background:rgba(255,255,255,.3)}
+/* FADE-UP */
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity 500ms ease,transform 500ms ease}
+.fade-up.is-visible{opacity:1;transform:translateY(0)}
+.fade-up--d1{transition-delay:100ms}
+.fade-up--d2{transition-delay:200ms}
+</style>
+</head>
+<body>
+
+<div class="wf-nav">
+  <strong style="color:#E94560;">IOR WIREFRAME</strong>
+  <span style="color:#aaa;">MODULE 07a — HyDip™ FMS (V2)</span>
+  <a href="00_Master_Index.html">← Index</a>
+  <a href="07_Digital_Platforms_v2.html">← Digital Platforms Hub</a>
+  <a href="07b_FuelCharge_v2.html">07b Fuelcharge</a>
+  <a href="07c_Customer_Portal_v2.html">07c Customer Portal</a>
+</div>
+
+<header>
+  <div class="utility-bar">
+    <span style="font-size:14px;color:#fff;">📢 Announcement placeholder</span>
+    <div class="utility-bar__actions">
+      <a href="#" class="utility-bar__link">📍 Find a Location</a>
+      <div class="utility-bar__divider"></div>
+      <a href="#" class="utility-bar__link">✉️ Make a Payment</a>
+      <div class="utility-bar__divider"></div>
+      <a href="tel:1300457467" class="utility-bar__link">📞 1300 457 467</a>
+    </div>
+  </div>
+  <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
+    <a href="01_Homepage_and_Global.html" class="nav-logo">[IOR LOGO]</a>
+    <ul class="nav-links">
+      <li><button class="nav-link" data-menu="fuel">Fuel Solutions</button></li>
+      <li><button class="nav-link active" data-menu="digital">Digital Platforms</button></li>
+      <li><button class="nav-link" data-menu="industries">Industries We Serve</button></li>
+      <li><button class="nav-link" data-menu="about">About IOR</button></li>
+      <li><button class="nav-link" data-menu="support">Support &amp; Contact</button></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="#" class="btn btn--outline" style="padding:10px 20px;font-size:14px;">Customer Login →</a>
+      <a href="#" class="btn btn--primary" style="padding:10px 20px;font-size:14px;">Apply for an Account →</a>
+      <div class="hamburger" id="mob-hamburger" role="button" tabindex="0" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<nav class="quick-links-bar" aria-label="HyDip FMS quick navigation">
+  <div class="inner">
+    <a href="#why" class="ql-item active">Why HyDip™</a>
+    <a href="#what" class="ql-item">What It Does</a>
+    <a href="#how" class="ql-item">How It Works</a>
+    <a href="#download" class="ql-item">📄 Brochure</a>
+    <a href="#contact-form" class="ql-item">Request a Demo</a>
+    <a href="#" class="ql-item">HyDip Login →</a>
+  </div>
+</nav>
+
+<section class="hero-hydip" id="why">
+  <div class="inner">
+    <div class="fade-up">
+      <span class="hero-hydip__eyebrow">HyDip™ Fuel Management System</span>
+      <h1>Stop guessing.<br><span class="accent">Start knowing.</span></h1>
+      <p class="hero-hydip__sub">HyDip™ FMS gives you real-time visibility of every tank on every site — automated dip readings, instant alerts, and compliance-ready reporting. No more manual checks. No more runouts.</p>
+      <div class="hero-hydip__ctas">
+        <a href="#contact-form" class="btn btn--purple btn--lg">Request a Demo →</a>
+        <a href="https://status.hydip.com.au" class="btn btn--ghost" target="_blank" rel="noopener">View HyDip™ Status Site →</a>
+      </div>
+    </div>
+    <div class="hero-hydip__right fade-up fade-up--d1">
+      <div class="hero-stat"><span class="hero-stat__num">2,000+</span><span class="hero-stat__label">Active HyDip™ FMS installations</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat__num">99.8%</span><span class="hero-stat__label">Uptime across monitored sites</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat"><span class="hero-stat__num">24/7</span><span class="hero-stat__label">Real-time alerts and monitoring</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="logo-strip">
+  <p class="logo-strip__label">Trusted by Australia's leading operators</p>
+  <div class="logo-strip__row">
+    <div class="logo-ph">[INCITEC PIVOT]</div>
+    <div class="logo-ph">[K.S. EASTER]</div>
+    <div class="logo-ph">[MPC KINETIC]</div>
+    <div class="logo-ph">[NORWOOD AG]</div>
+    <div class="logo-ph">[CLIENT 5]</div>
+    <div class="logo-ph">[CLIENT 6]</div>
+  </div>
+</div>
+
+<section class="problem-section">
+  <div class="inner">
+    <div class="problem-2tone fade-up">
+      <div class="problem-2tone__left">
+        <h2>The problem with manual fuel management</h2>
+        <p>Manual dip readings are time-consuming, error-prone, and leave you blind between checks. Runouts cost you downtime. Overfills cost you money. Compliance gaps cost you audits. There's a better way.</p>
+      </div>
+      <div class="problem-2tone__right">
+        <h2>HyDip™ FMS: your always-on fuel intelligence</h2>
+        <p>HyDip™ FMS continuously monitors your tanks and sends real-time data to your dashboard and phone. You see every site, every tank, every litre — without leaving your desk.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tabs-section" id="what">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;">
+      <span class="section-eyebrow">What HyDip™ FMS Does</span>
+      <h2 class="section-title">Four components. One complete system.</h2>
+      <p class="section-sub">HyDip™ FMS is built around four integrated components that work together to give you complete fuel visibility.</p>
+    </div>
+    <div class="component-tabs" role="tablist">
+      <button class="component-tab active" role="tab" onclick="switchComp(event,'tank-monitoring')">Tank Monitoring</button>
+      <button class="component-tab" role="tab" onclick="switchComp(event,'alerts')">Alerts &amp; Notifications</button>
+      <button class="component-tab" role="tab" onclick="switchComp(event,'reporting')">Compliance Reporting</button>
+      <button class="component-tab" role="tab" onclick="switchComp(event,'integration')">Portal Integration</button>
+    </div>
+    <div class="component-panel active" id="tank-monitoring">
+      <div class="component-panel__text fade-up">
+        <h3>Automated tank monitoring</h3>
+        <p>HyDip™ sensors continuously measure fuel levels in your tanks and transmit readings to your dashboard in real time. No manual dips. No guesswork.</p>
+        <div class="feature-list">
+          <div class="feature-item">Continuous level monitoring — readings every 15 minutes</div>
+          <div class="feature-item">Compatible with diesel, petrol, and AdBlue tanks</div>
+          <div class="feature-item">Multi-site dashboard — all tanks in one view</div>
+          <div class="feature-item">Historical trend data for forecasting and ordering</div>
+          <div class="feature-item">Works on remote sites with satellite connectivity</div>
+        </div>
+      </div>
+      <div class="component-panel__media fade-up fade-up--d1">[SCREENSHOT — Tank monitoring dashboard]</div>
+    </div>
+    <div class="component-panel" id="alerts">
+      <div class="component-panel__text fade-up">
+        <h3>Alerts &amp; notifications</h3>
+        <p>Set custom thresholds and receive instant alerts via SMS or email when tanks reach low-stock levels, anomalies are detected, or deliveries are confirmed.</p>
+        <div class="feature-list">
+          <div class="feature-item">Low-stock alerts — set your own thresholds</div>
+          <div class="feature-item">Leak and anomaly detection alerts</div>
+          <div class="feature-item">Delivery confirmation notifications</div>
+          <div class="feature-item">SMS and email delivery to multiple contacts</div>
+          <div class="feature-item">Escalation rules for unacknowledged alerts</div>
+        </div>
+      </div>
+      <div class="component-panel__media fade-up fade-up--d1">[SCREENSHOT — Alerts configuration]</div>
+    </div>
+    <div class="component-panel" id="reporting">
+      <div class="component-panel__text fade-up">
+        <h3>Compliance reporting</h3>
+        <p>Generate audit-ready reports in seconds. HyDip™ FMS captures every dip reading, delivery, and anomaly — giving you a complete paper trail for compliance and insurance purposes.</p>
+        <div class="feature-list">
+          <div class="feature-item">Automated daily, weekly, and monthly reports</div>
+          <div class="feature-item">Delivery reconciliation reports</div>
+          <div class="feature-item">Anomaly and variance reports</div>
+          <div class="feature-item">Export to PDF, CSV, and Excel</div>
+          <div class="feature-item">Audit-ready format for AS1940 compliance</div>
+        </div>
+      </div>
+      <div class="component-panel__media fade-up fade-up--d1">[SCREENSHOT — Compliance report]</div>
+    </div>
+    <div class="component-panel" id="integration">
+      <div class="component-panel__text fade-up">
+        <h3>IOR Customer Portal integration</h3>
+        <p>HyDip™ FMS integrates directly with the IOR Customer Portal — so your fuel monitoring data, delivery history, and invoices are all in one place.</p>
+        <div class="feature-list">
+          <div class="feature-item">Single login for FMS and account management</div>
+          <div class="feature-item">Delivery orders triggered automatically from low-stock alerts</div>
+          <div class="feature-item">Invoice matching against delivery confirmations</div>
+          <div class="feature-item">Fuel spend analytics across all sites</div>
+          <div class="feature-item">Role-based access for your team</div>
+        </div>
+      </div>
+      <div class="component-panel__media fade-up fade-up--d1">[SCREENSHOT — Portal integration view]</div>
+    </div>
+  </div>
+</section>
+
+<section class="steps-section" id="how">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:40px;text-align:center;">
+      <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);display:block;margin-bottom:12px;">Getting Started</span>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;line-height:1.2;">Up and running in 3 steps</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-up">
+        <div class="step-card__ghost">1</div>
+        <div class="step-card__num">Step 01</div>
+        <h3 class="step-card__title">Enquire &amp; assess</h3>
+        <p class="step-card__body">Talk to our team about your sites, tank types, and connectivity. We'll recommend the right HyDip™ configuration for your operation.</p>
+      </div>
+      <div class="step-card fade-up fade-up--d1">
+        <div class="step-card__ghost">2</div>
+        <div class="step-card__num">Step 02</div>
+        <h3 class="step-card__title">Install &amp; configure</h3>
+        <p class="step-card__body">Our technicians install sensors and configure your dashboard. Most installations are completed within one business day. Processed as soon as practical.</p>
+      </div>
+      <div class="step-card fade-up fade-up--d2">
+        <div class="step-card__ghost">3</div>
+        <div class="step-card__num">Step 03</div>
+        <h3 class="step-card__title">Monitor &amp; manage</h3>
+        <p class="step-card__body">Log in to your dashboard and start monitoring. Your team gets access, alerts are configured, and you're in control from day one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gated-section" id="download">
+  <div class="inner">
+    <div class="gated-inner fade-up">
+      <div class="pdf-mockup">
+        <div class="pdf-mockup__icon">📄</div>
+        <div class="pdf-mockup__label">HyDip™ FMS<br>Product Brochure</div>
+      </div>
+      <div class="gated-text">
+        <span style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);display:block;margin-bottom:12px;">Free Download</span>
+        <h2>HyDip™ FMS Product Brochure</h2>
+        <p>Download the full HyDip™ FMS product brochure — including technical specifications, compatibility guide, and case studies from Australian operators.</p>
+        <a href="#" class="btn btn--purple">Download Brochure →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonial-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;">
+      <p style="font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--hydip-purple);margin-bottom:12px;">What Our Customers Say</p>
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:#fff;line-height:1.2;">Real results from real operators.</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card fade-up">
+        <p class="testimonial-card__quote">"HyDip has completely changed how we manage fuel on our remote sites. We used to do manual dips twice a day — now we get alerts on our phone. It's saved us hours every week and we haven't had a runout since."</p>
+        <div class="testimonial-card__name">Operations Manager</div>
+        <div class="testimonial-card__role">Norwood Agriculture, SA</div>
+      </div>
+      <div class="testimonial-card fade-up fade-up--d1">
+        <p class="testimonial-card__quote">"The compliance reporting alone was worth it. We used to spend half a day preparing for audits — now I just export the report and it's done. The data is all there, timestamped and accurate."</p>
+        <div class="testimonial-card__name">Site Manager</div>
+        <div class="testimonial-card__role">MPC Kinetic, WA</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insights-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;">
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);">Insights &amp; Case Studies</h2>
+    </div>
+    <div class="insights-tabs" role="tablist">
+      <button class="insights-tab active" role="tab" aria-selected="true" onclick="switchTab(event,'cs-hydip')">Case Studies</button>
+      <button class="insights-tab" role="tab" aria-selected="false" onclick="switchTab(event,'blog-hydip')">Blog Posts</button>
+    </div>
+    <div class="insights-tab-panel active" id="cs-hydip">
+      <div class="insights-grid">
+        <div class="insight-card fade-up">
+          <div class="insight-card__img">[IMAGE — Norwood Agriculture]</div>
+          <span class="insight-card__tag">Case Study</span>
+          <h3 class="insight-card__title">How Norwood Agriculture eliminated manual fuel dips with HyDip™ FMS</h3>
+          <a href="#" class="insight-card__read">Read Case Study →</a>
+        </div>
+        <div class="insight-card fade-up fade-up--d1">
+          <div class="insight-card__img">[IMAGE — MPC Kinetic]</div>
+          <span class="insight-card__tag">Case Study</span>
+          <h3 class="insight-card__title">MPC Kinetic: real-time tank monitoring across 12 remote WA sites</h3>
+          <a href="#" class="insight-card__read">Read Case Study →</a>
+        </div>
+        <div class="insight-card fade-up fade-up--d2">
+          <div class="insight-card__img">[IMAGE — Mining Operation]</div>
+          <span class="insight-card__tag">Case Study</span>
+          <h3 class="insight-card__title">Zero runouts in 18 months: how HyDip™ FMS transformed a mining operation</h3>
+          <a href="#" class="insight-card__read">Read Case Study →</a>
+        </div>
+      </div>
+    </div>
+    <div class="insights-tab-panel" id="blog-hydip">
+      <div class="insights-grid">
+        <div class="insight-card fade-up">
+          <div class="insight-card__img">[IMAGE — Blog 1]</div>
+          <span class="insight-card__tag">Blog</span>
+          <h3 class="insight-card__title">5 signs your fuel management system is costing you money</h3>
+          <a href="#" class="insight-card__read">Read Article →</a>
+        </div>
+        <div class="insight-card fade-up fade-up--d1">
+          <div class="insight-card__img">[IMAGE — Blog 2]</div>
+          <span class="insight-card__tag">Blog</span>
+          <h3 class="insight-card__title">Manual dipping vs. automated monitoring: a true cost comparison</h3>
+          <a href="#" class="insight-card__read">Read Article →</a>
+        </div>
+        <div class="insight-card fade-up fade-up--d2">
+          <div class="insight-card__img">[IMAGE — Blog 3]</div>
+          <span class="insight-card__tag">Blog</span>
+          <h3 class="insight-card__title">AS1940 compliance: what remote operators need to know about fuel storage</h3>
+          <a href="#" class="insight-card__read">Read Article →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="contact-form">
+  <div class="inner">
+    <div class="form-section__inner">
+      <div class="form-section__left fade-up">
+        <h2>Ready to take control of your fuel?</h2>
+        <p>Talk to our HyDip™ FMS team about your sites, your tanks, and your operation. We'll put together a solution that works for you.</p>
+      </div>
+      <div class="hubspot-embed fade-up fade-up--d1">
+        <div class="hubspot-embed__label">📋 HubSpot Form Embed — Replace with live embed code</div>
+        <div class="hs-row">
+          <div class="hs-field"><label class="hs-label">First Name *</label><input type="text" class="hs-input" placeholder="e.g. James"></div>
+          <div class="hs-field"><label class="hs-label">Last Name *</label><input type="text" class="hs-input" placeholder="e.g. Smith"></div>
+        </div>
+        <div class="hs-field"><label class="hs-label">Company Name *</label><input type="text" class="hs-input" placeholder="e.g. Smith Transport Pty Ltd"></div>
+        <div class="hs-field"><label class="hs-label">Email Address *</label><input type="email" class="hs-input" placeholder="e.g. james@smithtransport.com.au"></div>
+        <div class="hs-field"><label class="hs-label">Phone</label><input type="tel" class="hs-input" placeholder="e.g. 0400 000 000"></div>
+        <div class="hs-field"><label class="hs-label">Number of Sites / Tanks</label><input type="text" class="hs-input" placeholder="e.g. 3 sites, 8 tanks"></div>
+        <div class="hs-field"><label class="hs-label">Message</label><textarea class="hs-input" rows="3" placeholder="Tell us about your operation…"></textarea></div>
+        <button class="btn btn--purple" style="width:100%;justify-content:center;margin-top:8px;">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="inner">
+    <div class="fade-up" style="margin-bottom:32px;">
+      <h2 style="font-size:clamp(28px,3.5vw,48px);font-weight:var(--fw-black);color:var(--ior-deep);">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What tank types is HyDip™ FMS compatible with?</div><div class="faq-a">HyDip™ FMS is compatible with above-ground and below-ground tanks for diesel, petrol, and AdBlue. Our team will assess your tank configuration during the enquiry process.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does installation take?</div><div class="faq-a">Most single-site installations are completed within one business day. Multi-site rollouts are scheduled in consultation with your operations team.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does HyDip™ FMS work on remote sites without reliable internet?</div><div class="faq-a">Yes. HyDip™ FMS supports satellite connectivity for remote sites where mobile or fixed-line internet is unavailable. Our team will recommend the right connectivity solution for your location.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is HyDip™ FMS only available to IOR customers?</div><div class="faq-a">HyDip™ FMS is available to IOR fuel supply customers. If you're not yet an IOR customer, you can apply for an account as part of the enquiry process.</div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What does the HyDip™ FMS subscription include?</div><div class="faq-a">Your subscription includes hardware, installation, ongoing monitoring, software updates, and access to the HyDip™ dashboard and IOR Customer Portal. Contact our team for pricing details.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sos-banner">
+  <div class="inner">
+    <div class="sos-banner__inner">
+      <div class="sos-banner__text fade-up">
+        <h2>Your fuel supply is never at risk.</h2>
+        <p>IOR's owned terminal infrastructure at Lytton and Port Bonython means we control our supply chain end-to-end — giving you certainty of supply, even in a disrupted market.</p>
+      </div>
+      <div class="sos-banner__ctas fade-up fade-up--d1">
+        <a href="06_Supply_Trading_v2.html" class="btn btn--ghost">Supply &amp; Trading →</a>
+        <a href="06a_Terminals.html" class="btn btn--ghost">Our Terminals →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pre-footer">
+  <div class="inner">
+    <div class="pre-footer__inner">
+      <h2 class="pre-footer__title">Ready to stop guessing and start knowing?</h2>
+      <div class="pre-footer__ctas">
+        <a href="#contact-form" class="btn btn--ghost" style="background:#fff;color:var(--hydip-purple);">Request a Demo →</a>
+        <a href="/support-contact/contact-us/" class="btn btn--ghost">Talk to a Specialist →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / INSIGHTS SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-section__header" data-animate="fade-up">
+      <div class="blog-section__header-left">
+        <div class="eyebrow eyebrow--dark">HyDip™ FMS · Case Studies &amp; Insights</div>
+        <h2 class="blog-section__title">Real-time. Automated. Zero surprises.</h2>
+      </div>
+    </div>
+    <div class="blog-tabs" role="tablist">
+      <button class="blog-tab active" role="tab" aria-selected="true">Case Studies</button>
+      <button class="blog-tab" role="tab" aria-selected="false">Blog &amp; Insights</button>
+    </div>
+    <div class="blog-panel active" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">National Fleet</span>
+          <span class="blog-card__img-note">HyDip dashboard, depot network</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Transport</div>
+          <div class="blog-card__title">200 depots. One dashboard. How HyDip™ FMS transformed a national fleet</div>
+          <div class="blog-card__excerpt">Real-time tank levels, automated reorder triggers, and consumption analytics — how a national transport operator eliminated fuel outages across their entire depot network.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Remote Mine</span>
+          <span class="blog-card__img-note">HyDip sensor, mine site</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Mining</div>
+          <div class="blog-card__title">HyDip™ FMS at a remote mine: automated fuel management 1,200km from the nearest city</div>
+          <div class="blog-card__excerpt">Remote location. High consumption. Zero tolerance for fuel outages. HyDip™ FMS provided the real-time visibility and automated reordering a remote mine needed.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Harvest FMS</span>
+          <span class="blog-card__img-note">HyDip, farm tank, harvest</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Agriculture</div>
+          <div class="blog-card__title">Harvest-season fuel management: HyDip™ FMS for a 6,000ha grain operation</div>
+          <div class="blog-card__excerpt">Peak consumption. Remote location. No room for error. HyDip™ FMS kept a Darling Downs grain operation fuelled through a record harvest.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Case Studies →</a>
+      </div>
+    </div>
+    <div class="blog-panel" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">HyDip Tech</span>
+          <span class="blog-card__img-note">HyDip sensor, diagram, data</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Technology</div>
+          <div class="blog-card__title">How HyDip™ FMS works: the technology behind real-time tank monitoring</div>
+          <div class="blog-card__excerpt">Ultrasonic sensors, cellular connectivity, and cloud analytics — the technology stack behind IOR's HyDip™ Fuel Management System.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Configuration</span>
+          <span class="blog-card__img-note">HyDip settings, dashboard</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Operations</div>
+          <div class="blog-card__title">Automated reorder triggers: how to configure HyDip™ FMS for your operation</div>
+          <div class="blog-card__excerpt">Setting the right reorder threshold, lead time buffer, and delivery window — the IOR guide to configuring HyDip™ FMS for zero-outage operations.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">FTC Compliance</span>
+          <span class="blog-card__img-note">FTC, HyDip, accountant</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Compliance</div>
+          <div class="blog-card__title">HyDip™ FMS and ATO fuel tax credit compliance: the complete guide</div>
+          <div class="blog-card__excerpt">Every litre tracked. Every transaction timestamped. How HyDip™ FMS makes ATO fuel tax credit reconciliation a 10-minute job.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="footer-nav-grid">
+    <div><div class="footer-col__title">Contact</div><div class="footer-col__links"><span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span><a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a><a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a></div></div>
+    <div><div class="footer-col__title">Fuel Solutions</div><div class="footer-col__links"><a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a><a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a><a href="05_Equipment_Infrastructure_v2.html" class="footer-col__link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a></div></div>
+    <div><div class="footer-col__title">Digital Platforms</div><div class="footer-col__links"><a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a></div></div>
+    <div><div class="footer-col__title">Corporate</div><div class="footer-col__links"><a href="#" class="footer-col__link">About IOR</a><a href="#" class="footer-col__link">Careers</a><a href="#" class="footer-col__link">Case Studies</a><a href="#" class="footer-col__link">News &amp; Updates</a></div></div>
+    <div><div class="footer-col__title">Quick Actions</div><div class="footer-col__links"><a href="#" class="footer-col__link">Apply for an Account</a><a href="#" class="footer-col__link">Make a Payment</a><a href="#" class="footer-col__link">Contact Us</a></div></div>
+    <div><div class="footer-col__title">Find a Site By State</div><div class="footer-state-pills"><a href="#" class="footer-state-pill">QLD</a><a href="#" class="footer-state-pill">NSW</a><a href="#" class="footer-state-pill">VIC</a><a href="#" class="footer-state-pill">SA</a><a href="#" class="footer-state-pill">WA</a><a href="#" class="footer-state-pill">NT</a></div></div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">Copyright &copy; 2026 IOR. All rights reserved. | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a> | <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a> | Site by 3PM</p>
+    <div class="footer-social"><a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a><a href="#" class="footer-social__icon" aria-label="Facebook">f</a><a href="#" class="footer-social__icon" aria-label="Instagram">📷</a><a href="#" class="footer-social__icon" aria-label="YouTube">▶</a></div>
+  </div>
+</footer>
+
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<div class="drawer" id="mobileDrawer" role="dialog" aria-modal="true" aria-label="Mobile navigation" aria-hidden="true">
+  <div class="drawer__head"><span class="nav-logo" style="font-size:16px;">[IOR]</span><button class="drawer__close" id="drawerClose" aria-label="Close navigation menu">✕</button></div>
+  <nav class="drawer__nav">
+    <div class="drawer__item"><div class="drawer__link" data-sub="sub-fuel">Fuel Solutions <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-fuel"><a href="03_Ground_Fuels_v2.html" class="drawer__sub-link">Ground Fuels</a><a href="04_Aviation_v2.html" class="drawer__sub-link">Aviation</a><a href="06_Supply_Trading_v2.html" class="drawer__sub-link">Supply &amp; Trading</a></div></div>
+    <div class="drawer__item"><div class="drawer__link" data-sub="sub-digital">Digital Platforms <span class="drawer__link-chevron"></span></div><div class="drawer__sub" id="sub-digital"><a href="07a_HyDip_FMS_v2.html" class="drawer__sub-link">HyDip™ FMS</a><a href="07b_FuelCharge_v2.html" class="drawer__sub-link">Fuelcharge</a><a href="07c_Customer_Portal_v2.html" class="drawer__sub-link">Customer Portal</a></div></div>
+  </nav>
+  <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;border-radius:var(--radius-md);">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;border-radius:var(--radius-md);">Apply for an Account</a></div>
+</div>
+
+<script>
+const fo=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('is-visible');fo.unobserve(x.target)}})},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+const navEl=document.getElementById('primary-nav');
+window.addEventListener('scroll',()=>{if(navEl)navEl.classList.toggle('primary-nav--scrolled',scrollY>80)},{passive:true});
+const ham=document.getElementById('mob-hamburger'),dr=document.getElementById('mobileDrawer'),ov=document.getElementById('drawerOverlay'),dc=document.getElementById('drawerClose');
+let open=false;
+function openD(){open=true;dr.classList.add('drawer--open');ov.classList.add('drawer-overlay--open');dr.removeAttribute('aria-hidden');document.body.style.overflow='hidden'}
+function closeD(){open=false;dr.classList.remove('drawer--open');ov.classList.remove('drawer-overlay--open');dr.setAttribute('aria-hidden','true');document.body.style.overflow=''}
+if(ham)ham.addEventListener('click',()=>open?closeD():openD());
+if(dc)dc.addEventListener('click',closeD);
+if(ov)ov.addEventListener('click',closeD);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&open)closeD()});
+document.querySelectorAll('.drawer__link').forEach(l=>{l.addEventListener('click',()=>{const id=l.getAttribute('data-sub');if(!id)return;const s=document.getElementById(id);if(!s)return;const ch=l.querySelector('.drawer__link-chevron');const was=s.classList.contains('drawer__sub--open');document.querySelectorAll('.drawer__sub--open').forEach(x=>x.classList.remove('drawer__sub--open'));document.querySelectorAll('.drawer__link-chevron--open').forEach(x=>x.classList.remove('drawer__link-chevron--open'));if(!was){s.classList.add('drawer__sub--open');if(ch)ch.classList.add('drawer__link-chevron--open')}})});
+function switchComp(ev,id){document.querySelectorAll('.component-tab').forEach(t=>t.classList.remove('active'));document.querySelectorAll('.component-panel').forEach(p=>p.classList.remove('active'));ev.target.classList.add('active');const p=document.getElementById(id);if(p)p.classList.add('active')}
+function switchTab(ev,id){document.querySelectorAll('.insights-tab').forEach(t=>{t.classList.remove('active');t.setAttribute('aria-selected','false')});document.querySelectorAll('.insights-tab-panel').forEach(p=>p.classList.remove('active'));ev.target.classList.add('active');ev.target.setAttribute('aria-selected','true');const p=document.getElementById(id);if(p)p.classList.add('active')}
+function toggleFaq(el){const item=el.parentElement;const wasOpen=item.classList.contains('faq-item--open');document.querySelectorAll('.faq-item--open').forEach(x=>x.classList.remove('faq-item--open'));if(!wasOpen)item.classList.add('faq-item--open')}
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.blog-section').forEach(function(section){
+    var tabs = section.querySelectorAll('.blog-tab');
+    var panels = section.querySelectorAll('.blog-panel');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        panels.forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        panels[i].classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

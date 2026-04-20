@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fuel Storage Tanks — IOR Wireframe · 05a</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ior-blue:     #0355A3;
+  --ior-navy:     #0A4066;
+  --ior-deep:     #0B1929;
+  --ior-sky:      #4DA8DA;
+  --ior-light:    #E8F1FB;
+  --ior-charcoal: #1F2937;
+  --ior-white:    #FFFFFF;
+  --off-white:    #F5F7FA;
+  --mid-grey:     #6B7280;
+  --dark-grey:    #374151;
+  --equip-slate:  #2D4A6B;
+  --equip-dark:   #1A2E42;
+  --equip-light:  #E8EFF7;
+  --radius-md:    8px;
+  --font:         'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --container:    1280px;
+  --section-pad:  clamp(48px, 6vw, 80px);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body { font-family: var(--font); font-size: 16px; line-height: 1.6; color: var(--ior-charcoal); background: var(--ior-white); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.container { max-width: var(--container); margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
+
+.wf-nav { position: sticky; top: 0; z-index: 9999; background: #1A1A2E; border-bottom: 3px solid #E94560; display: flex; align-items: center; gap: 16px; padding: 8px 16px; font-size: 12px; font-family: monospace; color: #fff; flex-wrap: wrap; }
+.wf-nav a { color: #E94560; text-decoration: underline; margin-right: 8px; }
+.wf-nav__module { color: #aaa; }
+.ann { border-left: 4px solid #e6ac00; background: #FFF9E6; padding: 10px 14px; font-size: 12px; line-height: 1.5; color: #333; }
+.ann strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #7a5c00; margin-bottom: 4px; }
+.ann--ok { border-left-color: #28a745; background: #F0FFF4; }
+.ann--ok strong { color: #155724; }
+.page-badge { background: var(--ior-white); border: 2px solid var(--equip-slate); padding: 16px 24px; }
+.page-badge h2 { font-size: 18px; color: var(--ior-charcoal); margin: 4px 0 8px; }
+.page-badge .meta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; }
+.page-badge .meta span { background: #e2e8f0; padding: 2px 8px; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 16px; font-weight: 700; border: 2px solid transparent; border-radius: var(--radius-md); transition: background 200ms; text-decoration: none; cursor: pointer; }
+.btn--primary { background: var(--ior-blue); color: var(--ior-white); border-color: var(--ior-blue); }
+.btn--primary:hover { background: var(--ior-navy); }
+.btn--ghost { background: transparent; color: var(--ior-white); border-color: var(--ior-white); }
+.btn--ghost:hover { background: rgba(255,255,255,0.1); }
+.btn--outline { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
+.btn--sm { padding: 10px 20px; font-size: 14px; }
+
+.utility-bar { background: var(--ior-blue); padding: 10px 0; font-size: 14px; color: var(--ior-white); }
+.utility-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.utility-links { display: flex; gap: 20px; }
+.utility-links a { color: var(--ior-white); font-weight: 600; opacity: 0.9; }
+
+.primary-nav { position: sticky; top: 0; z-index: 100; background: var(--ior-white); border-bottom: 1px solid rgba(3,85,163,0.15); box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.primary-nav .container { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 24px; }
+.nav-logo { font-size: 24px; font-weight: 900; color: var(--ior-blue); }
+.nav-links { display: flex; list-style: none; gap: 4px; }
+.nav-links a { display: block; padding: 8px 14px; font-size: 15px; font-weight: 700; color: var(--ior-charcoal); border-bottom: 3px solid transparent; }
+.nav-links a:hover, .nav-links a.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+.nav-ctas { display: flex; gap: 10px; }
+
+.quick-links-bar { background: var(--equip-dark); border-top: 3px solid var(--equip-slate); position: sticky; top: 72px; z-index: 900; }
+.quick-links-bar .container { display: flex; align-items: stretch; min-height: 52px; }
+.ql-item { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 16px; border-right: 1px solid rgba(255,255,255,0.08); color: var(--ior-white); font-size: 13px; font-weight: 700; text-decoration: none; transition: background 200ms; text-align: center; }
+.ql-item:last-child { border-right: none; }
+.ql-item:hover, .ql-item.active { background: rgba(255,255,255,0.08); }
+
+/* BREADCRUMB */
+.breadcrumb { background: var(--equip-light); padding: 12px 0; font-size: 13px; color: var(--mid-grey); }
+.breadcrumb .container { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.breadcrumb a { color: var(--ior-blue); }
+.breadcrumb span { color: var(--mid-grey); }
+
+/* HERO */
+.hero-service { background: var(--equip-dark); padding: clamp(48px, 6vw, 80px) 0; }
+.hero-service .container { display: grid; grid-template-columns: 55fr 45fr; gap: 48px; align-items: center; }
+.hero-service__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 12px; }
+.hero-service h1 { font-size: clamp(28px, 3.5vw, 44px); font-weight: 900; color: var(--ior-white); line-height: 1.05; margin-bottom: 16px; }
+.hero-service h1 .accent { color: var(--ior-sky); }
+.hero-service__sub { font-size: 16px; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 24px; max-width: 480px; }
+.hero-service__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-service__img { background: var(--equip-slate); min-height: 320px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 12px; font-family: monospace; color: rgba(255,255,255,0.3); text-align: center; padding: 24px; border: 1px dashed rgba(255,255,255,0.15); }
+
+/* LOGO CAROUSEL */
+.logo-carousel-wrap { background: var(--ior-white); border-bottom: 1px solid rgba(3,85,163,0.1); padding: 20px 0; }
+.logo-carousel-label { text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid-grey); margin-bottom: 14px; }
+.logo-carousel-track-outer { overflow: hidden; }
+.logo-carousel-track { display: flex; gap: 32px; align-items: center; animation: scroll-logos 28s linear infinite; width: max-content; }
+@keyframes scroll-logos { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.logo-placeholder { min-width: 120px; height: 44px; background: var(--off-white); border: 1px solid rgba(3,85,163,0.1); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: var(--mid-grey); padding: 0 16px; white-space: nowrap; }
+
+/* STAT BAR */
+.stat-bar { background: var(--equip-slate); padding: 28px 0; }
+.stat-bar .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.stat-item { text-align: center; padding: 12px; border-right: 1px solid rgba(255,255,255,0.1); }
+.stat-item:last-child { border-right: none; }
+.stat-item__number { font-size: clamp(24px, 2.5vw, 36px); font-weight: 900; color: var(--ior-white); line-height: 1; margin-bottom: 4px; }
+.stat-item__label { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* SECTION HEADERS */
+.section-header { text-align: center; max-width: 680px; margin: 0 auto 48px; }
+.section-eyebrow { font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--equip-slate); margin-bottom: 12px; }
+.section-title { font-size: clamp(24px, 2.5vw, 36px); font-weight: 900; color: var(--ior-charcoal); line-height: 1.1; margin-bottom: 14px; }
+.section-body { font-size: 16px; color: var(--mid-grey); line-height: 1.6; }
+
+/* FEATURES SECTION */
+.features-section { padding: var(--section-pad) 0; background: var(--off-white); }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card { background: var(--ior-white); border: 1px solid rgba(45,74,107,0.12); border-radius: var(--radius-md); padding: 28px 24px; }
+.feature-card__icon { font-size: 32px; margin-bottom: 14px; }
+.feature-card__title { font-size: 17px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 10px; }
+.feature-card__body { font-size: 14px; color: var(--mid-grey); line-height: 1.6; }
+
+/* PRODUCT SPECS TABLE */
+.specs-section { padding: var(--section-pad) 0; background: var(--ior-white); }
+.specs-table { width: 100%; border-collapse: collapse; margin-top: 32px; }
+.specs-table th { background: var(--equip-slate); color: var(--ior-white); padding: 14px 20px; text-align: left; font-size: 13px; font-weight: 700; letter-spacing: 0.04em; }
+.specs-table td { padding: 14px 20px; border-bottom: 1px solid rgba(45,74,107,0.1); font-size: 14px; color: var(--dark-grey); }
+.specs-table tr:nth-child(even) td { background: var(--equip-light); }
+.specs-table tr:last-child td { border-bottom: none; }
+
+/* HOW IT WORKS */
+.how-section { padding: var(--section-pad) 0; background: var(--equip-light); }
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.step-card { background: var(--ior-white); border: 1px solid rgba(45,74,107,0.12); border-radius: var(--radius-md); padding: 28px 24px; }
+.step-number { font-size: 48px; font-weight: 900; color: rgba(45,74,107,0.15); line-height: 1; margin-bottom: 12px; }
+.step-title { font-size: 17px; font-weight: 800; color: var(--ior-charcoal); margin-bottom: 10px; }
+.step-body { font-size: 14px; color: var(--mid-grey); line-height: 1.6; }
+
+/* HUBSPOT FORM */
+.hubspot-section { padding: var(--section-pad) 0; background: var(--off-white); }
+.hubspot-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.hubspot-left h2 { font-size: clamp(22px, 2.5vw, 32px); font-weight: 900; color: var(--ior-charcoal); margin-bottom: 14px; }
+.hubspot-left p { font-size: 15px; color: var(--mid-grey); line-height: 1.6; margin-bottom: 20px; }
+.hubspot-embed { background: var(--ior-white); border: 2px dashed rgba(3,85,163,0.2); border-radius: var(--radius-md); padding: 40px; text-align: center; font-size: 13px; font-family: monospace; color: var(--mid-grey); min-height: 400px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 8px; }
+
+/* TABBED INSIGHTS */
+.insights-section { padding: var(--section-pad) 0; background: var(--ior-white); }
+.tabs-bar { display: flex; border-bottom: 2px solid rgba(3,85,163,0.1); margin-bottom: 32px; }
+.tab-btn { padding: 12px 24px; font-size: 14px; font-weight: 700; color: var(--mid-grey); background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -2px; cursor: pointer; font-family: var(--font); }
+.tab-btn.active { color: var(--ior-blue); border-bottom-color: var(--ior-blue); }
+.tab-panel { display: none; }
+.tab-panel.active { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.insight-card { border: 1px solid rgba(3,85,163,0.1); border-radius: var(--radius-md); overflow: hidden; }
+.insight-card__img { height: 140px; background: var(--equip-light); display: flex; align-items: center; justify-content: center; font-size: 11px; font-family: monospace; color: var(--mid-grey); }
+.insight-card__body { padding: 16px; }
+.insight-card__tag { font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--equip-slate); margin-bottom: 6px; }
+.insight-card__title { font-size: 14px; font-weight: 700; color: var(--ior-charcoal); line-height: 1.4; }
+
+/* FAQ */
+.faq-section { padding: var(--section-pad) 0; background: var(--off-white); }
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(3,85,163,0.1); }
+.faq-question { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; font-size: 16px; font-weight: 700; color: var(--ior-charcoal); cursor: pointer; gap: 16px; }
+.faq-question::after { content: '+'; font-size: 22px; font-weight: 300; color: var(--equip-slate); flex-shrink: 0; transition: transform 200ms; }
+.faq-item.open .faq-question::after { transform: rotate(45deg); }
+.faq-answer { display: none; padding: 0 0 18px; font-size: 15px; color: var(--mid-grey); line-height: 1.6; }
+.faq-item.open .faq-answer { display: block; }
+
+/* SOS BANNER */
+.sos-banner { background: var(--ior-navy); padding: 40px 0; }
+.sos-banner .container { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.sos-banner__left { color: var(--ior-white); }
+.sos-banner__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ior-sky); margin-bottom: 8px; }
+.sos-banner__title { font-size: clamp(20px, 2.5vw, 28px); font-weight: 900; color: var(--ior-white); margin-bottom: 8px; }
+.sos-banner__body { font-size: 15px; color: rgba(255,255,255,0.7); max-width: 480px; }
+.sos-stats { display: flex; gap: 32px; flex-wrap: wrap; }
+.sos-stat { text-align: center; }
+.sos-stat strong { display: block; font-size: 28px; font-weight: 900; color: var(--ior-white); }
+.sos-stat span { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 600; }
+
+/* CTA BANNER */
+.cta-banner { background: var(--ior-blue); padding: 56px 0; }
+.cta-banner .container { text-align: center; }
+.cta-banner h2 { font-size: clamp(24px, 3vw, 36px); font-weight: 900; color: var(--ior-white); margin-bottom: 14px; }
+.cta-banner p { font-size: 16px; color: rgba(255,255,255,0.8); margin-bottom: 28px; max-width: 520px; margin-left: auto; margin-right: auto; }
+.cta-banner__btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+/* FOOTER */
+.footer { background: var(--ior-deep); padding: 64px 0 32px; color: rgba(255,255,255,0.7); font-size: 14px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 32px; margin-bottom: 48px; }
+.footer-brand p { margin-top: 12px; font-size: 14px; line-height: 1.6; color: rgba(255,255,255,0.55); max-width: 260px; }
+.footer-col h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ior-white); margin-bottom: 16px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: rgba(255,255,255,0.6); }
+.footer-col a:hover { color: var(--ior-white); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 12px; color: rgba(255,255,255,0.4); }
+.footer-bottom a { color: rgba(255,255,255,0.4); margin-left: 16px; }
+.footer-social { display: flex; gap: 12px; }
+.social-icon { width: 32px; height: 32px; background: rgba(255,255,255,0.08); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.5); }
+
+@media (max-width: 1024px) {
+  .hero-service .container { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr 1fr; }
+  .steps-grid { grid-template-columns: 1fr 1fr; }
+  .hubspot-wrap { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 768px) {
+  .stat-bar .container { grid-template-columns: repeat(2, 1fr); }
+  .features-grid { grid-template-columns: 1fr; }
+  .steps-grid { grid-template-columns: 1fr; }
+  .tab-panel.active { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="wf-nav">
+  <a href="00_Master_Index.html">⌂ Master Index</a>
+  <a href="05_Equipment_Infrastructure_v2.html">← Equipment Hub</a>
+  <a href="IOR_Design_System.html">◈ Design System</a>
+  <span class="wf-nav__module">MODULE 05a · Fuel Storage Tanks · V2</span>
+</nav>
+
+<div class="page-badge">
+  <h2>05a · Fuel Storage Tanks — V2</h2>
+  <div class="meta">
+    <span>Staging: /fuel-solutions/equipment-infrastructure/fuel-storage-tanks/</span>
+    <span>HubSpot form inline on this page</span>
+    <span>CTAs → /support-contact/contact-us/</span>
+    <span>Security of Supply banner at bottom</span>
+  </div>
+</div>
+
+<div class="utility-bar">
+  <div class="container">
+    <div>📢 Announcement Message Placeholder</div>
+    <div class="utility-links">
+      <a href="08c_Find_a_Location_v2.html">📍 Find a Location</a>
+      <a href="08d_Make_a_Payment_v2.html">✉️ Make a Payment</a>
+      <a href="tel:1300457467">📞 1300 457 467</a>
+    </div>
+  </div>
+</div>
+
+<nav class="primary-nav">
+  <div class="container">
+    <div class="nav-logo">[IOR LOGO]</div>
+    <ul class="nav-links">
+      <li><a href="02_Fuel_Solutions_Hub_v2.html" class="active">Fuel Solutions ▾</a></li>
+      <li><a href="07_Digital_Platforms_v2.html">Digital Platforms ▾</a></li>
+      <li><a href="#">Industries We Serve ▾</a></li>
+      <li><a href="#">About IOR ▾</a></li>
+      <li><a href="08_Support_Hub_v2.html">Support &amp; Contact ▾</a></li>
+    </ul>
+    <div class="nav-ctas">
+      <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
+      <a href="/support-contact/contact-us/" class="btn btn--primary btn--sm">Apply for an Account</a>
+    </div>
+  </div>
+</nav>
+
+<div class="quick-links-bar">
+  <div class="container">
+    <a href="05a_Fuel_Storage_Tanks.html" class="ql-item active">🛢️ Fuel Storage Tanks</a>
+    <a href="05b_Frac_Tanks.html" class="ql-item">🔧 Frac Tanks</a>
+    <a href="/support-contact/contact-us/" class="ql-item">📞 Get a Quote</a>
+  </div>
+</div>
+
+<div class="breadcrumb">
+  <div class="container">
+    <a href="01_Homepage_and_Global.html">Home</a>
+    <span>›</span>
+    <a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a>
+    <span>›</span>
+    <a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a>
+    <span>›</span>
+    <span>Fuel Storage Tanks</span>
+  </div>
+</div>
+
+<div class="ann ann--ok">
+  <strong>BLOCK 1 — HERO · Service sub-page hero · Split layout · Slate-blue visual identity</strong>
+</div>
+<section class="hero-service">
+  <div class="container">
+    <div>
+      <div class="hero-service__eyebrow">Fuel Storage Tanks · Equipment &amp; Infrastructure</div>
+      <h1>Permanent fuel storage — <span class="accent">built for your site</span></h1>
+      <p class="hero-service__sub">Above-ground and bunded fuel storage tanks from 1,000L to 200,000L+. AS 1940 compliant. Installed and maintained by IOR. Integrate with HyDip™ FMS for real-time monitoring.</p>
+      <div class="hero-service__ctas">
+        <a href="/support-contact/contact-us/" class="btn btn--primary">Get a Quote →</a>
+        <a href="#specs" class="btn btn--ghost">View Specifications</a>
+      </div>
+    </div>
+    <div class="hero-service__img">
+      IMAGE PLACEHOLDER<br>Above-ground bunded fuel storage tank<br>IOR installation — remote site<br><em>Landscape 4:3 — no watermark</em>
+    </div>
+  </div>
+</section>
+
+<div class="logo-carousel-wrap">
+  <div class="logo-carousel-label">Trusted by</div>
+  <div class="logo-carousel-track-outer">
+    <div class="logo-carousel-track">
+      <div class="logo-placeholder">BHP Mining</div>
+      <div class="logo-placeholder">Rio Tinto</div>
+      <div class="logo-placeholder">Fortescue</div>
+      <div class="logo-placeholder">Glencore</div>
+      <div class="logo-placeholder">Santos</div>
+      <div class="logo-placeholder">Woodside</div>
+      <div class="logo-placeholder">BHP Mining</div>
+      <div class="logo-placeholder">Rio Tinto</div>
+      <div class="logo-placeholder">Fortescue</div>
+      <div class="logo-placeholder">Glencore</div>
+      <div class="logo-placeholder">Santos</div>
+      <div class="logo-placeholder">Woodside</div>
+    </div>
+  </div>
+</div>
+
+<div class="stat-bar">
+  <div class="container">
+    <div class="stat-item"><div class="stat-item__number">1,000L</div><div class="stat-item__label">Minimum Size</div></div>
+    <div class="stat-item"><div class="stat-item__number">200,000L+</div><div class="stat-item__label">Maximum Capacity</div></div>
+    <div class="stat-item"><div class="stat-item__number">AS 1940</div><div class="stat-item__label">Compliant</div></div>
+    <div class="stat-item"><div class="stat-item__number">48hr</div><div class="stat-item__label">Quote Turnaround</div></div>
+  </div>
+</div>
+
+<div class="ann ann--ok">
+  <strong>BLOCK 2 — FEATURES · 6 key features of IOR fuel storage tanks</strong>
+</div>
+<section class="features-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Why IOR Fuel Storage Tanks</div>
+      <h2 class="section-title">Everything you need — nothing you don't</h2>
+      <p class="section-body">IOR fuel storage tanks are engineered for Australian conditions — from coastal humidity to outback heat. Compliant, reliable, and backed by 40+ years of experience.</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-card__icon">✅</div>
+        <h3 class="feature-card__title">AS 1940 Compliant</h3>
+        <p class="feature-card__body">All tanks designed and installed to AS 1940 standards. We manage all EPA approvals and council permits — you don't have to.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🛡️</div>
+        <h3 class="feature-card__title">Bunded Options Available</h3>
+        <p class="feature-card__body">Single-skin and bunded (double-wall) configurations available. Bunded tanks provide secondary containment for environmental compliance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">📡</div>
+        <h3 class="feature-card__title">HyDip™ FMS Integration</h3>
+        <p class="feature-card__body">Add HyDip™ FMS telemetry to any tank for real-time level monitoring, automated reorder triggers, and compliance reporting.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🔧</div>
+        <h3 class="feature-card__title">Turnkey Installation</h3>
+        <p class="feature-card__body">IOR manages the full installation — civil works, permits, commissioning, and handover. One contractor. Zero surprises.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🌡️</div>
+        <h3 class="feature-card__title">Multi-Product Compatible</h3>
+        <p class="feature-card__body">Diesel, petrol, Jet A-1, and AdBlue compatible configurations. Single or multi-compartment options for mixed-fuel operations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🔄</div>
+        <h3 class="feature-card__title">Ongoing Maintenance</h3>
+        <p class="feature-card__body">Scheduled servicing, compliance testing, and 24/7 emergency support. IOR maintains your tank so you don't have to think about it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ann ann--ok">
+  <strong>BLOCK 3 — SPECS TABLE · Tank size range and specifications</strong>
+</div>
+<section class="specs-section" id="specs">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Specifications</div>
+      <h2 class="section-title">Tank range &amp; specifications</h2>
+      <p class="section-body">Standard configurations available. Custom sizes and configurations available on request.</p>
+    </div>
+    <table class="specs-table">
+      <thead>
+        <tr>
+          <th>Tank Type</th>
+          <th>Capacity Range</th>
+          <th>Containment</th>
+          <th>Products</th>
+          <th>HyDip™ Ready</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Single-Skin Above-Ground</td>
+          <td>1,000L – 50,000L</td>
+          <td>External bund required</td>
+          <td>Diesel, Petrol, AdBlue</td>
+          <td>✓ Optional</td>
+        </tr>
+        <tr>
+          <td>Bunded (Double-Wall)</td>
+          <td>1,000L – 110,000L</td>
+          <td>Integrated secondary containment</td>
+          <td>Diesel, Petrol, Jet A-1, AdBlue</td>
+          <td>✓ Optional</td>
+        </tr>
+        <tr>
+          <td>Multi-Compartment</td>
+          <td>5,000L – 200,000L+</td>
+          <td>Bunded standard</td>
+          <td>Multi-product (up to 4 compartments)</td>
+          <td>✓ Standard</td>
+        </tr>
+        <tr>
+          <td>Custom Configuration</td>
+          <td>Any size</td>
+          <td>As specified</td>
+          <td>As specified</td>
+          <td>✓ Standard</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="ann ann--ok">
+  <strong>BLOCK 4 — HOW IT WORKS · Ghost step numbers: 48px, font-weight: 900, rgba(45,74,107,0.15) — NO blue circle</strong>
+</div>
+<section class="how-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">The IOR Process</div>
+      <h2 class="section-title">From enquiry to commissioning</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-number">01</div>
+        <h3 class="step-title">Site Assessment &amp; Quote</h3>
+        <p class="step-body">Our equipment specialists visit your site to assess requirements, soil conditions, access, and compliance needs. Detailed quote provided within 48 hours.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">02</div>
+        <h3 class="step-title">Permits &amp; Approvals</h3>
+        <p class="step-body">IOR manages all council permits, EPA approvals, and AS 1940 compliance documentation. We handle the paperwork — you focus on your operation.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">03</div>
+        <h3 class="step-title">Installation &amp; Commissioning</h3>
+        <p class="step-body">Turnkey installation including civil works, tank placement, pipework, dispensing equipment, and HyDip™ FMS integration. Fully commissioned and tested before handover.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ann ann--ok">
+  <strong>BLOCK 5 — HUBSPOT FORM · Inline embed on this sub-page (05a) — not on hub page</strong>
+</div>
+<section class="hubspot-section">
+  <div class="container">
+    <div class="hubspot-wrap">
+      <div class="hubspot-left">
+        <div class="section-eyebrow">Get a Quote</div>
+        <h2>Tell us about your fuel storage requirements</h2>
+        <p>Fill in the form and an IOR equipment specialist will contact you within 1 business day. We'll assess your site requirements and provide a detailed quote.</p>
+        <p><strong>Or call us directly:</strong> <a href="tel:1300457467" style="color: var(--ior-blue); font-weight: 700;">1300 457 467</a></p>
+      </div>
+      <div class="hubspot-embed">
+        <strong>HubSpot Form Embed</strong><br>
+        <em>Form ID: TBC — Equipment &amp; Infrastructure enquiry form<br>
+        Fields: Name, Company, Phone, Email, Site Location, Tank Size Required, Fuel Type, Timeline<br>
+        Routes to: Equipment &amp; Infrastructure sales team</em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ann ann--ok">
+  <strong>BLOCK 6 — TABBED INSIGHTS · Case Studies | Blog Posts</strong>
+</div>
+<section class="insights-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Resources</div>
+      <h2 class="section-title">Fuel storage case studies &amp; guides</h2>
+    </div>
+    <div class="tabs-bar">
+      <button class="tab-btn active" data-tab="cases">Case Studies</button>
+      <button class="tab-btn" data-tab="blog">Blog Posts</button>
+    </div>
+    <div class="tab-panel active" id="tab-cases">
+      <div class="insight-card">
+        <div class="insight-card__img">IMAGE PLACEHOLDER — Mining tank install</div>
+        <div class="insight-card__body">
+          <div class="insight-card__tag">Case Study · Mining</div>
+          <div class="insight-card__title">4 × 50,000L bunded tanks installed at remote Pilbara mine in under 3 weeks</div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card__img">IMAGE PLACEHOLDER — Agricultural storage</div>
+        <div class="insight-card__body">
+          <div class="insight-card__tag">Case Study · Agriculture</div>
+          <div class="insight-card__title">Multi-compartment tank solution for a 12,000-acre mixed farming operation</div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card__img">IMAGE PLACEHOLDER — Construction storage</div>
+        <div class="insight-card__body">
+          <div class="insight-card__tag">Case Study · Construction</div>
+          <div class="insight-card__title">Zero downtime fuel supply: modular storage for a 2-year infrastructure project</div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-panel" id="tab-blog">
+      <div class="insight-card">
+        <div class="insight-card__img">IMAGE PLACEHOLDER — Compliance guide</div>
+        <div class="insight-card__body">
+          <div class="insight-card__tag">Blog · Compliance</div>
+          <div class="insight-card__title">AS 1940 explained: What you need to know about fuel storage compliance in Australia</div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card__img">IMAGE PLACEHOLDER — Tank sizing guide</div>
+        <div class="insight-card__body">
+          <div class="insight-card__tag">Blog · Equipment</div>
+          <div class="insight-card__title">How to size a fuel storage tank: a practical guide for Australian operations</div>
+        </div>
+      </div>
+      <div class="insight-card">
+        <div class="insight-card__img">IMAGE PLACEHOLDER — HyDip integration</div>
+        <div class="insight-card__body">
+          <div class="insight-card__tag">Blog · Technology</div>
+          <div class="insight-card__title">HyDip™ FMS integration: turning passive fuel storage into intelligent infrastructure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ann ann--ok">
+  <strong>BLOCK 7 — FAQs · Fuel Storage Tanks specific</strong>
+</div>
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-eyebrow">Frequently Asked Questions</div>
+      <h2 class="section-title">Fuel Storage Tank FAQs</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">What is the minimum order size for a fuel storage tank?</div>
+        <div class="faq-answer">IOR supplies fuel storage tanks from 1,000L. The right size depends on your daily fuel consumption, delivery frequency, and site access. Our specialists can help you determine the optimal tank size for your operation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Do I need council approval to install a fuel storage tank?</div>
+        <div class="faq-answer">Requirements vary by state, territory, and local council. IOR manages all permit applications and EPA approvals as part of our turnkey installation service. We know the requirements in every jurisdiction we operate in.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">What is the difference between a single-skin and bunded tank?</div>
+        <div class="faq-answer">A single-skin tank has one wall and requires an external bund (containment area) to meet AS 1940 requirements. A bunded (double-wall) tank has an integrated secondary containment layer built in — no external bund required. Bunded tanks are preferred for environmental compliance and ease of installation.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Can IOR install a tank at a remote location?</div>
+        <div class="faq-answer">Yes. IOR has extensive experience installing fuel storage infrastructure at remote mining, agricultural, and construction sites across Australia. We manage all logistics including transport, crane hire, and civil works.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sos-banner">
+  <div class="container">
+    <div class="sos-banner__left">
+      <div class="sos-banner__eyebrow">Security of Supply</div>
+      <div class="sos-banner__title">Your fuel supply is never at risk.</div>
+      <p class="sos-banner__body">IOR's Stonepeak-backed infrastructure — including owned terminals and the Eromanga Refinery — means your fuel supply is never at risk.</p>
+    </div>
+    <div class="sos-stats">
+      <div class="sos-stat"><strong>2</strong><span>Owned Terminals</span></div>
+      <div class="sos-stat"><strong>1</strong><span>Inland Refinery</span></div>
+      <div class="sos-stat"><strong>100%</strong><span>Australian Owned</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to upgrade your fuel storage?</h2>
+    <p>Talk to an IOR equipment specialist. We'll assess your site and have a quote to you within 48 hours.</p>
+    <div class="cta-banner__btns">
+      <a href="/support-contact/contact-us/" class="btn btn--ghost btn--sm">Get a Quote Today →</a>
+      <a href="05_Equipment_Infrastructure_v2.html" class="btn btn--sm" style="background:transparent; color:#fff; border:2px solid rgba(255,255,255,0.5);">View All Equipment →</a>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG / INSIGHTS SECTION -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-section__header" data-animate="fade-up">
+      <div class="blog-section__header-left">
+        <div class="eyebrow eyebrow--dark">Fuel Storage Tanks · Case Studies &amp; Insights</div>
+        <h2 class="blog-section__title">The right tank. The right site. Fully managed.</h2>
+      </div>
+    </div>
+    <div class="blog-tabs" role="tablist">
+      <button class="blog-tab active" role="tab" aria-selected="true">Case Studies</button>
+      <button class="blog-tab" role="tab" aria-selected="false">Blog &amp; Insights</button>
+    </div>
+    <!-- Case Studies Panel -->
+    <div class="blog-panel active" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Farm Tank</span>
+          <span class="blog-card__img-note">Aboveground tank, grain farm</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Agriculture</div>
+          <div class="blog-card__title">100,000L on-farm storage: IOR's turnkey tank installation</div>
+          <div class="blog-card__excerpt">From site assessment to commissioning in 3 weeks. IOR supplied, delivered, and installed a 100,000L aboveground diesel tank for a Darling Downs grain operation.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Road Project</span>
+          <span class="blog-card__img-note">Frac tanks, NT red road</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Construction</div>
+          <div class="blog-card__title">Temporary fuel storage for a remote road project: 200,000L deployed in 5 days</div>
+          <div class="blog-card__excerpt">A remote NT road upgrade needed large-volume temporary fuel storage. IOR's frac tank solution was on-site and operational within 5 days.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Mine Storage</span>
+          <span class="blog-card__img-note">Large tanks, Pilbara, aerial</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Case Study · Mining</div>
+          <div class="blog-card__title">Permanent fuel storage infrastructure at a Pilbara mine: IOR's solution</div>
+          <div class="blog-card__excerpt">IOR designed, supplied, and installed a 500,000L permanent fuel storage facility for a Pilbara iron ore operation — from concept to commissioning.</div>
+          <a href="#" class="blog-card__read">Read Case Study →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Case Studies →</a>
+      </div>
+    </div>
+    <!-- Blog Panel -->
+    <div class="blog-panel" role="tabpanel">
+      <div class="blog-grid">
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Buyer's Guide</span>
+          <span class="blog-card__img-note">Tank specification diagram</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Infrastructure</div>
+          <div class="blog-card__title">How to specify a fuel storage tank: a buyer's guide</div>
+          <div class="blog-card__excerpt">Capacity, material, bunding, and connection requirements — everything you need to specify the right tank for your site.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Compliance</span>
+          <span class="blog-card__img-note">AS1940 checklist, tank</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Compliance</div>
+          <div class="blog-card__title">AS1940 fuel storage compliance: what site operators need to know</div>
+          <div class="blog-card__excerpt">Bunding ratios, vent requirements, and inspection schedules — the plain-English guide to AS1940 for on-site fuel storage.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      <div class="blog-card" data-animate="fade-up">
+        <div class="blog-card__img">
+          <span class="blog-card__img-label">Maintenance</span>
+          <span class="blog-card__img-note">Tank inspection, maintenance crew</span>
+        </div>
+        <div class="blog-card__body">
+          <div class="blog-card__tag">Insight · Operations</div>
+          <div class="blog-card__title">Maintaining your on-site fuel storage: a preventive maintenance guide</div>
+          <div class="blog-card__excerpt">Tank inspection, water contamination checks, and filter maintenance — the IOR guide to keeping your fuel storage in peak condition.</div>
+          <a href="#" class="blog-card__read">Read Article →</a>
+        </div>
+      </div>
+      </div>
+      <div class="blog-panel__footer">
+        <a href="#" class="blog-panel__cta">View all Articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo" style="display:inline-block;">[IOR LOGO]</div>
+        <p>Australia's most vertically integrated fuel and energy partner. Fuelling industry since 1984.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Equipment</h4>
+        <ul>
+          <li><a href="05a_Fuel_Storage_Tanks.html">Fuel Storage Tanks</a></li>
+          <li><a href="05b_Frac_Tanks.html">Frac Tanks</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Ground Fuels</h4>
+        <ul>
+          <li><a href="03a_Diesel_Network.html">IOR Diesel Network</a></li>
+          <li><a href="03b_On_Site_Refuelling.html">On-Site Refuelling</a></li>
+          <li><a href="03c_Bulk_Diesel_Delivery.html">Bulk Diesel Delivery</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About IOR</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
+          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
+          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 IOR Petroleum. All rights reserved. 100% Australian owned.</span>
+      <div><a href="#">Privacy Policy</a><a href="#">Terms &amp; Conditions</a><a href="#">Modern Slavery Statement</a></div>
+      <div class="footer-social">
+        <div class="social-icon">in</div>
+        <div class="social-icon">f</div>
+        <div class="social-icon">▶</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const target = document.getElementById('tab-' + btn.dataset.tab);
+      if (target) target.classList.add('active');
+    });
+  });
+})();
+(function() {
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-question');
+    if (q) q.addEventListener('click', function() {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
+
+<script>
+(function(){
+  document.querySelectorAll('.blog-section').forEach(function(section){
+    var tabs = section.querySelectorAll('.blog-tab');
+    var panels = section.querySelectorAll('.blog-panel');
+    tabs.forEach(function(tab, i){
+      tab.addEventListener('click', function(){
+        tabs.forEach(function(t){ t.classList.remove('active'); });
+        panels.forEach(function(p){ p.classList.remove('active'); });
+        tab.classList.add('active');
+        panels[i].classList.add('active');
+      });
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
