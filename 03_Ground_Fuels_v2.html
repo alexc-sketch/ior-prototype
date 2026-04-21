@@ -596,7 +596,6 @@
   </div>
 </footer>
 
-
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="drawer__header"><span class="drawer__logo">[IOR LOGO]</span><button class="drawer__close" id="drawerClose">✕</button></div>
@@ -609,36 +608,9 @@
   <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
 </div>
 
-
-<script>
-const navEl = document.getElementById('primary-nav');
-window.addEventListener('scroll', () => { if (!navEl) return; navEl.classList.toggle('primary-nav--scrolled', window.scrollY > 80); }, { passive: true });
-const hamburger = document.getElementById('mob-hamburger');
-const drawerEl = document.getElementById('mobileDrawer');
-const drawerOverlay = document.getElementById('drawerOverlay');
-const drawerClose = document.getElementById('drawerClose');
-let isDrawerOpen = false;
-function openDrawer() { isDrawerOpen = true; drawerEl.classList.add('drawer--open'); drawerOverlay.classList.add('drawer-overlay--open'); drawerEl.removeAttribute('aria-hidden'); drawerOverlay.removeAttribute('aria-hidden'); document.body.style.overflow = 'hidden'; }
-function closeDrawer() { isDrawerOpen = false; drawerEl.classList.remove('drawer--open'); drawerOverlay.classList.remove('drawer-overlay--open'); drawerEl.setAttribute('aria-hidden','true'); drawerOverlay.setAttribute('aria-hidden','true'); document.body.style.overflow = ''; }
-if (hamburger) hamburger.addEventListener('click', () => isDrawerOpen ? closeDrawer() : openDrawer());
-if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
-if (drawerOverlay) drawerOverlay.addEventListener('click', closeDrawer);
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && isDrawerOpen) closeDrawer(); });
-document.querySelectorAll('.drawer__link').forEach(link => {
-  link.addEventListener('click', () => {
-    const subId = link.getAttribute('data-sub'); if (!subId) return;
-    const subEl = document.getElementById(subId); if (!subEl) return;
-    const chevron = link.querySelector('.drawer__link-chevron');
-    const isOpen = subEl.classList.contains('drawer__sub--open');
-    document.querySelectorAll('.drawer__sub--open').forEach(s => s.classList.remove('drawer__sub--open'));
-    document.querySelectorAll('.drawer__link-chevron--open').forEach(c => c.classList.remove('drawer__link-chevron--open'));
-    if (!isOpen) { subEl.classList.add('drawer__sub--open'); if (chevron) chevron.classList.add('drawer__link-chevron--open'); }
-  });
-});
-</script>
+<script src="ior-global.js"></script>
 
 
-</body>
-
+<script src="ior-global.js"></script>
 </body>
 </html>
