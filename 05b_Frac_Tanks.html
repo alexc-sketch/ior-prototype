@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Frac Tanks — Temporary Liquid Storage Hire | IOR</title>
-  <meta name="description" content="IOR provides frac tank hire for temporary large-volume liquid storage on mining, construction, and civil projects. Flexible hire terms, delivered to your site.">
+  <meta name="description" content="IOR's portable frac tanks provide flexible bulk fuel storage for mining, construction, and agricultural operations. Available for hire or purchase across Australia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -267,6 +267,11 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(255,255,255,.2); transition: background .2s, color .2s; }
 .footer-social__icon:hover { background: rgba(255,255,255,.15); color: #fff; }
 
+
+  .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; }
+  .hamburger span { display: block; width: 100%; height: 2px; background: #fff; transition: all 0.3s; }
+  @media (max-width: 767px) { .hamburger { display: flex; } .nav-links, .nav-ctas .btn { display: none; } }
+
 </style>
 </head>
 <body>
@@ -312,6 +317,10 @@ a { color: inherit; text-decoration: none; }
     <div class="nav-ctas">
       <a href="https://customer.ior.com.au" class="btn btn--outline btn--sm">Customer Login</a>
       <a href="/support-contact/contact-us/" class="btn btn--primary btn--sm">Apply for an Account</a>
+    
+      <button id="mob-hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>

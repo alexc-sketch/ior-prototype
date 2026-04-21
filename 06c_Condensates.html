@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Condensates — Natural Gas Liquids Supply | IOR</title>
-  <meta name="description" content="IOR trades and supplies condensates and natural gas liquids (NGLs) from its Eromanga operations. Contact IOR's supply and trading team for wholesale enquiries.">
+  <meta name="description" content="IOR supplies condensate and specialty petroleum products from the Eromanga Refinery to industrial customers across Australia. Contact our trading team for supply arrangements.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 <style>
@@ -249,6 +249,11 @@
   border: 1px solid rgba(255,255,255,.2); transition: background .2s, color .2s; }
 .footer-social__icon:hover { background: rgba(255,255,255,.15); color: #fff; }
 
+
+  .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; }
+  .hamburger span { display: block; width: 100%; height: 2px; background: #fff; transition: all 0.3s; }
+  @media (max-width: 767px) { .hamburger { display: flex; } .nav-links, .nav-actions .btn, .nav-actions a.btn--login { display: none; } }
+
 </style>
 </head>
 <body>
@@ -295,6 +300,8 @@
     <div class="nav-actions">
       <a href="#" class="btn btn--login">Customer Login</a>
       <a href="/support-contact/contact-us/" class="btn btn--primary btn--sm">Contact Trading Team</a>
+    
+      <button id="mob-hamburger" class="hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </div>
