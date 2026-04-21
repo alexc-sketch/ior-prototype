@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>01 Homepage &amp; Global — IOR Wireframe</title>
+  <title>Home | IOR</title>
+  <meta name="description" content="IOR is Australia's sovereign commercial fuel infrastructure company. Bulk diesel, aviation fuel, on-site refuelling, and digital fuel management — from refinery to pump.">
   <style>
 
     /* ============================================================
@@ -90,7 +91,7 @@
       display: inline-flex; align-items: center; gap: 8px;
       font-family: var(--font-primary); font-size: var(--text-body-m);
       font-weight: var(--fw-bold); padding: 18px 28px;
-      border-radius: var(--radius); /* LOCKED 0 */
+      border-radius: 0; /* LOCKED 0 */
       cursor: pointer; text-align: center; transition: all var(--transition-base);
       text-decoration: none; white-space: nowrap; border: 2px solid transparent;
     }
@@ -489,11 +490,7 @@
     .sol-card__img {
       width: 100%; aspect-ratio: 4/3; background: var(--ior-light-blue-bg);
       overflow: hidden;
-      /* DESIGN RULE NOTE: Figma shows border-radius: 20px on these images.
-         Per Non-Negotiable Rule 1, border-radius: 0 is enforced here. */
-    }
-    .sol-card__img .img-ph {
-      width: 100%; height: 100%; background: repeating-linear-gradient(
+      /* DESIGN RULE NOTE: Figma shows border-radius: 0; height: 100%; background: repeating-linear-gradient(
         -45deg, var(--ior-light-blue-bg), var(--ior-light-blue-bg) 8px,
         rgba(3,85,163,.08) 8px, rgba(3,85,163,.08) 16px
       );
@@ -545,9 +542,7 @@
     @media (min-width: 600px)  { .ind-grid { grid-template-columns: repeat(2,1fr); } }
     @media (min-width: 1200px) { .ind-grid { grid-template-columns: repeat(4,1fr); } }
     .ind-card {
-      /* DESIGN RULE NOTE: Figma shows border-radius: 10px here.
-         Per Non-Negotiable Rule 1, border-radius: 0. Annotation below. */
-      background: var(--ior-light-blue-bg); display: flex; flex-direction: column;
+      /* DESIGN RULE NOTE: Figma shows border-radius: 0; display: flex; flex-direction: column;
       transition: box-shadow var(--transition-base), transform var(--transition-base);
     }
     .ind-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.16); transform: translateY(-3px); }
@@ -576,10 +571,7 @@
     @media (min-width: 768px)  { .dp-grid { grid-template-columns: repeat(2,1fr); } }
     @media (min-width: 1200px) { .dp-grid { grid-template-columns: repeat(3,1fr); } }
     .dp-card {
-      /* DESIGN RULE NOTE: Figma shows border-radius: 20px.
-         Per Non-Negotiable Rule 1, border-radius: 0. Sharp geometry. */
-      background: linear-gradient(180deg,rgba(0,0,0,0) 0%,rgba(0,0,0,.85) 100%),
-                  var(--ior-navy);
+      /* DESIGN RULE NOTE: Figma shows border-radius: 0;
       padding: 28px; display: flex; flex-direction: column; justify-content: flex-end;
       gap: 20px; min-height: clamp(380px,45vw,560px); position: relative; overflow: hidden;
     }
@@ -592,9 +584,7 @@
     }
     .dp-card > *:not(.dp-card__bg) { position: relative; z-index: 1; }
     .dp-card__tag {
-      /* DESIGN RULE NOTE: Figma shows border-radius: 100px on this pill.
-         Per Non-Negotiable Rule 1, border-radius: 0. */
-      display: inline-flex; align-items: center; padding: 8px 14px;
+      /* DESIGN RULE NOTE: Figma shows border-radius: 0; align-items: center; padding: 8px 14px;
       border: 1px solid rgba(255,255,255,.6); color: #fff;
       font-size: var(--text-body-s); font-weight: var(--fw-bold); width: fit-content;
     }
@@ -661,10 +651,7 @@
     .news-card { display: flex; flex-direction: column; gap: 20px; }
     .news-card__img {
       width: 100%; aspect-ratio: 16/9; background: var(--ior-light-blue-bg);
-      /* DESIGN RULE NOTE: Figma shows border-radius: 20px.
-         Per Non-Negotiable Rule 1, border-radius: 0. */
-    }
-    .news-card__img .img-ph { width: 100%; height: 100%; background: repeating-linear-gradient(
+      /* DESIGN RULE NOTE: Figma shows border-radius: 0; height: 100%; background: repeating-linear-gradient(
       -45deg, var(--ior-light-blue-bg), var(--ior-light-blue-bg) 8px,
       rgba(3,85,163,.06) 8px, rgba(3,85,163,.06) 16px
     ); display: flex; align-items: center; justify-content: center;
@@ -786,7 +773,7 @@
     .input {
       padding: 12px 16px; font-size: var(--text-body-m); font-family: var(--font-primary);
       border: 2px solid rgba(3,85,163,.25); color: var(--ior-charcoal);
-      border-radius: var(--radius); /* LOCKED 0 */
+      border-radius: 0; /* LOCKED 0 */
       background: #fff; transition: border-color var(--transition-fast); outline: none; width: 100%;
     }
     .input:focus, .input--focus { border-color: var(--ior-blue); }
@@ -1815,51 +1802,56 @@
   <span class="ann__sep">·</span>
   <span class="ann__int">INTENT: Persistent footer present on every page. Provides secondary navigation and SEO link structure. Quick Actions column deflects high-friction tasks (Apply, Pay) away from phone support. Find a Site By State enables direct regional routing without opening the full Find a Location map.</span>
 </div>
-<footer class="site-footer" aria-label="Site footer">
-  <div class="footer-nav-grid">
-    <!-- Contact -->
-    <div>
-      <div class="footer-col__title">Contact</div>
+<footer class="footer" aria-label="Site footer">
+  <div class="footer__inner">
+    <div class="footer-col">
+      <h4 class="footer-col__title">Contact</h4>
       <div class="footer-col__links">
-        <span class="footer-col__link" style="line-height:1.5;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill, Qld 4170</span>
+        <span class="footer-col__link" style="line-height:1.6;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill QLD 4170</span>
         <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
         <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
         <a href="08b_Regional_Contacts_v2.html" class="footer-col__link">Regional Contacts</a>
       </div>
     </div>
-    <!-- Fuel Solutions -->
-    <div>
-      <div class="footer-col__title">Fuel Solutions</div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Fuel Solutions</h4>
       <div class="footer-col__links">
-        <a href="03_Ground_Fuels_v2.html"              class="footer-col__link">Ground Fuels</a>
-        <a href="04_Aviation_v2.html"                  class="footer-col__link">Aviation</a>
-        <a href="05_Equipment_Infrastructure_v2.html"  class="footer-col__link">Equipment &amp; Infrastructure</a>
-        <a href="06_Supply_Trading_v2.html"            class="footer-col__link">Supply &amp; Trading</a>
+        <a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure_v2.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a>
       </div>
     </div>
-    <!-- Digital Platforms -->
-    <div>
-      <div class="footer-col__title">Digital Platforms</div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Digital Platforms</h4>
       <div class="footer-col__links">
-        <a href="07a_HyDip_FMS_v2.html"           class="footer-col__link">HyDip™ FMS</a>
-        <a href="07b_FuelCharge_v2.html"      class="footer-col__link">Fuelcharge App</a>
+        <a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a>
+        <a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a>
         <a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a>
       </div>
     </div>
-    <!-- Corporate -->
-    <div>
-      <div class="footer-col__title">Corporate</div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Industries</h4>
       <div class="footer-col__links">
-        <a href="08_Support_Hub_v2.html"          class="footer-col__link">About IOR</a>
-        <a href="08_Support_Hub_v2.html"      class="footer-col__link">Careers</a>
-        <a href="08_Support_Hub_v2.html"   class="footer-col__link">Case Studies</a>
-        <a href="08_Support_Hub_v2.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
-        <a href="#"         class="footer-col__link">News &amp; Updates</a>
+        <a href="08a_Transport_Logistics.html" class="footer-col__link">Transport &amp; Logistics</a>
+        <a href="08d_Mining_Resources.html" class="footer-col__link">Mining &amp; Resources</a>
+        <a href="08c_Agriculture_Harvest.html" class="footer-col__link">Agriculture &amp; Harvest</a>
+        <a href="08f_Commercial_Aviation.html" class="footer-col__link">Commercial Aviation</a>
+        <a href="08_Industries_v2.html" class="footer-col__link">All Industries →</a>
       </div>
     </div>
-    <!-- Quick Actions -->
-    <div>
-      <div class="footer-col__title">Quick Actions</div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Corporate</h4>
+      <div class="footer-col__links">
+        <a href="09_About_IOR_v2.html" class="footer-col__link">About IOR</a>
+        <a href="10_Careers_v2.html" class="footer-col__link">Careers</a>
+        <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11_Blog_List.html" class="footer-col__link">News &amp; Insights</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Quick Actions</h4>
       <div class="footer-col__links">
         <a href="#" class="footer-col__link">Apply for an Account</a>
         <a href="08d_Make_a_Payment_v2.html" class="footer-col__link">Make a Payment</a>
@@ -1867,9 +1859,8 @@
         <a href="08_Support_Hub_v2.html" class="footer-col__link">Help Centre &amp; FAQs</a>
       </div>
     </div>
-    <!-- Find a Site By State -->
-    <div>
-      <div class="footer-col__title">Find a Site By State</div>
+    <div class="footer-col footer-col--state">
+      <h4 class="footer-col__title">Find a Site By State</h4>
       <div class="footer-state-pills">
         <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">QLD</a>
         <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NSW</a>
@@ -1881,17 +1872,12 @@
     </div>
   </div>
   <div class="footer-legal">
-    <p class="footer-legal__text">
-      Copyright &copy; 2026 IOR. All rights reserved.&nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-      <a href="#" style="color:rgba(255,255,255,.6);text-decoration:underline;">Terms &amp; Conditions</a>&nbsp;&nbsp;|&nbsp;&nbsp;
-      Site by 3PM
-    </p>
+    <p class="footer-legal__text">&copy; 2026 IOR. All rights reserved. ABN 12 345 678 901. IOR is a registered trademark of Inland Oil Refineries Pty Ltd.</p>
     <div class="footer-social" aria-label="Social media links">
       <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
       <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
-      <a href="#" class="footer-social__icon" aria-label="Instagram">📷</a>
-      <a href="#" class="footer-social__icon" aria-label="YouTube">▶</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram">ig</a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube">yt</a>
     </div>
   </div>
 </footer>

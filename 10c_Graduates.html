@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Graduates & Interns · IOR Careers · IOR Energy</title>
+  <title>Graduate Program — Launch Your Career with IOR | IOR</title>
+  <meta name="description" content="IOR's graduate program offers structured rotations across operations, engineering, and commercial functions. Join a company that's fuelling Australia's future.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="ior-global.css">
@@ -15,7 +16,7 @@
     .sticky-split__content { padding: 64px 48px; }
     .program-block { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--border-light); }
     .program-block:last-child { border-bottom: none; }
-    .program-block__tag { display: inline-block; background: var(--ior-sky); color: var(--ior-navy); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
+    .program-block__tag { display: inline-block; background: var(--ior-sky); color: var(--ior-navy); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 0; margin-bottom: 12px; }
     .program-block__title { font-size: 1.3rem; font-weight: 700; color: var(--ior-navy); margin-bottom: 12px; }
     .program-block__copy { font-size: 0.95rem; color: var(--mid-grey); line-height: 1.7; margin-bottom: 16px; }
     .program-block__bullets { list-style: none; padding: 0; }
@@ -64,16 +65,16 @@
       <a href="08a_Contact_Us_v2.html" class="btn btn--outline">Customer Login</a>
       <a href="08a_Contact_Us_v2.html" class="btn btn--primary">Apply for an Account</a>
     </div>
-    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
+    <button id="mob-hamburger" class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer">
       <span></span><span></span><span></span>
     </button>
   </div>
 </nav>
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
-<nav class="drawer" id="drawer" aria-label="Mobile navigation" aria-hidden="true">
+<nav class="drawer" id="mobileDrawer" aria-label="Mobile navigation" aria-hidden="true">
   <div class="drawer__header">
     <div class="nav-logo">[IOR LOGO]</div>
-    <button class="drawer__close" aria-label="Close menu">✕</button>
+    <button id="drawerClose" class="drawer__close" aria-label="Close menu">✕</button>
   </div>
   <ul class="drawer__nav">
     <li><a href="02_Fuel_Solutions_Hub_v2.html">Fuel Solutions</a></li>
@@ -210,68 +211,81 @@
   </div>
 </section>
 <footer class="footer" aria-label="Site footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="footer-brand__logo">[IOR LOGO]</div>
-        <p>Australia's sovereign commercial fuel infrastructure company. From refinery to pump — we own the supply chain.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Fuel Solutions</h4>
-        <ul>
-          <li><a href="03_Ground_Fuels_v2.html">Ground Fuels</a></li>
-          <li><a href="04_Aviation_v2.html">Aviation</a></li>
-          <li><a href="05_Equipment_Infrastructure_v2.html">Equipment &amp; Infrastructure</a></li>
-          <li><a href="06_Supply_Trading_v2.html">Supply &amp; Trading</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Digital Platforms</h4>
-        <ul>
-          <li><a href="07a_HyDip_FMS_v2.html">HyDip™ FMS</a></li>
-          <li><a href="07b_FuelCharge_v2.html">Fuelcharge App</a></li>
-          <li><a href="07c_Customer_Portal_v2.html">Customer Portal</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
-        <ul>
-          <li><a href="08a_Transport_Logistics.html">Transport &amp; Logistics</a></li>
-          <li><a href="08d_Mining_Resources.html">Mining &amp; Resources</a></li>
-          <li><a href="08c_Agriculture_Harvest.html">Agriculture &amp; Harvest</a></li>
-          <li><a href="08f_Commercial_Aviation.html">Commercial Aviation</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Corporate</h4>
-        <ul>
-          <li><a href="09_About_IOR_v2.html">About IOR</a></li>
-          <li><a href="09a_Our_Leadership.html">Leadership</a></li>
-          <li><a href="09b_Community.html">Community &amp; Giving Back</a></li>
-          <li><a href="09c_Sustainability.html">Sustainability, HSE &amp; ESG</a></li>
-          <li><a href="10_Careers_v2.html">Careers</a></li>
-          <li><a href="11_Blog_List.html">News &amp; Insights</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Quick Actions</h4>
-        <ul>
-          <li><a href="08a_Contact_Us_v2.html">Apply for an Account</a></li>
-          <li><a href="08d_Make_a_Payment_v2.html">Make a Payment</a></li>
-          <li><a href="08a_Contact_Us_v2.html">Contact Us</a></li>
-          <li><a href="08c_Find_a_Location_v2.html">Find a Location</a></li>
-          <li><a href="08e_Policy_Downloads_v2.html">Policy Downloads</a></li>
-        </ul>
+  <div class="footer__inner">
+    <div class="footer-col">
+      <h4 class="footer-col__title">Contact</h4>
+      <div class="footer-col__links">
+        <span class="footer-col__link" style="line-height:1.6;">IOR Head Office<br>99 Southgate Ave,<br>Cannon Hill QLD 4170</span>
+        <a href="tel:1300457467" class="footer-col__link">Call: 1300 457 467</a>
+        <a href="mailto:enquiries@ior.com.au" class="footer-col__link">Email: enquiries@ior.com.au</a>
+        <a href="08b_Regional_Contacts_v2.html" class="footer-col__link">Regional Contacts</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2026 IOR Petroleum Pty Ltd. All rights reserved. ABN 12 345 678 901</span>
-      <div>
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms &amp; Conditions</a>
-        <a href="#">Modern Slavery Statement</a>
-        <a href="#">HSE Policy</a>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Fuel Solutions</h4>
+      <div class="footer-col__links">
+        <a href="03_Ground_Fuels_v2.html" class="footer-col__link">Ground Fuels</a>
+        <a href="04_Aviation_v2.html" class="footer-col__link">Aviation</a>
+        <a href="05_Equipment_Infrastructure_v2.html" class="footer-col__link">Equipment &amp; Infrastructure</a>
+        <a href="06_Supply_Trading_v2.html" class="footer-col__link">Supply &amp; Trading</a>
       </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Digital Platforms</h4>
+      <div class="footer-col__links">
+        <a href="07a_HyDip_FMS_v2.html" class="footer-col__link">HyDip™ FMS</a>
+        <a href="07b_FuelCharge_v2.html" class="footer-col__link">Fuelcharge App</a>
+        <a href="07c_Customer_Portal_v2.html" class="footer-col__link">Customer Portal</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Industries</h4>
+      <div class="footer-col__links">
+        <a href="08a_Transport_Logistics.html" class="footer-col__link">Transport &amp; Logistics</a>
+        <a href="08d_Mining_Resources.html" class="footer-col__link">Mining &amp; Resources</a>
+        <a href="08c_Agriculture_Harvest.html" class="footer-col__link">Agriculture &amp; Harvest</a>
+        <a href="08f_Commercial_Aviation.html" class="footer-col__link">Commercial Aviation</a>
+        <a href="08_Industries_v2.html" class="footer-col__link">All Industries →</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Corporate</h4>
+      <div class="footer-col__links">
+        <a href="09_About_IOR_v2.html" class="footer-col__link">About IOR</a>
+        <a href="10_Careers_v2.html" class="footer-col__link">Careers</a>
+        <a href="09d_Case_Studies.html" class="footer-col__link">Case Studies</a>
+        <a href="09c_Sustainability.html" class="footer-col__link">Sustainability, HSE &amp; ESG</a>
+        <a href="11_Blog_List.html" class="footer-col__link">News &amp; Insights</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4 class="footer-col__title">Quick Actions</h4>
+      <div class="footer-col__links">
+        <a href="#" class="footer-col__link">Apply for an Account</a>
+        <a href="08d_Make_a_Payment_v2.html" class="footer-col__link">Make a Payment</a>
+        <a href="08a_Contact_Us_v2.html" class="footer-col__link">Contact Us</a>
+        <a href="08_Support_Hub_v2.html" class="footer-col__link">Help Centre &amp; FAQs</a>
+      </div>
+    </div>
+    <div class="footer-col footer-col--state">
+      <h4 class="footer-col__title">Find a Site By State</h4>
+      <div class="footer-state-pills">
+        <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">QLD</a>
+        <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NSW</a>
+        <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">VIC</a>
+        <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">SA</a>
+        <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">WA</a>
+        <a href="08c_Find_a_Location_v2.html" class="footer-state-pill">NT</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p class="footer-legal__text">&copy; 2026 IOR. All rights reserved. ABN 12 345 678 901. IOR is a registered trademark of Inland Oil Refineries Pty Ltd.</p>
+    <div class="footer-social" aria-label="Social media links">
+      <a href="#" class="footer-social__icon" aria-label="LinkedIn">in</a>
+      <a href="#" class="footer-social__icon" aria-label="Facebook">f</a>
+      <a href="#" class="footer-social__icon" aria-label="Instagram">ig</a>
+      <a href="#" class="footer-social__icon" aria-label="YouTube">yt</a>
     </div>
   </div>
 </footer>
