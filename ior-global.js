@@ -158,3 +158,16 @@
   }
 
 })();
+
+// ── Related Content Tabs ──────────────────────────────────────────────────
+document.querySelectorAll('.related-content__tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const parent = tab.closest('.related-content');
+    const targetId = tab.getAttribute('data-tab');
+    parent.querySelectorAll('.related-content__tab').forEach(t => t.classList.remove('active'));
+    parent.querySelectorAll('.related-tab-panel').forEach(p => { p.classList.remove('active'); p.style.display = 'none'; });
+    tab.classList.add('active');
+    const panel = document.getElementById(targetId);
+    if (panel) { panel.classList.add('active'); panel.style.display = 'block'; }
+  });
+});

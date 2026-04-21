@@ -598,107 +598,89 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- BLOG / INSIGHTS SECTION -->
-<section class="blog-section">
+<!-- RELATED CONTENT LOOP GRID -->
+<section class="related-content" aria-label="Case studies and blog posts">
   <div class="container">
-    <div class="blog-section__header" data-animate="fade-up">
-      <div class="blog-section__header-left">
-        <div class="eyebrow eyebrow--dark">Industries We Serve · Case Studies &amp; Insights</div>
-        <h2 class="blog-section__title">Every sector. Every scale. One partner.</h2>
+    <div class="section-heading fade-up">
+      <div class="eyebrow">Industry Insights</div>
+      <h2>Case studies &amp; insights for <span class="accent">IOR industry customers.</span></h2>
+    </div>
+
+    <div class="related-content__tabs">
+      <button class="related-content__tab active" data-tab="rc-industries-cases">Case Studies</button>
+      <button class="related-content__tab" data-tab="rc-industries-blog">Blog Posts</button>
+    </div>
+
+    <div id="rc-industries-cases" class="related-tab-panel active">
+      <div class="related-grid">
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Road train, highway]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--case">Case Study</div>
+            <div class="related-card__title">How Linfox eliminated fuel admin across 2,000+ vehicles</div>
+            <div class="related-card__excerpt">One RFID tag. One monthly invoice. Zero receipts. How Australia's largest logistics company simplified fleet fuelling with IOR.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
+          </div>
+        </div>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Mine site, bulk delivery]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--case">Case Study</div>
+            <div class="related-card__title">Zero unplanned shutdowns: bulk diesel at a remote Qld mine</div>
+            <div class="related-card__excerpt">Scheduled deliveries, automated reorder triggers, and a dedicated IOR account manager — how a mid-tier miner achieved fuel certainty.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
+          </div>
+        </div>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Combine harvester]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--case">Case Study</div>
+            <div class="related-card__title">Harvest-ready in 72 hours: how a Darling Downs grower never ran dry</div>
+            <div class="related-card__excerpt">IOR's seasonal delivery guarantee and on-farm storage solution kept a 4,000-hectare grain operation fuelled through a record harvest.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
+          </div>
+        </div>
+      </div>
+      <div class="related-content__view-all">
+        <a href="11_Blog_List.html" class="btn btn--outline-dark">View All Case Studies &#8594;</a>
       </div>
     </div>
-    <div class="blog-tabs" role="tablist">
-      <button class="blog-tab active" role="tab" aria-selected="true">Case Studies</button>
-      <button class="blog-tab" role="tab" aria-selected="false">Blog &amp; Insights</button>
-    </div>
-    <!-- Case Studies Panel -->
-    <div class="blog-panel active" role="tabpanel">
-      <div class="blog-grid">
-      <div class="blog-card" data-animate="fade-up">
-        <div class="blog-card__img">
-          <span class="blog-card__img-label">Linfox</span>
-          <span class="blog-card__img-note">Linfox fleet, IOR stop, highway</span>
+
+    <div id="rc-industries-blog" class="related-tab-panel" style="display:none;">
+      <div class="related-grid">
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — RFID, fleet]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
+            <div class="related-card__title">Why RFID fuelling is replacing fuel cards on Australian highways</div>
+            <div class="related-card__excerpt">Fuel cards were built for service stations. RFID was built for fleets. Here's why the switch is accelerating across regional Australia.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
+          </div>
         </div>
-        <div class="blog-card__body">
-          <div class="blog-card__tag">Case Study · Transport</div>
-          <div class="blog-card__title">Linfox: eliminating fuel admin across Australia's largest logistics fleet</div>
-          <div class="blog-card__excerpt">2,000+ vehicles. One RFID tag. One monthly invoice. How IOR became the fuel partner of choice for Australia's largest logistics company.</div>
-          <a href="#" class="blog-card__read">Read Case Study →</a>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Supply chain]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
+            <div class="related-card__title">What sovereign fuel supply actually means — and why it matters in 2025</div>
+            <div class="related-card__excerpt">When global supply chains tighten, who owns the infrastructure wins. IOR's vertically integrated model explained.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
+          </div>
         </div>
-      </div>
-      <div class="blog-card" data-animate="fade-up">
-        <div class="blog-card__img">
-          <span class="blog-card__img-label">Mining Sites</span>
-          <span class="blog-card__img-note">Mine sites, tanker, aerial</span>
-        </div>
-        <div class="blog-card__body">
-          <div class="blog-card__tag">Case Study · Mining</div>
-          <div class="blog-card__title">Tier 1 miner: fuel certainty across 6 remote sites in 3 states</div>
-          <div class="blog-card__excerpt">Bulk delivery, on-site infrastructure, and HyDip™ FMS monitoring — how IOR became the single fuel partner for a major mining operation.</div>
-          <a href="#" class="blog-card__read">Read Case Study →</a>
-        </div>
-      </div>
-      <div class="blog-card" data-animate="fade-up">
-        <div class="blog-card__img">
-          <span class="blog-card__img-label">AACo</span>
-          <span class="blog-card__img-note">Cattle station, helicopter, IOR</span>
-        </div>
-        <div class="blog-card__body">
-          <div class="blog-card__tag">Case Study · Agriculture</div>
-          <div class="blog-card__title">AACo: aviation and ground fuels for Australia's largest cattle company</div>
-          <div class="blog-card__excerpt">Helicopter mustering. Cattle truck fleets. Remote station supply. IOR's dual ground and aviation fuel solution for AACo's national operations.</div>
-          <a href="#" class="blog-card__read">Read Case Study →</a>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Regional community]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
+            <div class="related-card__title">How IOR supports the industries that keep regional Australia running</div>
+            <div class="related-card__excerpt">Transport, mining, agriculture, aviation — the industries IOR serves and the role fuel supply plays in keeping regional communities going.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
+          </div>
         </div>
       </div>
-      </div>
-      <div class="blog-panel__footer">
-        <a href="#" class="blog-panel__cta">View all Case Studies →</a>
+      <div class="related-content__view-all">
+        <a href="11_Blog_List.html" class="btn btn--outline-dark">View All Blog Posts &#8594;</a>
       </div>
     </div>
-    <!-- Blog Panel -->
-    <div class="blog-panel" role="tabpanel">
-      <div class="blog-grid">
-      <div class="blog-card" data-animate="fade-up">
-        <div class="blog-card__img">
-          <span class="blog-card__img-label">Industry Solutions</span>
-          <span class="blog-card__img-note">Industry collage, IOR</span>
-        </div>
-        <div class="blog-card__body">
-          <div class="blog-card__tag">Insight · Industry</div>
-          <div class="blog-card__title">Why industry-specific fuel supply matters: the IOR approach</div>
-          <div class="blog-card__excerpt">Transport operators, miners, farmers, and aviators have fundamentally different fuel needs. IOR's industry-specific solutions explained.</div>
-          <a href="#" class="blog-card__read">Read Article →</a>
-        </div>
-      </div>
-      <div class="blog-card" data-animate="fade-up">
-        <div class="blog-card__img">
-          <span class="blog-card__img-label">Sovereign Supply</span>
-          <span class="blog-card__img-note">Eromanga Refinery, supply chain</span>
-        </div>
-        <div class="blog-card__body">
-          <div class="blog-card__tag">Insight · Supply Chain</div>
-          <div class="blog-card__title">Sovereign fuel supply for Australian industry: why it matters in 2025</div>
-          <div class="blog-card__excerpt">Import-dependent fuel supply is a strategic vulnerability for Australian industry. IOR's domestic supply chain is the alternative.</div>
-          <a href="#" class="blog-card__read">Read Article →</a>
-        </div>
-      </div>
-      <div class="blog-card" data-animate="fade-up">
-        <div class="blog-card__img">
-          <span class="blog-card__img-label">Tech Stack</span>
-          <span class="blog-card__img-note">Digital platforms, industries</span>
-        </div>
-        <div class="blog-card__body">
-          <div class="blog-card__tag">Insight · Technology</div>
-          <div class="blog-card__title">Digital fuel management across industries: the IOR technology stack</div>
-          <div class="blog-card__excerpt">HyDip™ FMS, FuelCharge, and the Customer Portal — how IOR's digital platforms serve every industry from transport to aviation.</div>
-          <a href="#" class="blog-card__read">Read Article →</a>
-        </div>
-      </div>
-      </div>
-      <div class="blog-panel__footer">
-        <a href="#" class="blog-panel__cta">View all Articles →</a>
-      </div>
-    </div>
+
   </div>
 </section>
 <!-- FOOTER -->

@@ -1727,43 +1727,91 @@
     <span class="ann__sep">·</span>
     <span class="ann__int">INTENT: Social proof + SEO content hub. Case Studies routed to 09_About.html. Articles routed to 11_News_Updates.html. Article titles from approved Figma brief used as-is.</span>
   </div>
-  <section class="section-pad" aria-label="Latest from IOR" style="background:#fff;">
-    <div class="inner">
-      <div class="news-header fade-up">
-        <div class="news-header__left">
-          <h2 class="news-header__title">Latest from IOR</h2>
-          <p class="news-header__body" style="color:var(--ior-mid-grey);font-style:italic;">[COPY REQUIRED — see design question annotation above. No Lorem Ipsum.]</p>
+  <!-- RELATED CONTENT LOOP GRID -->
+<section class="related-content" aria-label="Case studies and blog posts">
+  <div class="container">
+    <div class="section-heading fade-up">
+      <div class="eyebrow">Latest from IOR</div>
+      <h2>Case studies &amp; insights for <span class="accent">regional Australia.</span></h2>
+    </div>
+
+    <div class="related-content__tabs">
+      <button class="related-content__tab active" data-tab="rc-home-cases">Case Studies</button>
+      <button class="related-content__tab" data-tab="rc-home-blog">Blog Posts</button>
+    </div>
+
+    <div id="rc-home-cases" class="related-tab-panel active">
+      <div class="related-grid">
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — IOR White Sands diesel stop]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--case">Case Study</div>
+            <div class="related-card__title">IOR White Sands NOW OPEN!</div>
+            <div class="related-card__excerpt">A new 24/7 unmanned diesel stop serving the White Sands corridor — fuelling transport, agriculture, and mining fleets around the clock.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
+          </div>
         </div>
-        <div class="news-header__ctas">
-          <a href="08_Support_Hub_v2.html" class="btn btn--outline">All Case Studies <span class="btn__arrow" aria-hidden="true"></span></a>
-          <a href="08_Support_Hub_v2.html" class="btn btn--outline">All Articles <span class="btn__arrow" aria-hidden="true"></span></a>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Camden Aviation apron]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--case">Case Study</div>
+            <div class="related-card__title">IOR Aviation Lands in Camden!</div>
+            <div class="related-card__excerpt">IOR expands its aviation network to Camden Airport, bringing reliable Avgas and Jet A-1 supply to NSW general aviation operators.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
+          </div>
+        </div>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Surat Basin Energy Awards]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--case">Case Study</div>
+            <div class="related-card__title">Stewart Morland Takes Top Prize at Surat Basin Energy Awards</div>
+            <div class="related-card__excerpt">IOR's regional operations manager recognised for outstanding contribution to energy supply in Queensland's resource sector.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
+          </div>
         </div>
       </div>
-      <div class="news-grid">
-        <article class="news-card fade-up">
-          <div class="news-card__img"><div class="img-ph">[IMAGE — IOR White Sands]</div></div>
-          <div>
-            <h3 class="news-card__title">IOR White Sands NOW OPEN!</h3>
-            <a href="08_Support_Hub_v2.html" class="news-card__read">Read Article</a>
-          </div>
-        </article>
-        <article class="news-card fade-up fade-up--d1">
-          <div class="news-card__img"><div class="img-ph">[IMAGE — Camden Aviation]</div></div>
-          <div>
-            <h3 class="news-card__title">IOR Aviation Lands in Camden!</h3>
-            <a href="08_Support_Hub_v2.html" class="news-card__read">Read Article</a>
-          </div>
-        </article>
-        <article class="news-card fade-up fade-up--d2">
-          <div class="news-card__img"><div class="img-ph">[IMAGE — Surat Basin Awards]</div></div>
-          <div>
-            <h3 class="news-card__title">Stewart Morland Takes Top Prize at Surat Basin Energy Awards</h3>
-            <a href="08_Support_Hub_v2.html" class="news-card__read">Read Article</a>
-          </div>
-        </article>
+      <div class="related-content__view-all">
+        <a href="11_Blog_List.html" class="btn btn--outline-dark">View All Case Studies &#8594;</a>
       </div>
     </div>
-  </section>
+
+    <div id="rc-home-blog" class="related-tab-panel" style="display:none;">
+      <div class="related-grid">
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — RFID tag on truck]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
+            <div class="related-card__title">Why RFID fuelling is replacing fuel cards on Australian highways</div>
+            <div class="related-card__excerpt">Fuel cards were built for service stations. RFID was built for fleets. Here's why the switch is accelerating across regional Australia.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
+          </div>
+        </div>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Aerial terminal view]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
+            <div class="related-card__title">What sovereign fuel supply actually means — and why it matters in 2025</div>
+            <div class="related-card__excerpt">When global supply chains tighten, who owns the infrastructure wins. IOR's vertically integrated model explained.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
+          </div>
+        </div>
+        <div class="related-card fade-up">
+          <div class="related-card__img">[IMAGE — Regional road, outback]</div>
+          <div class="related-card__body">
+            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
+            <div class="related-card__title">5 ways IOR's digital tools cut fuel admin for regional businesses</div>
+            <div class="related-card__excerpt">From automated reorder triggers to real-time tank monitoring — how IOR customers are reclaiming hours every week.</div>
+            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
+          </div>
+        </div>
+      </div>
+      <div class="related-content__view-all">
+        <a href="11_Blog_List.html" class="btn btn--outline-dark">View All Blog Posts &#8594;</a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- ── BLOCK 2.13 — PRE-FOOTER CTA ──────────────────────── -->
   <div class="ann">
