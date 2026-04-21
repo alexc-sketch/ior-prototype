@@ -490,7 +490,8 @@
     .sol-card__img {
       width: 100%; aspect-ratio: 4/3; background: var(--ior-light-blue-bg);
       overflow: hidden;
-      /* DESIGN RULE NOTE: Figma shows border-radius: 0; height: 100%; background: repeating-linear-gradient(
+      height: 100%;
+      background: repeating-linear-gradient(
         -45deg, var(--ior-light-blue-bg), var(--ior-light-blue-bg) 8px,
         rgba(3,85,163,.08) 8px, rgba(3,85,163,.08) 16px
       );
@@ -542,7 +543,7 @@
     @media (min-width: 600px)  { .ind-grid { grid-template-columns: repeat(2,1fr); } }
     @media (min-width: 1200px) { .ind-grid { grid-template-columns: repeat(4,1fr); } }
     .ind-card {
-      /* DESIGN RULE NOTE: Figma shows border-radius: 0; display: flex; flex-direction: column;
+      display: flex; flex-direction: column;
       transition: box-shadow var(--transition-base), transform var(--transition-base);
     }
     .ind-card:hover { box-shadow: 0 8px 32px rgba(3,85,163,.16); transform: translateY(-3px); }
@@ -571,7 +572,6 @@
     @media (min-width: 768px)  { .dp-grid { grid-template-columns: repeat(2,1fr); } }
     @media (min-width: 1200px) { .dp-grid { grid-template-columns: repeat(3,1fr); } }
     .dp-card {
-      /* DESIGN RULE NOTE: Figma shows border-radius: 0;
       padding: 28px; display: flex; flex-direction: column; justify-content: flex-end;
       gap: 20px; min-height: clamp(380px,45vw,560px); position: relative; overflow: hidden;
     }
@@ -584,7 +584,7 @@
     }
     .dp-card > *:not(.dp-card__bg) { position: relative; z-index: 1; }
     .dp-card__tag {
-      /* DESIGN RULE NOTE: Figma shows border-radius: 0; align-items: center; padding: 8px 14px;
+      display: flex; align-items: center; padding: 8px 14px;
       border: 1px solid rgba(255,255,255,.6); color: #fff;
       font-size: var(--text-body-s); font-weight: var(--fw-bold); width: fit-content;
     }
@@ -651,11 +651,14 @@
     .news-card { display: flex; flex-direction: column; gap: 20px; }
     .news-card__img {
       width: 100%; aspect-ratio: 16/9; background: var(--ior-light-blue-bg);
-      /* DESIGN RULE NOTE: Figma shows border-radius: 0; height: 100%; background: repeating-linear-gradient(
+      height: 100%;
+      background: repeating-linear-gradient(
       -45deg, var(--ior-light-blue-bg), var(--ior-light-blue-bg) 8px,
       rgba(3,85,163,.06) 8px, rgba(3,85,163,.06) 16px
-    ); display: flex; align-items: center; justify-content: center;
-    font-size: 11px; color: var(--ior-mid-grey); font-family: 'Courier New', monospace; font-weight: 700; }
+    );
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; color: var(--ior-mid-grey); font-family: 'Courier New', monospace; font-weight: 700;
+    }
     .news-card__title { font-size: var(--text-heading-l); font-weight: var(--fw-bold); color: var(--ior-charcoal); }
     .news-card__read { font-size: var(--text-body-m); color: var(--ior-charcoal); text-decoration: underline; }
 
