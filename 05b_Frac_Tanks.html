@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ior-global.css">
 <style>
 :root {
   --ior-blue:     #0355A3;
@@ -35,9 +36,6 @@ body { font-family: var(--font); font-size: 16px; line-height: 1.6; color: var(-
 a { color: inherit; text-decoration: none; }
 .container { max-width: var(--container); margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px); }
 
-.wf-nav { position: sticky; top: 0; z-index: 9999; background: #1A1A2E; border-bottom: 3px solid #E94560; display: flex; align-items: center; gap: 16px; padding: 8px 16px; font-size: 12px; font-family: monospace; color: #fff; flex-wrap: wrap; }
-.wf-nav a { color: #E94560; text-decoration: underline; margin-right: 8px; }
-.wf-nav__module { color: #aaa; }
 .ann { border-left: 4px solid #e6ac00; background: #FFF9E6; padding: 10px 14px; font-size: 12px; line-height: 1.5; color: #333; }
 .ann strong { display: block; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #7a5c00; margin-bottom: 4px; }
 .ann--ok { border-left-color: #28a745; background: #F0FFF4; }
@@ -268,7 +266,6 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(255,255,255,.2); transition: background .2s, color .2s; }
 .footer-social__icon:hover { background: rgba(255,255,255,.15); color: #fff; }
 
-
   .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; }
   .hamburger span { display: block; width: 100%; height: 2px; background: #fff; transition: all 0.3s; }
   @media (max-width: 767px) { .hamburger { display: flex; } .nav-links, .nav-ctas .btn { display: none; } }
@@ -276,13 +273,6 @@ a { color: inherit; text-decoration: none; }
 </style>
 </head>
 <body>
-
-<nav class="wf-nav">
-  <a href="00_Master_Index.html">⌂ Master Index</a>
-  <a href="05_Equipment_Infrastructure_v2.html">← Equipment Hub</a>
-  <a href="IOR_Design_System.html">◈ Design System</a>
-  <span class="wf-nav__module">MODULE 05b · Frac Tanks · V2</span>
-</nav>
 
 <div class="page-badge">
   <h2>05b · Frac Tanks — V2</h2>
@@ -346,9 +336,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </div>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 1 — HERO · Service sub-page hero · Split layout · Slate-blue visual identity</strong>
-</div>
 <section class="hero-service">
   <div class="container">
     <div>
@@ -357,7 +344,7 @@ a { color: inherit; text-decoration: none; }
       <p class="hero-service__sub">20,000L to 80,000L portable frac tanks for remote sites, temporary operations, and emergency fuel storage. No civil works. Rapid deployment. Available for hire or purchase.</p>
       <div class="hero-service__ctas">
         <a href="/support-contact/contact-us/" class="btn btn--primary">Check Availability →</a>
-        <a href="#hire-vs-buy" class="btn btn--ghost">Hire vs. Buy</a>
+        <a href="#hire-vs-buy" class="btn btn--primary">Hire vs. Buy</a>
       </div>
     </div>
     <div class="hero-service__img">
@@ -398,9 +385,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </div>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 2 — FEATURES · 6 key features of IOR frac tanks</strong>
-</div>
 <section class="features-section">
   <div class="container">
     <div class="section-header">
@@ -443,9 +427,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 3 — SPECS TABLE · Frac tank size range and specifications</strong>
-</div>
 <section class="specs-section" id="specs">
   <div class="container">
     <div class="section-header">
@@ -496,9 +477,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 4 — HIRE VS BUY COMPARISON · Unique to Frac Tanks page</strong>
-</div>
 <section class="compare-section" id="hire-vs-buy">
   <div class="container">
     <div class="section-header">
@@ -537,9 +515,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 5 — HOW IT WORKS · Ghost step numbers: 48px, font-weight: 900, rgba(45,74,107,0.15) — NO blue circle</strong>
-</div>
 <section class="how-section">
   <div class="container">
     <div class="section-header">
@@ -566,9 +541,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 6 — HUBSPOT FORM · Inline embed on this sub-page (05b) — not on hub page</strong>
-</div>
 <section class="hubspot-section">
   <div class="container">
     <div class="hubspot-wrap">
@@ -588,9 +560,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 7 — TABBED INSIGHTS · Case Studies | Blog Posts</strong>
-</div>
 <section class="insights-section">
   <div class="container">
     <div class="section-header">
@@ -650,9 +619,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<div class="ann ann--ok">
-  <strong>BLOCK 8 — FAQs · Frac Tanks specific</strong>
-</div>
 <section class="faq-section">
   <div class="container">
     <div class="section-header">
@@ -875,7 +841,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </footer>
 
-
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="drawer__header"><span class="drawer__logo">[IOR LOGO]</span><button class="drawer__close" id="drawerClose">✕</button></div>
@@ -887,7 +852,6 @@ a { color: inherit; text-decoration: none; }
   </nav>
   <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
 </div>
-
 
 <script>
 const navEl = document.getElementById('primary-nav');

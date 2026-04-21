@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home | IOR</title>
   <meta name="description" content="IOR is Australia's leading integrated fuel supplier — delivering diesel, aviation fuel, and digital fuel management to regional, rural, and remote Australia since 1984.">
+  <link rel="stylesheet" href="ior-global.css">
   <style>
 
     /* ============================================================
@@ -134,41 +135,7 @@
     .ann--ok   { background: #D4EDDA; border-color: #2DA771; color: #0D3320; }
 
     /* ── Wireframe Nav Bar ──────────────────────────────────── */
-    .wf-nav {
-      position: sticky; top: 0; z-index: 9999; background: #1A1A2E;
-      border-bottom: 2px solid #E94560; padding: 6px 16px;
-      display: flex; align-items: center; flex-wrap: wrap; gap: 12px;
-      font-family: 'Courier New', monospace; font-size: 11px; color: #A8B2D8;
-      user-select: none;
-    }
-    .wf-nav__links { display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
-    .wf-nav__link {
-      display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.12);
-      color: #CCD6F6; text-decoration: none; font-size: 11px; font-weight: 700;
-      letter-spacing: .04em; transition: background 120ms, color 120ms; white-space: nowrap;
-    }
-    .wf-nav__link:hover { background: #E94560; border-color: #E94560; color: #fff; }
-    .wf-nav__link--index::before { content: '⌂ '; }
-    .wf-nav__link--ds::before    { content: '◈ '; }
-    .wf-nav__div { width: 1px; height: 16px; background: rgba(255,255,255,.15); flex-shrink: 0; }
-    .wf-nav__mod { display: flex; align-items: center; gap: 8px; flex: 1; min-width: 0; }
-    .wf-nav__badge {
-      display: inline-block; padding: 2px 8px; background: #E94560; color: #fff;
-      font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
-      white-space: nowrap; flex-shrink: 0;
-    }
-    .wf-nav__name { font-size: 11px; font-weight: 700; color: #CCD6F6; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .wf-nav__file { font-size: 10px; color: #6A7497; white-space: nowrap; }
-    .wf-nav__legend { display: flex; align-items: center; gap: 10px; flex-shrink: 0; margin-left: auto; }
-    .wf-nav__leg-lbl { font-size: 10px; color: #6A7497; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; }
-    .wf-nav__leg-items { display: flex; align-items: center; gap: 6px; }
-    .wf-nav__leg-item  { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; color: #A8B2D8; white-space: nowrap; }
-    .wf-nav__swatch    { width: 10px; height: 10px; border: 1px solid rgba(255,255,255,.15); flex-shrink: 0; }
-    .wf-nav__swatch--std { background: #FFE066; }
-    .wf-nav__swatch--q   { background: #FFD0D0; }
-    .wf-nav__swatch--ok  { background: #D4EDDA; }
-    @media (max-width: 640px) { .wf-nav__leg-lbl, .wf-nav__file { display: none; } }
+    @media (max-width: 640px) { }
 
     /* ── Section dividers ────────────────────────────────────── */
     .spec-section {
@@ -826,28 +793,6 @@
 <!-- ═══════════════════════════════════════════════════════════
      WIREFRAME NAV BAR — TOOL LAYER — NOT PART OF IOR BRAND
 ═══════════════════════════════════════════════════════════ -->
-<div class="wf-nav" role="navigation" aria-label="Wireframe navigation">
-  <div class="wf-nav__links">
-    <a href="00_Master_Index.html" class="wf-nav__link wf-nav__link--index">Master Index</a>
-    <div class="wf-nav__div" aria-hidden="true"></div>
-    <a href="IOR_Design_System.html" class="wf-nav__link wf-nav__link--ds">Design System</a>
-  </div>
-  <div class="wf-nav__div" aria-hidden="true"></div>
-  <div class="wf-nav__mod">
-    <span class="wf-nav__badge">MODULE 01</span>
-    <span class="wf-nav__name">Homepage &amp; Global Components</span>
-    <span class="wf-nav__file">01_Homepage_and_Global.html</span>
-  </div>
-  <div class="wf-nav__legend">
-    <span class="wf-nav__leg-lbl">Annotations:</span>
-    <div class="wf-nav__leg-items">
-      <span class="wf-nav__leg-item"><span class="wf-nav__swatch wf-nav__swatch--std" aria-hidden="true"></span>Standard</span>
-      <span class="wf-nav__leg-item"><span class="wf-nav__swatch wf-nav__swatch--q"   aria-hidden="true"></span>Design Q</span>
-      <span class="wf-nav__leg-item"><span class="wf-nav__swatch wf-nav__swatch--ok"  aria-hidden="true"></span>Approved</span>
-    </div>
-  </div>
-</div>
-
 <!-- ════════════════════════════════════════════════════════════
      SECTION 1 — GLOBAL HEADER SPECIFICATION
 ═══════════════════════════════════════════════════════════ -->
@@ -866,13 +811,7 @@
 </div>
 
 <!-- ── BLOCK 1.1 — HEADER DEFAULT STATE ───────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.1 — HEADER DEFAULT STATE</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Utility bar (blue, full width) + Primary nav (white, 72px height, sticky). All 5 nav items visible at 1200px+. Two CTAs: Customer Login (outline) + Apply for an Account (solid). Hamburger visible below 1200px.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Full persistent header. Utility bar provides fast-lane access for Utility User persona. Primary nav serves Revenue Engine and Specialist. Scroll trigger >80px collapses to State 1.2.</span>
-</div>
+
 <header aria-label="Global header — default state">
   <!-- Utility bar -->
   <div class="utility-bar" role="complementary" aria-label="Utility navigation">
@@ -913,13 +852,7 @@
 </header>
 
 <!-- ── BLOCK 1.2 — HEADER SCROLLED / COMPRESSED STATE ─── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.2 — HEADER SCROLLED / COMPRESSED STATE</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Scroll trigger: window.scrollY > 80px. Utility bar hidden (display:none). Primary nav height collapses from 72px to 56px. Logo shrinks from 90×42px to 70×33px. Box shadow appears. Transition: 250ms ease on all properties.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Maximise viewport real estate on content pages. Revenue Engine persona scrolls deep into spec pages — compact nav ensures nav links remain accessible without dominating the view. Implemented via JS scroll listener + .primary-nav--scrolled class toggle.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);border-bottom:1px solid var(--border-color-light);">
   <!-- Scrolled state demonstration -->
   <div style="background:#fff;border:2px dashed var(--ior-mid-grey);padding:4px;">
@@ -947,18 +880,7 @@
 </div>
 
 <!-- ── BLOCK 1.3 — MEGA MENU: FUEL SOLUTIONS (4 COLUMNS) ─ -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.3 — MEGA MENU: FUEL SOLUTIONS (4 COLUMNS)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">4-column grid: Ground Fuels / Aviation (gold accent) / Equipment & Infrastructure / Supply & Trading. Footer row with two CTA-styled links: Find a Diesel Stop, Find an Airport. Max Mega Menu plugin required — 4 column layout.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Routes Revenue Engine persona directly to capability spokes. Aviation column uses --aviation-gold (#D98300) per sub-brand governance. "Find a Diesel Stop" and "Find an Airport" are CTA links (not plain links) — use Max Mega Menu custom item styling. See developer note above.</span>
-</div>
-<div class="ann ann--ok" style="background:#fff3cd;border-color:#f5a623;">
-  <span class="ann__id">DEVELOPER NOTE — MAX MEGA MENU</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">This panel is implemented via Max Mega Menu (megamenu.com). Configure: 4-column tabbed layout, Aviation column = gold header color. "Find a Diesel Stop" and "Find an Airport" = custom item type "CTA Button". Full config in megamenu.com docs → Elementor widget → Custom Item Styling.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
   <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
     <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — FUEL SOLUTIONS — triggered by hover/click on "Fuel Solutions" nav item</div>
@@ -1030,13 +952,7 @@
 </div>
 
 <!-- ── BLOCK 1.4 — MEGA MENU: DIGITAL PLATFORMS (3 COLS) ─ -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.4 — MEGA MENU: DIGITAL PLATFORMS (3 COLUMNS)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">3-column layout: HyDip™ FMS / Fuelcharge / Customer Portal. Each column includes a brief descriptor beneath the title. HyDip and Customer Portal include Login CTAs.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Separates HyDip and Customer Portal as distinct products per V2 direction document. Positions IOR as SaaS competitor against SmartFill and Fuellox. Fuelcharge column targets Utility User persona (no login required).</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
   <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
     <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — DIGITAL PLATFORMS</div>
@@ -1078,13 +994,7 @@
 </div>
 
 <!-- ── BLOCK 1.5 — MEGA MENU: INDUSTRIES WE SERVE (2 COLS) -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.5 — MEGA MENU: INDUSTRIES WE SERVE (2 COLUMNS)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">2-column layout. Col 1: Transport & Logistics, Oil & Gas, Agriculture & Harvest, Mining & Resources. Col 2: Livestock, Commercial & General Aviation, Construction & Civil, Government & Defence. Footer CTA to hub page.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Empathy Hub — Revenue Engine persona self-segments by industry before reaching product spokes. Secondary SEO keyword capture via industry-specific URL structure.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
   <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
     <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — INDUSTRIES WE SERVE</div>
@@ -1117,13 +1027,7 @@
 </div>
 
 <!-- ── BLOCK 1.6 — MEGA MENU: ABOUT IOR (2 COLUMNS) ──── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.6 — MEGA MENU: ABOUT IOR (2 COLUMNS)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">2-column layout. Col 1: About IOR, Our Leadership, Community & Giving Back, Sustainability HSE & ESG. Col 2: Case Studies, Careers (links to sub-pages), News & Updates.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Authority Hub — Stonepeak-backed scale proof for Revenue Engine persona evaluating tender. Case Studies elevated to primary trust-building tool, not buried in blog. Careers routes Candidate persona from social media entry.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
   <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
     <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — ABOUT IOR</div>
@@ -1153,13 +1057,7 @@
 </div>
 
 <!-- ── BLOCK 1.7 — MEGA MENU: SUPPORT & CONTACT (1 COL) ─ -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.7 — MEGA MENU: SUPPORT & CONTACT (1 COLUMN)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Single column. Links: Contact Us, Regional Contacts, Find an IOR Diesel Stop or Aviation Fuel Location, Make a Payment, Policy & Form Downloads. Phone number displayed as prominent link.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Utility Hub — deflects low-value enquiries to self-serve. Designed specifically for Utility User persona on mobile. Phone number CTA satisfies immediate support need without form friction.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
   <div style="background:#fff;border:2px dashed var(--ior-mid-grey);">
     <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MEGA MENU — SUPPORT & CONTACT</div>
@@ -1184,13 +1082,7 @@
 </div>
 
 <!-- ── BLOCK 1.8 — MOBILE HEADER + OFF-CANVAS DRAWER ─── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 1.8 — MOBILE HEADER + OFF-CANVAS DRAWER</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Below 1200px: hamburger replaces nav links. Tap hamburger → drawer slides from left (translateX from -100% to 0, 350ms cubic-bezier). Overlay (rgba 0,0,0,.5) covers content. Each nav item has chevron; tap expands accordion sub-menu. Two primary CTAs in drawer footer.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Full navigation accessible on mobile without horizontal scroll. Candidate persona enters from social media on mobile — drawer must feel fast and un-intimidating. Sub-menus as accordions prevent cognitive overload. Focus trap inside drawer for accessibility.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
   <div style="background:#fff;border:2px dashed var(--ior-mid-grey);max-width:380px;">
     <div style="background:rgba(3,85,163,.06);padding:6px 16px;font-family:'Courier New',monospace;font-size:10px;color:var(--ior-mid-grey);">MOBILE STATE — viewport &lt; 1200px</div>
@@ -1263,13 +1155,7 @@
 <main id="homepage-content" aria-label="Homepage">
 
   <!-- ── BLOCK 2.1 — UTILITY BAR ─────────────────────────── -->
-  <div class="ann ann--ok">
-    <span class="ann__id">BLOCK 2.1 — UTILITY BAR</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Full-width, #0355A3 blue. Left: announcement placeholder. Right: Find an IOR Diesel Stop or Aviation Fuel Location (with sub-dropdown for Diesel Stop / Airport) · Make a Payment · 1300 457 467. Hidden when scrolled (State 1.2).</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">APPROVED per Figma. Fast-lane for Utility User persona. Mobile: collapses to icon-only or hidden behind hamburger.</span>
-  </div>
+  
   <div class="utility-bar" role="complementary" aria-label="Site utilities">
     <span style="font-size:var(--text-body-m);">📢 Announcement Message Placeholder</span>
     <div class="utility-bar__actions">
@@ -1288,13 +1174,7 @@
   </div>
 
   <!-- ── BLOCK 2.2 — PRIMARY NAV (ref. Section 1) ────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.2 — PRIMARY NAV (HOMEPAGE INSTANCE)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Identical to Section 1 Block 1.1. Sticky. Collapses to scrolled state at scrollY > 80px. Mega menus on hover/focus. Hamburger below 1200px.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">See Section 1 for full header specification and all mega menu layouts.</span>
-  </div>
+  
   <nav class="primary-nav" aria-label="Primary navigation" style="position:relative;z-index:var(--z-nav);">
     <a href="01_Homepage_and_Global.html" class="nav-logo" aria-label="IOR home">[IOR LOGO]</a>
     <ul class="nav-links" role="list">
@@ -1314,13 +1194,7 @@
   </nav>
 
   <!-- ── BLOCK 2.3 — HERO ─────────────────────────────────── -->
-  <div class="ann ann--ok">
-    <span class="ann__id">BLOCK 2.3 — HERO</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Full-bleed photograph with 70% blue overlay. APPROVED EXCEPTION (Homepage only). Headline: "The Fuel Infrastructure Partner for Your Industry" — 3 words split into spans for staggered animation. Sub: bold, max 560px. Single CTA: "Apply for an Account" (white button). Min-height: clamp(440px,55vw,700px). Padding: clamp(60px,8vw,100px) vertical / clamp(20px,8vw,125px) horizontal. 375px: headline ~44px. 768px: ~60px. 1440px: 80px.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">APPROVED per Figma. Hero word reveal animation: each word fades up sequentially (0.05s, 0.20s, 0.35s delay). Background image placeholder — replace with actual photography. Content is left-aligned, max 640px wide to preserve right-side space for future hero image variant.</span>
-  </div>
+  
   <section class="hero" aria-label="Hero" style="background-image:linear-gradient(rgba(3,85,163,.70),rgba(3,85,163,.70)),repeating-linear-gradient(-45deg,#0A4066,#0A4066 12px,#0B4B76 12px,#0B4B76 24px);">
     <div class="hero__overlay" aria-hidden="true"></div>
     <div class="hero__content">
@@ -1337,13 +1211,7 @@
   </section>
 
   <!-- ── BLOCK 2.4 — QUICK ACCESS BAR ─────────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.4 — QUICK ACCESS BAR</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">3 cells. Cell 1 & 2: #0A4066 navy. Cell 3: #00D1CC teal (Fuelcharge brand). Content: icon + title + body copy. 375px: stacked vertically. 768px+: 3-column grid. Hover: left border slides in (4px solid --ior-sky) + background lightens. DESIGN RULE: Figma shows border-bottom-left-radius:50px on Cell 1 and border-bottom-right-radius:50px on Cell 3 — STRIPPED per Rule 1.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Immediately serves Utility User persona who enters from physical fuel stop. Fast-lane access without hunting through nav. Hover border slide animation signals interactivity without full card lift. Cell 3 teal signals Fuelcharge sub-brand identity.</span>
-  </div>
+  
   <nav class="qa-bar" aria-label="Quick access">
     <a href="08c_Find_a_Location_v2.html" class="qa-cell">
       <div class="qa-icon" aria-hidden="true" style="font-size:28px;background:rgba(255,255,255,.12);">⛽</div>
@@ -1369,13 +1237,7 @@
   </nav>
 
   <!-- ── BLOCK 2.5 — VALUE PROPS ──────────────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.5 — VALUE PROPS (4 PILLARS)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Background: #E0F1FF. 4 items: Owned supply chain · National reach (115+ network sites) · Built for remote · Real-time visibility. 375px: 2×2 grid, no dividers. 768px: 2×2. 1100px+: 4-column with vertical dividers between items. Icons: 68×68px placeholder boxes.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Immediately establishes Tier-1 differentiation post-hero. Addresses Revenue Engine's primary anxiety (supply chain reliability) before any product detail. Fade-up animation on scroll entry.</span>
-  </div>
+  
   <div style="background:var(--ior-light-blue-bg);padding:clamp(40px,5vw,80px) var(--section-pad-x) clamp(24px,3vw,40px);" aria-label="Value propositions">
     <div class="vp-grid fade-up">
       <div class="vp-item">
@@ -1402,13 +1264,7 @@
   </div>
 
   <!-- ── BLOCK 2.6 — SOLUTIONS SECTION ───────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.6 — OUR SOLUTIONS (4-CARD GRID)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Eyebrow: "Our Solutions". Headline: "End-to-End Fuel Solutions". Body: 929px max-width. 4 cards: Ground Fuels / Aviation / Equipment & Infrastructure / Supply & Trading. Each card: image placeholder (4:3 ratio) + title + body + ghost link. 375px: 1 col. 768px: 2 cols. 1200px+: 4 cols. DESIGN RULE: Figma shows border-radius:20px on card images — STRIPPED per Rule 1.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Introduces the 4 product hubs. Revenue Engine routes to relevant spoke. Copy sourced from approved copy scaffolding doc.</span>
-  </div>
+  
   <section class="section-pad" aria-label="Our solutions" style="background:#fff;">
     <div class="inner">
       <div class="fade-up" style="max-width:1170px;margin-bottom:40px;">
@@ -1454,13 +1310,7 @@
   </section>
 
   <!-- ── BLOCK 2.7 — STAT BAR ──────────────────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.7 — STAT BAR (FOUR DECADES)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Background: #0A4066. Eyebrow (uppercase): "FOUR DECADES OF KEEPING AUSTRALIA MOVING". 4 stats: 190M+ Litres Storage · 115+ Network Sites · 40+ Years · Australian Founded & Operated. 375px: 2×2 grid. 768px+: 4-column with dividers. DESIGN RULE: Figma shows border-top-left-radius:50px and border-top-right-radius:50px — STRIPPED per Rule 1.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Authority signal. Revenue Engine evaluating multi-year tender needs proof of scale before trust. Stats animate as counters on IntersectionObserver entry (JS counter animation, 1.2s duration).</span>
-  </div>
+  
   <section class="stat-bar fade-up" aria-label="Company statistics">
     <p class="eyebrow eyebrow--white" style="text-align:center;">Four Decades of Keeping Australia Moving</p>
     <div class="stat-grid">
@@ -1484,13 +1334,7 @@
   </section>
 
   <!-- ── BLOCK 2.8 — LOGO STRIP ────────────────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.8 — TRUSTED ORGANISATIONS (LOGO STRIP)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Eyebrow: "Trusted by Australia's Leading Organisations <span style='font-size:0.6em;font-weight:400;color:#e05c2a;letter-spacing:0;'>[Logo approvals required before launch]</span>". 6 logo placeholders in a scrolling row. Fade masks on left/right edges (CSS gradient overlay). 375px: wraps to 2 rows. 768px+: single row. Logos greyscale at rest, full colour on hover.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Social proof for Revenue Engine entering tender evaluation. Logo placeholders — replace with actual client logos when client approval obtained. Do NOT use competitor logos as stand-ins.</span>
-  </div>
+  
   <section class="section-pad" aria-label="Trusted organisations" style="background:#fff;">
     <div class="inner" style="text-align:center;">
       <p class="eyebrow" style="margin-bottom:28px;">Trusted by Australia's Leading Organisations <span style='font-size:0.6em;font-weight:400;color:#e05c2a;letter-spacing:0;'>[Logo approvals required before launch]</span></p>
@@ -1511,13 +1355,7 @@
   </section>
 
   <!-- ── BLOCK 2.9 — INDUSTRIES WE SERVE ─────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.9 — INDUSTRIES WE SERVE (8-CARD GRID)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Eyebrow: "Industries We Serve". Headline: "We Fuel Every Industry". Body. 8 industry cards: Transport & Logistics · Oil & Gas · Agriculture & Harvest · Mining & Resources · Livestock · Commercial & General Aviation · Construction & Civil · Government & Defence. 375px: 1 col. 600px: 2 cols. 1200px+: 4 cols (wraps to 4+4). DESIGN RULE: Figma shows border-radius:10px on cards and icon boxes — STRIPPED per Rule 1.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Empathy Hub. Each card opens the relevant industry spoke page. Card hover: translateY(-3px) + box shadow. Industry cards are the primary SEO engine for long-tail keywords.</span>
-  </div>
+  
   <section class="section-pad" aria-label="Industries we serve" style="background:#fff;">
     <div class="inner">
       <div class="fade-up" style="margin-bottom:40px;">
@@ -1619,13 +1457,7 @@
   </section>
 
   <!-- ── BLOCK 2.10 — DIGITAL PLATFORMS / SMARTER SYSTEMS ─ -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.10 — INTEGRATED FUEL SYSTEMS (3 DARK CARDS)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Background: #0A4066. Eyebrow (sky blue): "Integrated Fuel Systems". Headline (white): "Total Control of Your Fleet's Fuel". Body (white). 3 dark photo cards: HyDip FMS (For Fleet Managers) · Tank Manufacturing (For Project Managers) · X2U Mobile Refuelling (For Site Supervisors). Card min-height: clamp(380px,45vw,560px). 375px: 1 col. 768px: 2 cols. 1200px+: 3 cols. DESIGN RULE: Figma shows border-radius:20px on cards and border-radius:100px on pill tags — STRIPPED per Rule 1.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Tech Hub. Positions IOR against dedicated SaaS competitors (SmartFill, Fuellox). Persona-tagged pills (For Fleet Managers etc.) signal the Value-First Framework. Cards link to Digital Platforms module.</span>
-  </div>
+  
   <section style="background:var(--ior-navy);padding:clamp(50px,7vw,100px) var(--section-pad-x);" aria-label="Integrated fuel systems">
     <div class="inner" style="margin-bottom:40px;text-align:center;">
       <p class="eyebrow eyebrow--sky fade-up" style="margin-bottom:16px;">Integrated Fuel Systems</p>
@@ -1673,13 +1505,7 @@
   </section>
 
   <!-- ── BLOCK 2.11 — FUELCHARGE SECTION ──────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.11 — FUELCHARGE (TEAL SECTION)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Background: #00D1CC (Fuelcharge brand only). Left content column: Fuelcharge logo placeholder · Headline (dark navy #13114D): "Fuel on the Go with Fuelcharge" · Sub-body · 3 feature icons: Scan & Pay / Digital Receipts / Find Sites · "Learn more" CTA (navy #13114D) · App store badge placeholders. Right: 3 app screenshot image placeholders. 375px: content only (images hidden). 768px: 2-column. 1024px+: 4-column (1 content + 3 images). DESIGN RULE: Figma shows border-radius:500px on "Learn more" CTA — STRIPPED per Rule 1.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Fuelcharge sub-brand section. Targets Utility User (no account required) AND Revenue Engine cross-sell. Teal is CONTAINED to this section only per brand governance. App store badges must link to actual stores when live.</span>
-  </div>
+  
   <section class="fc-section fade-up" aria-label="Fuelcharge">
     <div class="fc-inner">
       <div class="fc-content">
@@ -1713,20 +1539,8 @@
   </section>
 
   <!-- ── BLOCK 2.12 — LATEST FROM IOR ─────────────────────── -->
-  <div class="ann ann--q">
-    <span class="ann__id">DESIGN QUESTION — BLOCK 2.12 — NEWS SECTION BODY COPY</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Figma export contains Lorem Ipsum in the "Latest from IOR" sub-heading: "Viverra eu porttitor augue nunc risus massa tortor ravida euismod." This violates Non-Negotiable Rule 3 (no Lorem Ipsum). COPY REQUIRED from IOR marketing team before build.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">ACTION REQUIRED: Supply approved body copy for this sub-heading. Suggested tone: mirrors the brief — something like "The latest news, case studies, and updates from Australia's Tier-1 fuel infrastructure partner." 3 article cards use real titles from Figma brief (approved).</span>
-  </div>
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.12 — LATEST FROM IOR (3-CARD NEWS GRID)</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Headline: "Latest from IOR". Sub body copy: [COPY REQUIRED — see Design Question above]. Two CTAs top right: All Case Studies / All Articles. 3 article cards with image placeholder + title + "Read Article" underline link. 375px: 1 col, header stacks. 600px: 2 cols. 1100px+: 3 cols, header row side-by-side. DESIGN RULE: Figma shows border-radius:20px on card images — STRIPPED per Rule 1.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Social proof + SEO content hub. Case Studies routed to 09_About.html. Articles routed to 11_News_Updates.html. Article titles from approved Figma brief used as-is.</span>
-  </div>
+  
+  
   <!-- RELATED CONTENT LOOP GRID -->
 <section class="related-content" aria-label="Case studies and blog posts">
   <div class="container">
@@ -1814,13 +1628,7 @@
 </section>
 
   <!-- ── BLOCK 2.13 — PRE-FOOTER CTA ──────────────────────── -->
-  <div class="ann">
-    <span class="ann__id">BLOCK 2.13 — PRE-FOOTER CTA ("WE'RE HERE TO HELP")</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__desc">Background: #0355A3. Headline: "We're here to help". 3 CTAs: Apply for an Account (white solid) · Make an Enquiry (outline white) · Need Help? (outline white). Horizontal divider. Footer nav columns below (see Section 3). 375px: headline + CTAs stack vertically. 768px+: row layout.</span>
-    <span class="ann__sep">·</span>
-    <span class="ann__int">INTENT: Final conversion trap before exit. Serves all 4 personas: Apply for Account (Revenue Engine / high intent), Make an Enquiry (Revenue Engine / tender track), Need Help? (Utility User / support). DESIGN RULE: Figma shows border-radius:500px on CTAs — STRIPPED per Rule 1.</span>
-  </div>
+  
   <section class="pre-footer fade-up" aria-label="We're here to help">
     <div class="pre-footer__row">
       <h2 class="pre-footer__title">We're here to help</h2>
@@ -1846,13 +1654,7 @@
 </div>
 
 <!-- ── BLOCK 3.1 — FOOTER DESKTOP ───────────────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 3.1 — FOOTER DESKTOP (6-COLUMN GRID)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Background: #0355A3. 6 columns: Contact · Fuel Solutions · Digital Platforms · Corporate · Quick Actions · Find a Site By State (state pills). Each column: bold white title with bottom border, then link list. Bottom bar: copyright + legal links (left) + social icon row (right). 375px: 2-column grid. 768px: 3-column. 1200px+: 6-column. DESIGN RULE: Figma shows border-radius:9999px on social icons and state pills — STRIPPED per Rule 1.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Persistent footer present on every page. Provides secondary navigation and SEO link structure. Quick Actions column deflects high-friction tasks (Apply, Pay) away from phone support. Find a Site By State enables direct regional routing without opening the full Find an IOR Diesel Stop or Aviation Fuel Location map.</span>
-</div>
+
 <footer class="footer" aria-label="Site footer">
   <div class="footer__inner">
     <div class="footer-col">
@@ -1934,13 +1736,7 @@
 </footer>
 
 <!-- ── BLOCK 3.2 — FOOTER MOBILE (ACCORDION) ─────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 3.2 — FOOTER MOBILE (ACCORDION LAYOUT)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Below 768px: each column collapses to an accordion. Title row: bold text + +/– icon. Tap title to expand/collapse panel (JS toggle .footer-acc-item--open class). Contact column always expanded on load. Quick Actions visible without expansion. Bottom bar remains full-width.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Prevents footer from dominating mobile viewport. Candidate persona and Utility User on mobile need fast access to Apply and Contact without scrolling through all 6 columns. Contact expanded by default as highest-urgency column for on-the-road users.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x);">
   <div style="max-width:380px;background:var(--ior-blue);padding:20px 20px 0;">
     <div style="font-family:'Courier New',monospace;font-size:10px;color:rgba(255,255,255,.4);padding-bottom:12px;">MOBILE FOOTER — viewport &lt; 768px</div>
@@ -1990,13 +1786,7 @@
 </div>
 
 <!-- ── BLOCK 4.1 — BUTTON VARIANTS ──────────────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 4.1 — BUTTON VARIANTS</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Primary (solid blue) · Outline (blue border) · Ghost (text link) · Aviation Gold (aviation sub-hub only) · Disabled. All: border-radius: 0 (LOCKED). Arrow: CSS-only chevron via .btn__arrow. Hover states shown via :hover — see CSS.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">DESIGN RULE: border-radius: 0 on ALL buttons. The Figma export shows border-radius:500px on nav CTAs and border-radius:500px on hero CTA. These are stripped. Sharp geometry enforced site-wide.</span>
-</div>
+
 <div class="cs-section">
   <h3 class="cs-title">4.1 Button Variants</h3>
   <span class="cs-label">On Light Background</span>
@@ -2048,13 +1838,7 @@
 </div>
 
 <!-- ── BLOCK 4.2 — FORM INPUT STATES ─────────────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 4.2 — FORM INPUT STATES</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">4 states: Default (rgba border) · Focus (--ior-blue border, 2px) · Error (--ior-error #C0392B border + error message) · Filled (--ior-blue border + content). All inputs: border-radius: 0 (LOCKED). Padding: 12px 16px. Used in: HubSpot form embeds, gated download popups, Customer Portal request form.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Consistent form treatment across HubSpot and Elementor form widget. Error state triggers on invalid submission. Focus ring for accessibility.</span>
-</div>
+
 <div class="cs-section" style="padding-top:0;">
   <h3 class="cs-title">4.2 Form Input States</h3>
   <div class="cs-row" style="flex-wrap:wrap;gap:20px;">
@@ -2079,13 +1863,7 @@
 </div>
 
 <!-- ── BLOCK 4.3 — BREADCRUMB ────────────────────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 4.3 — BREADCRUMB (3-LEVEL EXAMPLE)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">3 levels: Homepage > Fuel Solutions > Ground Fuels. Current page: bold, charcoal (not a link). Parent levels: --ior-mid-grey, hover --ior-blue. Separator: › chevron character. Font-size: 14px. Used on all spoke pages below the nav.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: SEO breadcrumb markup (Schema.org BreadcrumbList). Helps Revenue Engine orient within deep content hierarchy. Reduces bounce from direct-entry landing pages.</span>
-</div>
+
 <div class="cs-section" style="padding-top:0;">
   <h3 class="cs-title">4.3 Breadcrumb</h3>
   <div class="cs-row">
@@ -2100,13 +1878,7 @@
 </div>
 
 <!-- ── BLOCK 4.4 — PAGE BADGES ───────────────────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 4.4 — PAGE BADGES (HUB / SPOKE / UTILITY)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">3 types: HUB (solid blue) · SPOKE (light blue bg, blue border) · UTILITY (teal bg). Used in Master Index and optionally in page headers to identify page type at a glance in the wireframe set.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Wireframe-only review tool. Not rendered on live site. Allows reviewer to confirm page type matches sitemap hierarchy at a glance.</span>
-</div>
+
 <div class="cs-section" style="padding-top:0;padding-bottom:24px;">
   <h3 class="cs-title">4.4 Page Badges</h3>
   <div class="cs-row" style="gap:10px;align-items:center;">
@@ -2124,36 +1896,12 @@
 </div>
 
 <!-- ── BLOCK 4.5 — ANNOTATION BAR VARIANTS ──────────────── -->
-<div class="ann">
-  <span class="ann__id">BLOCK 4.5 — ANNOTATION BAR VARIANTS (3 STATES)</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__desc">Three variants: Standard (yellow #FFE066 + #E6B800 border) · Design Question (red #FFD0D0 + #C0392B border) · Approved/Locked (green #D4EDDA + #2DA771 border). Format: BLOCK ID · Separator · Content description · Separator · Design intent. Font: Courier New 11px.</span>
-  <span class="ann__sep">·</span>
-  <span class="ann__int">INTENT: Non-Negotiable Rule 4 enforcement. Every content block on every module page must have a preceding annotation bar. Use Design Question variant when copy or design direction is unclear. Use Approved variant for locked decisions that must not be changed in downstream modules.</span>
-</div>
+
 <div style="background:#f7f9fc;padding:16px var(--section-pad-x) 40px;">
   <div style="display:flex;flex-direction:column;gap:4px;max-width:900px;">
-    <div class="ann">
-      <span class="ann__id">BLOCK X — [BLOCK NAME]</span>
-      <span class="ann__sep">·</span>
-      <span class="ann__desc">Standard: Content description goes here — what is in this block, columns, components, copy source.</span>
-      <span class="ann__sep">·</span>
-      <span class="ann__int">Design intent: persona served, conversion goal, responsive behaviour, hover states.</span>
-    </div>
-    <div class="ann ann--q">
-      <span class="ann__id">DESIGN QUESTION — BLOCK X</span>
-      <span class="ann__sep">·</span>
-      <span class="ann__desc">Design question: copy missing, design direction unclear, or client input required before build.</span>
-      <span class="ann__sep">·</span>
-      <span class="ann__int">ACTION REQUIRED: Specific action needed from team member or client before this block can be completed.</span>
-    </div>
-    <div class="ann ann--ok">
-      <span class="ann__id">APPROVED — BLOCK X</span>
-      <span class="ann__sep">·</span>
-      <span class="ann__desc">Approved/locked: this decision is confirmed and must not be changed in subsequent modules without explicit approval.</span>
-      <span class="ann__sep">·</span>
-      <span class="ann__int">DO NOT modify without approval. Reference: Figma brief / client sign-off date.</span>
-    </div>
+    
+    
+    
   </div>
 </div>
 

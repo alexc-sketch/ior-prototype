@@ -7,6 +7,7 @@
   <meta name="description" content="IOR's Lytton and Port Bonython import terminals provide east coast and South Australian fuel supply infrastructure for bulk fuel customers across Australia.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ior-global.css">
 <style>
   :root {
     --ior-blue: #0355A3; --ior-navy: #0A4066; --ior-dark: #0A1628; --ior-deep: #0A2540;
@@ -17,9 +18,9 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Inter', sans-serif; color: #1A1A2A; background: #fff; line-height: 1.6; }
   a { text-decoration: none; }
-  .wf-nav { background: #1A1A2E; border-bottom: 3px solid #E94560; display: flex; align-items: center; gap: 16px; padding: 8px 16px; font-size: 11px; font-family: monospace; flex-wrap: wrap; }
-  .wf-nav a { color: #E94560; text-decoration: none; font-weight: 700; }
-  .wf-nav__module { color: #aaa; margin-left: auto; }
+  
+  
+  
   .utility-bar { background: var(--ior-dark); color: rgba(255,255,255,.7); font-size: 12px; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
   .utility-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
   .utility-bar a { color: rgba(255,255,255,.7); font-weight: 500; margin-left: 16px; }
@@ -268,7 +269,6 @@
   border: 1px solid rgba(255,255,255,.2); transition: background .2s, color .2s; }
 .footer-social__icon:hover { background: rgba(255,255,255,.15); color: #fff; }
 
-
   .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 24px; height: 18px; background: none; border: none; cursor: pointer; padding: 0; }
   .hamburger span { display: block; width: 100%; height: 2px; background: #fff; transition: all 0.3s; }
   @media (max-width: 767px) { .hamburger { display: flex; } .nav-links, .nav-actions .btn, .nav-actions a.btn--login { display: none; } }
@@ -277,17 +277,8 @@
 </head>
 <body>
 
-<nav class="wf-nav">
-  <a href="00_Master_Index.html">← Master Index</a>
-  <a href="06_Supply_Trading_v2.html">← Supply &amp; Trading Hub</a>
-  <a href="06a_Terminals.html" style="color:#fff;">06a Terminals ●</a>
-  <a href="06b_Eromanga_Refinery.html">06b Eromanga Refinery</a>
-  <a href="06c_Condensates.html">06c Condensates</a>
-  <span class="wf-nav__module">MODULE 06 — PAGE 2 OF 4</span>
-</nav>
-
 <div class="page-badge">
-  <span class="module-badge">MODULE 06 — PAGE 2 OF 4</span>
+  
   <h2>Lytton &amp; Port Bonython Terminals — /fuel-solutions/supply-trading/terminals/</h2>
   <div class="meta">
     <span><strong>Focus keyword:</strong> bulk fuel import terminal Australia</span>
@@ -338,7 +329,7 @@
       <p class="hero__body">IOR's Lytton and Port Bonython terminals provide the our key import and storage terminals that forms the backbone of Australia's fuel supply — delivering bulk product to operators across Queensland, New South Wales, South Australia, and the Northern Territory.</p>
       <div class="hero__actions">
         <a href="/support-contact/contact-us/" class="btn btn--primary">Contact Trading Team →</a>
-        <a href="#terminals" class="btn btn--outline">View Terminal Capabilities ↓</a>
+        <a href="#terminals" class="btn btn--primary">View Terminal Capabilities ↓</a>
       </div>
       <div class="pills" style="margin-top:24px">
         <span class="pill">Bulk Import</span>
@@ -846,7 +837,6 @@
   </div>
 </footer>
 
-
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="drawer__header"><span class="drawer__logo">[IOR LOGO]</span><button class="drawer__close" id="drawerClose">✕</button></div>
@@ -858,7 +848,6 @@
   </nav>
   <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
 </div>
-
 
 <script>
 const navEl = document.getElementById('primary-nav');

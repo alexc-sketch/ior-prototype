@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fuel Solutions | IOR</title>
   <meta name="description" content="IOR delivers end-to-end fuel solutions across Australia — ground fuels, aviation, equipment, supply and trading. Apply for a corporate fuel account today.">
+  <link rel="stylesheet" href="ior-global.css">
 <style>
 /* ============================================================
    IOR DESIGN SYSTEM TOKENS
@@ -68,24 +69,6 @@ img { max-width: 100%; display: block; }
 /* ============================================================
    WIREFRAME TOOL LAYER (not IOR brand)
 ============================================================ */
-.wf-nav {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  background: #1A1A2E;
-  border-bottom: 3px solid #E94560;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-family: monospace;
-  color: #fff;
-  flex-wrap: wrap;
-}
-.wf-nav a { color: #E94560; text-decoration: underline; margin-right: 8px; }
-.wf-nav__module { color: #aaa; }
-.wf-nav__legend { display: flex; align-items: center; gap: 8px; margin-left: auto; }
 .wf-swatch { width: 12px; height: 12px; display: inline-block; }
 .wf-swatch--std { background: #FFF3CD; border: 1px solid #e6ac00; }
 .wf-swatch--dq  { background: #FFE4E4; border: 1px solid #E94560; }
@@ -857,30 +840,6 @@ img { max-width: 100%; display: block; }
 </head>
 <body>
 
-<!-- ============================================================
-     WIREFRAME TOOL NAV
-============================================================ -->
-<nav class="wf-nav">
-  <strong>IOR WIREFRAMES</strong>
-  <a href="00_Master_Index.html">← Index</a>
-  <a href="01_Homepage_and_Global.html">01 Home</a>
-  <a href="02_Fuel_Solutions_Hub_v2.html">02 Fuel Solutions ✓</a>
-  <a href="03_Ground_Fuels_v2.html">03 Ground Fuels</a>
-  <a href="04_Aviation_v2.html">04 Aviation</a>
-  <a href="05_Equipment_Infrastructure_v2.html">05 Equipment</a>
-  <a href="06_Supply_Trading_v2.html">06 Supply &amp; Trading</a>
-  <a href="07_Digital_Platforms_v2.html">07 Digital Platforms</a>
-  <span class="wf-nav__module">MODULE 02 · Fuel Solutions Hub · 02_Fuel_Solutions_Hub_v2.html · V3</span>
-  <div class="wf-nav__legend">
-    <span class="wf-swatch wf-swatch--std"></span> Annotation
-    <span class="wf-swatch wf-swatch--dq"></span> Design Question
-    <span class="wf-swatch wf-swatch--ok"></span> Approved
-  </div>
-</nav>
-
-<!-- ============================================================
-     PAGE BADGE
-============================================================ -->
 <div class="page-badge">
   <h2>02 · Fuel Solutions Hub — V3 (Fresh Build)</h2>
   <div class="meta">
@@ -892,14 +851,6 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
-<!-- ============================================================
-     BLOCK 1 — UTILITY BAR
-============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 1 — UTILITY BAR · Global component · Approved</strong>
-  Full-width IOR Blue bar. Left: announcement placeholder. Right: Find an IOR Diesel Stop or Aviation Fuel Location · Make a Payment · 1300 457 467.
-  <em>INTENT: Fast-lane for Utility User persona. Identical across all modules.</em>
-</div>
 <div class="utility-bar">
   <div class="container">
     <div class="utility-announce">📢 Announcement Message Placeholder</div>
@@ -911,14 +862,6 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
-<!-- ============================================================
-     BLOCK 2 — PRIMARY NAV
-============================================================ -->
-<div class="ann">
-  <strong>BLOCK 2 — PRIMARY NAV · Sticky · "Fuel Solutions" active state</strong>
-  72px default → 56px at scrollY &gt;80px. "Fuel Solutions" carries active state (blue underline). Hamburger below 768px. Full mega menu spec in 01_Homepage_and_Global.html.
-  <em>INTENT: Revenue Engine arrives from homepage or direct search. Active state confirms location in site hierarchy.</em>
-</div>
 <nav class="primary-nav">
   <div class="container">
     <div class="nav-logo">[IOR LOGO]</div>
@@ -940,14 +883,6 @@ img { max-width: 100%; display: block; }
   </div>
 </nav>
 
-<!-- ============================================================
-     BLOCK 3 — HERO (FULL-BLEED OVERLAY)
-============================================================ -->
-<div class="ann">
-  <strong>BLOCK 3 — HERO · FULL-BLEED OVERLAY · Homepage design pattern</strong>
-  Dark navy overlay over full-bleed background image/video. Headline: "The Fuel Infrastructure Partner for Your Industry". Sub-copy: "End-to-end fuel solutions and infrastructure for businesses where fuel is mission-critical." Single primary CTA: Apply for an Account. No split layout — this is a hub page, not a service page.
-  <em>INTENT: Revenue Engine and Specialist land here from search or homepage routing. Full-bleed signals Tier-1 scale. Single CTA reduces Hick's Law decision paralysis at the top of the funnel.</em>
-</div>
 <section class="hero-fullbleed" id="fuel-solutions-hub">
   <div class="container">
     <div class="hero-eyebrow">Fuel Solutions Australia</div>
@@ -959,14 +894,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ============================================================
-     BLOCK 4 — QUICK-LINKS BAR
-============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 4 — QUICK-LINKS BAR · Visually striking dark strip · Approved</strong>
-  Dark navy (#0B1929) strip with sky-blue top border. Immediately below hero. Three links: Find a Diesel Stop · Find an Airport · Fuelcharge (teal accent, right-aligned). Per Tahlia: "needs to be in a visually striking place that may not be overlooked by the navigation."
-  <em>INTENT: Utility User persona can self-serve immediately without scrolling. Fuelcharge teal accent signals a different product category — directional, not navigational.</em>
-</div>
 <div class="quick-links-bar">
   <div class="container">
     <div class="ql-item">
@@ -988,14 +915,6 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
-<!-- ============================================================
-     BLOCK 5 — STAT BAR
-============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 5 — STAT BAR · Exactly 3 stats · IOR Blue background · Approved</strong>
-  3 stats: 40+ years fuelling Australia · 110+ diesel stops nationally · 24/7 automated site access. IOR Blue background differentiates from navy stat bars on other pages.
-  <em>INTENT: Rapid proof of scale directly below hero. Addresses Revenue Engine's first anxiety: "Is IOR big enough for our tender?"</em>
-</div>
 <div class="stat-bar">
   <div class="container">
     <div class="stat-item">
@@ -1013,17 +932,6 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
-<!-- ============================================================
-     BLOCK 6 — SOLUTIONS HIERARCHY (GRACE'S WHITEBOARD)
-============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 6 — SOLUTIONS HIERARCHY · Grace's whiteboard · Approved</strong>
-  Row 1 (dominant 50/50): Ground Fuels (IOR Navy, blue top border) + Aviation (IOR Deep, gold top border). "Literally half a page each." — Grace, transcript 0:49.
-  Row 2 (slim backbone): Supply &amp; Trading — "the wholesale part is a supporting part, sits underneath." — Grace, transcript 0:49.
-  Row 3 (sub-brand 50/50): HyDip FMS (purple #5B2D8E) + FuelCharge (teal #00D1CC bg, #13114D text). "HyDip needs its own breathing room" + "FuelCharge keeps its own branding — the green and the purple." — Grace, transcript 4:57–6:14.
-  Pills are directional only (cursor: default). "Explore [Service]" CTA links to hub sub-page.
-  <em>UX PRINCIPLE: Visual hierarchy (Gestalt) — size and weight communicate importance. Ground Fuels and Aviation are the primary revenue drivers; Supply &amp; Trading is infrastructure; HyDip and FuelCharge are digital sub-brands with distinct audiences.</em>
-</div>
 <section class="solutions-section">
   <div class="container">
     <div class="section-header">
@@ -1123,15 +1031,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ============================================================
-     BLOCK 7 — LOGO CAROUSEL
-============================================================ -->
-<div class="ann ann--dq">
-  <strong>BLOCK 7 — LOGO CAROUSEL · Client logos pending</strong>
-<!-- PROTOTYPE NOTE: Incitec Pivot logo/claim + 800% figure requires written approval before launch -->
-  Auto-scrolling infinite carousel. Confirmed clients: Norwood Agriculture · Incitec Pivot · Alliance Airlines · K.S. Easter Transport · MPC Kinetic · Flight Training Adelaide · Tin Can Bay Marina · Games LinQ. Logos pending from client — high-res, current branding required.
-  <em>ACTION REQUIRED: Request updated logos from client before launch. Do NOT use company names without written consent unless a testimonial or case study exists.</em>
-</div>
 <div class="logo-carousel-wrap">
   <div class="logo-carousel-label">Trusted by</div>
   <div class="logo-carousel-track-outer">
@@ -1157,15 +1056,6 @@ img { max-width: 100%; display: block; }
   </div>
 </div>
 
-<!-- ============================================================
-     BLOCK 8 — TESTIMONIALS
-============================================================ -->
-<div class="ann ann--ok">
-  <strong>BLOCK 8 — TESTIMONIALS · 2 confirmed social proof assets · Approved</strong>
-  Two-column card layout. Left: K.S. Easter Transport (Ken Easter, CEO) — Ground Fuels / Diesel Network. Right: Incitec Pivot Limited (Jeanne Johns, MD &amp; CEO) — On-Site Refuelling / Ground Fuels. Both logos pending from client.
-  Block order: Logo carousel → Testimonials → Map teaser. Per Grace &amp; Nell (transcript 12:45–14:05): testimonials lead into case studies, not adjacent to logo carousel.
-  <em>INTENT: Social proof placed after solutions overview. Revenue Engine has seen what IOR offers; now sees proof it delivers. Two cards cover both ground transport and industrial/mining personas.</em>
-</div>
 <section class="testimonial-section">
   <div class="container">
     <div class="testimonial-card">
@@ -1197,14 +1087,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ============================================================
-     BLOCK 9 — MAP TEASER
-============================================================ -->
-<div class="ann">
-  <strong>BLOCK 9 — MAP TEASER · Static Australia map · Network reach proof</strong>
-  Dark navy background. Left: headline + 4 stats + body copy + "View the Network Map" CTA. Right: static Australia map placeholder with decorative dots at approximate national site positions. Do NOT embed StorePoint here — static only. Disclaimer: "This is Australia. Actual site locations may vary." — Alex, transcript 23:22.
-  <em>INTENT: Revenue Engine needs visible proof of geographical reach before committing to a quote. Map communicates scale without loading an interactive component on this page.</em>
-</div>
 <section class="map-teaser">
   <div class="container">
     <div class="map-teaser__left">
@@ -1241,14 +1123,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ============================================================
-     BLOCK 10 — REPEAT CTA BANNER
-============================================================ -->
-<div class="ann">
-  <strong>BLOCK 10 — REPEAT CTA BANNER · Conversion checkpoint</strong>
-  IOR Blue background. Repeated CTA before footer. Dual CTAs: Apply for an Account (primary) + Talk to a Fuel Expert (ghost). Ensures Revenue Engine who scrolled the full page has a clear conversion path without scrolling back to the hero.
-  <em>INTENT: Standard page checklist requirement — CTA must be repeated further down the page where natural. This is the natural endpoint before footer.</em>
-</div>
 <section class="cta-banner">
   <div class="container">
     <div class="cta-banner__text">
@@ -1262,13 +1136,6 @@ img { max-width: 100%; display: block; }
   </div>
 </section>
 
-<!-- ============================================================
-     BLOCK 11 — GLOBAL FOOTER
-============================================================ -->
-<div class="ann">
-  <strong>BLOCK 11 — GLOBAL FOOTER · Identical across all modules</strong>
-  Dark navy (#0B1929) background. 5-column grid: Brand/Tagline · Fuel Solutions · Digital Platforms · About IOR · Support. Bottom bar: copyright + legal + social icons. 375px: 2-col accordion. 768px: 3-col. 1200px+: 5-col. Full footer spec in 01_Homepage_and_Global.html.
-</div>
 <!-- RELATED CONTENT LOOP GRID -->
 <section class="related-content" aria-label="Case studies and blog posts">
   <div class="container">
@@ -1435,7 +1302,6 @@ img { max-width: 100%; display: block; }
   </div>
 </footer>
 
-
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="drawer__header"><span class="drawer__logo">[IOR LOGO]</span><button class="drawer__close" id="drawerClose">✕</button></div>
@@ -1447,7 +1313,6 @@ img { max-width: 100%; display: block; }
   </nav>
   <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
 </div>
-
 
 <script>
 const navEl = document.getElementById('primary-nav');

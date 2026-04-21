@@ -21,8 +21,7 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body { font-family: var(--font-primary); color: var(--text-dark); background: var(--white); -webkit-font-smoothing: antialiased; }
-.wf-nav { position: sticky; top: 0; z-index: 9999; background: #1A1A2E; border-bottom: 3px solid #E94560; display: flex; align-items: center; gap: 16px; padding: 8px 16px; font-size: 11px; font-family: monospace; color: #fff; flex-wrap: wrap; }
-.wf-nav a { color: #E94560; text-decoration: none; font-weight: 700; }
+
 .wf-badge { background: #E94560; color: #fff; padding: 2px 8px; border-radius: 0; font-weight: 700; }
 .utility-bar { background: var(--ior-navy); padding: 8px var(--spx); display: flex; align-items: center; justify-content: space-between; font-size: 12px; }
 .utility-bar__actions { display: flex; align-items: center; gap: 20px; }
@@ -97,7 +96,6 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
   .hamburger { display: flex; }
 }
 
-
 .map-section { padding: 0; }
 .map-embed { background: var(--off-white); border: 2px dashed var(--border-light); min-height: 560px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; text-align: center; padding: 48px; }
 .map-embed__icon { font-size: 48px; }
@@ -111,7 +109,6 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
 .location-stat { text-align: center; color: var(--white); }
 .location-stat__num { font-size: 40px; font-weight: 900; color: var(--ior-sky); }
 .location-stat__label { font-size: 13px; color: rgba(255,255,255,.7); margin-top: 4px; }
-
 
 /* ── 6-column mega-footer ── */
 .footer { background: var(--ior-dark, #0A1628); padding: 64px 0 0; }
@@ -141,16 +138,6 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
 </head>
 <body>
 
-<div class="wf-nav">
-  <span class="wf-badge">WIREFRAME</span>
-  <span>IOR · Module 08 — Support &amp; Utility</span>
-  <a href="08_Support_Hub_v2.html">Hub</a> ·
-  <a href="08a_Contact_Us_v2.html">Contact Us</a> ·
-  <a href="08b_Regional_Contacts_v2.html">Regional Contacts</a> ·
-  <a href="08c_Find_a_Location_v2.html">Find a Location</a> ·
-  <a href="08d_Make_a_Payment_v2.html">Make a Payment</a> ·
-  <a href="08e_Policy_Downloads_v2.html">Policy Downloads</a>
-</div>
 <header>
   <div class="utility-bar">
     <span style="font-size:12px;color:#fff;">📢 Announcement Message Placeholder</span>
@@ -216,7 +203,6 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
     <a href="https://storepoint.co" target="_blank" class="btn btn--primary" style="margin-top:16px;">Configure StorePoint Map →</a>
   </div>
 </div>
-
 
 <footer class="footer" aria-label="Site footer">
   <div class="footer__inner">
@@ -298,7 +284,6 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
   </div>
 </footer>
 
-
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="drawer__header"><span class="drawer__logo">[IOR LOGO]</span><button class="drawer__close" id="drawerClose">✕</button></div>
@@ -310,7 +295,6 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
   </nav>
   <div class="drawer__ctas"><a href="#" class="btn btn--outline" style="justify-content:center;">Customer Login</a><a href="#" class="btn btn--primary" style="justify-content:center;">Apply for an Account</a></div>
 </div>
-
 
 <script>
 const navEl = document.getElementById('primary-nav');
@@ -338,7 +322,6 @@ document.querySelectorAll('.drawer__link').forEach(link => {
   });
 });
 </script>
-
 
 </body>
 </html>

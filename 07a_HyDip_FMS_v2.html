@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ior-global.css">
 <style>
 :root {
   --ior-blue:#0355A3; --ior-navy:#0A4066; --ior-deep:#0B1929;
@@ -29,8 +30,7 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .inner{max-width:var(--container);margin:0 auto;padding:0 var(--spx)}
 /* WIREFRAME NAV */
-.wf-nav{position:sticky;top:0;z-index:9999;background:#1A1A2E;border-bottom:3px solid #E94560;display:flex;align-items:center;gap:16px;padding:8px 16px;font-size:11px;font-family:monospace;color:#fff;flex-wrap:wrap}
-.wf-nav a{color:#E94560;text-decoration:underline;margin-right:8px}
+
 /* UTILITY BAR */
 .utility-bar{background:var(--ior-blue);padding:8px var(--spx);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .utility-bar__actions{display:flex;align-items:center;gap:20px}
@@ -260,15 +260,6 @@ img{max-width:100%;display:block}
 </style>
 </head>
 <body>
-
-<div class="wf-nav">
-  <strong style="color:#E94560;">IOR WIREFRAME</strong>
-  <span style="color:#aaa;">MODULE 07a — HyDip™ FMS (V2)</span>
-  <a href="00_Master_Index.html">← Index</a>
-  <a href="07_Digital_Platforms_v2.html">← Digital Platforms Hub</a>
-  <a href="07b_FuelCharge_v2.html">07b Fuelcharge</a>
-  <a href="07c_Customer_Portal_v2.html">07c Customer Portal</a>
-</div>
 
 <header>
   <div class="utility-bar">
@@ -599,7 +590,7 @@ img{max-width:100%;display:block}
     <div class="pre-footer__inner">
       <h2 class="pre-footer__title">Ready to stop guessing and start knowing?</h2>
       <div class="pre-footer__ctas">
-        <a href="#contact-form" class="btn btn--ghost" style="background:#fff;color:var(--hydip-purple);">Request a Demo →</a>
+        <a href="#contact-form" class="btn btn--primary" style="background:#fff;color:var(--hydip-purple);">Request a Demo →</a>
         <a href="/support-contact/contact-us/" class="btn btn--ghost">Talk to a Specialist →</a>
       </div>
     </div>
