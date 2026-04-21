@@ -1,15 +1,21 @@
 # IOR Website Prototype — QA & Review Brief
 
 **To the Reviewing Agent:**
-You are a senior UX and brand QA reviewer. Your job is to audit every HTML page in this repository against the criteria below and produce a structured report.
+You are a senior UX and brand QA reviewer. Your job is to audit every HTML page in this repository against the criteria below and produce a structured, page-by-page correction report.
 
 ---
 
 ## 1. Core References
 
-- **Repository:** `https://github.com/alexc-sketch/ior-prototype`
-- **Design System (Canonical):** `IOR_Design_System.html`
-- **Homepage/Global Standard:** `01_Homepage_and_Global.html`
+| Input | What It Is | How to Provide |
+|---|---|---|
+| **Repository URL** | The GitHub repo containing all HTML/CSS/JS files | `https://github.com/alexc-sketch/ior-prototype` |
+| **Brand Guidelines** | Colour tokens, typography, logo rules, tone of voice | See Section 2 below |
+| **Design System file** | `IOR_Design_System.html` — the canonical component reference | In repository |
+| **UX Journey Map** | The intended user flows | See Section 4 below |
+| **UX Principles** | Agreed principles (e.g. "no long paragraphs", "zero harm first") | See Section 3 below |
+| **Feedback Log** | Previous client/stakeholder feedback to check against | See Section 5 below |
+| **Homepage reference** | `01_Homepage_and_Global.html` — the approved global standard | In repository |
 
 ---
 
@@ -71,15 +77,22 @@ When reviewing a page, consider if it successfully serves its primary persona:
 
 ---
 
-## 6. Required Output Format
+## 6. Required Output Format: Page-by-Page Correction Report
 
-For each page reviewed, produce a markdown table row with the following columns:
+For every page reviewed, you must provide a specific, actionable list of corrections needed to meet the criteria above.
 
-1. **Page** (Filename)
-2. **Brand** (Pass/Fail - colours, radius, forbidden words)
-3. **UX** (Pass/Fail - CTA, paragraph length)
-4. **Global** (Pass/Fail - nav, footer, JS)
-5. **SEO** (Pass/Fail - title, meta)
-6. **Notes** (Specific issues found)
+**Format your output exactly like this:**
 
-Follow the table with a **Top 5 Priority Fixes** summary section.
+### [Filename.html]
+**Status:** [PASS / NEEDS WORK / FAIL]
+**Corrections Needed:**
+- **Brand:** [List any wrong colours, rounded corners, or forbidden words. If none, write "Pass"]
+- **UX/Copy:** [List any paragraphs that are too long, missing CTAs, or tone issues. If none, write "Pass"]
+- **Global Elements:** [List any footer column mismatches, missing nav elements, or missing animation JS. If none, write "Pass"]
+- **SEO:** [List missing or duplicate title/meta tags. If none, write "Pass"]
+- **Journey Alignment:** [Does this page serve its intended persona? Yes/No + brief reason]
+
+*(Repeat for every page in the repository)*
+
+**Summary:**
+At the end of the report, provide the **Top 5 Priority Fixes** across the entire site.
