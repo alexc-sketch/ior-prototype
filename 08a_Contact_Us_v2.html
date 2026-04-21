@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ior-global.css">
 <style>
 :root {
   --ior-blue: #0355A3; --ior-sky: #4DA8DA; --ior-navy: #0A4066; --ior-deep: #0B1929;
@@ -151,7 +152,7 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
 
 </style>
 </head>
-<body>
+<body style="overflow-x:hidden">
 
 <header>
   <div class="utility-bar" role="complementary" aria-label="Utility navigation">
@@ -192,6 +193,28 @@ body { font-family: var(--font-primary); color: var(--text-dark); background: va
 
 <section class="hero-util">
   <div class="breadcrumb"><a href="01_Homepage_and_Global.html">Home</a> / <a href="08_Support_Hub_v2.html">Support</a> / Contact Us</div>
+<!-- STAT BAR -->
+<div class="stat-bar">
+  <div class="container">
+    <div class="stat-item" data-animate="fade-up" data-delay="0">
+      <div class="stat-item__number" data-count>40+</div>
+      <div class="stat-item__label">Years in Operation</div>
+    </div>
+    <div class="stat-item" data-animate="fade-up" data-delay="80">
+      <div class="stat-item__number" data-count>115+</div>
+      <div class="stat-item__label">Network Sites Nationally</div>
+    </div>
+    <div class="stat-item" data-animate="fade-up" data-delay="160">
+      <div class="stat-item__number" data-count>110+</div>
+      <div class="stat-item__label">Diesel Stops Nationally</div>
+    </div>
+    <div class="stat-item" data-animate="fade-up" data-delay="240">
+      <div class="stat-item__number" data-count>100%</div>
+      <div class="stat-item__label">Australian-Operated</div>
+    </div>
+  </div>
+</div>
+
   <div class="hero-util__eyebrow">Support &amp; Contact</div>
   <h1 class="hero-util__title">Contact Us.</h1>
   <p class="hero-util__sub">Submit an enquiry, request a callback, or reach our team directly. We respond to all enquiries within one business day.</p>

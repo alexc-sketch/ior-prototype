@@ -54,7 +54,7 @@
 @media (max-width: 640px) { .directory-grid, .values-grid { grid-template-columns: 1fr; } .timeline::before { left: 60px; } .tl-item { grid-template-columns: 60px 1fr; gap: 20px; } .tl-item::before { left: 53px; } .tl-year { font-size: 14px; } }
 </style>
 </head>
-<body>
+<body style="overflow-x:hidden">
 
 <!-- UTILITY BAR -->
 <div class="utility-bar">
@@ -88,7 +88,7 @@
   </div>
 </nav>
 <!-- QUICK-LINKS BAR -->
-<div class="quick-links-bar">
+<div style="background:var(--ior-deep,#0A1628)" class="quick-links-bar">
   <div class="container">
     <a href="09_About_IOR_v2.html" class="ql-item">🏢 About IOR</a>
     <a href="09a_Our_Leadership.html" class="ql-item">👥 Our Leadership</a>
@@ -98,8 +98,6 @@
     <a href="10_Careers_v2.html" class="ql-item">💼 Careers</a>
   </div>
 </div>
-
-<!-- ANNOTATION -->
 
 <!-- HERO -->
 <section class="hero-split about-hero">
@@ -194,7 +192,7 @@
       <a href="09d_Case_Studies.html" class="dir-card">
         <div class="dir-card__icon">📄</div>
         <div class="dir-card__title">Case Studies</div>
-<!-- PROTOTYPE NOTE: Qantas logo requires written approval before launch -->
+
         <div class="dir-card__body">Real proof from real customers. From the Qantas pilot training academy at Toowoomba to MPC Kinetic's Tanami pipeline — see IOR in action.</div>
         <span class="dir-card__cta">View Case Studies →</span>
       </a>
