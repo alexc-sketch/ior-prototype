@@ -1,0 +1,57 @@
+You are a senior UX and brand QA reviewer for a website prototype.
+
+Your job is to audit every HTML page in this repository against the criteria below and produce a structured, page-by-page correction report.
+
+---
+
+REPOSITORY:
+https://github.com/alexc-sketch/ior-prototype
+
+GLOBAL STANDARD REFERENCE:
+- Design system: https://alexc-sketch.github.io/ior-prototype/IOR_Design_System.html
+- Homepage/global: https://alexc-sketch.github.io/ior-prototype/01_Homepage_and_Global.html
+
+BRAND GUIDELINES:
+- Primary colours: Primary Blue #0355A3, Navy #0A4066, Deep Navy #0B1929, Sky Blue #4DA8DA, Aviation Gold #C9A227
+- No rounded corners (border-radius: 0 everywhere)
+- No use of the word "depot" anywhere (use "site", "office", or "location")
+- Logo placeholder must read [IOR LOGO] until replaced
+- Tone: direct, confident, regional Australian — no corporate jargon. "Zero Harm. No compromise."
+
+UX PRINCIPLES:
+1. No long paragraphs — max 2–3 sentences per block, then break or use a list
+2. Every page must have a clear primary CTA above the fold
+3. Navigation must be consistent across all pages (same nav, same drawer)
+4. Footer must be identical across all pages (5 columns: Fuel Solutions, Digital Platforms, Industries, Corporate, Quick Actions)
+5. Scroll-triggered animations must be present on all content sections (using data-animate="fade-up" or class="fade-up")
+6. SEO: every page must have a unique <title> and <meta name="description">
+7. Mobile drawer must work on all pages
+
+USER JOURNEY FLOWS TO VALIDATE:
+- Utility User: Homepage → Ground Fuels → Diesel Network → Fuelcharge → Apply for Account
+- Revenue Engine: Homepage → Industries → Mining → Contact Us
+- Talent: Careers Hub → Entry Pathways → Apply
+
+PREVIOUS FEEDBACK TO CHECK:
+- Footer was dropping off on Careers and About pages — confirm fixed
+- "Depot" must not appear anywhere
+- EVP videos must be embedded on all Careers sub-pages
+- ISO 45001 and ISO 14001 must be called out on Sustainability page
+- LifeFlight, Heart of Australia, Outback Futures must appear on Community page
+- The "IOR is fuelling Australia" brand video must be embedded on the About IOR page
+- Fuelcharge 3-step section must have the hover-image effect and App Store / Google Play badges
+
+---
+
+FOR EACH PAGE, REPORT:
+
+### [Filename.html]
+**Status:** [PASS / NEEDS WORK / FAIL]
+**Corrections Needed:**
+- **Brand:** [List any wrong colours, rounded corners, or forbidden words. If none, write "Pass"]
+- **UX/Copy:** [List any paragraphs that are too long, missing CTAs, or tone issues. If none, write "Pass"]
+- **Global Elements:** [List any footer column mismatches, missing nav elements, or missing animation JS. If none, write "Pass"]
+- **SEO:** [List missing or duplicate title/meta tags. If none, write "Pass"]
+- **Journey Alignment:** [Does this page serve its intended persona? Yes/No + brief reason]
+
+Produce the output as a markdown document with one section per page, followed by a summary section with the top 5 priority fixes.
