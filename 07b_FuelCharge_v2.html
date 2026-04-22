@@ -65,7 +65,7 @@ img{max-width:100%;display:block}
 .drawer__sub-link{display:block;padding:10px 20px 10px 36px;color:rgba(255,255,255,.75);font-size:14px}
 .drawer__sub-link:hover{color:#fff}
 .drawer__ctas{padding:16px 20px;display:flex;flex-direction:column;gap:10px;border-top:1px solid rgba(255,255,255,.1)}
-.quick-links-bar{position:sticky;top:72px;z-index:900;background:var(--fc-navy);border-top:3px solid var(--fc-teal)}
+.quick-links-bar{position:relative;top:auto;z-index:900;background:var(--fc-navy);border-top:3px solid var(--fc-teal)}
 .quick-links-bar .inner{display:flex;align-items:stretch;min-height:52px}
 .ql-item{flex:1;display:flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-right:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.85);font-size:13px;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background var(--transition-fast);text-align:center}
 .ql-item:last-child{border-right:none}
@@ -288,13 +288,7 @@ img{max-width:100%;display:block}
         <div class="app-badge">▶ Google Play</div>
       </div>
     </div>
-    <div class="hero-fc__right fade-up fade-up--d1">
-      <div class="hero-stat"><span class="hero-stat__num">115+</span><span class="hero-stat__label">IOR Diesel Network sites accepting Fuelcharge</span></div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat"><span class="hero-stat__num">24/7</span><span class="hero-stat__label">Access — no staffed attendant required</span></div>
-      <div class="hero-stat-divider"></div>
-      <div class="hero-stat"><span class="hero-stat__num">$0</span><span class="hero-stat__label">Account fees — pay only for what you use</span></div>
-    </div>
+
   </div>
 </section>
 <!-- STAT BAR -->
@@ -378,7 +372,7 @@ img{max-width:100%;display:block}
       .vtab:last-child { border-bottom: none; }
       .vtab:hover { background: rgba(255,255,255,.04); }
       .vtab.is-active {
-        background: rgba(0,209,204,.07);
+        background: rgba(0,209,204,.25);
         border-left-color: var(--fc-teal);
       }
       .vtab__num {
@@ -423,6 +417,7 @@ img{max-width:100%;display:block}
       .vtab.is-active .vtab__body {
         max-height: 200px;
         opacity: 1;
+        color: #fff;
       }
 
       /* ── Content Panel (Right Column) ── */
@@ -837,91 +832,7 @@ img{max-width:100%;display:block}
     </div>
   </div>
 </section>
-<!-- RELATED CONTENT LOOP GRID -->
-<section class="related-content" aria-label="Case studies and blog posts">
-  <div class="container">
-    <div class="section-heading fade-up">
-      <div class="eyebrow">Fuelcharge Insights</div>
-      <h2>Case studies &amp; insights for <span class="accent">Fuelcharge app users.</span></h2>
-    </div>
 
-    <div class="related-content__tabs">
-      <button class="related-content__tab active" data-tab="rc-fuelcharge-cases">Case Studies</button>
-      <button class="related-content__tab" data-tab="rc-fuelcharge-blog">Blog Posts</button>
-    </div>
-
-    <div id="rc-fuelcharge-cases" class="related-tab-panel active">
-      <div class="related-grid">
-        <div class="related-card fade-up">
-          <div class="related-card__img">[IMAGE — Fuelcharge app, truck driver]</div>
-          <div class="related-card__body">
-            <div class="related-card__tag related-card__tag--case">Case Study</div>
-            <div class="related-card__title">Fuelcharge: how a remote worker fuels up at 2am without a card</div>
-            <div class="related-card__excerpt">No attendant. No fuel card. No wait. How Fuelcharge is changing the way regional workers access fuel at unmanned IOR sites.</div>
-            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">[IMAGE — Fuelcharge, marina]</div>
-          <div class="related-card__body">
-            <div class="related-card__tag related-card__tag--case">Case Study</div>
-            <div class="related-card__title">Fuelling up at a remote marina with Fuelcharge</div>
-            <div class="related-card__excerpt">A commercial fishing operator's experience using Fuelcharge at an unmanned IOR marina site — 24/7 access, instant receipts, no hassle.</div>
-            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">[IMAGE — Fuelcharge, airport]</div>
-          <div class="related-card__body">
-            <div class="related-card__tag related-card__tag--case">Case Study</div>
-            <div class="related-card__title">Aviation fuel via app: Fuelcharge at a regional airport</div>
-            <div class="related-card__excerpt">A general aviation pilot's experience using Fuelcharge for Avgas at a regional IOR aviation site — simple, fast, and always available.</div>
-            <a href="11_Blog_List.html" class="related-card__link">Read the case study &#8594;</a>
-          </div>
-        </div>
-      </div>
-      <div class="related-content__view-all">
-        <a href="11_Blog_List.html" class="btn btn--outline-dark">View All Case Studies &#8594;</a>
-      </div>
-    </div>
-
-    <div id="rc-fuelcharge-blog" class="related-tab-panel" style="display:none;">
-      <div class="related-grid">
-        <div class="related-card fade-up">
-          <div class="related-card__img">[IMAGE — App store, mobile]</div>
-          <div class="related-card__body">
-            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
-            <div class="related-card__title">Fuelcharge vs fuel cards: which is right for your fleet?</div>
-            <div class="related-card__excerpt">A practical comparison of the two most common fleet fuelling methods — and why more Australian operators are making the switch.</div>
-            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">[IMAGE — Unmanned diesel stop]</div>
-          <div class="related-card__body">
-            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
-            <div class="related-card__title">How unmanned fuel sites work — and why they're the future of regional fuelling</div>
-            <div class="related-card__excerpt">No attendant. No card reader. No opening hours. How IOR's Fuelcharge-enabled sites are redefining access to fuel in regional Australia.</div>
-            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
-          </div>
-        </div>
-        <div class="related-card fade-up">
-          <div class="related-card__img">[IMAGE — Digital payment, fuel]</div>
-          <div class="related-card__body">
-            <div class="related-card__tag related-card__tag--blog">Blog Post</div>
-            <div class="related-card__title">Is Fuelcharge secure? How IOR protects your payment and fuel data</div>
-            <div class="related-card__excerpt">Tokenised payments, encrypted data, and fraud detection — how IOR's Fuelcharge platform keeps your account and transactions safe.</div>
-            <a href="11_Blog_List.html" class="related-card__link">Read the article &#8594;</a>
-          </div>
-        </div>
-      </div>
-      <div class="related-content__view-all">
-        <a href="11_Blog_List.html" class="btn btn--outline-dark">View All Blog Posts &#8594;</a>
-      </div>
-    </div>
-
-  </div>
-</section>
 <footer class="footer" aria-label="Site footer">
   <div class="footer__inner">
     <div class="footer-col">
