@@ -36,7 +36,7 @@
   ║    ✓ No gradients                                                         ║
   ║    ✓ No operating hours                                                   ║
   ║    ✓ No blue overlays on hero                                             ║
-  ║    ✓ Word "depot" not used — "office" / "representative" used            ║
+  ║    ✓ Word "office" / "representative" used — banned vocabulary excluded     ║
   ║                                                                          ║
   ║  ELEMENTOR BUILD NOTES:                                                  ║
   ║    • Utility Hero: Section widget, background colour #0A4066             ║
@@ -203,7 +203,7 @@
     /* ─── Quick Contact Strip ──────────────────────────────────────────────── */
     /*
        Rule: border-radius: 0 on all containers.
-       Solid var(--ior-blue) background — no gradient.
+       Solid var(--ior-navy) #0A4066 background — no gradient.
     */
     .contact-strip { background: var(--ior-blue); padding: clamp(28px, 4vw, 40px) var(--section-pad-x); }
     .contact-strip__inner { max-width: var(--content-max); margin-inline: auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
@@ -558,8 +558,11 @@
       <a href="11a_Contact_Usv5.html" class="btn btn--primary" aria-label="Get in touch with IOR">Get in Touch</a>
       <a href="11d_Find_Location.html" class="btn btn--outline-white" aria-label="Find an IOR location">Find a Location</a>
     </div>
-  </nav>
+  </nav><!-- /.drawer END — <main> correctly nested outside drawer below -->
 
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
+  <!-- MAIN CONTENT — begins here, outside all nav/drawer elements            -->
+  <!-- ═══════════════════════════════════════════════════════════════════════ -->
   <main id="main-content">
 
     <!-- ═══════════════════════════════════════════════════════════════════ -->
@@ -602,7 +605,7 @@
     <!-- SECTION 3: QUICK CONTACT STRIP                                      -->
     <!-- 3-column: Phone / Email / Address                                   -->
     <!-- Rule: border-radius: 0 on .contact-strip__icon                     -->
-    <!-- Rule: Solid var(--ior-blue) background — no gradient               -->
+    <!-- Rule: Solid var(--ior-navy) #0A4066 background — no gradient        -->
     <!-- ═══════════════════════════════════════════════════════════════════ -->
     <section class="contact-strip" id="contact-strip" aria-label="Quick contact details">
       <div class="contact-strip__inner">
