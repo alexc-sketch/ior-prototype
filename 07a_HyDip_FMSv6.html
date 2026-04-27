@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fuelcharge &#8212; Pay for Fuel Faster at IOR Sites | IOR&#174;</title>
-  <meta name="description" content="Fuelcharge is IOR&#39;s mobile app for cashless fuel access. No credit application. Download, register a card, and refuel at IOR sites &#8212; 24/7, even in the most remote locations.">
+  <title>HyDip&#8482; Fuel Management System &#8212; Real-Time Tank Monitoring | IOR&#174;</title>
+  <meta name="description" content="HyDip&#8482; is IOR&#8217;s proprietary cloud-based fuel management system. Real-time tank monitoring, per-asset fuel tracking, automated FTC reporting, and accounting integration.">
 
   <style>
     :root {
@@ -33,10 +33,9 @@
       --transition:        250ms ease;
       --transition-fast:   150ms ease;
       --z-nav:             100;
-      /* Fuelcharge brand */
-      --fc-dark:           #13114D;
-      --fc-teal:           #00D1CC;
-      --fc-warm:           #FCFCED;
+      --hydip-blue:        #0054A4;
+      --hydip-yellow:      #FFD700;
+      --hydip-dark:        #13114D;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { font-size: 16px; scroll-behavior: smooth; }
@@ -49,21 +48,19 @@
     .container { width: 100%; max-width: var(--container-max); margin-inline: auto; padding-inline: var(--section-pad-x); }
     .eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--ior-blue); margin-bottom: 10px; display: block; }
     .eyebrow--white { color: rgba(255,255,255,.8); }
-    .eyebrow--teal { color: var(--fc-teal); }
+    .eyebrow--yellow { color: var(--hydip-yellow); }
     .highlight { color: var(--ior-blue); }
 
     /* Buttons */
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 14px; font-weight: 700; letter-spacing: .02em; border: 2px solid transparent; transition: all var(--transition); text-decoration: none; border-radius: 500px; white-space: nowrap; min-height: 44px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; font-size: 14px; font-weight: 700; letter-spacing: .02em; border: 2px solid transparent; transition: all var(--transition); text-decoration: none; border-radius: 500px; white-space: nowrap; }
     .btn--primary   { background: var(--ior-blue); color: #fff; border-color: var(--ior-blue); }
     .btn--primary:hover { background: var(--ior-navy); border-color: var(--ior-navy); }
-    .btn--teal      { background: var(--fc-teal); color: var(--fc-dark); border-color: var(--fc-teal); }
-    .btn--teal:hover { background: #00b8b4; border-color: #00b8b4; }
+    .btn--yellow    { background: var(--hydip-yellow); color: var(--hydip-dark); border-color: var(--hydip-yellow); }
+    .btn--yellow:hover { background: #e6c200; border-color: #e6c200; }
     .btn--ghost     { background: transparent; color: #fff; border-color: rgba(255,255,255,.6); }
     .btn--ghost:hover { background: rgba(255,255,255,.1); border-color: #fff; }
     .btn--outline   { background: transparent; color: var(--ior-blue); border-color: var(--ior-blue); }
     .btn--outline:hover { background: var(--ior-blue); color: #fff; }
-    .btn--outline-dark { background: transparent; color: var(--fc-dark); border-color: var(--fc-dark); }
-    .btn--outline-dark:hover { background: var(--fc-dark); color: #fff; }
     .btn--sm { padding: 10px 20px; font-size: 13px; }
     .btn--pill { border-radius: 500px; }
     .btn--white { background: #fff; color: var(--ior-blue); border-color: #fff; }
@@ -139,14 +136,17 @@
     /* Asset Placeholder */
     .asset-placeholder { background: var(--grey-100); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--grey-400); font-size: 13px; font-weight: 600; text-align: center; padding: 20px; }
     .asset-placeholder svg { opacity: .4; }
-    .asset-placeholder--dark { background: rgba(19,17,77,.4); border: 2px dashed rgba(0,209,204,.2); color: rgba(255,255,255,.5); }
+
+    /* HubSpot Form Placeholder */
+    .hs-form-placeholder { background: var(--grey-50); border: 2px dashed var(--grey-200); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 40px 24px; text-align: center; }
+    .hs-form-placeholder p { font-size: 13px; color: var(--grey-400); font-weight: 600; }
+    .hs-form-placeholder span { font-size: 11px; color: var(--grey-400); }
 
     /* Section Heading */
     .section-heading { margin-bottom: clamp(24px,3vw,40px); }
     .section-heading--center { text-align: center; }
     .section-heading h2 { font-size: clamp(24px,3vw,40px); font-weight: 800; color: var(--grey-900); line-height: 1.2; }
     .section-heading h2 .accent { color: var(--ior-blue); }
-    .section-heading h2 .accent--teal { color: var(--fc-teal); }
     .section-heading p { font-size: clamp(14px,1.4vw,16px); color: var(--mid-grey); margin-top: 12px; max-width: 640px; }
     .section-heading--center p { margin-inline: auto; }
 
@@ -155,102 +155,94 @@
     .fade-up--visible { opacity: 1; transform: none; }
 
     /* ── HERO ──────────────────────────────────────────────────── */
-    .fc-hero { background: var(--fc-dark); display: grid; grid-template-columns: 1fr 1fr; min-height: clamp(480px,60vw,700px); }
-    @media (max-width: 900px) { .fc-hero { grid-template-columns: 1fr; } .fc-hero__visual { display: none; } }
-    .fc-hero__content { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px,6vw,96px) clamp(24px,5vw,80px); }
-    .fc-hero__eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fc-teal); margin-bottom: 16px; display: block; }
-    .fc-hero__h1 { font-size: clamp(36px,5vw,72px); font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 24px; }
-    .fc-hero__sub { font-size: clamp(15px,1.6vw,18px); color: rgba(255,255,255,.85); line-height: 1.7; margin-bottom: 36px; max-width: 520px; }
-    .fc-hero__ctas { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 28px; }
-    .fc-hero__badges { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .fc-hero__badge-link { display: block; flex-shrink: 0; }
-    .fc-hero__badge-link svg { display: block; height: 44px; width: auto; }
-    .fc-hero__visual { display: flex; align-items: center; justify-content: center; padding: clamp(32px,4vw,64px); }
+    .hydip-hero { background: #0054A4; padding: clamp(70px,10vw,120px) clamp(20px,8vw,125px); }
+    .hydip-hero__inner { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .hydip-hero__h1 { font-size: clamp(32px,4.5vw,58px); font-weight: 900; color: #fff; line-height: 1.1; margin-bottom: 20px; }
+    .hydip-hero__sub { font-size: clamp(15px,1.6vw,18px); color: rgba(255,255,255,.85); line-height: 1.7; margin-bottom: 32px; max-width: 540px; }
+    .hydip-hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    @media (max-width: 900px) {
+      .hydip-hero__inner { grid-template-columns: 1fr; }
+      .hydip-hero__visual { display: none; }
+    }
 
-    /* ── STAT BAR ──────────────────────────────────────────────── */
-    .stat-bar { background: var(--fc-teal); padding: clamp(24px,3vw,36px) 0; }
-    .stat-bar .container { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
-    @media (max-width: 768px) { .stat-bar .container { grid-template-columns: 1fr; } }
-    .stat-item { padding: 20px 32px; border-right: 1px solid rgba(19,17,77,.15); text-align: center; }
-    .stat-item:last-child { border-right: none; }
-    .stat-item__num { font-size: clamp(28px,3.5vw,44px); font-weight: 900; color: var(--fc-dark); line-height: 1; }
-    .stat-item__label { font-size: 13px; font-weight: 600; color: var(--fc-dark); margin-top: 4px; opacity: .8; }
+    /* ── VALUE PILLARS (Quick Why) ─────────────────────────────── */
+    .value-pillars { background: var(--hydip-dark); padding: clamp(40px,5vw,60px) 0; }
+    .value-pillars .container { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; }
+    @media (max-width: 768px) { .value-pillars .container { grid-template-columns: 1fr; } }
+    .vp-item { padding: 32px; border-right: 1px solid rgba(255,255,255,.12); }
+    .vp-item:last-child { border-right: none; }
+    .vp-item__eyebrow { font-size: 10px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--hydip-yellow); margin-bottom: 8px; }
+    .vp-item__title { font-size: 20px; font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .vp-item__body { font-size: 14px; color: rgba(255,255,255,.7); line-height: 1.7; }
 
-    /* ── AUDIENCE CARDS ────────────────────────────────────────── */
-    .fc-audience { background: var(--fc-dark); padding: clamp(60px,8vw,100px) 0; }
-    .fc-audience__heading { text-align: center; margin-bottom: clamp(32px,4vw,56px); }
-    .fc-audience__h2 { font-size: clamp(24px,3vw,40px); font-weight: 900; color: #fff; line-height: 1.2; }
-    .fc-cards-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; }
-    @media (max-width: 768px) { .fc-cards-grid { grid-template-columns: 1fr; gap: 2px; } }
-    .fc-flip-card { position: relative; height: 340px; overflow: hidden; cursor: default; }
-    .fc-flip-card__front, .fc-flip-card__back { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 32px; text-align: center; transition: opacity .35s ease, transform .35s ease; }
-    .fc-flip-card__front { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); }
-    .fc-flip-card__back { background: var(--fc-teal); opacity: 0; transform: translateY(8px); }
-    .fc-flip-card:hover .fc-flip-card__front { opacity: 0; transform: translateY(-8px); }
-    .fc-flip-card:hover .fc-flip-card__back { opacity: 1; transform: translateY(0); }
-    .fc-flip-card__icon { width: 56px; height: 56px; margin-bottom: 20px; color: var(--fc-teal); }
-    .fc-flip-card__title { font-size: clamp(18px,2vw,24px); font-weight: 900; color: #fff; line-height: 1.2; }
-    .fc-flip-card__back .fc-flip-card__title { color: var(--fc-dark); }
-    .fc-flip-card__desc { font-size: 15px; color: var(--fc-dark); line-height: 1.6; margin-top: 16px; font-weight: 500; }
+    /* ── TWO-TONE HEADLINE ─────────────────────────────────────── */
+    .two-tone-section { padding: clamp(60px,8vw,100px) 0; background: #fff; }
+    .two-tone-section__inner { max-width: var(--content-max); margin: 0 auto; padding-inline: var(--section-pad-x); display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    @media (max-width: 768px) { .two-tone-section__inner { grid-template-columns: 1fr; } }
+    .two-tone-h2 { font-size: clamp(28px,3.5vw,46px); font-weight: 900; line-height: 1.15; margin-bottom: 24px; }
+    .two-tone-h2 .tt-dark { color: var(--grey-900); }
+    .two-tone-h2 .tt-muted { color: var(--mid-grey); }
+    .two-tone-section__body { font-size: clamp(15px,1.5vw,17px); color: var(--grey-700); line-height: 1.75; }
 
-    /* ── SIGN-UP SECTION ───────────────────────────────────────── */
-    .fc-signup { background: #fff; padding: clamp(60px,8vw,100px) 0; }
-    .fc-signup__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    @media (max-width: 900px) { .fc-signup__inner { grid-template-columns: 1fr; } }
-    .fc-signup__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--fc-teal); margin-bottom: 12px; display: block; }
-    .fc-signup__h2 { font-size: clamp(26px,3vw,40px); font-weight: 900; color: var(--fc-dark); line-height: 1.2; margin-bottom: 20px; }
-    .fc-signup__body { font-size: clamp(15px,1.5vw,17px); color: var(--grey-700); line-height: 1.75; margin-bottom: 32px; }
-    .fc-signup__steps { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
-    .fc-signup__step { display: flex; gap: 16px; align-items: flex-start; }
-    .fc-signup__step-num { width: 32px; height: 32px; background: var(--fc-teal); color: var(--fc-dark); font-size: 14px; font-weight: 900; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .fc-signup__step-text { font-size: 15px; color: var(--grey-700); line-height: 1.6; padding-top: 4px; }
-    .fc-signup__step-text strong { color: var(--grey-900); }
-    .fc-signup__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    /* ── TABS ──────────────────────────────────────────────────── */
+    .tabs-section { padding: clamp(60px,8vw,100px) 0; background: var(--grey-50); }
+    .tabs-nav { display: flex; gap: 0; border-bottom: 2px solid var(--grey-200); margin-bottom: 40px; overflow-x: auto; scrollbar-width: none; }
+    .tabs-nav::-webkit-scrollbar { display: none; }
+    .tab-btn { padding: 14px 28px; font-size: 14px; font-weight: 700; color: var(--grey-400); background: none; border: none; border-bottom: 3px solid transparent; cursor: pointer; white-space: nowrap; transition: all var(--transition); letter-spacing: .04em; text-transform: uppercase; margin-bottom: -2px; }
+    .tab-btn:hover { color: var(--hydip-blue); }
+    .tab-btn.is-active { color: var(--hydip-blue); border-bottom-color: var(--hydip-blue); }
+    .tab-panel { display: none; }
+    .tab-panel.is-active { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    @media (max-width: 768px) { .tab-panel.is-active { grid-template-columns: 1fr; } .tab-panel__visual { display: none; } }
+    .tab-panel__problem { background: #fff; border-left: 4px solid var(--hydip-yellow); padding: 24px 28px; margin-bottom: 24px; }
+    .tab-panel__problem-label { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--grey-400); margin-bottom: 8px; }
+    .tab-panel__problem-text { font-size: clamp(16px,1.8vw,20px); font-weight: 700; color: var(--grey-900); line-height: 1.4; font-style: italic; }
+    .tab-panel__solution-label { font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--hydip-blue); margin-bottom: 10px; }
+    .tab-panel__solution-text { font-size: clamp(14px,1.4vw,16px); color: var(--grey-700); line-height: 1.75; margin-bottom: 20px; }
+    .tab-panel__ctas { display: flex; gap: 10px; flex-wrap: wrap; }
 
-    /* ── MAP SECTION ───────────────────────────────────────────── */
-    .fc-map { background: var(--fc-warm); padding: clamp(60px,8vw,100px) 0; }
-    .fc-map__inner { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px,5vw,80px); align-items: center; }
-    @media (max-width: 900px) { .fc-map__inner { grid-template-columns: 1fr; } }
-    .fc-map__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--fc-teal); margin-bottom: 12px; display: block; }
-    .fc-map__h2 { font-size: clamp(24px,3vw,40px); font-weight: 900; color: var(--fc-dark); line-height: 1.2; margin-bottom: 20px; }
-    .fc-map__body { font-size: clamp(15px,1.5vw,17px); color: var(--grey-700); line-height: 1.7; margin-bottom: 32px; }
-    .fc-map__stats { display: flex; gap: 32px; margin-bottom: 32px; flex-wrap: wrap; }
-    .fc-map__stat-num { font-size: clamp(28px,3vw,40px); font-weight: 900; color: var(--fc-dark); line-height: 1; }
-    .fc-map__stat-num span { color: var(--fc-teal); }
-    .fc-map__stat-label { font-size: 13px; color: var(--grey-700); margin-top: 4px; }
-    .fc-map__cta { display: inline-flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 800; color: var(--fc-dark); border-bottom: 2px solid var(--fc-teal); padding-bottom: 2px; transition: color var(--transition-fast), border-color var(--transition-fast); }
-    .fc-map__cta:hover { color: var(--fc-teal); }
+    /* ── ONBOARDING STEPS ──────────────────────────────────────── */
+    .steps-section { padding: clamp(60px,8vw,100px) 0; background: #fff; }
+    .steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
+    @media (max-width: 768px) { .steps-grid { grid-template-columns: 1fr; } }
+    .step-card { background: var(--grey-50); padding: 40px 32px; border-top: 4px solid var(--hydip-blue); }
+    .step-card__num { font-size: 52px; font-weight: 900; color: rgba(0,84,164,.12); line-height: 1; margin-bottom: 16px; }
+    .step-card__title { font-size: 18px; font-weight: 800; color: var(--grey-900); margin-bottom: 10px; }
+    .step-card__desc { font-size: 14px; color: var(--grey-700); line-height: 1.7; }
+    .steps-cta { text-align: center; margin-top: 40px; }
 
-    /* ── HOW IT WORKS ──────────────────────────────────────────── */
-    .fc-flow { background: #fff; padding: clamp(60px,8vw,96px) 0; }
-    .fc-flow__heading { text-align: center; margin-bottom: clamp(40px,5vw,64px); }
-    .fc-flow__h2 { font-size: clamp(24px,3vw,40px); font-weight: 900; color: var(--fc-dark); line-height: 1.2; }
-    .fc-flow__layout { display: grid; grid-template-columns: 360px 1fr; gap: clamp(24px,4vw,64px); align-items: start; }
-    @media (max-width: 900px) { .fc-flow__layout { grid-template-columns: 1fr; } }
-    .fc-flow__tabs { display: flex; flex-direction: column; gap: 0; }
-    .fc-flow__tab { display: flex; align-items: flex-start; gap: 20px; padding: 24px 28px; cursor: pointer; border-left: 4px solid transparent; transition: all var(--transition); background: none; text-align: left; font-family: var(--font); border-bottom: 1px solid var(--grey-200); }
-    .fc-flow__tab:last-child { border-bottom: none; }
-    .fc-flow__tab:hover { background: var(--grey-50); }
-    .fc-flow__tab.active { border-left-color: var(--fc-teal); background: var(--grey-50); }
-    .fc-flow__tab-num { font-size: 32px; font-weight: 900; color: rgba(0,209,204,.2); line-height: 1; flex-shrink: 0; transition: color var(--transition); }
-    .fc-flow__tab.active .fc-flow__tab-num { color: var(--fc-teal); }
-    .fc-flow__tab-title { font-size: 16px; font-weight: 800; color: var(--fc-dark); margin-bottom: 6px; line-height: 1.3; }
-    .fc-flow__tab-desc { font-size: 14px; color: var(--grey-700); line-height: 1.6; display: none; }
-    .fc-flow__tab.active .fc-flow__tab-desc { display: block; }
-    .fc-flow__media { position: sticky; top: 100px; }
-    .fc-flow__panel { display: none; }
-    .fc-flow__panel.active { display: block; }
-    .fc-flow__video-wrap { position: relative; width: 100%; padding-bottom: 56.25%; background: var(--fc-dark); overflow: hidden; }
-    .fc-flow__video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-    .fc-flow__device-wrap { display: flex; justify-content: center; align-items: center; padding: 40px; background: var(--fc-dark); }
+    /* ── TRUST BLOCK ───────────────────────────────────────────── */
+    .trust-section { padding: clamp(60px,8vw,100px) 0; background: var(--grey-50); }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+    @media (max-width: 768px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    .testimonial-card { background: #fff; padding: 36px; border-left: 4px solid var(--hydip-blue); }
+    .testimonial-card__quote { font-size: clamp(15px,1.5vw,17px); color: var(--grey-700); line-height: 1.75; font-style: italic; margin-bottom: 20px; }
+    .testimonial-card__quote::before { content: '\201C'; }
+    .testimonial-card__quote::after  { content: '\201D'; }
+    .testimonial-card__attr { font-size: 13px; font-weight: 700; color: var(--grey-900); }
+    .testimonial-card__attr span { font-weight: 400; color: var(--grey-400); }
 
-    /* ── SOCIAL PROOF ──────────────────────────────────────────── */
-    .fc-social-proof { background: var(--fc-dark); padding: clamp(60px,8vw,80px) 0; }
-    .fc-quote { max-width: 820px; margin-inline: auto; text-align: center; }
-    .fc-quote__mark { font-size: 80px; line-height: .8; color: var(--fc-teal); font-family: Georgia, serif; display: block; margin-bottom: 8px; }
-    .fc-quote__text { font-size: clamp(18px,2.2vw,26px); font-weight: 400; color: #fff; line-height: 1.6; font-style: italic; margin-bottom: 28px; }
-    .fc-quote__attr { font-size: 14px; font-weight: 700; color: var(--fc-teal); text-transform: uppercase; letter-spacing: .08em; }
-    .fc-quote__attr span { color: rgba(255,255,255,.6); font-weight: 400; text-transform: none; letter-spacing: 0; }
+    /* ── HARDWARE SPECS ────────────────────────────────────────── */
+    .hardware-section { padding: clamp(60px,8vw,100px) 0; background: var(--grey-100); }
+    .hardware-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
+    @media (max-width: 900px) { .hardware-grid { grid-template-columns: 1fr; } }
+    .hardware-card { background: #fff; padding: 36px; display: flex; flex-direction: column; }
+    .hardware-card__icon { width: 48px; height: 48px; background: var(--ior-light); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+    .hardware-card__title { font-size: 18px; font-weight: 800; color: var(--grey-900); margin-bottom: 6px; }
+    .hardware-card__model { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--hydip-blue); margin-bottom: 16px; }
+    .hardware-card__features { display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; flex: 1; }
+    .hardware-card__feature { font-size: 13px; color: var(--grey-700); display: flex; gap: 10px; align-items: flex-start; }
+    .hardware-card__feature::before { content: ''; display: block; width: 6px; height: 6px; background: var(--hydip-yellow); flex-shrink: 0; margin-top: 6px; }
+    .hardware-card__cta { margin-top: auto; }
+
+    /* ── LEAD TRAP ─────────────────────────────────────────────── */
+    .lead-trap { background: var(--hydip-dark); padding: clamp(60px,8vw,100px) clamp(20px,8vw,125px); }
+    .lead-trap__inner { max-width: var(--container-max); margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    @media (max-width: 900px) { .lead-trap__inner { grid-template-columns: 1fr; gap: 40px; } }
+    .lead-trap__eyebrow { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--hydip-yellow); margin-bottom: 12px; }
+    .lead-trap__h2 { font-size: clamp(26px,3vw,40px); font-weight: 900; color: #fff; line-height: 1.2; margin-bottom: 20px; }
+    .lead-trap__body { font-size: clamp(14px,1.4vw,16px); color: rgba(255,255,255,.75); line-height: 1.75; }
+    .lead-trap__form { background: rgba(255,255,255,.05); padding: 36px; border: 1px solid rgba(255,255,255,.1); }
 
     /* ── FAQ ───────────────────────────────────────────────────── */
     .faq-section { padding: clamp(40px,5vw,72px) 0; background: var(--grey-50); border-top: 1px solid var(--grey-200); }
@@ -311,19 +303,19 @@
   <!-- PROTO-BAR -->
   <div class="proto-bar" role="navigation" aria-label="Prototype navigation">
     <span class="proto-bar__label">Prototype</span>
-    <span class="proto-bar__current">Fuelcharge App v8</span>
+    <span class="proto-bar__current">HyDip&#8482; FMS v6</span>
     <div class="proto-bar__links">
       <a href="00_Master_Index.html" class="proto-bar__link">&#8592; Master Index</a>
       <span class="proto-bar__sep" aria-hidden="true">|</span>
       <a href="07_Digital_Platformsv5.html" class="proto-bar__link">Digital Platforms</a>
       <span class="proto-bar__sep" aria-hidden="true">|</span>
-      <a href="07a_HyDip_FMSv6.html" class="proto-bar__link">HyDip FMS</a>
+      <a href="07b_Fuelcharge_App_v8.html" class="proto-bar__link">Fuelcharge App</a>
       <span class="proto-bar__sep" aria-hidden="true">|</span>
       <a href="07c_Customer_Portal_v8.html" class="proto-bar__link">Customer Portal</a>
     </div>
   </div>
 
-  <!-- HEADER & NAVIGATION -->
+  <!-- HEADER & NAVIGATION — Canonical Shell v4 -->
   <header role="banner">
   <div class="utility-bar" role="complementary" aria-label="Site utilities">
     <div class="utility-bar__inner">
@@ -356,8 +348,8 @@
         <li><button class="nav-link" data-menu="support-contact" aria-expanded="false" aria-controls="mega-support-contact">Support &amp; Contact <span class="nav-chevron" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></span></button></li>
       </ul>
       <div class="nav-ctas">
-        <a href="#signup" class="btn btn--ghost btn--pill btn--sm" aria-label="Download Fuelcharge">Download App</a>
-        <a href="11d_Find_Locationv5.html" class="btn btn--teal btn--pill btn--sm" aria-label="Find a Fuelcharge location">Find a Site</a>
+        <a href="https://portal.hydip.com" class="btn btn--ghost btn--pill btn--sm" target="_blank" rel="noopener noreferrer" aria-label="HyDip Customer Login">Login</a>
+        <a href="#lead-capture" class="btn btn--yellow btn--pill btn--sm" aria-label="Enquire about HyDip">Enquire Now</a>
         <button class="hamburger" id="hamburger-btn" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-drawer">
           <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
         </button>
@@ -369,13 +361,13 @@
         <div class="mega-col"><p class="mega-col__title">Ground Fuels</p><div class="mega-col__links"><a href="03_Ground_Fuels.html" class="mega-col__link">Ground Fuels Hub</a><a href="#" class="mega-col__link">IOR Diesel Stops</a><a href="#" class="mega-col__link">On-Site Refuelling</a><a href="#" class="mega-col__link">Bulk Diesel Delivery</a><a href="#" class="mega-col__link">HyBlue&#8482; AdBlue</a><a href="#" class="mega-col__link">Oils &amp; Lubricants</a></div></div>
         <div class="mega-col"><p class="mega-col__title">Aviation Fuels</p><div class="mega-col__links"><a href="04_Aviation_Hub.html" class="mega-col__link">Aviation Hub</a><a href="#" class="mega-col__link">Aviation Network</a><a href="#" class="mega-col__link">Airport Fuelling</a><a href="#" class="mega-col__link">Aviation Bulk Delivery</a><a href="#" class="mega-col__link">Aviation Oils &amp; Lubricants</a></div></div>
         <div class="mega-col"><p class="mega-col__title">Equipment</p><div class="mega-col__links"><a href="05_Equipment_Infrastructure.html" class="mega-col__link">Equipment &amp; Infrastructure</a><a href="#" class="mega-col__link">Fuel Storage Tanks</a><a href="#" class="mega-col__link">Frac Tanks</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Supply &amp; Trading</p><div class="mega-col__links"><a href="06_Supply_Trading.html" class="mega-col__link">Supply &amp; Trading Hub</a><a href="#" class="mega-col__link">Lytton &amp; Port Bonython</a><a href="#" class="mega-col__link">Eromanga Refinery</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">Supply &amp; Trading</p><div class="mega-col__links"><a href="06_Supply_Trading.html" class="mega-col__link">Supply &amp; Trading Hub</a><a href="#" class="mega-col__link">Lytton &amp; Port Bonython</a><a href="#" class="mega-col__link">Eromanga Refinery</a><a href="#" class="mega-col__link">Condensates</a></div></div>
       </div>
     </div>
     <div class="mega-panel" id="mega-digital-platforms" role="region" aria-label="Digital Platforms menu">
       <div class="mega-inner mega-inner--3col">
         <div class="mega-col"><p class="mega-col__title">Digital Platforms</p><div class="mega-col__links"><a href="07_Digital_Platformsv5.html" class="mega-col__link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="mega-col__link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="mega-col__link">Fuelcharge App</a><a href="07c_Customer_Portal_v8.html" class="mega-col__link">Customer Portal</a></div></div>
-        <div class="mega-col"><p class="mega-col__title">Fuelcharge</p><div class="mega-col__links"><a href="#signup" class="mega-col__link">Download the App</a><a href="#how-it-works" class="mega-col__link">How It Works</a><a href="11d_Find_Locationv5.html" class="mega-col__link">Find a Fuelcharge Site</a></div></div>
+        <div class="mega-col"><p class="mega-col__title">HyDip&#8482; FMS</p><div class="mega-col__links"><a href="#tabs" class="mega-col__link">How It Works</a><a href="#hardware-specs" class="mega-col__link">Hardware Specifications</a><a href="#lead-capture" class="mega-col__link">Enquire Now</a><a href="https://status.hydip.com" class="mega-col__link" target="_blank" rel="noopener noreferrer">System Status &#8599;</a></div></div>
         <div class="mega-col"><p class="mega-col__title">Resources</p><div class="mega-col__links"><a href="11_Support_Hubv5.html" class="mega-col__link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="mega-col__link">Contact Us</a></div></div>
       </div>
     </div>
@@ -407,15 +399,15 @@
       <button class="drawer__close" id="drawer-close" aria-label="Close menu">&times;</button>
     </div>
     <nav class="drawer__nav" aria-label="Mobile navigation">
-      <div class="drawer__item"><button class="drawer__link" data-drawer-menu="fs">Fuel Solutions <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-fs"><a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels Hub</a><a href="04_Aviation_Hub.html" class="drawer__sub-link">Aviation Hub</a><a href="05_Equipment_Infrastructure.html" class="drawer__sub-link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading.html" class="drawer__sub-link">Supply &amp; Trading</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer-menu="fs">Fuel Solutions <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-fs"><a href="03_Ground_Fuels.html" class="drawer__sub-link">Ground Fuels Hub</a><a href="#" class="drawer__sub-link">IOR Diesel Stops</a><a href="04_Aviation_Hub.html" class="drawer__sub-link">Aviation Hub</a><a href="05_Equipment_Infrastructure.html" class="drawer__sub-link">Equipment &amp; Infrastructure</a><a href="06_Supply_Trading.html" class="drawer__sub-link">Supply &amp; Trading</a></div></div>
       <div class="drawer__item"><button class="drawer__link" data-drawer-menu="dp">Digital Platforms <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-dp"><a href="07_Digital_Platformsv5.html" class="drawer__sub-link">Digital Platforms Hub</a><a href="07a_HyDip_FMSv6.html" class="drawer__sub-link">HyDip&#8482; FMS</a><a href="07b_Fuelcharge_App_v8.html" class="drawer__sub-link">Fuelcharge App</a><a href="07c_Customer_Portal_v8.html" class="drawer__sub-link">Customer Portal</a></div></div>
       <div class="drawer__item"><button class="drawer__link" data-drawer-menu="ind">Industries We Serve <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-ind"><a href="08_Industries_Hub.html" class="drawer__sub-link">Industries Hub</a><a href="08a_Transport_Logistics.html" class="drawer__sub-link">Transport &amp; Logistics</a><a href="08b_Oil_Gas.html" class="drawer__sub-link">Oil &amp; Gas</a></div></div>
-      <div class="drawer__item"><button class="drawer__link" data-drawer-menu="abt">About IOR <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-abt"><a href="09_About_IOR.html" class="drawer__sub-link">About IOR</a><a href="09a_Our_Leadership.html" class="drawer__sub-link">Our Leadership</a></div></div>
-      <div class="drawer__item"><button class="drawer__link" data-drawer-menu="sup">Support &amp; Contact <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-sup"><a href="11_Support_Hubv5.html" class="drawer__sub-link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a><a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer-menu="abt">About IOR <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-abt"><a href="09_About_IOR.html" class="drawer__sub-link">About IOR</a><a href="09a_Our_Leadership.html" class="drawer__sub-link">Our Leadership</a><a href="10_Careers.html" class="drawer__sub-link">Careers</a></div></div>
+      <div class="drawer__item"><button class="drawer__link" data-drawer-menu="sup">Support &amp; Contact <span aria-hidden="true">&#8250;</span></button><div class="drawer__sub" id="drawer-sup"><a href="11_Support_Hubv5.html" class="drawer__sub-link">Help Centre &amp; FAQs</a><a href="11a_Contact_Usv5.html" class="drawer__sub-link">Contact Us</a><a href="11b_Regional_Contactsv5.html" class="drawer__sub-link">Regional Contacts</a><a href="11d_Find_Locationv5.html" class="drawer__sub-link">Find a Location</a><a href="11e_Make_Paymentv5.html" class="drawer__sub-link">Make a Payment</a></div></div>
     </nav>
     <div class="drawer__cta">
-      <a href="#signup" class="btn btn--white btn--pill">Download App</a>
-      <a href="11d_Find_Locationv5.html" class="btn btn--teal btn--pill">Find a Site</a>
+      <a href="https://portal.hydip.com" class="btn btn--white btn--pill" target="_blank" rel="noopener noreferrer">Login</a>
+      <a href="#lead-capture" class="btn btn--yellow btn--pill">Enquire Now</a>
     </div>
   </div>
   </header>
@@ -423,281 +415,353 @@
   <main id="main-content">
 
     <!-- ── SECTION 1: HERO ──────────────────────────────────────── -->
-    <section class="fc-hero" id="hero" aria-label="Fuelcharge App hero">
-      <div class="fc-hero__content">
-        <span class="fc-hero__eyebrow">Digital Platforms &#8212; Fuelcharge</span>
-        <h1 class="fc-hero__h1">Fuel up anywhere. No account needed.</h1>
-        <p class="fc-hero__sub">Fuelcharge is IOR&#8217;s consumer fuel payment app. No credit application, no account setup. Download the app, register a card, and start refuelling at IOR sites across Australia &#8212; 24/7, even in the most remote locations.</p>
-        <div class="fc-hero__ctas">
-          <a href="#signup" class="btn btn--teal btn--pill" aria-label="Download Fuelcharge">Download the App</a>
-          <a href="11d_Find_Locationv5.html" class="btn btn--ghost btn--pill" aria-label="Find a Fuelcharge location">Find a Site Near You</a>
+    <section class="hydip-hero" id="hero" aria-label="HyDip FMS hero">
+      <div class="hydip-hero__inner">
+        <div class="hydip-hero__copy fade-up">
+          <span class="eyebrow eyebrow--yellow">HYDIP&#8482; FUEL MANAGEMENT SYSTEM</span>
+          <h1 class="hydip-hero__h1">Fleet fuel management.<br>Finally solved.</h1>
+          <p class="hydip-hero__sub">HyDip&#8482; is IOR&#8217;s purpose-built Fuel Management System. Real-time per-asset tracking, automated Fuel Tax Credit reporting, accounting integration, and a live fleet dashboard &#8212; all in one platform built for Australian operators.</p>
+          <div class="hydip-hero__ctas">
+            <a href="#lead-capture" class="btn btn--yellow" aria-label="Enquire about HyDip FMS">Enquire Now</a>
+            <a href="https://portal.hydip.com" class="btn btn--ghost" target="_blank" rel="noopener noreferrer" aria-label="Login to HyDip">Customer Login</a>
+          </div>
         </div>
-        <!-- App Store Badges -->
-        <div class="fc-hero__badges" aria-label="Download Fuelcharge">
-          <a href="#" class="fc-hero__badge-link" aria-label="Download on the App Store" target="_blank" rel="noopener noreferrer">
-            <svg height="44" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="120" height="40" rx="0" fill="#000"/><path d="M24.769 20.3c-.03-3.225 2.635-4.793 2.756-4.866-1.504-2.197-3.836-2.498-4.661-2.527-1.973-.2-3.865 1.174-4.867 1.174-1.013 0-2.565-1.15-4.224-1.117-2.163.033-4.163 1.268-5.27 3.205-2.258 3.912-.577 9.696 1.617 12.871 1.07 1.556 2.334 3.299 3.997 3.236 1.61-.066 2.213-1.04 4.157-1.04 1.93 0 2.49 1.04 4.182 1.003 1.73-.033 2.824-1.584 3.876-3.15 1.234-1.8 1.738-3.566 1.76-3.657-.04-.016-3.36-1.286-3.323-5.132z" fill="#fff"/><path d="M21.578 11.454c.873-1.073 1.466-2.544 1.302-4.034-1.26.054-2.822.852-3.73 1.9-.806.934-1.524 2.457-1.337 3.893 1.413.107 2.862-.717 3.765-1.759z" fill="#fff"/><text x="38" y="14" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="7" fill="rgba(255,255,255,.7)">Download on the</text><text x="38" y="27" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#fff">App Store</text></svg>
-          </a>
-          <a href="#" class="fc-hero__badge-link" aria-label="Get it on Google Play" target="_blank" rel="noopener noreferrer">
-            <svg height="44" viewBox="0 0 135 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect width="135" height="40" rx="0" fill="#000"/><path d="M7.2 6.8c-.4.4-.6 1-.6 1.8v22.8c0 .8.2 1.4.6 1.8l.1.1 12.8-12.8v-.3L7.2 6.8z" fill="#4285F4"/><path d="M24.4 24.1l-4.3-4.3v-.3l4.3-4.3.1.1 5.1 2.9c1.5.8 1.5 2.2 0 3l-5.2 2.9z" fill="#FBBC04"/><path d="M24.5 24l-4.4-4.4L7.2 33.3c.5.5 1.3.6 2.2.1l15.1-9.4" fill="#EA4335"/><path d="M24.5 15.6L9.4 6.2c-.9-.5-1.7-.4-2.2.1l12.9 12.9 4.4-3.6z" fill="#34A853"/><text x="35" y="14" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="7" fill="rgba(255,255,255,.7)">GET IT ON</text><text x="35" y="27" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="14" font-weight="600" fill="#fff">Google Play</text></svg>
-          </a>
-        </div>
-      </div>
-      <div class="fc-hero__visual" aria-hidden="true">
-        <div class="asset-placeholder asset-placeholder--dark" style="width:100%; min-height:400px;">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-          <span>PLACEHOLDER &#8212; Person holding smartphone over fuel bowser, using Fuelcharge app</span>
+        <div class="hydip-hero__visual" aria-hidden="true">
+          <div class="asset-placeholder" style="min-height:400px; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.5);">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <span>PLACEHOLDER — Hand holding smartphone over open laptop showing HyDip dashboard</span>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ── SECTION 2: QUICK LINKS BAR ──────────────────────────── -->
-    <nav class="quick-links-bar" aria-label="Fuelcharge quick links">
+    <nav class="quick-links-bar" aria-label="HyDip quick links">
       <div class="quick-links-bar__inner">
         <span class="quick-links-bar__label">Explore:</span>
-        <a href="#who" class="quick-links-bar__link">Who It&#8217;s For</a>
-        <a href="#signup" class="quick-links-bar__link">Get Started</a>
-        <a href="#network" class="quick-links-bar__link">Find a Site</a>
-        <a href="#how-it-works" class="quick-links-bar__link">How It Works</a>
-        <a href="#faq" class="quick-links-bar__link">FAQs</a>
+        <a href="#tabs" class="quick-links-bar__link">How It Works</a>
+        <a href="#onboarding" class="quick-links-bar__link">Get Started</a>
+        <a href="#trust" class="quick-links-bar__link">Why HyDip?</a>
+        <a href="#hardware-specs" class="quick-links-bar__link">Hardware Specs</a>
+        <a href="#lead-capture" class="quick-links-bar__link">Enquire Now</a>
+        <a href="https://status.hydip.com" class="quick-links-bar__link" target="_blank" rel="noopener noreferrer">System Status &#8599;</a>
       </div>
     </nav>
 
-    <!-- ── SECTION 3: STAT BAR ──────────────────────────────────── -->
-    <div class="stat-bar" aria-label="Fuelcharge network stats">
+    <!-- ── SECTION 3: VALUE PILLARS (Why HyDip — moved up) ──────── -->
+    <section class="value-pillars" aria-labelledby="vp-heading">
       <div class="container">
-        <div class="stat-item fade-up">
-          <div class="stat-item__num">100<span style="font-size:.6em;color:var(--fc-dark);">+</span></div>
-          <div class="stat-item__label">IOR Sites Nationwide</div>
+        <div class="vp-item fade-up">
+          <p class="vp-item__eyebrow">WHY HYDIP?</p>
+          <h3 class="vp-item__title">Supported</h3>
+          <p class="vp-item__body">Backed by local technical assistance, remote diagnostics, and national installation capability. IOR&#8217;s team is with you from day one.</p>
         </div>
-        <div class="stat-item fade-up">
-          <div class="stat-item__num">24<span style="font-size:.6em;color:var(--fc-dark);">/7</span></div>
-          <div class="stat-item__label">Network Availability</div>
+        <div class="vp-item fade-up">
+          <p class="vp-item__eyebrow">WHY HYDIP?</p>
+          <h3 class="vp-item__title">Robust</h3>
+          <p class="vp-item__body">Modern, simple hardware designed for the harshest Australian environments — IP67 rated with resilience to power fluctuations and extreme weather.</p>
         </div>
-        <div class="stat-item fade-up">
-          <div class="stat-item__num">$0</div>
-          <div class="stat-item__label">Account Fees</div>
+        <div class="vp-item fade-up">
+          <p class="vp-item__eyebrow">WHY HYDIP?</p>
+          <h3 class="vp-item__title">Connected</h3>
+          <p class="vp-item__body">Seamlessly links to 3G/4G, Ethernet, Wi-Fi, and GPS. Compatible with 3rd party dispensers including COMPAC, SANKI, and CONTREC.</p>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- ── SECTION 4: WHO IT'S FOR ──────────────────────────────── -->
-    <section class="fc-audience" id="who" aria-labelledby="audience-heading">
-      <div class="container">
-        <div class="fc-audience__heading fade-up">
-          <span class="eyebrow eyebrow--teal">WHO IT&#8217;S FOR</span>
-          <h2 class="fc-audience__h2" id="audience-heading">Built for every driver on the road</h2>
+    <!-- ── SECTION 4: THE 'WHY' — PROBLEM STATEMENT ─────────────── -->
+    <section class="two-tone-section" aria-labelledby="why-heading">
+      <div class="two-tone-section__inner">
+        <div class="fade-up">
+          <h2 class="two-tone-h2" id="why-heading">
+            <span class="tt-dark">Fuel management shouldn&#8217;t be</span><br>
+            <span class="tt-muted">a guessing game.</span>
+          </h2>
+          <p class="two-tone-section__body">Stop relying on manual dipsticks, estimated consumption, and missing dockets. HyDip&#8482; replaces guesswork with precision hardware and cloud-based software, giving you absolute control over who uses your fuel, when, and where &#8212; from any device, anywhere in Australia.</p>
         </div>
-        <div class="fc-cards-grid">
-          <!-- Card 1: Rural Drivers & Caravanners -->
-          <div class="fc-flip-card fade-up">
-            <div class="fc-flip-card__front">
-              <svg class="fc-flip-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              <p class="fc-flip-card__title">Rural Drivers &amp; Caravanners</p>
-            </div>
-            <div class="fc-flip-card__back">
-              <p class="fc-flip-card__title">Rural Drivers &amp; Caravanners</p>
-              <p class="fc-flip-card__desc">Access fuel at remote IOR diesel stops 24/7 &#8212; no cash, no card reader, no attendant needed. Perfect for long hauls through outback Australia.</p>
-            </div>
-          </div>
-          <!-- Card 2: Pilots & Aviation -->
-          <div class="fc-flip-card fade-up">
-            <div class="fc-flip-card__front">
-              <svg class="fc-flip-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2 3.4 6.6l7.1 3.7-2.3 2.3-3-1L4 12.6l3.5 1.5 1.5 3.5 1.1-1.1-1-3 2.3-2.3 3.7 7.1z"/></svg>
-              <p class="fc-flip-card__title">Pilots &amp; Aviation</p>
-            </div>
-            <div class="fc-flip-card__back">
-              <p class="fc-flip-card__title">Pilots &amp; Aviation</p>
-              <p class="fc-flip-card__desc">Refuel at IOR Aviation sites using Fuelcharge. Pay for Avgas and Jet A-1 directly from your phone at a growing number of IOR-enabled airfields.</p>
-            </div>
-          </div>
-          <!-- Card 3: Small Businesses -->
-          <div class="fc-flip-card fade-up">
-            <div class="fc-flip-card__front">
-              <svg class="fc-flip-card__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
-              <p class="fc-flip-card__title">Small Businesses</p>
-            </div>
-            <div class="fc-flip-card__back">
-              <p class="fc-flip-card__title">Small Businesses</p>
-              <p class="fc-flip-card__desc">Need immediate network access without a credit account? Fuelcharge lets any business start refuelling today &#8212; with per-transaction receipts for easy expense management.</p>
-            </div>
+        <div class="fade-up" aria-hidden="true">
+          <div class="asset-placeholder" style="min-height:320px;">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span>PLACEHOLDER — HyDip cloud dashboard real-time tank levels overview</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ── SECTION 5: SIGN-UP / GET STARTED ─────────────────────── -->
-    <section class="fc-signup" id="signup" aria-labelledby="signup-heading">
-      <div class="container">
-        <div class="fc-signup__inner">
-          <div class="fade-up">
-            <span class="fc-signup__eyebrow">GET STARTED</span>
-            <h2 class="fc-signup__h2" id="signup-heading">Start refuelling today &#8212; no application required</h2>
-            <p class="fc-signup__body">Anyone can download Fuelcharge and start refuelling at IOR sites immediately. No credit application, no waiting period, no account setup. Just download, register your card, and go.</p>
-            <div class="fc-signup__steps">
-              <div class="fc-signup__step">
-                <div class="fc-signup__step-num">1</div>
-                <p class="fc-signup__step-text"><strong>Download the app</strong> &#8212; Available on iOS and Android. Free to download.</p>
-              </div>
-              <div class="fc-signup__step">
-                <div class="fc-signup__step-num">2</div>
-                <p class="fc-signup__step-text"><strong>Register your card</strong> &#8212; Visa, Mastercard, Amex, Apple Pay, or Google Pay.</p>
-              </div>
-              <div class="fc-signup__step">
-                <div class="fc-signup__step-num">3</div>
-                <p class="fc-signup__step-text"><strong>Find a site and fuel up</strong> &#8212; Scan the QR code on the bowser and pay in seconds.</p>
-              </div>
-            </div>
-            <div class="fc-signup__ctas">
-              <a href="#" class="btn btn--teal btn--pill" aria-label="Download on the App Store">App Store</a>
-              <a href="#" class="btn btn--outline-dark btn--pill" aria-label="Get it on Google Play">Google Play</a>
-            </div>
-          </div>
-          <div class="fade-up" aria-hidden="true">
-            <div class="asset-placeholder" style="min-height:420px;">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-              <span>PLACEHOLDER &#8212; Fuelcharge app screens showing sign-up flow on smartphone</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SECTION 6: NETWORK MAP ────────────────────────────────── -->
-    <section class="fc-map" id="network" aria-labelledby="map-heading">
-      <div class="container">
-        <div class="fc-map__inner">
-          <div class="fade-up">
-            <span class="fc-map__eyebrow">THE NETWORK</span>
-            <h2 class="fc-map__h2" id="map-heading">Diesel stops and aviation sites across Australia</h2>
-            <p class="fc-map__body">Fuelcharge works at IOR&#8217;s national network of diesel stops and aviation fuelling sites. Use the in-app map or the site finder below to locate your nearest Fuelcharge-enabled location before you hit the road or take off.</p>
-            <div class="fc-map__stats">
-              <div>
-                <div class="fc-map__stat-num">100<span>+</span></div>
-                <div class="fc-map__stat-label">IOR Sites</div>
-              </div>
-              <div>
-                <div class="fc-map__stat-num">24<span>/7</span></div>
-                <div class="fc-map__stat-label">Availability</div>
-              </div>
-            </div>
-            <a href="11d_Find_Locationv5.html" class="fc-map__cta" aria-label="Find a diesel or aviation stop near you">
-              Find Diesel &amp; Aviation Stops
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </div>
-          <div class="fade-up" aria-hidden="true">
-            <div class="asset-placeholder" style="width:100%; min-height:400px; background: var(--grey-100);">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>PLACEHOLDER &#8212; Map of Australia showing IOR network locations with diesel and aviation pin drops</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SECTION 7: HOW IT WORKS ───────────────────────────────── -->
-    <section class="fc-flow" id="how-it-works" aria-labelledby="flow-heading">
-      <div class="container">
-        <div class="fc-flow__heading fade-up">
-          <span class="eyebrow eyebrow--teal">HOW IT WORKS</span>
-          <h2 class="fc-flow__h2" id="flow-heading">Easy as 1&#8209;2&#8209;3</h2>
-        </div>
-        <div class="fc-flow__layout">
-          <div class="fc-flow__tabs" role="tablist" aria-label="App flow steps">
-            <button class="fc-flow__tab active" role="tab" aria-selected="true" aria-controls="flow-panel-1" id="flow-tab-1" data-flow-tab="1">
-              <span class="fc-flow__tab-num" aria-hidden="true">1</span>
-              <div class="fc-flow__tab-body">
-                <div class="fc-flow__tab-title">Download &amp; Scan</div>
-                <div class="fc-flow__tab-desc">Pull up to the pump. Open Fuelcharge on your phone and scan the QR code located directly on the bowser.</div>
-              </div>
-            </button>
-            <button class="fc-flow__tab" role="tab" aria-selected="false" aria-controls="flow-panel-2" id="flow-tab-2" data-flow-tab="2">
-              <span class="fc-flow__tab-num" aria-hidden="true">2</span>
-              <div class="fc-flow__tab-body">
-                <div class="fc-flow__tab-title">Select Your Pump</div>
-                <div class="fc-flow__tab-desc">Choose your pump number and fuel type. Select a pre-authorised amount &#8212; you&#8217;ll only be charged for fuel you actually receive.</div>
-              </div>
-            </button>
-            <button class="fc-flow__tab" role="tab" aria-selected="false" aria-controls="flow-panel-3" id="flow-tab-3" data-flow-tab="3">
-              <span class="fc-flow__tab-num" aria-hidden="true">3</span>
-              <div class="fc-flow__tab-body">
-                <div class="fc-flow__tab-title">Pay &amp; Go</div>
-                <div class="fc-flow__tab-desc">Authorise payment in the app. Your receipt is sent instantly to your phone and email &#8212; no paper, no waiting.</div>
-              </div>
-            </button>
-          </div>
-          <div class="fc-flow__media" aria-live="polite">
-            <div class="fc-flow__panel active" id="flow-panel-1" role="tabpanel" aria-labelledby="flow-tab-1">
-              <div class="fc-flow__video-wrap">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1" title="Introducing Fuelcharge" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-              </div>
-            </div>
-            <div class="fc-flow__panel" id="flow-panel-2" role="tabpanel" aria-labelledby="flow-tab-2">
-              <div class="fc-flow__video-wrap">
-                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0&modestbranding=1" title="How to use the Fuelcharge Payment Terminal" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-              </div>
-            </div>
-            <div class="fc-flow__panel" id="flow-panel-3" role="tabpanel" aria-labelledby="flow-tab-3">
-              <div class="fc-flow__device-wrap">
-                <div class="asset-placeholder asset-placeholder--dark" style="width:240px; height:420px;" role="img" aria-label="Fuelcharge app screen: Review your order and authorise pump">
-                  <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                  <span>PLACEHOLDER &#8212; App screen: Review order &amp; Authorise pump</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SECTION 8: TESTIMONIAL ────────────────────────────────── -->
-    <section class="fc-social-proof" id="testimonial" aria-labelledby="testimonial-heading">
-      <div class="container">
-        <div class="fc-quote fade-up">
-          <span class="fc-quote__mark" aria-hidden="true">&#8220;</span>
-          <p class="fc-quote__text" id="testimonial-heading">I drive past the fuel dock on my day off and see customers using Fuelcharge to pay online. I can see the transactions and know that I&#8217;m making money even when the site is unmanned.</p>
-          <p class="fc-quote__attr">Chris Rippon <span>&#8212; Proprietor, Tin Can Bay Marina</span></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── SECTION 9: FAQ ────────────────────────────────────────── -->
-    <section class="faq-section" id="faq" aria-labelledby="faq-heading">
+    <!-- ── SECTION 5: THE 'WHAT' — INTERACTIVE TABBED SOLUTION ──── -->
+    <section class="tabs-section" id="tabs" aria-labelledby="tabs-heading">
       <div class="container">
         <div class="section-heading fade-up">
-          <span class="eyebrow eyebrow--teal">FAQs</span>
-          <h2 id="faq-heading">Frequently asked <span class="accent--teal" style="color:var(--fc-teal)">questions</span></h2>
+          <span class="eyebrow">THE SOLUTION</span>
+          <h2 id="tabs-heading">One platform. Four critical capabilities.</h2>
+          <p>Click each tab to explore how HyDip&#8482; solves your biggest fuel challenges. Download the full brochure for detailed technical specifications.</p>
+        </div>
+        <div class="tabs-nav" role="tablist" aria-label="HyDip capabilities">
+          <button class="tab-btn is-active" role="tab" aria-selected="true" aria-controls="tab-gauge" id="btn-gauge" data-tab="gauge">GAUGE</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-track" id="btn-track" data-tab="track">TRACK</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-dispense" id="btn-dispense" data-tab="dispense">DISPENSE</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-pay" id="btn-pay" data-tab="pay">PAY</button>
+        </div>
+        <!-- Tab: GAUGE -->
+        <div class="tab-panel is-active" id="tab-gauge" role="tabpanel" aria-labelledby="btn-gauge">
+          <div>
+            <div class="tab-panel__problem">
+              <p class="tab-panel__problem-label">The Problem</p>
+              <p class="tab-panel__problem-text">&#8220;You don&#8217;t know how much fuel you have until you run out.&#8221;</p>
+            </div>
+            <p class="tab-panel__solution-label">The Solution</p>
+            <p class="tab-panel__solution-text">24/7 visibility of fuel levels. Real-time dip measurements for fuel storage tanks in any location. Remotely check tank levels, verify vendor deliveries, and automate your reordering via the HyDip Cloud platform to prevent costly stockouts.</p>
+            <div class="tab-panel__ctas">
+              <a href="#lead-capture" class="btn btn--primary btn--sm" aria-label="Enquire about HyDip GAUGE">Enquire Now</a>
+              <a href="#lead-capture" class="btn btn--outline btn--sm" aria-label="Download HyDip brochure">Download More Information</a>
+            </div>
+          </div>
+          <div class="tab-panel__visual" aria-hidden="true">
+            <div class="asset-placeholder" style="min-height:340px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+              <span>PLACEHOLDER — HyDip GAUGE real-time tank level dashboard view</span>
+            </div>
+          </div>
+        </div>
+        <!-- Tab: TRACK -->
+        <div class="tab-panel" id="tab-track" role="tabpanel" aria-labelledby="btn-track">
+          <div>
+            <div class="tab-panel__problem">
+              <p class="tab-panel__problem-label">The Problem</p>
+              <p class="tab-panel__problem-text">&#8220;Unauthorised draws are invisible until the invoice arrives.&#8221;</p>
+            </div>
+            <p class="tab-panel__solution-label">The Solution</p>
+            <p class="tab-panel__solution-text">Manage fuel to the litre. Monitor fuel usage with highly reliable data. HyDip gives administrators 24/7 access to view and track consumption by individual vehicle, driver, or RFID tag, eliminating theft and misuse before it costs you.</p>
+            <div class="tab-panel__ctas">
+              <a href="#lead-capture" class="btn btn--primary btn--sm" aria-label="Enquire about HyDip TRACK">Enquire Now</a>
+              <a href="#lead-capture" class="btn btn--outline btn--sm" aria-label="Download HyDip brochure">Download More Information</a>
+            </div>
+          </div>
+          <div class="tab-panel__visual" aria-hidden="true">
+            <div class="asset-placeholder" style="min-height:340px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              <span>PLACEHOLDER — HyDip TRACK per-driver/vehicle consumption report</span>
+            </div>
+          </div>
+        </div>
+        <!-- Tab: DISPENSE -->
+        <div class="tab-panel" id="tab-dispense" role="tabpanel" aria-labelledby="btn-dispense">
+          <div>
+            <div class="tab-panel__problem">
+              <p class="tab-panel__problem-label">The Problem</p>
+              <p class="tab-panel__problem-text">&#8220;Manual dipping is slow, inaccurate, and a safety risk.&#8221;</p>
+            </div>
+            <p class="tab-panel__solution-label">The Solution</p>
+            <p class="tab-panel__solution-text">Robust and trusted dispensing. Use industry-leading technology to authorise and track fuel. The highly customisable, weather-proof dispenser allows administrators to activate the bowser onsite or remotely at any time &#8212; with RFID tag-based authorisation for full accountability.</p>
+            <div class="tab-panel__ctas">
+              <a href="#lead-capture" class="btn btn--primary btn--sm" aria-label="Enquire about HyDip DISPENSE">Enquire Now</a>
+              <a href="#lead-capture" class="btn btn--outline btn--sm" aria-label="Download HyDip brochure">Download More Information</a>
+            </div>
+          </div>
+          <div class="tab-panel__visual" aria-hidden="true">
+            <div class="asset-placeholder" style="min-height:340px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12H3a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-2"/><path d="M12 2v10"/><path d="M9 5l3-3 3 3"/></svg>
+              <span>PLACEHOLDER — HyDip DISPENSE weather-proof bowser hardware</span>
+            </div>
+          </div>
+        </div>
+        <!-- Tab: PAY -->
+        <div class="tab-panel" id="tab-pay" role="tabpanel" aria-labelledby="btn-pay">
+          <div>
+            <div class="tab-panel__problem">
+              <p class="tab-panel__problem-label">The Problem</p>
+              <p class="tab-panel__problem-text">&#8220;Reconciling fuel costs across sites takes hours.&#8221;</p>
+            </div>
+            <p class="tab-panel__solution-label">The Solution</p>
+            <p class="tab-panel__solution-text">Unmanned 24/7 payments, without the broken hardware. Turn your bulk tank into a 24/7 revenue generator for independent retail. HyDip integrates seamlessly with Fuelcharge mobile payment technology to authorise the bowser directly from a smartphone &#8212; no moving parts, no jammed receipt printers.</p>
+            <div class="tab-panel__ctas">
+              <a href="#lead-capture" class="btn btn--primary btn--sm" aria-label="Enquire about HyDip PAY">Enquire Now</a>
+              <a href="#lead-capture" class="btn btn--outline btn--sm" aria-label="Download HyDip brochure">Download More Information</a>
+            </div>
+          </div>
+          <div class="tab-panel__visual" aria-hidden="true">
+            <div class="asset-placeholder" style="min-height:340px;">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+              <span>PLACEHOLDER — HyDip PAY Fuelcharge mobile payment integration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 6: THE 'HOW' — ONBOARDING FLOW ───────────────── -->
+    <section class="steps-section" id="onboarding" aria-labelledby="steps-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center fade-up">
+          <span class="eyebrow">HOW IT WORKS</span>
+          <h2 id="steps-heading">Up and running in <span class="highlight">three steps</span></h2>
+          <p>Getting started with HyDip&#8482; is straightforward. Our team handles everything from site assessment to installation and training.</p>
+        </div>
+        <div class="steps-grid">
+          <div class="step-card fade-up">
+            <div class="step-card__num">01</div>
+            <div class="step-card__title">Create an account.</div>
+            <div class="step-card__desc">Speak to our digital team to spec the right HyDip hardware for your bulk tanks and fleet size. We&#8217;ll design a custom solution for your sites.</div>
+          </div>
+          <div class="step-card fade-up">
+            <div class="step-card__num">02</div>
+            <div class="step-card__title">HyDip is installed.</div>
+            <div class="step-card__desc">Our technicians deploy the hardware, whether you need standard 4G/Ethernet connectivity or remote off-grid solar setups in the most isolated locations.</div>
+          </div>
+          <div class="step-card fade-up">
+            <div class="step-card__num">03</div>
+            <div class="step-card__title">Manage your fuel.</div>
+            <div class="step-card__desc">Log in to the cloud dashboard to manage tags, set limits, and instantly connect your data to Xero, MYOB, or SAP for seamless reporting.</div>
+          </div>
+        </div>
+        <div class="steps-cta fade-up">
+          <a href="#lead-capture" class="btn btn--primary" aria-label="Enquire about HyDip FMS">Enquire Now &#8594;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 7: TRUST BLOCK ────────────────────────────────── -->
+    <section class="trust-section" id="trust" aria-labelledby="trust-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center fade-up">
+          <span class="eyebrow">WHAT OUR CUSTOMERS SAY</span>
+          <h2 id="trust-heading">Trusted by Australian operators</h2>
+        </div>
+        <div class="testimonials-grid">
+          <div class="testimonial-card fade-up">
+            <p class="testimonial-card__quote">IOR were a breath of fresh air&#8230; This system has made us a far better business, and I would recommend this system to anyone.</p>
+            <p class="testimonial-card__attr">Hugh Ball <span>| Norwood Agriculture</span></p>
+          </div>
+          <div class="testimonial-card fade-up">
+            <p class="testimonial-card__quote">I drive past the fuel dock on my day off and see customers using Fuelcharge to pay online. I can see the transactions and know that I&#8217;m making money even when the site is unmanned.</p>
+            <p class="testimonial-card__attr">Chris Rippon <span>| Tin Can Bay Marina</span></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 8: HARDWARE SPECIFICATIONS ───────────────────── -->
+    <section class="hardware-section" id="hardware-specs" aria-labelledby="hw-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center fade-up">
+          <span class="eyebrow">HARDWARE</span>
+          <h2 id="hw-heading">Purpose-built for Australian conditions</h2>
+          <p>Download the full technical specifications for each HyDip hardware unit below.</p>
+        </div>
+        <div class="hardware-grid">
+          <div class="hardware-card fade-up">
+            <div class="hardware-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0054A4" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3 class="hardware-card__title">Tank Gauging Unit</h3>
+            <p class="hardware-card__model">HDV2</p>
+            <ul class="hardware-card__features">
+              <li class="hardware-card__feature">Supports up to 4 tank level sensors (4-20mA)</li>
+              <li class="hardware-card__feature">3G, 4G, and XBee communications</li>
+              <li class="hardware-card__feature">Standalone solar panel &amp; internal battery options</li>
+            </ul>
+            <div class="hardware-card__cta">
+              <div class="asset-placeholder" style="min-height:60px; font-size:12px;">
+                <span>PDF Download &#8212; HDV2 Spec Sheet (asset pending)</span>
+              </div>
+            </div>
+          </div>
+          <div class="hardware-card fade-up">
+            <div class="hardware-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0054A4" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <h3 class="hardware-card__title">Fuel Tracking Unit</h3>
+            <p class="hardware-card__model">HFTV1</p>
+            <ul class="hardware-card__features">
+              <li class="hardware-card__feature">RFID tag-based pump authorisation</li>
+              <li class="hardware-card__feature">Direct integration with 3rd party dispensers</li>
+              <li class="hardware-card__feature">3G and Ethernet communication interfaces</li>
+            </ul>
+            <div class="hardware-card__cta">
+              <div class="asset-placeholder" style="min-height:60px; font-size:12px;">
+                <span>PDF Download &#8212; HFTV1 Spec Sheet (asset pending)</span>
+              </div>
+            </div>
+          </div>
+          <div class="hardware-card fade-up">
+            <div class="hardware-card__icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0054A4" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+            </div>
+            <h3 class="hardware-card__title">Integrated Management Unit</h3>
+            <p class="hardware-card__model">HDX2</p>
+            <ul class="hardware-card__features">
+              <li class="hardware-card__feature">Direct I/O pump start/stop capabilities</li>
+              <li class="hardware-card__feature">110/240V AC or 12V DC power inputs</li>
+              <li class="hardware-card__feature">NMI Approved Flow Computer</li>
+            </ul>
+            <div class="hardware-card__cta">
+              <a href="#lead-capture" class="btn btn--outline btn--sm" aria-label="Enquire about HDX2">Enquire about HDX2 &#8595;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 9: LEAD TRAP ──────────────────────────────────── -->
+    <section class="lead-trap" id="lead-capture" aria-labelledby="lt-heading">
+      <div class="lead-trap__inner">
+        <div class="fade-up">
+          <p class="lead-trap__eyebrow">GET STARTED</p>
+          <h2 class="lead-trap__h2" id="lt-heading">Ready to take control of your fuel?</h2>
+          <p class="lead-trap__body">Download the complete HyDip&#8482; Product Brochure for detailed features, FTC claim methodology, and integration guides &#8212; or submit your details below to have an IOR digital specialist contact you directly to map out a custom telemetry solution for your sites.</p>
+        </div>
+        <div class="lead-trap__form fade-up">
+          <p style="font-size:14px; font-weight:700; color:#fff; margin-bottom:16px;">Enquire about HyDip&#8482; FMS</p>
+          <div class="hs-form-placeholder" aria-label="Enquiry form — embed pending">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            <p>Form Embed &#8212; Pending</p>
+            <span>Form ID: 2DEKpUanRQ_GZw0Jd7xaN7w</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── SECTION 10: FAQ ACCORDION ──────────────────────────────── -->
+    <section class="faq-section" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-heading fade-up">
+          <span class="eyebrow">FAQs</span>
+          <h2 id="faq-heading">Frequently asked <span class="highlight">questions</span></h2>
         </div>
         <div class="faq-list">
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">Do I need an IOR account to use Fuelcharge?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-            <div class="faq-answer" id="faq-1" role="region"><p>No. Fuelcharge works without an IOR account &#8212; pay via credit or debit card as a casual user. For fleet operators, connect Fuelcharge to an IOR account for consolidated billing, driver controls, and HyDip&#8482; integration.</p></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-1">What is the HyDip fuel management system?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+            <div class="faq-answer" id="faq-1" role="region"><p>HyDip&#8482; is IOR&#8217;s proprietary cloud-based Fuel Management System. It combines precision hardware (tank gauges, RFID dispensers, flow computers) with a cloud dashboard to give operators real-time visibility and control over every litre of fuel stored and dispensed.</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">Where can I download my tax receipts?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-            <div class="faq-answer" id="faq-2" role="region"><p>All receipts are stored in the Fuelcharge app under Transaction History. You can email individual receipts or export a CSV of all transactions for a selected date range directly from the app.</p></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-2">How does HyDip help track fuel usage?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+            <div class="faq-answer" id="faq-2" role="region"><p>HyDip assigns every fuel transaction to a specific RFID tag (vehicle, driver, or machine). Administrators can view consumption by asset, set spend limits, and export ATO-compliant reports for Fuel Tax Credit claims &#8212; all from the cloud dashboard.</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">Is Fuelcharge available at all IOR Aviation locations?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-            <div class="faq-answer" id="faq-3" role="region"><p>Fuelcharge is available at a growing number of IOR Aviation sites. Use the in-app map or the Find a Location page on our website to check which sites are Fuelcharge-enabled before your flight.</p></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-3">Who should use a fuel management system like HyDip?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+            <div class="faq-answer" id="faq-3" role="region"><p>Any business with bulk fuel storage &#8212; from mining camps and farms to transport depots and marinas &#8212; benefits from HyDip. It is particularly valuable for operations managing multiple sites or needing to prevent fuel theft and misuse.</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">What payment methods does Fuelcharge accept?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-            <div class="faq-answer" id="faq-4" role="region"><p>Fuelcharge accepts Visa, Mastercard, American Express, Apple Pay, and Google Pay. IOR fleet account holders can also charge transactions directly to their account for consolidated monthly billing.</p></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-4">Can HyDip work with fuel storage tanks I already own?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+            <div class="faq-answer" id="faq-4" role="region"><p>Yes. HyDip&#8482; is an agnostic telemetry solution that can be retrofitted to almost any bulk storage tank or 3rd-party dispensing bowser, including COMPAC, SANKI, and CONTREC units.</p></div>
           </div>
           <div class="faq-item">
-            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">How do I set driver spend limits for my fleet?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
-            <div class="faq-answer" id="faq-5" role="region"><p>Fleet managers can set per-driver, per-day, or per-fill spend limits directly from the Fuelcharge Fleet Dashboard online. Limits take effect immediately and can be adjusted at any time.</p></div>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-5">What reporting or visibility benefits does HyDip provide?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+            <div class="faq-answer" id="faq-5" role="region"><p>HyDip provides real-time tank level dips, automated low-stock alerts, per-asset consumption reports, vendor delivery verification, and ATO-compliant FTC reporting exports &#8212; all accessible from any device.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-6">How do I enquire about HyDip with IOR?<span class="faq-chevron" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span></button>
+            <div class="faq-answer" id="faq-6" role="region"><p>Use the form on this page to speak with an IOR digital specialist. We will assess your site requirements and design a custom HyDip solution for your infrastructure.</p></div>
           </div>
         </div>
         <div class="faq-footer fade-up">
           <div class="faq-footer__text">
             <h4>Still have questions?</h4>
-            <p>Contact our support team on <a href="tel:1300457467" style="color:var(--fc-teal);font-weight:700;">1300 457 467</a> or browse our full knowledge base.</p>
+            <p>Submit an enquiry to our local team or search our full knowledge base.</p>
           </div>
           <div class="faq-footer__actions">
             <a href="11_Support_Hubv5.html" class="faq-footer__help-link" aria-label="Browse the IOR Help Centre">Browse Help Centre</a>
-            <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--sm" aria-label="Contact IOR">Contact Us &rarr;</a>
+            <a href="11a_Contact_Usv5.html" class="btn btn--outline btn--sm" aria-label="Ask IOR a question">Ask us here &rarr;</a>
           </div>
         </div>
       </div>
@@ -705,7 +769,7 @@
 
   </main>
 
-  <!-- CANONICAL PRE-FOOTER + FOOTER -->
+  <!-- PRE-FOOTER + FOOTER — Canonical Shell v4 -->
   <section class="ior-pre-footer" aria-label="We're here to help">
     <div class="ior-pre-footer__inner">
       <h2 class="ior-pre-footer__title">We&rsquo;re here to help</h2>
@@ -823,18 +887,18 @@
     });
   });
 
-  // Flow tabs
-  var flowTabs = document.querySelectorAll('.fc-flow__tab');
-  var flowPanels = document.querySelectorAll('.fc-flow__panel');
-  flowTabs.forEach(function(tab) {
-    tab.addEventListener('click', function() {
-      var target = tab.getAttribute('data-flow-tab');
-      flowTabs.forEach(function(t) { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-      flowPanels.forEach(function(p) { p.classList.remove('active'); });
-      tab.classList.add('active');
-      tab.setAttribute('aria-selected','true');
-      var panel = document.getElementById('flow-panel-' + target);
-      if (panel) panel.classList.add('active');
+  // Tab switcher
+  var tabBtns = document.querySelectorAll('.tab-btn');
+  var tabPanels = document.querySelectorAll('.tab-panel');
+  tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var target = btn.getAttribute('data-tab');
+      tabBtns.forEach(function(b) { b.classList.remove('is-active'); b.setAttribute('aria-selected','false'); });
+      tabPanels.forEach(function(p) { p.classList.remove('is-active'); });
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-selected','true');
+      var panel = document.getElementById('tab-' + target);
+      if (panel) panel.classList.add('is-active');
     });
   });
 
