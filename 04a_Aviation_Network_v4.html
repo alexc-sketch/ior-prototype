@@ -157,13 +157,14 @@
 
     /* ─── Utility Bar ────────────────────────────────────────────────────── */
     .utility-bar { background: var(--ior-navy); padding: 8px var(--section-pad-x); display: flex; align-items: center; justify-content: flex-end; font-size: 13px; color: rgba(255,255,255,.85); }
+    header[role="banner"] { position: sticky; top: 0; z-index: var(--z-nav); }
     .utility-bar__inner { display: flex; align-items: center; gap: 20px; }
     .utility-bar__link { display: inline-flex; align-items: center; gap: 6px; color: rgba(255,255,255,.85); text-decoration: none; font-weight: 500; min-height: 44px; padding: 4px 0; transition: opacity var(--transition-fast); }
     .utility-bar__link:hover { opacity: .8; }
     .utility-bar__divider { width: 1px; height: 14px; background: rgba(255,255,255,.4); }
 
     /* ─── Primary Nav ────────────────────────────────────────────────────── */
-    .primary-nav { background: var(--ior-white); border-bottom: 1px solid rgba(3,85,163,.12); position: sticky; top: 0; z-index: var(--z-nav); height: clamp(60px,6vw,72px); transition: box-shadow var(--transition-base), height var(--transition-base); }
+    .primary-nav { background: var(--ior-white); border-bottom: 1px solid rgba(3,85,163,.12); position: relative; top: auto; z-index: var(--z-nav); height: clamp(60px,6vw,72px); transition: box-shadow var(--transition-base), height var(--transition-base); }
     .primary-nav--scrolled { height: 56px; box-shadow: 0 2px 20px rgba(0,0,0,.1); }
     .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; padding-inline: var(--section-pad-x); max-width: 1920px; margin: 0 auto; }
     .nav-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
@@ -909,7 +910,7 @@
             <a href="11d_Find_Locationv5.html" class="btn btn--gold">Find an Airport &#8594;</a>
             <a href="#" class="btn btn--outline" aria-label="Download the IOR Aviation Network Directory PDF" style="display:inline-flex;align-items:center;gap:8px;">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              Download Directory
+              Download Aviation Directory
             </a>
           </div>
         </div>
