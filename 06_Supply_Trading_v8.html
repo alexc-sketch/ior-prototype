@@ -460,52 +460,89 @@
     @media (max-width: 768px) { .problem-grid { grid-template-columns: 1fr; } }
 
     /* ============================================================
-       SECTION 5 — ROUTING GRID
-       Brief: Light grey (#F5F5F5) background. 3-column card grid.
-       Cards: white background, dark navy top border, sharp corners.
+       SECTION 5 — INFRASTRUCTURE SPLIT SECTIONS
+       Brief: Three full-width alternating split sections.
+       Alternating: Image Left / Content Right, then Content Left / Image Right.
+       Dark navy content panels. Real photography assets.
     ============================================================ */
     .routing-section {
-      padding: var(--section-pad) 0;
-      background: #F5F5F5;
+      /* wrapper removed — each split section is self-contained */
+      display: contents;
     }
-    .routing-section .section-heading { margin-bottom: clamp(32px, 4vw, 52px); }
-    .routing-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: clamp(20px, 2.5vw, 32px);
+    .infra-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: clamp(420px, 50vw, 580px);
     }
-    .routing-card {
-      background: #fff;
-      border-top: 4px solid var(--st-dark);
-      padding: clamp(28px, 3vw, 40px);
-      display: flex; flex-direction: column;
-      transition: box-shadow var(--transition-base);
+    .infra-split__img {
+      overflow: hidden;
+      position: relative;
     }
-    .routing-card:hover { box-shadow: 0 8px 32px rgba(10,22,40,.12); }
-    .routing-card__eyebrow {
-      font-size: 11px; font-weight: 700; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--st-green); margin-bottom: 10px;
+    .infra-split__img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
     }
-    .routing-card__title {
-      font-size: clamp(18px, 1.8vw, 22px); font-weight: 800;
-      color: var(--st-dark); margin-bottom: 14px; line-height: 1.2;
+    .infra-split__content {
+      background: var(--st-dark);
+      padding: clamp(48px, 6vw, 80px) clamp(40px, 5vw, 72px);
+      display: flex; flex-direction: column; justify-content: center;
     }
-    .routing-card__body {
-      font-size: clamp(14px, 1.4vw, 15px); color: var(--dark-grey);
-      line-height: 1.7; flex: 1; margin-bottom: 24px;
+    .infra-split__eyebrow {
+      font-size: 11px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--st-green);
+      margin-bottom: 16px;
     }
-    .routing-card__cta {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 14px; font-weight: 800; color: var(--st-green);
-      transition: gap var(--transition-fast);
+    .infra-split__title {
+      font-size: clamp(26px, 2.8vw, 38px); font-weight: 800;
+      color: #fff; line-height: 1.15; margin-bottom: 20px;
     }
-    .routing-card__cta:hover { gap: 10px; }
-    .routing-card__cta-arrow {
-      display: inline-block; width: 8px; height: 8px;
-      border-right: 2px solid currentColor; border-top: 2px solid currentColor;
-      transform: rotate(45deg);
+    .infra-split__body {
+      font-size: clamp(14px, 1.4vw, 16px); color: rgba(255,255,255,.78);
+      line-height: 1.75; margin-bottom: 28px; max-width: 520px;
     }
-    @media (max-width: 900px) { .routing-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 600px) { .routing-grid { grid-template-columns: 1fr; } }
+    .infra-split__bullets {
+      list-style: none; padding: 0; margin: 0 0 36px;
+    }
+    .infra-split__bullets li {
+      font-size: clamp(13px, 1.3vw, 15px); color: rgba(255,255,255,.85);
+      padding: 8px 0 8px 22px; position: relative;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      line-height: 1.5;
+    }
+    .infra-split__bullets li:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+    .infra-split__bullets li::before {
+      content: '';
+      position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 6px; height: 6px;
+      background: var(--st-green);
+    }
+    .infra-split__cta {
+      display: inline-block;
+      background: var(--st-green); color: #fff;
+      font-size: 14px; font-weight: 800; letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none; cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast);
+      align-self: flex-start;
+      text-decoration: none;
+    }
+    .infra-split__cta:hover { background: #009933; transform: translateY(-1px); }
+    /* Reverse: content left, image right */
+    .infra-split--reverse { }
+    .infra-split--reverse .infra-split__content { order: 1; }
+    .infra-split--reverse .infra-split__img { order: 2; }
+    /* Mobile stacking */
+    @media (max-width: 768px) {
+      .infra-split {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+      .infra-split__img { min-height: 260px; }
+      .infra-split--reverse .infra-split__content { order: 2; }
+      .infra-split--reverse .infra-split__img { order: 1; }
+    }
 
     /* ============================================================
        SECTION 6 — WHY IOR
@@ -1182,40 +1219,86 @@
     </section>
 
     <!-- ============================================================
-         SECTION 5 — ROUTING GRID
-         Brief: Eyebrow: OUR SUPPLY & TRADING OPERATIONS
-         H2: From refinery to terminal to your site.
-         3 cards: Lytton & Port Bonython | Eromanga Refinery | Condensates
-         Light grey (#F5F5F5) background.
+         SECTION 5 — INFRASTRUCTURE SPLIT SECTIONS
+         Brief: Three full-width alternating split sections.
+         1. Terminals — Image Left, Content Right
+         2. Eromanga — Content Left (reverse), Image Right
+         3. Condensates — Image Left, Content Right
     ============================================================ -->
-    <section class="routing-section" id="our-operations" aria-labelledby="routing-heading">
-      <div class="container">
-        <div class="section-heading section-heading--x fade-up">
-          <p class="eyebrow eyebrow--green">Our Supply &amp; Trading Operations</p>
-          <h2 id="routing-heading">From refinery to terminal to your site.</h2>
+    <div class="routing-section" id="our-operations" aria-label="Our Supply &amp; Trading Operations">
+
+      <!-- 5a: Lytton & Port Bonython Terminals — Image Left, Content Right -->
+      <div class="infra-split fade-up" id="terminals-split">
+        <div class="infra-split__img">
+          <img
+            src="assets/img/lytton_tanks_aerial.webp"
+            alt="Aerial view of IOR Lytton diesel import terminal tanks at the Port of Brisbane, Queensland"
+            loading="lazy"
+            width="960" height="640"
+          />
         </div>
-        <div class="routing-grid">
-          <div class="routing-card fade-up">
-            <p class="routing-card__eyebrow">Import &amp; Storage</p>
-            <h3 class="routing-card__title">Lytton &amp; Port Bonython Terminals</h3>
-            <p class="routing-card__body">191ML of combined diesel import and storage capacity across two deep-water terminals. Open 24/7. Triple road train access.</p>
-            <a href="06a_Terminals_v8.html" class="routing-card__cta" aria-label="Explore Lytton and Port Bonython Terminals">Explore Terminals <span class="routing-card__cta-arrow" aria-hidden="true"></span></a>
-          </div>
-          <div class="routing-card fade-up">
-            <p class="routing-card__eyebrow">Domestic Refinery</p>
-            <h3 class="routing-card__title">Eromanga Refinery</h3>
-            <p class="routing-card__body">Operating since 1986, our Eromanga refinery processes 1,250 barrels of locally produced crude oil per day — producing Eromanga UMF, the lowest-particulate diesel mining fuel on the market.</p>
-            <a href="06b_Eromanga_Refinery_v8.html" class="routing-card__cta" aria-label="Explore Eromanga Refinery">Explore Eromanga <span class="routing-card__cta-arrow" aria-hidden="true"></span></a>
-          </div>
-          <div class="routing-card fade-up">
-            <p class="routing-card__eyebrow">Trading Products</p>
-            <h3 class="routing-card__title">Condensates</h3>
-            <p class="routing-card__body">IOR trades condensate products as part of our broader supply chain operations. Enquire for current availability and pricing.</p>
-            <a href="#lead-capture" class="routing-card__cta" aria-label="Enquire about Condensates">Enquire <span class="routing-card__cta-arrow" aria-hidden="true"></span></a>
-          </div>
+        <div class="infra-split__content">
+          <p class="infra-split__eyebrow">Import &amp; Storage</p>
+          <h2 class="infra-split__title">Deep-water import terminals</h2>
+          <p class="infra-split__body">IOR operates two of Australia's most strategic diesel import and storage terminals, providing 191 million litres of combined capacity. Our Lytton (QLD) and Port Bonython (SA) facilities ensure absolute fuel security for Australian industry.</p>
+          <ul class="infra-split__bullets" aria-label="Terminal key facts">
+            <li>191ML combined diesel storage capacity</li>
+            <li>2,400 Lpm high-speed loading gantries</li>
+            <li>Triple road train access, open 24/7</li>
+            <li>Direct deep-water port access for long-range vessels</li>
+          </ul>
+          <a href="06a_Terminals_v8.html" class="infra-split__cta" aria-label="Explore Lytton and Port Bonython Terminals">Explore Terminals</a>
         </div>
       </div>
-    </section>
+
+      <!-- 5b: Eromanga Refinery — Content Left, Image Right (reverse) -->
+      <div class="infra-split infra-split--reverse fade-up" id="eromanga-split">
+        <div class="infra-split__content">
+          <p class="infra-split__eyebrow">Domestic Refinery</p>
+          <h2 class="infra-split__title">Australia's inland oil refinery</h2>
+          <p class="infra-split__body">Operating since 1984, our Eromanga refinery processes locally produced crude oil to produce Eromanga UMF — the lowest-particulate diesel mining fuel on the market. It stands as a critical asset for Australia's sovereign fuel security.</p>
+          <ul class="infra-split__bullets" aria-label="Eromanga Refinery key facts">
+            <li>1,250 barrels per day refining capacity</li>
+            <li>Produces ultra-low particulate Eromanga UMF</li>
+            <li>Sulphur content &lt;10ppm — exceeds Australian standards</li>
+            <li>40+ years of continuous outback operation</li>
+          </ul>
+          <a href="06b_Eromanga_Refinery_v8.html" class="infra-split__cta" aria-label="Explore Eromanga Refinery">Explore Eromanga</a>
+        </div>
+        <div class="infra-split__img">
+          <img
+            src="assets/img/eromanga_refinery_industrial.webp"
+            alt="Eromanga oil refinery processing infrastructure in outback Queensland, operating since 1986"
+            loading="lazy"
+            width="960" height="640"
+          />
+        </div>
+      </div>
+
+      <!-- 5c: Condensates — Image Left, Content Right -->
+      <div class="infra-split fade-up" id="condensates-split">
+        <div class="infra-split__img">
+          <img
+            src="assets/img/port_bonython_tanks.webp"
+            alt="Port Bonython diesel storage terminal tank farm, South Australia — 81ML capacity"
+            loading="lazy"
+            width="960" height="640"
+          />
+        </div>
+        <div class="infra-split__content">
+          <p class="infra-split__eyebrow">Trading Products</p>
+          <h2 class="infra-split__title">Condensate trading</h2>
+          <p class="infra-split__body">IOR trades condensate products as part of our broader supply chain operations, leveraging our extensive logistics network and storage capabilities.</p>
+          <ul class="infra-split__bullets" aria-label="Condensates key facts">
+            <li>Integrated supply chain operations</li>
+            <li>Reliable logistics and distribution</li>
+            <li>Flexible term supply agreements</li>
+          </ul>
+          <a href="#lead-capture" class="infra-split__cta" aria-label="Enquire about Condensate trading">Enquire Now</a>
+        </div>
+      </div>
+
+    </div><!-- /routing-section -->
 
     <!-- ============================================================
          SECTION 6 — WHY IOR
