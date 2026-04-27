@@ -261,10 +261,23 @@
     .testimonial { color: #fff; }
     .testimonial__quote { font-size: var(--text-heading-l); font-weight: 600; line-height: 1.45; color: rgba(255,255,255,.9); margin: clamp(16px,2vw,24px) 0; position: relative; padding-left: clamp(20px,3vw,32px); border-left: 3px solid var(--ior-sky); }
     .testimonial__attribution { font-size: var(--text-body-s); color: rgba(255,255,255,.65); font-weight: 600; letter-spacing: .04em; }
-    /* Fuelcharge panel */
-    .fuelcharge-panel { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); padding: clamp(28px,4vw,48px); }
-    .fuelcharge-panel h3 { color: #fff; margin: 12px 0 clamp(12px,1.5vw,20px); }
-    .fuelcharge-panel p { color: rgba(255,255,255,.75); font-size: var(--text-body-l); margin-bottom: clamp(24px,3vw,36px); }
+    /* Fuelcharge billboard — standalone section */
+    .fc-billboard { background: var(--fc-dark); padding: clamp(64px,8vw,100px) var(--section-pad-x); }
+    .fc-billboard__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px,7vw,96px); align-items: center; }
+    .fc-billboard__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--fc-teal); margin-bottom: 16px; }
+    .fc-billboard__headline { font-size: clamp(28px,4vw,52px); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: clamp(16px,2vw,24px); }
+    .fc-billboard__headline em { color: var(--fc-teal); font-style: normal; }
+    .fc-billboard__body { font-size: var(--text-body-l); color: rgba(255,255,255,.75); line-height: 1.65; margin-bottom: clamp(28px,3.5vw,44px); }
+    .fc-billboard__ctas { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    .btn--fc { display: inline-flex; align-items: center; gap: 8px; padding: clamp(14px,1.5vw,18px) clamp(24px,3vw,40px); background: var(--fc-teal); color: var(--fc-dark); font-family: var(--font-primary); font-size: var(--text-body-m); font-weight: 800; border: 2px solid var(--fc-teal); text-decoration: none; min-height: 44px; transition: background var(--transition-fast), border-color var(--transition-fast); }
+    .btn--fc:hover { background: #00b8b4; border-color: #00b8b4; }
+    .fc-billboard__app-badges { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 16px; }
+    .fc-badge { display: inline-flex; align-items: center; gap: 10px; padding: 10px 20px; border: 1px solid rgba(255,255,255,.25); color: #fff; text-decoration: none; font-size: 13px; font-weight: 600; transition: border-color var(--transition-fast); }
+    .fc-badge:hover { border-color: var(--fc-teal); }
+    .fc-badge svg { flex-shrink: 0; }
+    .fc-billboard__visual { display: flex; align-items: center; justify-content: center; }
+    .fc-billboard__mockup { width: 100%; max-width: 420px; aspect-ratio: 9/16; background: rgba(255,255,255,.04); border: 1px solid rgba(0,209,204,.2); display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; color: rgba(255,255,255,.4); font-size: 13px; }
+    .fc-billboard__mockup svg { opacity: .4; }
 
     /* ─── Direct Download Strip ──────────────────────────────────────────── */
     .direct-download-section { background: var(--ior-blue); padding: clamp(32px,4vw,56px) var(--section-pad-x); }
@@ -880,7 +893,13 @@
           <span class="eyebrow">National Coverage</span>
           <h2 id="map-teaser-h2">Find your nearest IOR Diesel Stop.</h2>
           <p>Search by location, route, or available amenities. 115+ stops from Darwin to Traralgon, strategically placed on Australia&rsquo;s major freight and agricultural corridors.</p>
-          <a href="11d_Find_Locationv5.html" class="btn btn--primary">Find a Diesel Stop &#8594;</a>
+          <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:clamp(24px,3vw,36px);">
+            <a href="11d_Find_Locationv5.html" class="btn btn--primary">Find a Diesel Stop &#8594;</a>
+            <a href="#" class="btn btn--outline" aria-label="Download the IOR Diesel Network Directory PDF" style="display:inline-flex;align-items:center;gap:8px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Directory
+            </a>
+          </div>
         </div>
         <div class="map-teaser__placeholder fade-up" aria-label="Static map placeholder — Australia with IOR Diesel Network stop locations">
           <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--ior-mid-grey)" stroke-width="1.2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -931,21 +950,6 @@
             <span>App Screen Placeholder</span>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- ─── SECTION 6: DIRECT DOWNLOAD STRIP ────────────────────────────── -->
-    <!-- Ungated — no form required -->
-    <section class="direct-download-section" aria-label="Download IOR Diesel Network Directory">
-      <div class="direct-download-section__inner">
-        <div class="direct-download-section__text">
-          <h3>Download the IOR Diesel Network Directory</h3>
-          <p>Full site directory with locations, amenities, and access requirements.</p>
-        </div>
-        <a href="#" class="btn btn--white" aria-label="Download the IOR Diesel Network Directory PDF">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Download PDF
-        </a>
       </div>
     </section>
 
