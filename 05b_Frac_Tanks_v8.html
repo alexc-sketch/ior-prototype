@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Frac Tanks | Mobile &amp; Container Fluid Storage | IOR</title>
-  <meta name="description" content="High-volume frac tanks for the Australian oil, gas, and drilling sectors. Available in 450bbl and 500bbl capacities. Hire or purchase.">
+  <meta name="description" content="High-volume, rapid-deployment frac tanks for Australian oil, gas, and drilling operations. Available in 180bbl to 500bbl capacities for hire or purchase.">
 
   <style>
     /* ============================================================
@@ -325,7 +325,13 @@
     }
     .hero__bg-img {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; display: block; opacity: 0.35;
+      object-fit: cover; display: block;
+    }
+    /* Dark overlay: rgba(11,25,41,0.70) — ensures H1 legibility over complex industrial photography */
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: rgba(11, 25, 41, 0.70);
+      z-index: 1;
     }
     .img-placeholder-full {
       position: absolute; inset: 0; background: #1a2535;
@@ -467,19 +473,27 @@
     ============================================================ */
     .hire-buy-section {
       padding: var(--section-pad) 0;
-      background: var(--equip-dark);
+      background: #fff;
     }
-    .hire-buy-section .section-heading h2 { color: #fff; }
-    .hire-buy-section .section-heading p { color: rgba(255,255,255,.65); }
+    .hire-buy-section .section-heading h2 { color: var(--equip-dark); }
+    .hire-buy-section .section-heading p { color: var(--mid-grey); }
     .hire-buy-grid {
       display: grid; grid-template-columns: 1fr 1fr;
-      gap: clamp(20px, 2.5vw, 32px);
+      gap: 0;
+      border: 1px solid var(--grey-200);
     }
+    /* Hire card: light grey background for visual distinction */
     .hire-buy-card {
-      background: rgba(255,255,255,.05);
-      border-top: 4px solid var(--equip-gold);
-      padding: clamp(28px, 3.5vw, 44px);
+      padding: clamp(36px, 4.5vw, 56px);
       display: flex; flex-direction: column; gap: 20px;
+      border-top: 4px solid var(--equip-gold);
+    }
+    .hire-buy-card--hire {
+      background: #F8F9FA;
+      border-right: 1px solid var(--grey-200);
+    }
+    .hire-buy-card--buy {
+      background: #fff;
     }
     .hire-buy-card__badge {
       display: inline-flex; align-items: center; gap: 8px;
@@ -489,10 +503,10 @@
     }
     .hire-buy-card__title {
       font-size: clamp(20px, 2.2vw, 26px); font-weight: 800;
-      color: #fff; line-height: 1.2;
+      color: var(--equip-dark); line-height: 1.2;
     }
     .hire-buy-card__desc {
-      font-size: clamp(14px, 1.4vw, 15px); color: rgba(255,255,255,.75);
+      font-size: clamp(14px, 1.4vw, 15px); color: var(--dark-grey);
       line-height: 1.75;
     }
     .hire-buy-card__list {
@@ -500,15 +514,16 @@
       display: flex; flex-direction: column; gap: 0;
     }
     .hire-buy-card__list li {
-      font-size: 14px; color: rgba(255,255,255,.85);
-      padding: 10px 0 10px 20px; position: relative;
-      border-bottom: 1px solid rgba(255,255,255,.08); line-height: 1.5;
+      font-size: 14px; color: var(--dark-grey);
+      padding: 10px 0 10px 22px; position: relative;
+      border-bottom: 1px solid var(--grey-200); line-height: 1.5;
     }
-    .hire-buy-card__list li:first-child { border-top: 1px solid rgba(255,255,255,.08); }
+    .hire-buy-card__list li:first-child { border-top: 1px solid var(--grey-200); }
+    /* IOR Sky Blue bullet points per brief */
     .hire-buy-card__list li::before {
       content: '';
       position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-      width: 5px; height: 5px; background: var(--equip-gold);
+      width: 6px; height: 6px; background: #4DA8DA;
     }
     .hire-buy-card__cta {
       display: inline-flex; align-items: center; gap: 8px;
@@ -518,7 +533,10 @@
       transition: background var(--transition-fast); margin-top: auto;
     }
     .hire-buy-card__cta:hover { background: var(--equip-gold-dark); }
-    @media (max-width: 768px) { .hire-buy-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) {
+      .hire-buy-grid { grid-template-columns: 1fr; }
+      .hire-buy-card--hire { border-right: none; border-bottom: 1px solid var(--grey-200); }
+    }
 
     /* ============================================================
        SECTION 4: LEAD CAPTURE — HubSpot Container
@@ -959,6 +977,8 @@
   <section class="hero" id="hero" aria-label="Frac Tanks hero">
     <!-- Background image -->
     <img class="hero__bg-img" src="" alt="" aria-hidden="true">
+    <!-- Dark overlay: rgba(11,25,41,0.70) — critical for H1 legibility over industrial photography -->
+    <div class="hero__overlay" aria-hidden="true"></div>
     <div class="img-placeholder-full" aria-hidden="true">
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="6" width="22" height="12" rx="0"/><line x1="1" y1="10" x2="23" y2="10"/><line x1="5" y1="6" x2="5" y2="18"/><line x1="19" y1="6" x2="19" y2="18"/></svg>
       <span>Image asset pending<br><small>Container frac tanks at drilling site</small></span>
@@ -1020,7 +1040,7 @@
               <li><strong>Config:</strong> ISO containerised or 3-beam skid</li>
               <li><strong>Options:</strong> Pumps, solar power units, agitators</li>
             </ul>
-            <a href="#lead-capture" class="product-card__cta" aria-label="Enquire about Container Frac Tanks">Enquire Now &#8594;</a>
+            <a href="#lead-capture" class="product-card__cta enquire-cta" data-product="container-frac-tank" aria-label="Enquire about Container Frac Tanks">Enquire Now &#8594;</a>
           </div>
         </article>
 
@@ -1045,7 +1065,7 @@
               <li><strong>Level:</strong> Sight gauge level indicators at side</li>
               <li><strong>Welds:</strong> All seams double welded both sides, continuous</li>
             </ul>
-            <a href="#lead-capture" class="product-card__cta" aria-label="Enquire about Mobile Frac Tanks">Enquire Now &#8594;</a>
+            <a href="#lead-capture" class="product-card__cta enquire-cta" data-product="mobile-frac-tank" aria-label="Enquire about Mobile Frac Tanks">Enquire Now &#8594;</a>
           </div>
         </article>
 
@@ -1072,7 +1092,7 @@
               <li><strong>Config:</strong> Double-ended 3-beam skid or ISO containerised</li>
               <li><strong>Options:</strong> 4&#8221; trash pumps, transfer hose, hose baskets</li>
             </ul>
-            <a href="#lead-capture" class="product-card__cta" aria-label="Enquire about Open Top DST Tanks">Enquire Now &#8594;</a>
+            <a href="#lead-capture" class="product-card__cta enquire-cta" data-product="open-top-dst-tank" aria-label="Enquire about Open Top DST Tanks">Enquire Now &#8594;</a>
           </div>
         </article>
 
@@ -1093,7 +1113,7 @@
       <div class="hire-buy-grid">
 
         <!-- Hire -->
-        <div class="hire-buy-card fade-up">
+        <div class="hire-buy-card hire-buy-card--hire fade-up">
           <div class="hire-buy-card__badge" aria-label="Hire option">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             Hire
@@ -1111,7 +1131,7 @@
         </div>
 
         <!-- Buy -->
-        <div class="hire-buy-card fade-up">
+        <div class="hire-buy-card hire-buy-card--buy fade-up">
           <div class="hire-buy-card__badge" aria-label="Buy option">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
             Buy
@@ -1141,7 +1161,7 @@
         <div class="lead-capture__content">
           <div class="lead-capture__eyebrow">Get in Touch</div>
           <h2 class="lead-capture__h2" id="lc-h2">Request a frac tank quote.</h2>
-          <p class="lead-capture__sub">Submit your details below to discuss availability, logistics, and pricing with an infrastructure specialist. Upon enquiry, you will receive the complete Ground Fuels Capability Brochure.</p>
+          <p class="lead-capture__sub">Submit your details below to discuss availability, logistics, and pricing with an infrastructure specialist. Upon enquiry, you will receive the complete Equipment &amp; Infrastructure Specifications Guide detailing all tank dimensions, footprints, and compliance certifications.</p>
           <ul class="lead-capture__callouts" aria-label="Key enquiry benefits">
             <li><span class="dot" aria-hidden="true"></span>Hire and purchase options available</li>
             <li><span class="dot" aria-hidden="true"></span>180bbl to 500bbl capacities</li>
@@ -1152,13 +1172,29 @@
         <div class="lead-capture__form-wrapper">
           <!-- HubSpot Form Embed — Insert embed script below this comment -->
           <!-- Portal ID: [portal-id] | Form ID: [form-id] -->
-          <!-- Gated asset: IOR-MAR-BRO-0201-Ground-Fuels-Capability-Brochure_v20251103.pdf -->
+          <!-- Pipeline: Equipment Sales/Hire -->
+          <!-- Gated asset: Equipment & Infrastructure Specifications Guide -->
           <!-- NOTE: Do NOT include a "Download" CTA button — form submission triggers asset delivery -->
+          <!-- PRODUCT INTEREST HIDDEN FIELD:
+               The JS below passes a URL parameter ?product=<value> to a hidden HubSpot field
+               so the sales team knows which tank the lead is interested in.
+               Hidden field name: hs_product_interest (create in HubSpot form settings)
+               Values: container-frac-tank | mobile-frac-tank | open-top-dst-tank
+               Example URL: /05b_Frac_Tanks_v8.html?product=mobile-frac-tank#lead-capture
+          -->
+          <!-- STYLING REQUIREMENTS:
+               - border-radius: 0 on all inputs, selects, and submit button
+               - Font: Avenir Next LT Pro / Avenir Next / Nunito Sans (var(--font))
+               - Submit button: background #0355A3 (var(--ior-blue)), color #fff, border-radius: 0
+               - Input borders: 1px solid #E5E7EB, focus: 1px solid #0355A3
+               - No box-shadow on inputs
+          -->
           <div class="hs-form-placeholder-light" aria-label="HubSpot enquiry form — embed pending">
             <p>HubSpot Form &mdash; Embed Code Pending</p>
-            <p style="font-size:12px;margin-top:8px;color:#9CA3AF;">Fields: First Name, Last Name, Company, Email, Phone, Message</p>
-            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Primary button: &ldquo;Submit Enquiry&rdquo;</p>
-            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Gated asset: Ground Fuels Capability Brochure</p>
+            <p style="font-size:12px;margin-top:8px;color:#9CA3AF;">Fields: First Name, Last Name, Company, Email, Phone, Message, Product Interest (hidden)</p>
+            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Pipeline: Equipment Sales/Hire</p>
+            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Submit button: IOR Blue #0355A3 | border-radius: 0</p>
+            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Gated asset: Equipment &amp; Infrastructure Specifications Guide</p>
           </div>
         </div>
       </div>
@@ -1445,6 +1481,49 @@ const fadeObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.12 });
 fadeEls.forEach(el => fadeObserver.observe(el));
+
+/* ============================================================
+   ENQUIRE NOW — Smooth scroll + product interest parameter
+   When a product card "Enquire Now" is clicked:
+   1. Smooth scrolls to #lead-capture
+   2. Appends ?product=<value> to the URL (no page reload)
+   3. Populates the hidden HubSpot field hs_product_interest
+      once the HubSpot form is embedded
+============================================================ */
+document.querySelectorAll('.enquire-cta').forEach(function(link) {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    var product = this.getAttribute('data-product');
+    var target  = document.getElementById('lead-capture');
+    if (!target) return;
+
+    // Update URL with product parameter (no reload)
+    var url = new URL(window.location.href);
+    url.searchParams.set('product', product);
+    window.history.replaceState(null, '', url.toString());
+
+    // Smooth scroll to form
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Populate HubSpot hidden field if form is already loaded
+    var hsField = document.querySelector('input[name="hs_product_interest"]');
+    if (hsField) { hsField.value = product; }
+  });
+});
+
+// On page load: if ?product= param exists, pre-fill the HubSpot hidden field
+(function() {
+  var params  = new URLSearchParams(window.location.search);
+  var product = params.get('product');
+  if (!product) return;
+  // Wait for HubSpot form to render, then set the field
+  var attempts = 0;
+  var interval = setInterval(function() {
+    var hsField = document.querySelector('input[name="hs_product_interest"]');
+    if (hsField) { hsField.value = product; clearInterval(interval); }
+    if (++attempts > 20) clearInterval(interval);
+  }, 500);
+})();
 </script>
 </body>
 </html>
