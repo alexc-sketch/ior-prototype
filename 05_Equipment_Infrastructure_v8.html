@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Equipment &amp; Infrastructure | Bulk Fuel Storage &amp; Frac Tanks | IOR</title>
-  <meta name="description" content="IOR designs, builds, and deploys rugged fuel infrastructure for Australian industry. Explore our range of self-bunded fuel storage tanks and high-volume frac tanks.">
+  <meta name="description" content="IOR designs, builds, and deploys high-volume fuel storage and frac tanks for Australia's toughest conditions. From 13KL to 100KL.">
 
   <style>
     /* ============================================================
@@ -344,7 +344,12 @@
     }
     .hero__bg-video {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; display: block; opacity: 0.35;
+      object-fit: cover; display: block;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: rgba(11, 25, 41, 0.70);
+      z-index: 1;
     }
     .video-placeholder-full {
       position: absolute; inset: 0;
@@ -463,7 +468,7 @@
     .section-heading p { font-size: clamp(14px, 1.4vw, 16px); color: var(--mid-grey); margin-top: 12px; max-width: 640px; }
 
     /* ============================================================
-       ROUTING MATRIX — 2-column card grid
+       ROUTING MATRIX — 2-column card grid with photography
     ============================================================ */
     .routing-section {
       padding: var(--section-pad) 0;
@@ -478,14 +483,84 @@
     .routing-card {
       border: 1px solid var(--grey-200);
       border-top: 4px solid var(--equip-gold);
-      padding: clamp(28px, 3.5vw, 44px);
       display: flex; flex-direction: column;
       transition: box-shadow var(--transition-base), transform var(--transition-base);
       text-decoration: none; color: inherit;
+      overflow: hidden;
     }
     .routing-card:hover {
       box-shadow: 0 12px 40px rgba(217,131,0,.14);
       transform: translateY(-3px);
+    }
+    .routing-card__photo {
+      position: relative;
+      width: 100%; height: 240px;
+      overflow: hidden;
+      background: var(--equip-dark);
+      flex-shrink: 0;
+    }
+    .routing-card__photo img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.5s ease;
+    }
+    .routing-card:hover .routing-card__photo img { transform: scale(1.04); }
+    .routing-card__photo-placeholder {
+      position: absolute; inset: 0;
+      background: #1a2535;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,.2); font-size: 12px; text-align: center; gap: 8px;
+    }
+    .routing-card__photo-placeholder svg { opacity: .2; }
+    .routing-card__body {
+      padding: clamp(28px, 3.5vw, 44px);
+      display: flex; flex-direction: column; flex: 1;
+    }
+
+    /* ============================================================
+       WHY IOR — Split layout: text left, image right
+    ============================================================ */
+    .why-ior-section {
+      padding: var(--section-pad) 0;
+      background: var(--off-white);
+    }
+    .why-ior-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .why-ior-copy .eyebrow { margin-bottom: 16px; }
+    .why-ior-copy h2 {
+      font-size: clamp(26px, 3vw, 42px); font-weight: 800;
+      line-height: 1.1; color: var(--equip-dark);
+      margin-bottom: clamp(20px, 2.5vw, 28px);
+    }
+    .why-ior-copy h2 .highlight { color: var(--equip-gold); }
+    .why-ior-copy p {
+      font-size: clamp(15px, 1.5vw, 17px);
+      color: var(--dark-grey); line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .why-ior-image {
+      position: relative; overflow: hidden;
+      aspect-ratio: 4 / 3;
+      background: var(--equip-dark);
+    }
+    .why-ior-image img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .why-ior-image-placeholder {
+      position: absolute; inset: 0;
+      background: #1a2535;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: rgba(255,255,255,.2); font-size: 12px; text-align: center; gap: 8px;
+    }
+    .why-ior-image-placeholder svg { opacity: .2; }
+    @media (max-width: 900px) {
+      .why-ior-inner { grid-template-columns: 1fr; }
+      .why-ior-image { aspect-ratio: 16 / 9; }
     }
     .routing-card__eyebrow {
       font-size: 11px; font-weight: 700; letter-spacing: .1em;
@@ -520,6 +595,57 @@
     }
     .routing-card:hover .routing-card__cta { color: var(--equip-gold-dark); border-bottom-color: var(--equip-gold-dark); }
     @media (max-width: 768px) { .routing-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       LEAD CAPTURE / HUBSPOT ENQUIRY FORM SECTION
+    ============================================================ */
+    .lead-capture-section {
+      padding: var(--section-pad) 0;
+      background: #fff;
+      border-top: 1px solid var(--grey-200);
+    }
+    .lead-capture-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: start;
+    }
+    .lead-capture-copy h2 {
+      font-size: clamp(24px, 2.8vw, 38px); font-weight: 800;
+      color: var(--equip-dark); line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .lead-capture-copy p {
+      font-size: clamp(14px, 1.4vw, 16px);
+      color: var(--dark-grey); line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .lead-capture-checklist {
+      list-style: none; display: flex; flex-direction: column; gap: 10px;
+    }
+    .lead-capture-checklist li {
+      font-size: 14px; font-weight: 600; color: var(--dark-grey);
+    }
+    .lead-capture-form {
+      background: var(--off-white);
+      border: 1px solid var(--grey-200);
+      border-top: 4px solid var(--equip-gold);
+      padding: clamp(28px, 3.5vw, 44px);
+    }
+    .hs-form-placeholder {
+      min-height: 320px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 12px; text-align: center;
+    }
+    .hs-form-placeholder__label {
+      font-size: 13px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--equip-gold);
+    }
+    .hs-form-placeholder__note {
+      font-size: 13px; color: var(--grey-400); line-height: 1.6;
+    }
+    @media (max-width: 900px) { .lead-capture-inner { grid-template-columns: 1fr; } }
 
     /* ============================================================
        TESTIMONIAL BLOCK — Dark navy background
@@ -949,6 +1075,8 @@
     <video class="hero__bg-video" autoplay muted loop playsinline src="" aria-hidden="true">
       <track kind="captions" src="" label="No captions">
     </video>
+    <!-- Dark overlay: rgba(11,25,41,0.70) per brief -->
+    <div class="hero__overlay" aria-hidden="true"></div>
     <div class="video-placeholder-full" aria-hidden="true">
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="0" ry="0"/></svg>
       <span>Video asset pending<br><small>Tank manufacturing &amp; remote installation</small></span>
@@ -959,8 +1087,8 @@
       <h1>Built for Australia's <span class="highlight">toughest conditions.</span></h1>
       <p>From self-bunded bulk storage to high-volume frac tanks, IOR designs, builds, and deploys the infrastructure that keeps your operation running — wherever that is.</p>
       <div class="hero-ctas">
-        <a href="05a_Fuel_Storage_Tanks_v8.html" class="btn btn--primary" aria-label="Explore Storage Tanks">Explore Storage Tanks <span class="btn__arrow" aria-hidden="true"></span></a>
-        <a href="05b_Frac_Tanks_v8.html" class="btn btn--ghost" aria-label="Explore Frac Tanks">Explore Frac Tanks</a>
+        <a href="#enquiry" class="btn btn--primary" aria-label="Make an Equipment &amp; Infrastructure enquiry">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="05a_Fuel_Storage_Tanks_v8.html" class="btn btn--ghost" aria-label="Explore our equipment range">Explore Equipment</a>
       </div>
     </div>
   </section>
@@ -1013,32 +1141,52 @@
 
         <!-- Card 1: Fuel Storage Tanks -->
         <a href="05a_Fuel_Storage_Tanks_v8.html" class="routing-card fade-up" aria-label="Explore Fuel Storage Tanks">
-          <p class="routing-card__eyebrow">Self-Bunded Storage</p>
-          <h2 class="routing-card__title">Fuel Storage Tanks</h2>
-          <blockquote class="routing-card__problem">
-            "We need a safe, compliant, and durable fuel storage solution for our remote site — with smart monitoring so we can track every litre."
-          </blockquote>
-          <div class="routing-card__pills">
-            <span class="routing-card__pill">13KL&#8202;&#8211;&#8202;100KL</span>
-            <span class="routing-card__pill">Self-Bunded</span>
-            <span class="routing-card__pill">HyDip&#8482; Ready</span>
+          <!-- In-situ photography: 100KL tank deployed on dusty civil/mining site -->
+          <div class="routing-card__photo">
+            <img src="" alt="100KL self-bunded fuel storage tank deployed on a remote mining site, Australia" loading="lazy">
+            <div class="routing-card__photo-placeholder" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="0"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              <span>Photography pending<br><small>100KL tank on civil/mining site</small></span>
+            </div>
           </div>
-          <span class="routing-card__cta">Explore Storage Tanks &#8594;</span>
+          <div class="routing-card__body">
+            <p class="routing-card__eyebrow">Self-Bunded Storage</p>
+            <h2 class="routing-card__title">Fuel Storage Tanks</h2>
+            <blockquote class="routing-card__problem">
+              "We need a safe, compliant, and durable fuel storage solution for our remote site — with smart monitoring so we can track every litre."
+            </blockquote>
+            <div class="routing-card__pills">
+              <span class="routing-card__pill">13KL&#8202;&#8211;&#8202;100KL</span>
+              <span class="routing-card__pill">Self-Bunded</span>
+              <span class="routing-card__pill">HyDip&#8482; Ready</span>
+            </div>
+            <span class="routing-card__cta">Explore Storage Tanks &#8594;</span>
+          </div>
         </a>
 
         <!-- Card 2: Frac Tanks -->
         <a href="05b_Frac_Tanks_v8.html" class="routing-card fade-up" aria-label="Explore Frac Tanks">
-          <p class="routing-card__eyebrow">High-Volume Mobile Storage</p>
-          <h2 class="routing-card__title">Frac Tanks</h2>
-          <blockquote class="routing-card__problem">
-            "We need high-volume, mobile fluid storage for a remote drilling program — tanks that can be rapidly deployed and recovered."
-          </blockquote>
-          <div class="routing-card__pills">
-            <span class="routing-card__pill">Container Frac Tanks</span>
-            <span class="routing-card__pill">Mobile Frac Tanks</span>
-            <span class="routing-card__pill">Open-Top DST</span>
+          <!-- In-situ photography: mobile frac tank connected to prime mover or on drilling pad -->
+          <div class="routing-card__photo">
+            <img src="" alt="Mobile frac tank connected to a prime mover on a remote Australian drilling pad" loading="lazy">
+            <div class="routing-card__photo-placeholder" aria-hidden="true">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="6" width="22" height="12" rx="0"/><line x1="1" y1="10" x2="23" y2="10"/><line x1="5" y1="6" x2="5" y2="18"/><line x1="19" y1="6" x2="19" y2="18"/></svg>
+              <span>Photography pending<br><small>Frac tank on drilling pad</small></span>
+            </div>
           </div>
-          <span class="routing-card__cta">Explore Frac Tanks &#8594;</span>
+          <div class="routing-card__body">
+            <p class="routing-card__eyebrow">High-Volume Mobile Storage</p>
+            <h2 class="routing-card__title">Frac Tanks</h2>
+            <blockquote class="routing-card__problem">
+              "We need high-volume, mobile fluid storage for a remote drilling program — tanks that can be rapidly deployed and recovered."
+            </blockquote>
+            <div class="routing-card__pills">
+              <span class="routing-card__pill">Container Frac Tanks</span>
+              <span class="routing-card__pill">Mobile Frac Tanks</span>
+              <span class="routing-card__pill">Open-Top DST</span>
+            </div>
+            <span class="routing-card__cta">Explore Frac Tanks &#8594;</span>
+          </div>
         </a>
 
       </div>
@@ -1046,7 +1194,79 @@
   </section>
 
   <!-- ============================================================
-       SECTION 4: LOGO CAROUSEL — Trusted by
+       SECTION 4: WHY IOR — Trust narrative split layout
+       Text left | Brand image right
+       Inserted above Logo Carousel per UX brief
+  ============================================================ -->
+  <section class="why-ior-section" id="why-ior" aria-labelledby="why-ior-heading">
+    <div class="container">
+      <div class="why-ior-inner">
+        <!-- Left: Copy -->
+        <div class="why-ior-copy fade-up">
+          <p class="eyebrow eyebrow--gold">Why IOR</p>
+          <h2 id="why-ior-heading">We build the infrastructure <span class="highlight">we rely on ourselves.</span></h2>
+          <p>IOR doesn't just sell tanks. We operate a national network of over 115 unmanned diesel stops and manage remote supply chains across Australia. The self-bunded tanks and fluid storage solutions we deploy for our clients are the exact same assets we trust to keep our own business running. When you partner with IOR, you get infrastructure proven in the field.</p>
+          <a href="#enquiry" class="btn btn--primary" aria-label="Make an Equipment &amp; Infrastructure enquiry">Make an Enquiry <span class="btn__arrow" aria-hidden="true"></span></a>
+        </div>
+        <!-- Right: Brand image -->
+        <div class="why-ior-image fade-up">
+          <img src="" alt="IOR fuel infrastructure deployed at a remote Australian unmanned diesel stop" loading="lazy">
+          <div class="why-ior-image-placeholder" aria-hidden="true">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="0"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <span>Image asset pending<br><small>IOR unmanned diesel stop / remote infrastructure</small></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 5: HUBSPOT ENQUIRY FORM
+       Tagged: Equipment & Infrastructure General Enquiry
+       Allows sales team to triage lead before account application
+  ============================================================ -->
+  <section class="lead-capture-section" id="enquiry" aria-labelledby="enquiry-heading">
+    <div class="container">
+      <div class="lead-capture-inner">
+        <div class="lead-capture-copy fade-up">
+          <p class="eyebrow eyebrow--gold">Get in Touch</p>
+          <h2 id="enquiry-heading">Talk to our equipment team.</h2>
+          <p>Whether you need bulk fuel storage, high-volume frac tanks, or aren't sure which solution fits your operation — our team will help you find the right answer. Fill in your details and we'll be in touch within one business day.</p>
+          <ul class="lead-capture-checklist">
+            <li>&#10003;&nbsp; No obligation</li>
+            <li>&#10003;&nbsp; Response within 1 business day</li>
+            <li>&#10003;&nbsp; Specialist advice, not a sales script</li>
+          </ul>
+        </div>
+        <div class="lead-capture-form fade-up">
+          <!-- HubSpot form embed
+               Form ID:   [INSERT HUBSPOT FORM ID]
+               Portal ID: [INSERT HUBSPOT PORTAL ID]
+               Form tag:  Equipment & Infrastructure General Enquiry
+               Script:
+               <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+               <script>
+                 hbspt.forms.create({
+                   region: "na1",
+                   portalId: "[PORTAL_ID]",
+                   formId: "[FORM_ID]",
+                   onFormSubmit: function($form) {
+                     // Tag: Equipment & Infrastructure General Enquiry
+                   }
+                 });
+               </script>
+          -->
+          <div class="hs-form-placeholder" role="form" aria-label="Equipment &amp; Infrastructure enquiry form">
+            <p class="hs-form-placeholder__label">HubSpot Form</p>
+            <p class="hs-form-placeholder__note">Embed: Equipment &amp; Infrastructure General Enquiry<br>Portal ID + Form ID to be inserted at go-live</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECTION 6: LOGO CAROUSEL — Trusted by
   ============================================================ -->
   <div class="logo-carousel-wrap" aria-label="Trusted by leading Australian businesses" role="region">
     <p class="logo-carousel-label">Trusted by leading Australian businesses</p>
