@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Self-Bunded Fuel Storage Tanks | 13KL to 100KL | IOR</title>
-  <meta name="description" content="Lease or buy AS1940 compliant self-bunded fuel storage tanks. Available from 13KL to 100KL with HyDip™ fuel management integration.">
+  <meta name="description" content="AS1692 and AS1940 compliant self-bunded fuel storage tanks for remote Australian operations. Available in 13KL to 100KL capacities with HyDip&#8482; integration.">
 
   <style>
     /* ============================================================
@@ -340,7 +340,12 @@
     }
     .hero__bg-img {
       position: absolute; inset: 0; width: 100%; height: 100%;
-      object-fit: cover; display: block; opacity: 0.35;
+      object-fit: cover; display: block;
+    }
+    .hero__overlay {
+      position: absolute; inset: 0;
+      background: rgba(11, 25, 41, 0.70);
+      z-index: 1;
     }
     .img-placeholder-full {
       position: absolute; inset: 0;
@@ -431,9 +436,9 @@
       min-height: 48px; white-space: nowrap;
       font-family: var(--font);
     }
-    .spec-tab:hover { color: var(--equip-gold); }
+    .spec-tab:hover { color: var(--ior-blue); }
     .spec-tab.active {
-      color: var(--equip-gold); border-bottom-color: var(--equip-gold);
+      color: var(--ior-blue); border-bottom-color: #4DA8DA;
     }
     /* Tab panels */
     .spec-tab-panel { display: none; }
@@ -562,6 +567,58 @@
       padding: clamp(32px, 4vw, 60px) clamp(20px, 3vw, 40px);
       text-align: center; color: var(--grey-400);
       font-size: 14px; font-weight: 600; letter-spacing: .04em;
+    }
+    /* ── HubSpot form design system overrides ──
+       Applied when the HubSpot embed script is active.
+       Enforces IOR design system: sharp corners, Avenir Next, IOR Blue submit.
+    ── */
+    .hs-form input[type="text"],
+    .hs-form input[type="email"],
+    .hs-form input[type="tel"],
+    .hs-form select,
+    .hs-form textarea {
+      border-radius: 0 !important;
+      border: 1px solid var(--grey-200) !important;
+      font-family: var(--font) !important;
+      font-size: 15px !important;
+      padding: 10px 14px !important;
+      box-shadow: none !important;
+      outline: none !important;
+      width: 100% !important;
+    }
+    .hs-form input:focus,
+    .hs-form select:focus,
+    .hs-form textarea:focus {
+      border-color: var(--ior-blue) !important;
+    }
+    .hs-form input[type="submit"],
+    .hs-button.primary {
+      border-radius: 0 !important;
+      background: var(--ior-blue) !important;
+      color: #fff !important;
+      border: none !important;
+      font-family: var(--font) !important;
+      font-weight: 700 !important;
+      font-size: 15px !important;
+      padding: 14px 32px !important;
+      cursor: pointer !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      transition: background var(--transition-fast) !important;
+    }
+    .hs-form input[type="submit"]:hover,
+    .hs-button.primary:hover {
+      background: #024a8f !important;
+    }
+    .hs-form label {
+      font-family: var(--font) !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      color: var(--charcoal) !important;
+      letter-spacing: 0.04em !important;
+      text-transform: uppercase !important;
+      margin-bottom: 6px !important;
+      display: block !important;
     }
     @media (max-width: 768px) {
       .lead-capture__card { grid-template-columns: 1fr; padding: 24px; }
@@ -957,6 +1014,8 @@
   <section class="hero" id="hero" aria-label="Fuel Storage Tanks hero">
     <!-- Background image -->
     <img class="hero__bg-img" src="" alt="" aria-hidden="true">
+    <!-- Dark overlay: rgba(11,25,41,0.70) per brief -->
+    <div class="hero__overlay" aria-hidden="true"></div>
     <div class="img-placeholder-full" aria-hidden="true">
       <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="0"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
       <span>Image asset pending<br><small>T100 self-bunded tank on remote site</small></span>
@@ -1053,18 +1112,19 @@
       <div class="spec-tab-panel" id="panel-smart" role="tabpanel" aria-labelledby="tab-smart">
         <div class="spec-panel-inner">
           <div class="spec-panel__content fade-up">
-            <h3>Smart Features &amp; Configuration Options</h3>
-            <p>Every IOR tank is engineered with operational reliability in mind. Standard safety and monitoring features are included as standard, with a range of optional configurations for off-grid and remote deployments.</p>
+            <h3>Built for remote operations. Engineered for control.</h3>
+            <p>Every IOR tank ships with a full suite of safety and monitoring features as standard. For remote and off-grid deployments, a range of optional configurations ensures your tank works as hard as your operation demands — with or without grid power.</p>
             <ul class="spec-panel__list" aria-label="Smart features list">
-              <li>Lockable integral pump bay — prevents unauthorised access</li>
-              <li>High-level overfill alarm — audible and visual alert</li>
-              <li>Pressure/vacuum venting — compliant with AS1940</li>
-              <li>Calibrated dipstick — accurate manual level reading</li>
-              <li>Anti-syphon valve — prevents fuel theft and contamination</li>
-              <li>Solar panel mounting rails — for off-grid power supply</li>
+              <li>Lockable integral pump bay — prevents unauthorised access and fuel theft</li>
+              <li>High-level overfill alarm — audible and visual alert, AS1940 compliant</li>
+              <li>Pressure/vacuum venting — fully compliant with AS1940</li>
+              <li>Calibrated dipstick — accurate manual level reading as standard</li>
+              <li>Anti-syphon valve — prevents contamination and unauthorised draw-off</li>
+              <li>Solar panel mounting rails — ready for off-grid power supply</li>
               <li>Configurable with 240V or 12/24V DC dispensing pumps</li>
               <li>Optional flow meters, fuel management keypads, and hose reels</li>
             </ul>
+            <p style="margin-top:20px;font-size:14px;color:var(--mid-grey);"><strong style="color:var(--equip-dark);">Upgrade tip:</strong> Pair with HyDip&#8482; telemetry to eliminate manual dipping entirely and automate your Fuel Tax Credit reporting. See the HyDip&#8482; Ready tab.</p>
           </div>
           <div class="spec-panel__visual" aria-label="Smart features diagram placeholder">
             <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
@@ -1081,15 +1141,15 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
               HyDip&#8482; Technology
             </div>
-            <h3>Every IOR tank is HyDip&#8482; Ready.</h3>
-            <p>Integrate your storage tank with IOR's HyDip&#8482; Fuel Management System for 24/7 live visibility of tank levels, vehicle-level usage tracking, and automated Fuel Tax Credit reporting — all from a cloud dashboard accessible anywhere.</p>
+            <h3>Every IOR tank comes pre-wired for HyDip&#8482; telemetry.</h3>
+            <p>Turn it on to eliminate manual dipping, automate your Fuel Tax Credit reporting, and gain real-time visibility over every drop of fuel on your site. Stop guessing; start tracking.</p>
             <ul class="spec-panel__list" aria-label="HyDip FMS key benefits">
-              <li>Real-time remote tank level monitoring — no manual dips required</li>
+              <li>Real-time remote tank level monitoring — no manual dips, ever</li>
+              <li>Automated Fuel Tax Credit (FTC) reporting — no spreadsheets required</li>
               <li>Vehicle and driver-level fuel usage tracking</li>
-              <li>Automated Fuel Tax Credit (FTC) reporting</li>
               <li>Dispensing control — restrict access by PIN, card, or vehicle ID</li>
               <li>Instant low-level and overfill alerts via SMS and email</li>
-              <li>Cloud dashboard accessible from any device, anywhere</li>
+              <li>Cloud dashboard accessible from any device, anywhere in Australia</li>
             </ul>
             <a href="07a_HyDip_FMS_v8.html" class="hydip-cta" aria-label="Learn more about HyDip FMS">
               Learn More About HyDip&#8482; FMS &#8594;
@@ -1114,7 +1174,7 @@
         <div class="lead-capture__content">
           <div class="lead-capture__eyebrow">Get in Touch</div>
           <h2 class="lead-capture__h2" id="lc-h2">Enquire about tank leasing or purchase.</h2>
-          <p class="lead-capture__sub">Submit your details below to speak with an infrastructure specialist. Upon enquiry, you will receive the complete Ground Fuels Capability Brochure detailing all tank specifications and dimensions.</p>
+          <p class="lead-capture__sub">Submit your details below to speak with an infrastructure specialist. Upon enquiry, you will receive the complete Equipment &amp; Infrastructure Specifications Guide detailing all tank dimensions, footprints, and compliance certifications.</p>
           <ul class="lead-capture__callouts" aria-label="Key enquiry benefits">
             <li><span class="dot" aria-hidden="true"></span>Flexible leasing and purchase options</li>
             <li><span class="dot" aria-hidden="true"></span>AS1692 &amp; AS1940 compliant tanks</li>
@@ -1125,13 +1185,22 @@
         <div class="lead-capture__form-wrapper">
           <!-- HubSpot Form Embed — Insert embed script below this comment -->
           <!-- Portal ID: [portal-id] | Form ID: [form-id] -->
-          <!-- Gated asset: IOR-MAR-BRO-0201-Ground-Fuels-Capability-Brochure_v20251103.pdf -->
+          <!-- Pipeline: Equipment Sales/Hire -->
+          <!-- Gated asset: Equipment & Infrastructure Specifications Guide -->
           <!-- NOTE: Do NOT include a "Download" CTA button — form submission triggers asset delivery -->
+          <!-- STYLING REQUIREMENTS:
+               - border-radius: 0 on all inputs, selects, and submit button
+               - Font: Avenir Next LT Pro / Avenir Next / Nunito Sans (var(--font))
+               - Submit button: background #0355A3 (var(--ior-blue)), color #fff, border-radius: 0
+               - Input borders: 1px solid #E5E7EB, focus: 1px solid #0355A3
+               - No box-shadow on inputs
+          -->
           <div class="hs-form-placeholder-light" aria-label="HubSpot enquiry form — embed pending">
             <p>HubSpot Form &mdash; Embed Code Pending</p>
             <p style="font-size:12px;margin-top:8px;color:#9CA3AF;">Fields: First Name, Last Name, Company, Email, Phone, Message</p>
-            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Primary button: &ldquo;Submit Enquiry&rdquo;</p>
-            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Gated asset: Ground Fuels Capability Brochure</p>
+            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Pipeline: Equipment Sales/Hire</p>
+            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Submit button: IOR Blue #0355A3 | border-radius: 0 | Font: Avenir Next</p>
+            <p style="font-size:12px;margin-top:4px;color:#9CA3AF;">Gated asset: Equipment &amp; Infrastructure Specifications Guide</p>
           </div>
         </div>
       </div>
