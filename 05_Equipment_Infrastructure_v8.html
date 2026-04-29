@@ -331,12 +331,11 @@
        FINAL CTA — Dark band
     ============================================================ */
     .final-cta { background: var(--equip-dark); padding: clamp(50px, 6vw, 80px) var(--section-pad-x); border-top: 4px solid var(--equip-gold); }
-    .final-cta__inner { max-width: var(--container-max); margin-inline: auto; display: grid; grid-template-columns: 1fr auto; gap: 48px; align-items: center; }
+    .final-cta__inner { max-width: 720px; margin-inline: auto; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 32px; }
     .final-cta__eyebrow { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--equip-gold); margin-bottom: 12px; display: block; }
     .final-cta__title { font-size: clamp(24px, 3vw, 40px); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 12px; }
     .final-cta__body { font-size: clamp(14px, 1.4vw, 16px); color: rgba(255,255,255,.75); line-height: 1.7; }
-    .final-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; flex-shrink: 0; }
-    @media (max-width: 768px) { .final-cta__inner { grid-template-columns: 1fr; } }
+    .final-cta__actions { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
 
     /* ============================================================
        PRE-FOOTER + FOOTER — Canonical shell v4
