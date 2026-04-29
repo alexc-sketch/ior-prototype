@@ -28,7 +28,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Into-Plane Refuelling Services | Airport Fuel | IOR Aviation</title>
+  <title>Into-Plane Refuelling Services | Airport Fuel | IOR</title>
   <meta name="description" content="Precision into-plane refuelling for commercial and regional operators. JIG-compliant aviation fuel handling by specially trained professionals.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://www.ior.com.au/fuel-solutions/aviation/airport-fuelling-services/">
@@ -217,6 +217,18 @@
     .stat-item__number { font-size: clamp(22px,2.8vw,34px); font-weight: 800; color: var(--aviation-gold); line-height: 1; margin-bottom: 6px; }
     .stat-item__label { font-size: clamp(10px,1vw,12px); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.65); }
     @media (max-width: 768px) { .stat-bar .container { grid-template-columns: repeat(2,1fr); gap: 20px; } .stat-item { border-right: none; border-bottom: 1px solid rgba(201,162,39,.2); padding-bottom: 16px; } .stat-item:last-child { border-bottom: none; } }
+
+    /* ── USP BAR ── */
+    .usp-bar { background: var(--ior-deep); border-bottom: 3px solid var(--aviation-gold); padding: clamp(20px,3vw,32px) 0; }
+    .usp-bar .container { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+    .usp-item { display: flex; align-items: center; gap: 16px; padding: 0 clamp(16px,2vw,32px); border-right: 1px solid rgba(201,162,39,.2); }
+    .usp-item:last-child { border-right: none; }
+    .usp-item__icon { flex-shrink: 0; color: var(--aviation-gold); display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: rgba(201,162,39,.1); }
+    .usp-item__text { display: flex; flex-direction: column; gap: 2px; }
+    .usp-item__title { font-size: clamp(13px,1.2vw,15px); font-weight: 800; color: #fff; line-height: 1.2; }
+    .usp-item__sub { font-size: clamp(11px,1vw,12px); font-weight: 500; color: rgba(255,255,255,.6); letter-spacing: .02em; }
+    @media (max-width: 900px) { .usp-bar .container { grid-template-columns: repeat(2, 1fr); } .usp-item { padding: 16px clamp(12px,2vw,24px); border-right: none; border-bottom: 1px solid rgba(201,162,39,.15); } .usp-item:nth-child(odd) { border-right: 1px solid rgba(201,162,39,.15); } .usp-item:nth-last-child(-n+2) { border-bottom: none; } }
+    @media (max-width: 480px) { .usp-bar .container { grid-template-columns: 1fr; } .usp-item { border-right: none !important; border-bottom: 1px solid rgba(201,162,39,.15); } .usp-item:last-child { border-bottom: none; } }
 
     /* ── LOGO CAROUSEL ── */
     .logo-carousel-wrap { background: var(--brand-fill); border-top: 1px solid var(--border-color-light); border-bottom: 1px solid var(--border-color-light); padding: clamp(20px,3vw,28px) 0; overflow: hidden; }
@@ -549,23 +561,13 @@
   <section class="hero" id="hero" aria-label="Airport Fuelling Services hero">
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="hero__overlay" aria-hidden="true"></div>
-    <!-- JIG Badge -->
-    <div class="hero__badge" aria-label="Compliance certifications">
-      <div class="jig-badge">
-        <div class="jig-badge__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <div class="jig-badge__text"><span>JIG Compliant</span>Joint Inspection Group</div>
-      </div>
-      <div class="jig-badge">
-        <div class="jig-badge__icon" aria-hidden="true"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg></div>
-        <div class="jig-badge__text"><span>ISO Certified</span>Quality Assured</div>
-      </div>
-    </div>
+    <!-- Compliance badges moved to USP bar -->
     <div class="hero__content">
-      <span class="eyebrow eyebrow--gold">Airport Fuelling Services</span>
+      <span class="eyebrow eyebrow--gold">AIRPORT FUELLING SERVICES</span>
       <h1>Precision <span class="highlight">into-plane refuelling.</span></h1>
-      <p>Expert aviation fuel handling for commercial airlines and regional operators. Fast turnarounds, strict JIG compliance, and uncompromising safety — from hydrant dispensers to rigid refuellers.</p>
+      <p>Expert aviation fuel handling for commercial airlines and regional operators. Fast turnarounds, strict JIG compliance, and uncompromising safety.</p>
       <div class="hero-ctas">
-        <a href="#lead-capture" class="btn btn--primary">Request a Refuelling Quote <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
         <a href="04a_Aviation_Network_v9.html" class="btn btn--outline-gold">View Airport Locations <span class="btn__arrow" aria-hidden="true"></span></a>
       </div>
     </div>
@@ -574,7 +576,7 @@
   <!-- QUICK LINKS BAR -->
   <nav class="quick-links-bar" aria-label="Aviation quick links">
     <div class="quick-links-bar__inner">
-      <span class="quick-links-bar__label">Aviation Fuels:</span>
+      <span class="quick-links-bar__label">Explore Aviation Fuels:</span>
       <a href="04_Aviation_Hub_v9.html" class="quick-links-bar__link">Aviation Hub</a>
       <a href="04a_Aviation_Network_v9.html" class="quick-links-bar__link">Aviation Network</a>
       <a href="04b_Airport_Fuelling_v9.html" class="quick-links-bar__link quick-links-bar__link--active" aria-current="page">Airport Fuelling</a>
@@ -583,24 +585,44 @@
     </div>
   </nav>
 
-  <!-- STAT BAR -->
-  <div class="stat-bar" aria-label="Airport fuelling key statistics">
+  <!-- USP BAR -->
+  <div class="usp-bar" aria-label="Airport fuelling key credentials">
     <div class="container">
-      <div class="stat-item">
-        <div class="stat-item__number">JIG</div>
-        <div class="stat-item__label">Compliant Handling</div>
+      <div class="usp-item">
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__title">JIG Compliant</span>
+          <span class="usp-item__sub">Joint Inspection Group</span>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-item__number">24/7</div>
-        <div class="stat-item__label">Into-Plane Availability</div>
+      <div class="usp-item">
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__title">ISO Certified</span>
+          <span class="usp-item__sub">Quality Assured</span>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-item__number">Jet A-1</div>
-        <div class="stat-item__label">Sovereign Supply Chain</div>
+      <div class="usp-item">
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__title">24/7</span>
+          <span class="usp-item__sub">Into-Plane Availability</span>
+        </div>
       </div>
-      <div class="stat-item">
-        <div class="stat-item__number">Zero</div>
-        <div class="stat-item__label">Contamination Incidents</div>
+      <div class="usp-item">
+        <div class="usp-item__icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+        </div>
+        <div class="usp-item__text">
+          <span class="usp-item__title">Sovereign</span>
+          <span class="usp-item__sub">Jet A-1 Supply Chain</span>
+        </div>
       </div>
     </div>
   </div>
@@ -636,9 +658,9 @@
   <section class="fleet-section" id="fleet" aria-labelledby="fleet-heading">
     <div class="container">
       <div class="section-heading fade-up">
-        <span class="eyebrow eyebrow--gold">Aviation Refuelling Fleet</span>
+        <span class="eyebrow eyebrow--gold">AVIATION REFUELLING FLEET</span>
         <h2 id="fleet-heading">The right equipment for <span class="highlight">every airport operation.</span></h2>
-        <p>IOR's aviation refuelling fleet covers every scenario — from hydrant dispenser operations at major commercial airports to rigid refuellers at regional airstrips. All equipment is dedicated to aviation fuels only.</p>
+        <p>IOR's aviation refuelling fleet covers every scenario. All equipment is dedicated to aviation fuels only to ensure zero cross-contamination.</p>
       </div>
 
       <!-- DESKTOP: Tab-Cordion -->
@@ -682,18 +704,17 @@
             <div>
               <p class="fleet-panel__eyebrow">Hydrant Dispensers</p>
               <h3 class="fleet-panel__title">High-throughput fuelling at major airports.</h3>
-              <p class="fleet-panel__body">IOR's hydrant dispenser fleet connects directly to airport hydrant systems to deliver Jet A-1 at high flow rates — critical for tight commercial airline turnarounds. Operated by JIG-trained personnel at contracted major airports.</p>
+              <p class="fleet-panel__body">Our hydrant dispenser fleet connects directly to airport infrastructure to deliver Jet A-1 at high flow rates. Operated by JIG-trained personnel for safe and rapid commercial airline turnarounds.</p>
               <div class="fleet-panel__specs">
                 <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Fuel Type:</strong> Jet A-1 (turbine)</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Flow Rate:</strong> High-volume for commercial airline turnarounds</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Compliance:</strong> JIG-certified operators, filter checks, water detection</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Documentation:</strong> Fuelling records, batch certificates provided</span></div>
+                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Flow Rate:</strong> High-volume for commercial airlines</span></div>
+                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Compliance:</strong> JIG-certified operators and full documentation</span></div>
               </div>
               <div class="fleet-panel__compliance">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                 JIG-certified operators at every fuelling event
               </div>
-              <a href="#lead-capture" class="btn btn--primary">Request a Refuelling Quote <span class="btn__arrow" aria-hidden="true"></span></a>
+              <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
             </div>
           </div>
 
@@ -705,18 +726,17 @@
             <div>
               <p class="fleet-panel__eyebrow">Rigid Refuellers</p>
               <h3 class="fleet-panel__title">Self-contained refuelling for regional airports.</h3>
-              <p class="fleet-panel__body">IOR's rigid refueller fleet carries its own Jet A-1 or Avgas supply to airports without hydrant infrastructure. Ideal for regional airports, RFDS bases, and mining camp airstrips where a fixed fuel supply is required alongside aircraft servicing.</p>
+              <p class="fleet-panel__body">Rigid refuellers carry dedicated Jet A-1 or Avgas directly to the aircraft. Ideal for regional airports, RFDS bases, and mining camp airstrips without hydrant infrastructure.</p>
               <div class="fleet-panel__specs">
                 <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Fuel Types:</strong> Jet A-1 and Avgas 100LL</span></div>
                 <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Capacity:</strong> Dedicated aviation-only tanks</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Compliance:</strong> JIG-compliant equipment, filter/water checks</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Best for:</strong> Regional airports, RFDS, aeromedical, mining airstrips</span></div>
+                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Compliance:</strong> JIG-compliant equipment and water checks</span></div>
               </div>
               <div class="fleet-panel__compliance">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-                Dedicated aviation-only tanks — zero switch loading risk
+                Dedicated aviation-only tanks: zero switch loading risk
               </div>
-              <a href="#lead-capture" class="btn btn--primary">Request a Refuelling Quote <span class="btn__arrow" aria-hidden="true"></span></a>
+              <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
             </div>
           </div>
 
@@ -728,18 +748,17 @@
             <div>
               <p class="fleet-panel__eyebrow">Specialised Into-Plane Equipment</p>
               <h3 class="fleet-panel__title">Tailored fuelling for GA, charter, and aeromedical.</h3>
-              <p class="fleet-panel__body">IOR's specialised into-plane equipment is configured for general aviation, charter operators, and aeromedical services. Avgas 100LL and UL91 dispensing with the same JIG-compliant procedures applied to commercial operations — because every aircraft deserves the same standard of care.</p>
+              <p class="fleet-panel__body">Specialised equipment configured for general aviation, charter, and aeromedical operators. We apply the same strict JIG-compliant procedures to every aircraft, regardless of size.</p>
               <div class="fleet-panel__specs">
                 <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Fuel Types:</strong> Avgas 100LL, UL91, Jet A-1</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Applications:</strong> GA, charter, aeromedical, defence support</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Compliance:</strong> JIG-compliant procedures applied to all operations</span></div>
-                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Documentation:</strong> Full fuelling records and SDS on request</span></div>
+                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Applications:</strong> GA, charter, aeromedical, defence</span></div>
+                <div class="fleet-spec"><div class="fleet-spec__dot"></div><span><strong>Compliance:</strong> JIG procedures applied to all operations</span></div>
               </div>
               <div class="fleet-panel__compliance">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                 Same JIG standard applied regardless of aircraft type
               </div>
-              <a href="#lead-capture" class="btn btn--primary">Request a Refuelling Quote <span class="btn__arrow" aria-hidden="true"></span></a>
+              <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
             </div>
           </div>
         </div>
@@ -785,7 +804,7 @@
     <div class="hiw-section__inner">
       <div class="hiw-section__header fade-up">
         <span class="hiw-section__eyebrow">How It Works</span>
-        <h2 class="hiw-section__h2" id="hiw-heading">From terminal to wingtip — a JIG-compliant process at every step.</h2>
+        <h2 class="hiw-section__h2" id="hiw-heading">From terminal to wingtip: a JIG-compliant process.</h2>
         <p class="hiw-section__sub">IOR's quality control process is built around the JIG standard. Every fuelling event is documented, every filter is checked, and every delivery is traceable.</p>
       </div>
       <div class="hiw-body">
@@ -795,35 +814,35 @@
             <div class="hiw-tab__num">1</div>
             <div class="hiw-tab__content">
               <div class="hiw-tab__title">Fuel receipt &amp; terminal testing</div>
-              <div class="hiw-tab__desc">Jet A-1 and Avgas are received from Australia's largest fuel importers. Every batch is tested against specification before entering IOR's aviation storage. Batch certificates are retained for full traceability.</div>
+              <div class="hiw-tab__desc">Batch certificates verified against Jet A-1 and Avgas specifications.</div>
             </div>
           </div>
           <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-2" id="hiw-tab-2" tabindex="0" data-hiw="2">
             <div class="hiw-tab__content">
               <div class="hiw-tab__num">2</div>
-              <div class="hiw-tab__title">Vehicle pre-departure checks</div>
-              <div class="hiw-tab__desc">Before every fuelling run, IOR operators complete JIG-mandated pre-departure checks — including filter differential pressure, water detection (Millipore test), and equipment serviceability. Any anomaly stops the operation.</div>
+              <div class="hiw-tab__title">Pre-departure checks</div>
+              <div class="hiw-tab__desc">Filter DP, water tests, and equipment serviceability confirmed daily.</div>
             </div>
           </div>
           <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-3" id="hiw-tab-3" tabindex="0" data-hiw="3">
             <div class="hiw-tab__content">
               <div class="hiw-tab__num">3</div>
-              <div class="hiw-tab__title">Aircraft identification &amp; fuel grade confirmation</div>
-              <div class="hiw-tab__desc">IOR operators confirm the aircraft registration, fuel grade required, and authorised quantity with the flight crew or ground handler before any fuel is dispensed. Misfuelling prevention is non-negotiable.</div>
+              <div class="hiw-tab__title">Aircraft confirmation</div>
+              <div class="hiw-tab__desc">Registration, fuel grade, and authorised quantity confirmed with the crew.</div>
             </div>
           </div>
           <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-4" id="hiw-tab-4" tabindex="0" data-hiw="4">
             <div class="hiw-tab__content">
               <div class="hiw-tab__num">4</div>
-              <div class="hiw-tab__title">Into-plane fuelling &amp; quality check</div>
-              <div class="hiw-tab__desc">Fuelling is conducted in strict accordance with JIG procedures — including bonding, filter checks during delivery, and visual fuel quality checks (colour, clarity). Volume is metered and recorded in real time.</div>
+              <div class="hiw-tab__title">Into-plane fuelling</div>
+              <div class="hiw-tab__desc">JIG-compliant bonding, filter checks, and visual quality checks during delivery.</div>
             </div>
           </div>
           <div class="hiw-tab" role="tab" aria-selected="false" aria-controls="hiw-panel-5" id="hiw-tab-5" tabindex="0" data-hiw="5">
             <div class="hiw-tab__content">
               <div class="hiw-tab__num">5</div>
-              <div class="hiw-tab__title">Documentation &amp; digital records</div>
-              <div class="hiw-tab__desc">Every fuelling event generates a complete fuelling record — aircraft registration, fuel grade, volume, operator ID, and timestamp. Records are available digitally via the IOR Customer Portal and provided to the operator on request.</div>
+              <div class="hiw-tab__title">Digital records</div>
+              <div class="hiw-tab__desc">Complete fuelling records automatically uploaded to the Customer Portal.</div>
             </div>
           </div>
         </div>
@@ -873,6 +892,11 @@
           </div>
         </div>
       </div>
+      <!-- CTAs below HIW -->
+      <div style="text-align:center; margin-top:40px; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+        <a href="11a_Contact_Usv5.html" class="btn btn--outline-white">Speak to a Specialist <span class="btn__arrow" aria-hidden="true"></span></a>
+      </div>
     </div>
   </section>
 
@@ -883,35 +907,30 @@
     <div class="container">
       <div class="proof-grid">
         <div class="proof-content fade-up">
-          <span class="eyebrow eyebrow--gold">Why IOR for Airport Fuelling</span>
+          <span class="eyebrow eyebrow--gold">WHY IOR</span>
           <h2 id="proof-heading">Fast turnarounds. <span class="accent">Zero compromises.</span></h2>
-          <p>Airlines and airport operators choose IOR because we understand that every minute on the ground costs money — and every fuelling event is a safety-critical operation. Our JIG-certified teams are trained to deliver both speed and compliance without trade-off.</p>
-          <p>We partner with Australia's largest fuel importers to maintain a sovereign Jet A-1 supply chain, ensuring your operation is never exposed to supply disruption. And our dedicated aviation tanker fleet means the fuel that reaches your aircraft has never been in contact with ground fuels.</p>
+          <p>Every minute on the ground costs money. Airlines and airport operators choose IOR because our JIG-certified teams deliver speed and compliance without trade-offs. We maintain a sovereign Jet A-1 supply chain and a dedicated aviation fleet to eliminate switch loading risks.</p>
           <div class="proof-checklist" aria-label="Key proof points">
             <div class="proof-checklist__item">
               <div class="proof-checklist__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              JIG-certified operators — trained, audited, and accountable
+              JIG-certified operators: trained, audited, and accountable
             </div>
             <div class="proof-checklist__item">
               <div class="proof-checklist__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              Sovereign Jet A-1 supply chain — no exposure to import disruption
+              Sovereign Jet A-1 supply chain prevents import disruption
             </div>
             <div class="proof-checklist__item">
               <div class="proof-checklist__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              Dedicated aviation fleet — zero switch loading or contamination risk
+              Dedicated aviation fleet eliminates contamination risk
             </div>
             <div class="proof-checklist__item">
               <div class="proof-checklist__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              Full digital fuelling records via IOR Customer Portal
-            </div>
-            <div class="proof-checklist__item">
-              <div class="proof-checklist__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>
-              Batch certificates and SDS provided with every delivery as standard
+              Full digital fuelling records via the IOR Customer Portal
             </div>
           </div>
           <div class="proof-ctas">
-            <a href="#lead-capture" class="btn btn--primary">Request a Refuelling Quote <span class="btn__arrow" aria-hidden="true"></span></a>
-            <a href="04_Aviation_Hub_v9.html" class="btn btn--outline-gold">Back to Aviation Hub <span class="btn__arrow" aria-hidden="true"></span></a>
+            <a href="https://iorapp.applyeasy.com.au/services/introduction" class="btn btn--primary" target="_blank" rel="noopener noreferrer">Apply for an Account <span class="btn__arrow" aria-hidden="true"></span></a>
+            <a href="09_About_IOR.html" class="btn btn--outline-gold">About IOR <span class="btn__arrow" aria-hidden="true"></span></a>
           </div>
         </div>
         <div class="fade-up">
@@ -927,7 +946,7 @@
   <section class="industry-section" id="industries" aria-labelledby="industries-heading">
     <div class="container">
       <div class="section-heading fade-up">
-        <span class="eyebrow eyebrow--gold">Industries Served</span>
+        <span class="eyebrow eyebrow--gold">INDUSTRIES SERVED</span>
         <h2 id="industries-heading">Airport fuelling for <span class="highlight">every type of operator.</span></h2>
       </div>
       <div class="industry-grid">
@@ -936,24 +955,24 @@
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
           </div>
           <h3 class="industry-card__title">Commercial Airlines</h3>
-          <p class="industry-card__body">Fast, JIG-compliant Jet A-1 into-plane refuelling for scheduled and charter airline operations. Hydrant dispenser and rigid refueller capability at contracted airports.</p>
-          <a href="#lead-capture" class="industry-card__link">Get a Quote &#8594;</a>
+          <p class="industry-card__body">Fast, JIG-compliant Jet A-1 into-plane refuelling for scheduled and charter airline operations.</p>
+          <a href="08g_Industry_Aviation.html" class="industry-card__link">Explore Aviation Industry &#8594;</a>
         </div>
         <div class="industry-card fade-up">
           <div class="industry-card__icon" aria-hidden="true">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
           <h3 class="industry-card__title">Emergency Services &amp; RFDS</h3>
-          <p class="industry-card__body">Mission-critical fuelling for RFDS, aerial firefighting, search and rescue, and emergency response aircraft. Reliable supply when there is no margin for error.</p>
-          <a href="#lead-capture" class="industry-card__link">Speak to a Specialist &#8594;</a>
+          <p class="industry-card__body">Mission-critical fuelling for RFDS, search and rescue, and emergency response aircraft.</p>
+          <a href="08g_Industry_Aviation.html" class="industry-card__link">Explore Aviation Industry &#8594;</a>
         </div>
         <div class="industry-card fade-up">
           <div class="industry-card__icon" aria-hidden="true">
             <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2 3.3 6.7l4 3-2.5 2.5-1.5-.5L2 13l2 2 2 2 1.5-1.5-.5-1.5 2.5-2.5 3 4 1.5-1.5z"/></svg>
           </div>
           <h3 class="industry-card__title">General Aviation &amp; Charter</h3>
-          <p class="industry-card__body">Avgas 100LL, UL91, and Jet A-1 for GA, charter, and private operators. The same JIG-compliant standard applied to every aircraft, regardless of size.</p>
-          <a href="04a_Aviation_Network_v9.html" class="industry-card__link">Aviation Network &#8594;</a>
+          <p class="industry-card__body">The same JIG-compliant standard applied to every aircraft, regardless of size.</p>
+          <a href="08g_Industry_Aviation.html" class="industry-card__link">Explore Aviation Industry &#8594;</a>
         </div>
       </div>
     </div>
@@ -969,9 +988,9 @@
       </div>
       <div class="testimonial-quote">
         <div class="testimonial-quote__mark" aria-hidden="true">&ldquo;</div>
-        <p class="testimonial-quote__text">IOR's team understands the pressure of airline turnarounds. Their JIG-certified operators are fast, professional, and the documentation is always complete. We've never had a compliance issue.</p>
+        <p class="testimonial-quote__text">IOR's team understands the pressure of airline turnarounds. Their JIG-certified operators are fast, professional, and the documentation is always complete. We have never had a compliance issue.</p>
         <div class="testimonial-quote__author">[ Customer Name ]</div>
-        <div class="testimonial-quote__role">[ Role ], [ Airline / Operator Name ]</div>
+        <div class="testimonial-quote__role">Line Operations Manager | Commercial Airline</div>
       </div>
     </div>
   </section>
@@ -983,14 +1002,14 @@
     <div class="container">
       <div class="lead-capture__card">
         <div class="lead-capture__content">
-          <div class="lead-capture__eyebrow">Get in Touch</div>
-          <h2 class="lead-capture__h2" id="lc-h2">Request a refuelling quote for your airport operation.</h2>
-          <p class="lead-capture__sub">Tell us about your operation and an IOR Aviation Specialist will be in touch within one business day to discuss your requirements and provide a tailored quote.</p>
+          <div class="lead-capture__eyebrow">SECURE YOUR SUPPLY</div>
+          <h2 class="lead-capture__h2" id="lc-h2">Request a refuelling assessment.</h2>
+          <p class="lead-capture__sub">Tell us about your operation. An IOR Aviation Specialist will respond rapidly to discuss your requirements and establish a compliant supply plan.</p>
           <ul class="lead-capture__callouts" aria-label="Key benefits">
-            <li><span class="dot" aria-hidden="true"></span>JIG-compliant into-plane refuelling at contracted airports</li>
-            <li><span class="dot" aria-hidden="true"></span>Hydrant dispensers, rigid refuellers, and specialised equipment</li>
-            <li><span class="dot" aria-hidden="true"></span>Sovereign Jet A-1 supply chain — no import disruption exposure</li>
-            <li><span class="dot" aria-hidden="true"></span>Full digital fuelling records via IOR Customer Portal</li>
+            <li><span class="dot" aria-hidden="true"></span>JIG-compliant into-plane refuelling</li>
+            <li><span class="dot" aria-hidden="true"></span>Hydrant dispensers and rigid refuellers</li>
+            <li><span class="dot" aria-hidden="true"></span>Sovereign Jet A-1 supply chain</li>
+            <li><span class="dot" aria-hidden="true"></span>Digital records via IOR Customer Portal</li>
           </ul>
         </div>
         <div class="lead-capture__form-wrapper">
@@ -1104,7 +1123,7 @@ Blog</p>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
-            <p>JIG (Joint Inspection Group) is the international standard for aviation fuel quality and handling. JIG-compliant into-plane fuelling means that every fuelling event is conducted by trained, certified operators following a strict procedure — including pre-departure equipment checks, aircraft identification, misfuelling prevention, filter and water checks during delivery, and complete documentation. IOR's aviation fuelling operations are conducted to JIG standards at all contracted airports.</p>
+            <p>JIG (Joint Inspection Group) is the international standard for aviation fuel quality and handling. JIG-compliant into-plane fuelling means that every fuelling event is conducted by trained operators following strict procedures. This includes pre-departure checks, aircraft identification, and water checks during delivery.</p>
           </div>
         </div>
 
@@ -1114,7 +1133,7 @@ Blog</p>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
-            <p>IOR supplies Jet A-1 (turbine fuel) for commercial, regional, and charter aircraft, and Avgas 100LL for piston-engine aircraft. UL91 is also available at selected locations. All fuel is sourced from Australia's largest importers and tested against specification before entering IOR's aviation supply chain. Batch certificates are available on request.</p>
+            <p>IOR supplies Jet A-1 for commercial and turbine aircraft, and Avgas 100LL for piston-engine aircraft. UL91 is also available at selected locations. Batch certificates are available on request.</p>
           </div>
         </div>
 
@@ -1124,7 +1143,7 @@ Blog</p>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
-            <p>IOR operates a dedicated aviation fleet — our refuellers and hydrant dispensers are used exclusively for aviation fuels and are never used for ground fuels such as diesel. This eliminates the risk of switch loading contamination, which is one of the most serious hazards in aviation fuel handling. Our fleet is maintained and inspected to JIG equipment standards.</p>
+            <p>Yes. IOR operates a dedicated aviation fleet. Our refuellers and hydrant dispensers are used exclusively for aviation fuels and are never used for ground fuels. This eliminates the risk of switch loading contamination.</p>
           </div>
         </div>
 
@@ -1134,7 +1153,7 @@ Blog</p>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
-            <p>IOR operates at contracted airports across Australia, including major regional airports and remote airstrips. Our aviation network is expanding — contact our Aviation team to confirm coverage at your airport or to discuss establishing a new fuelling arrangement. View our <a href="04a_Aviation_Network_v9.html" style="color:var(--aviation-gold);text-decoration:underline;">Aviation Network</a> page for current locations.</p>
+            <p>IOR operates at contracted airports across Australia, including major regional airports and remote airstrips. Visit our Aviation Network page for a full list of current locations.</p>
           </div>
         </div>
 
@@ -1144,7 +1163,7 @@ Blog</p>
             <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
-            <p>Every IOR fuelling event generates a complete fuelling record including aircraft registration, fuel grade, volume dispensed, operator ID, and timestamp. Records are available digitally via the IOR Customer Portal and can be provided as printed delivery dockets. Batch certificates and Safety Data Sheets (SDS) are available on request. This documentation supports your AOC compliance and maintenance records.</p>
+            <p>Every IOR fuelling event generates a complete digital record including aircraft registration, fuel grade, volume dispensed, operator ID, and timestamp. Records are available via the IOR Customer Portal. Safety Data Sheets are available on request.</p>
           </div>
         </div>
 
@@ -1163,12 +1182,12 @@ Blog</p>
       <!-- FAQ Footer -->
       <div class="faq-footer">
         <div class="faq-footer__text">
-          <h4>Still have questions about airport fuelling?</h4>
+          <h4>Still have questions?</h4>
           <p>Our Aviation Specialists are available to discuss your requirements.</p>
         </div>
         <div class="faq-footer__actions">
-          <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm">Contact an Aviation Specialist</a>
-          <a href="tel:1300457467" class="faq-footer__help-link">1300 457 467</a>
+          <a href="11a_Contact_Usv5.html" class="btn btn--primary btn--sm">Speak to a Specialist &rarr;</a>
+          <a href="11a_Contact_Usv5.html" class="faq-footer__help-link">Contact Us &rarr;</a>
         </div>
       </div>
     </div>
@@ -1185,8 +1204,8 @@ Blog</p>
       Ready to partner with<br><span>Australia's aviation fuel specialists?</span>
     </div>
     <div class="ior-pre-footer__ctas">
-      <a href="#lead-capture" class="ior-pre-footer__btn ior-pre-footer__btn--filled">Request a Refuelling Quote</a>
-      <a href="04a_Aviation_Network_v9.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">View Airport Locations</a>
+      <a href="https://iorapp.applyeasy.com.au/services/introduction" class="ior-pre-footer__btn ior-pre-footer__btn--filled" target="_blank" rel="noopener noreferrer">Apply for an Account</a>
+      <a href="11a_Contact_Usv5.html" class="ior-pre-footer__btn ior-pre-footer__btn--outline">Speak to a Specialist</a>
     </div>
   </div>
 </div>
