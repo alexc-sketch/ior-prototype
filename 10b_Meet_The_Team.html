@@ -3,43 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Careers at IOR | Go Far. Work Hard. Make a Difference.</title>
-<meta name="description" content="Join the IOR team. We're a dedicated, growing team with roles in logistics, aviation, technology, and more. Mates looking after mates.">
+<title>Meet the Team | Careers at IOR</title>
+<meta name="description" content="Get to know the people behind IOR. Hear their stories, their journeys, and what it's really like to work here.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="ior-global.css">
 <style>
-/* ── PAGE-LEVEL STYLES ─────────────────────────────────────────── */
-
 /* HERO */
-.careers-hero {
+.team-hero {
   position: relative;
-  min-height: 560px;
+  min-height: 480px;
   display: flex;
   align-items: center;
   background: #0B1929;
   overflow: hidden;
 }
-.careers-hero__bg {
+.team-hero__bg {
   position: absolute;
   inset: 0;
-  background-image: url('assets/img/careers-hero-placeholder.jpg');
+  background-image: url('assets/img/team-hero-placeholder.jpg');
   background-size: cover;
   background-position: center;
   background-color: #0B1929;
 }
-.careers-hero__overlay {
+.team-hero__overlay {
   position: absolute;
   inset: 0;
-  background: rgba(11, 25, 41, 0.7);
+  background: rgba(11, 25, 41, 0.72);
 }
-.careers-hero__content {
+.team-hero__content {
   position: relative;
   z-index: 2;
   max-width: 700px;
   padding: 100px 0 80px;
 }
-.careers-hero__eyebrow {
+.team-hero__eyebrow {
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 2px;
@@ -47,127 +45,34 @@
   color: #00B140;
   margin-bottom: 16px;
 }
-.careers-hero h1 {
-  font-size: clamp(36px, 5vw, 56px);
+.team-hero h1 {
+  font-size: clamp(36px, 5vw, 52px);
   font-weight: 900;
   color: #fff;
   line-height: 1.1;
   margin-bottom: 20px;
 }
-.careers-hero__sub {
+.team-hero__sub {
   font-size: 18px;
   color: rgba(255,255,255,0.82);
   line-height: 1.7;
-  margin-bottom: 36px;
-  max-width: 580px;
-}
-.careers-hero__ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+  max-width: 560px;
 }
 
-/* EVP VIDEO SECTION */
-.evp-section {
-  background: #0B1929;
-  padding: 80px 0;
-}
-.evp-section__header {
-  text-align: center;
-  margin-bottom: 48px;
-}
-.evp-section__eyebrow {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #00B140;
-  margin-bottom: 12px;
-}
-.evp-section h2 {
-  font-size: clamp(26px, 3vw, 36px);
-  font-weight: 900;
-  color: #fff;
-  line-height: 1.2;
-}
-.video-embed {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  max-width: 900px;
-  margin: 0 auto;
-}
-.video-embed iframe {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  border: none;
-}
-
-/* WHY IOR */
-.why-section {
-  background: #fff;
-  padding: 96px 0;
-}
-.why-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-.why-card {
-  background: #f7f8fa;
-  border-radius: 0;
-  border: 1px solid #e8eaed;
-  padding: 36px 28px;
-}
-.why-card__icon { font-size: 36px; margin-bottom: 16px; }
-.why-card__title { font-size: 16px; font-weight: 800; color: #0B1929; margin-bottom: 10px; }
-.why-card__body { font-size: 14px; color: #6B7B8D; line-height: 1.7; }
-
-/* CAREERS DIRECTORY */
-.careers-dir-section {
-  background: #0B1929;
-  padding: 96px 0;
-}
-.careers-dir-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 48px;
-}
-.careers-dir-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 0;
-  padding: 40px 36px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: background 0.2s;
-}
-.careers-dir-card:hover { background: rgba(255,255,255,0.09); }
-.careers-dir-card__icon { font-size: 36px; }
-.careers-dir-card__title { font-size: 20px; font-weight: 800; color: #fff; }
-.careers-dir-card__body { font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.7; flex: 1; }
-.careers-dir-card__cta { font-size: 13px; font-weight: 700; color: #00B140; align-self: flex-start; }
-
-/* TEAM STORY VIDEOS */
+/* TEAM VIDEOS SECTION */
 .team-videos-section {
-  background: #f7f8fa;
+  background: #0B1929;
   padding: 96px 0;
 }
 .team-videos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 32px;
   margin-top: 48px;
 }
 .team-video-card {
-  background: #fff;
-  border: 1px solid #e8eaed;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 0;
   overflow: hidden;
 }
@@ -184,41 +89,89 @@
   border: none;
 }
 .team-video-card__info {
-  padding: 20px 20px 24px;
+  padding: 20px 24px 28px;
 }
 .team-video-card__name {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 800;
-  color: #0B1929;
+  color: #fff;
   margin-bottom: 4px;
 }
 .team-video-card__role {
   font-size: 13px;
   color: #00B140;
   font-weight: 600;
+  margin-bottom: 12px;
+}
+.team-video-card__quote {
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
+  font-style: italic;
 }
 
-/* CURRENT OPENINGS CTA */
-.openings-section {
+/* CULTURE SECTION */
+.culture-section {
+  background: #fff;
+  padding: 96px 0;
+}
+.culture-section__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.culture-section__left {
+  border-left: 4px solid #00B140;
+  padding-left: 32px;
+}
+.culture-section__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #00B140;
+  margin-bottom: 16px;
+}
+.culture-section h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  font-weight: 900;
+  color: #0B1929;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.culture-section p {
+  font-size: 16px;
+  color: #222;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.culture-section__img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #6B7B8D;
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* CTA */
+.careers-cta {
   background: #0B1929;
   padding: 80px 0;
   text-align: center;
 }
-.openings-section h2 {
+.careers-cta h2 {
   font-size: clamp(28px, 3.5vw, 40px);
   font-weight: 900;
   color: #00B140;
-  margin-bottom: 16px;
-}
-.openings-section p {
-  font-size: 18px;
-  color: rgba(255,255,255,0.8);
   margin-bottom: 36px;
-  max-width: 560px;
-  margin-left: auto;
-  margin-right: auto;
 }
-.openings-section__btns {
+.careers-cta__btns {
   display: flex;
   gap: 16px;
   justify-content: center;
@@ -227,16 +180,13 @@
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
-  .why-grid { grid-template-columns: repeat(2, 1fr); }
-  .careers-dir-grid { grid-template-columns: 1fr; }
   .team-videos-grid { grid-template-columns: repeat(2, 1fr); }
+  .culture-section__grid { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 640px) {
-  .why-grid { grid-template-columns: 1fr; }
   .team-videos-grid { grid-template-columns: 1fr; }
 }
 
-/* FADE-UP ANIMATION */
 [data-animate="fade-up"] {
   opacity: 0;
   transform: translateY(28px);
@@ -283,11 +233,11 @@
   </div>
 </nav>
 
-<!-- QUICK-LINKS BAR — CAREERS -->
+<!-- QUICK-LINKS BAR -->
 <div class="quick-links-bar" style="background:#0B1929;">
   <div class="container">
-    <a href="10_Careers_v2.html" class="ql-item active">Careers Hub</a>
-    <a href="10b_Meet_The_Team.html" class="ql-item">Meet the Team</a>
+    <a href="10_Careers_v2.html" class="ql-item">Careers Hub</a>
+    <a href="10b_Meet_The_Team.html" class="ql-item active">Meet the Team</a>
     <a href="10a_Entry_Pathways.html" class="ql-item">Entry Pathways</a>
     <a href="10c_Apprentices.html" class="ql-item">Apprentices</a>
     <a href="10d_Graduates.html" class="ql-item">Graduates</a>
@@ -297,102 +247,14 @@
 </div>
 
 <!-- HERO -->
-<section class="careers-hero">
-  <div class="careers-hero__bg" role="img" aria-label="IOR team members at work across Australia"></div>
-  <div class="careers-hero__overlay"></div>
+<section class="team-hero">
+  <div class="team-hero__bg" role="img" aria-label="IOR team members across Australia"></div>
+  <div class="team-hero__overlay"></div>
   <div class="container">
-    <div class="careers-hero__content">
-      <div class="careers-hero__eyebrow" data-animate="fade-up">Careers at IOR</div>
-      <h1 data-animate="fade-up" data-delay="80">Go far.<br>Work hard.<br>Make a difference.</h1>
-      <p class="careers-hero__sub" data-animate="fade-up" data-delay="160">We are a dedicated team growing fast — with roles in logistics, aviation, technology, and more. Mates looking after mates.</p>
-      <div class="careers-hero__ctas" data-animate="fade-up" data-delay="240">
-        <a href="https://www.seek.com.au/jobs?advertiserid=IOR" target="_blank" rel="noopener" class="btn btn--primary" style="border-radius:0;">View Current Openings</a>
-        <a href="10a_Entry_Pathways.html" class="btn btn--ghost" style="border-radius:0; border-color:#fff; color:#fff;">Entry Pathways</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EVP OVERARCHING VIDEO -->
-<section class="evp-section">
-  <div class="container">
-    <div class="evp-section__header" data-animate="fade-up">
-      <div class="evp-section__eyebrow">Our Story</div>
-      <h2>Hear it from the people who work here.</h2>
-    </div>
-    <div class="video-embed" data-animate="fade-up" data-delay="80">
-      <iframe
-        src="https://www.youtube.com/embed/GMmcRbgk1AY"
-        title="IOR Careers — Go Far. Work Hard. Make a Difference."
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
-  </div>
-</section>
-
-<!-- WHY IOR -->
-<section class="why-section">
-  <div class="container">
-    <div class="section-header" style="text-align:center;">
-      <div class="eyebrow">Why IOR</div>
-      <h2 class="section-title" data-animate="fade-up">More than a job. A career with purpose.</h2>
-    </div>
-    <div class="why-grid">
-      <div class="why-card" data-animate="fade-up">
-        <div class="why-card__icon">🚀</div>
-        <div class="why-card__title">Grow Fast</div>
-        <div class="why-card__body">IOR is a high-growth business. We promote from within, invest in training, and give our people the opportunity to take on more responsibility as we expand.</div>
-      </div>
-      <div class="why-card" data-animate="fade-up" data-delay="60">
-        <div class="why-card__icon">🤝</div>
-        <div class="why-card__title">Mates Looking After Mates</div>
-        <div class="why-card__body">Our culture is built on genuine care for each other. We look out for our team on the job and off it. You'll never feel like just a number here.</div>
-      </div>
-      <div class="why-card" data-animate="fade-up" data-delay="120">
-        <div class="why-card__icon">🇦🇺</div>
-        <div class="why-card__title">100% Australian</div>
-        <div class="why-card__body">We are Australian owned and operated. Every decision is made here, by people who understand this country and the industries that keep it moving.</div>
-      </div>
-      <div class="why-card" data-animate="fade-up" data-delay="180">
-        <div class="why-card__icon">📍</div>
-        <div class="why-card__title">Work Across Australia</div>
-        <div class="why-card__body">From Brisbane HQ to remote outback sites, our team works in some of the most interesting and diverse locations in the country.</div>
-      </div>
-      <div class="why-card" data-animate="fade-up" data-delay="240">
-        <div class="why-card__icon">🎓</div>
-        <div class="why-card__title">Entry Pathways</div>
-        <div class="why-card__body">We invest in the next generation through apprenticeships, graduate programs, school-based traineeships, and more. Your career can start here.</div>
-      </div>
-      <div class="why-card" data-animate="fade-up" data-delay="300">
-        <div class="why-card__icon">💡</div>
-        <div class="why-card__title">Innovate Every Day</div>
-        <div class="why-card__body">From HyDip™ FMS to our digital customer portal, IOR is building the future of fuel technology. Be part of something that's genuinely changing an industry.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CAREERS DIRECTORY -->
-<section class="careers-dir-section">
-  <div class="container">
-    <div class="section-header">
-      <div class="eyebrow" style="color:#00B140;">Explore Careers</div>
-      <h2 class="section-title" style="color:#fff;" data-animate="fade-up">Find your path at IOR.</h2>
-    </div>
-    <div class="careers-dir-grid">
-      <a href="10b_Meet_The_Team.html" class="careers-dir-card" data-animate="fade-up">
-        <div class="careers-dir-card__icon">👥</div>
-        <div class="careers-dir-card__title">Meet the Team</div>
-        <div class="careers-dir-card__body">Get to know the people behind IOR. Hear their stories, their journeys, and what it's really like to work here.</div>
-        <span class="careers-dir-card__cta">Meet Our People →</span>
-      </a>
-      <a href="10a_Entry_Pathways.html" class="careers-dir-card" data-animate="fade-up" data-delay="80">
-        <div class="careers-dir-card__icon">🎓</div>
-        <div class="careers-dir-card__title">Entry Pathways</div>
-        <div class="careers-dir-card__body">Starting out? We offer apprenticeships, graduate programs, school-based traineeships, and more. Your career starts here.</div>
-        <span class="careers-dir-card__cta">Explore Entry Pathways →</span>
-      </a>
+    <div class="team-hero__content">
+      <div class="team-hero__eyebrow" data-animate="fade-up">Meet the Team</div>
+      <h1 data-animate="fade-up" data-delay="80">Real people.<br>Real stories.</h1>
+      <p class="team-hero__sub" data-animate="fade-up" data-delay="160">Get to know the people who make IOR what it is. Hear their stories, their journeys, and what it's really like to work here.</p>
     </div>
   </div>
 </section>
@@ -400,9 +262,9 @@
 <!-- TEAM STORY VIDEOS -->
 <section class="team-videos-section">
   <div class="container">
-    <div class="section-header" style="text-align:center;">
-      <div class="eyebrow">Our People</div>
-      <h2 class="section-title" data-animate="fade-up">Real stories from the IOR team.</h2>
+    <div class="section-header" data-animate="fade-up">
+      <div class="eyebrow" style="color:#00B140;">Our People</div>
+      <h2 class="section-title" style="color:#fff;">Hear it from the team.</h2>
     </div>
     <div class="team-videos-grid">
       <div class="team-video-card" data-animate="fade-up">
@@ -412,6 +274,7 @@
         <div class="team-video-card__info">
           <div class="team-video-card__name">Tahlia</div>
           <div class="team-video-card__role">IOR Team Member</div>
+          <div class="team-video-card__quote">"Working at IOR has given me opportunities I never expected."</div>
         </div>
       </div>
       <div class="team-video-card" data-animate="fade-up" data-delay="60">
@@ -421,6 +284,7 @@
         <div class="team-video-card__info">
           <div class="team-video-card__name">Risky</div>
           <div class="team-video-card__role">IOR Team Member</div>
+          <div class="team-video-card__quote">"The culture here is like nothing I've experienced before."</div>
         </div>
       </div>
       <div class="team-video-card" data-animate="fade-up" data-delay="120">
@@ -430,6 +294,7 @@
         <div class="team-video-card__info">
           <div class="team-video-card__name">Dylan</div>
           <div class="team-video-card__role">IOR Team Member</div>
+          <div class="team-video-card__quote">"I've grown more in two years at IOR than anywhere else."</div>
         </div>
       </div>
       <div class="team-video-card" data-animate="fade-up" data-delay="180">
@@ -439,6 +304,7 @@
         <div class="team-video-card__info">
           <div class="team-video-card__name">Luke</div>
           <div class="team-video-card__role">IOR Team Member</div>
+          <div class="team-video-card__quote">"Mates looking after mates — that's what IOR is all about."</div>
         </div>
       </div>
       <div class="team-video-card" data-animate="fade-up" data-delay="240">
@@ -448,6 +314,7 @@
         <div class="team-video-card__info">
           <div class="team-video-card__name">Drew</div>
           <div class="team-video-card__role">IOR Team Member</div>
+          <div class="team-video-card__quote">"Every day is different and that's what I love about it."</div>
         </div>
       </div>
       <div class="team-video-card" data-animate="fade-up" data-delay="300">
@@ -457,20 +324,40 @@
         <div class="team-video-card__info">
           <div class="team-video-card__name">Darren</div>
           <div class="team-video-card__role">IOR Team Member</div>
+          <div class="team-video-card__quote">"I started here not knowing much — now I run my own team."</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CURRENT OPENINGS CTA -->
-<section class="openings-section">
+<!-- CULTURE SECTION -->
+<section class="culture-section">
   <div class="container">
-    <h2 data-animate="fade-up">Ready to join the team?</h2>
-    <p data-animate="fade-up" data-delay="80">Browse current openings or reach out to our team directly.</p>
-    <div class="openings-section__btns" data-animate="fade-up" data-delay="160">
-      <a href="https://www.seek.com.au/jobs?advertiserid=IOR" target="_blank" rel="noopener" class="btn btn--primary" style="border-radius:0;">View Current Openings on SEEK</a>
-      <a href="08a_Contact_Us_v2.html" class="btn btn--ghost" style="border-radius:0; border-color:rgba(255,255,255,0.4); color:#fff;">Contact Our People Team</a>
+    <div class="culture-section__grid">
+      <div class="culture-section__left" data-animate="fade-up">
+        <div class="culture-section__eyebrow">Our Culture</div>
+        <h2>Mates looking after mates.</h2>
+        <p>At IOR, our culture is built on genuine care for each other. We look out for our team on the job and off it. Whether you're based at our Brisbane HQ or working remotely across Australia, you'll always feel part of the IOR family.</p>
+        <p>We celebrate wins together, support each other through challenges, and always find a way forward. That's what makes IOR a place where people stay and grow.</p>
+        <a href="10_Careers_v2.html" class="btn btn--primary" style="border-radius:0; margin-top:8px;">View Current Openings</a>
+      </div>
+      <div data-animate="fade-up" data-delay="120">
+        <div class="culture-section__img">
+          <span>IOR Culture Photography<br><small>Authentic team activity image — no stock</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="careers-cta">
+  <div class="container">
+    <h2 data-animate="fade-up">Ready to be part of the story?</h2>
+    <div class="careers-cta__btns" data-animate="fade-up" data-delay="80">
+      <a href="https://www.seek.com.au/jobs?advertiserid=IOR" target="_blank" rel="noopener" class="btn btn--primary" style="border-radius:0;">View Current Openings</a>
+      <a href="10a_Entry_Pathways.html" class="btn btn--ghost" style="border-radius:0; border-color:rgba(255,255,255,0.4); color:#fff;">Explore Entry Pathways</a>
     </div>
   </div>
 </section>
@@ -545,7 +432,6 @@
   </div>
 </footer>
 
-<!-- MOBILE DRAWER -->
 <div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
 <div class="drawer" id="mobileDrawer" aria-hidden="true" role="dialog" aria-modal="true">
   <div class="drawer__header">
@@ -565,8 +451,6 @@
     <div class="drawer__sub" id="sub-support">
       <a href="08a_Contact_Us_v2.html" class="drawer__sub-link">Contact Us</a>
       <a href="08b_Regional_Contacts_v2.html" class="drawer__sub-link">Regional Contacts</a>
-      <a href="08c_Find_a_Location_v2.html" class="drawer__sub-link">Find a Location</a>
-      <a href="08d_Make_a_Payment_v2.html" class="drawer__sub-link">Make a Payment</a>
     </div>
   </nav>
   <div class="drawer__ctas">
